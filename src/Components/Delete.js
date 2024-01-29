@@ -8,4 +8,5 @@ export default function Delete(){
             <h1 style={{color:"red"}}>Delete Supplier from here</h1>
         </div>
     )
+    
 }
