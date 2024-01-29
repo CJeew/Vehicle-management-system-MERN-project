@@ -1,0 +1,25 @@
+
+@media screen and (max-width: 600px) {
+    body {
+        
+        font-size: 14px;
+    }
+    /* Additional styles for smaller screens */
+}@media screen and (max-width: 300px) {
+    body {
+        font-size: 14px;
+    }
+    /* Additional styles for smaller screens */
+}@media screen and (max-width: 100px) {
+    body {
+        font-size: 14px;
+    }
+    /* Additional styles for smaller screens */
+}
+body{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    /* background-image: url(back.jpg); */
+}
+
+/*here it is*/
