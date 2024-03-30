@@ -27,7 +27,7 @@ export default function AddStaff() {
             joindate
         }
 
-        axios.post("http://localhost:8070/staffdetails/addstaff",newStaff).then(()=>{
+        axios.post("http://localhost:8090/staffdetails/addstaff",newStaff).then(()=>{
 
             alert("Staff Added")
             window.location.reload();

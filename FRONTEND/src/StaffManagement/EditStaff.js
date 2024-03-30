@@ -17,7 +17,7 @@ export default function EditStaff() {
 
  // Fetch staff details from the server on component mount
   useEffect(() => {
-    axios.get(`http://localhost:8070/staffdetails/get/${id}`).then((res) => {
+    axios.get(`http://localhost:8090/staffdetails/get/${id}`).then((res) => {
       setNic(res.data.staff.nic);
       setName(res.data.staff.name);
       setDesignation(res.data.staff.designation);
@@ -46,7 +46,7 @@ export default function EditStaff() {
 
     // Send updated staff details to the server
     axios
-      .put(`http://localhost:8070/staffdetails/editstaff/${id}`, updatedStaff)
+      .put(`http://localhost:8090/staffdetails/editstaff/${id}`, updatedStaff)
       .then(() => {
         alert("Staff Updated");
         window.location.href = "/StaffDetails";

@@ -1,7 +1,7 @@
 const router = require("express").Router();
-let Staffdetails = require("../Models/Staffdetails");
+let Staffdetails = require("../../Models/Staffdetails");
 
-//http://localhost:8070/staff/add
+//http://localhost:8090/staff/add
 
 router.route("/addstaff").post((req,res)=>{
 
@@ -31,7 +31,7 @@ router.route("/addstaff").post((req,res)=>{
     })
 })
 
-//http://Localhost:8070/staff/
+//http://Localhost:8090/staff/
 //Get all staff details
 
 router.route("/").get((req,res)=>{
@@ -44,7 +44,7 @@ router.route("/").get((req,res)=>{
 
 })
 
-//http//Localhost:8070/staff/update/..id
+//http//Localhost:8090/staff/update/..id
 
 router.route("/editstaff/:id").put(async(req,res) => {
 
@@ -72,7 +72,7 @@ router.route("/editstaff/:id").put(async(req,res) => {
 })
 
 
-//http//Localhost:8070/staff/delete/33huihfudf88
+//http//Localhost:8090/staff/delete/33huihfudf88
 
 router.route("/delete/:_id").delete(async (req, res) => {
     let userId = req.params._id;
@@ -86,7 +86,7 @@ router.route("/delete/:_id").delete(async (req, res) => {
     })
 })
 
-//http://localhost:8070/staff/get/65e4bcc5440bc24613ae7a76
+//http://localhost:8090/staff/get/65e4bcc5440bc24613ae7a76
 //How to get one staff details
 router.route("/get/:id").get(async (req, res) => {
     let userId = req.params.id;

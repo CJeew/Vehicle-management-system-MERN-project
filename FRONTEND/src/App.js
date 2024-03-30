@@ -44,6 +44,8 @@ import AddAnnouncement from "./StaffManagement/AddAnnouncement";
 import StaffHome from "./StaffManagement/StaffHome";
 import StaffDetails from "./StaffManagement/StaffDetails";
 import EditStaff from "./StaffManagement/EditStaff";
+import EmployeePayroll from "./StaffManagement/EmployeePayroll";
+import EditPayroll from "./StaffManagement/EditPayroll";
 
 
 function App() {
@@ -81,6 +83,8 @@ function App() {
           <Route path="/staffhome" element={<StaffHome/>}/>
           <Route path="/staffdetails" element={<StaffDetails/>}/>
           <Route path="/editstaff/:id" element={<EditStaff/>}/>
+          <Route path="/employeepayroll" element={<EmployeePayroll/>}/>
+          <Route path="/editpayroll/:id" element={<EditPayroll/>}/>
           
          
         </Routes>

@@ -7,7 +7,7 @@ export default function StaffDetails() {
   // Fetch staff details from the server on component mount
   useEffect(() => {
     function getStaff() {
-      axios.get("http://localhost:8070/staffdetails/").then((res) => {
+      axios.get("http://localhost:8090/staffdetails/").then((res) => {
         console.log(res);
         setStaff(res.data);
       }).catch((err) => {
@@ -19,7 +19,7 @@ export default function StaffDetails() {
 
   // Function to handle deletion of a staff member
   const onDeleteClick = async (userId) => {
-    await axios.delete(`http://localhost:8070/staffdetails/delete/${userId}`);
+    await axios.delete(`http://localhost:8090/staffdetails/delete/${userId}`);
     alert('User Deleted Successfully');
     window.location.reload(); // Refresh page after successful deletion
   }
