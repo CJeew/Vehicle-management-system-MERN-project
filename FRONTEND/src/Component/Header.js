@@ -54,7 +54,7 @@ function Header() {
           <a href="/add">Supplier</a>
         </li>
         <li>
-          <a href="">Staff</a>
+          <a href="/staffhome">Staff</a>
         </li>
         <li>
           <a href="/">Inventory</a>

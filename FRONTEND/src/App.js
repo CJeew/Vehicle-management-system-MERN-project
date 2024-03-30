@@ -18,6 +18,7 @@ import Profile from "./Component/Profile";
 
 
 
+
 //import Register from "./Component/Register";
 
 // import Login from "./Component/Login"; 
@@ -33,7 +34,16 @@ import Home from "./Component/home";
 import Addpkg from "./Component/Add_package";
 
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, BrowserRouter } from "react-router-dom";
+
+import AddPayroll from "./StaffManagement/AddPayroll";
+import AddStaff from "./StaffManagement/AddStaff";
+import AddLeaveRequest from "./StaffManagement/AddLeaveRequest";
+import AddAttendance from "./StaffManagement/AddAttendance";
+import AddAnnouncement from "./StaffManagement/AddAnnouncement";
+import StaffHome from "./StaffManagement/StaffHome";
+import StaffDetails from "./StaffManagement/StaffDetails";
+
 
 function App() {
   return (
@@ -60,8 +70,18 @@ function App() {
           <Route path="/Register" element={<Register/>}/>
           <Route path="/Review" element={<Review/>}/>
           <Route path="/Profile" element={<Profile/>}/>
+
+          {/* ----------Sanjayan---------- */}
+          <Route path="/addpayroll" element={<AddPayroll/>}/>
+          <Route path="/addstaff" element={<AddStaff/>}/>
+          <Route path="/addleaverequest" element={<AddLeaveRequest/>}/>
+          <Route path="/addattendance" element={<AddAttendance/>}/>
+          <Route path="/addannouncement" element={<AddAnnouncement/>}/>
+          <Route path="/staffhome" element={<StaffHome/>}/>
+          <Route path="/staffdetails" element={<StaffDetails/>}/>
          
         </Routes>
+        
 
       </div>
     </Router>
