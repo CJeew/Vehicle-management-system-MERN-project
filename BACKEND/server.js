@@ -60,7 +60,8 @@ app.use("/customer", customerRouter);
 
 
 // SANJU
-
+const staffRouter = require("./Routes/sanjayan/staffdetails.js");
+app.use("/staffdetails",staffRouter);
 
 
 // server port allocation & server start
