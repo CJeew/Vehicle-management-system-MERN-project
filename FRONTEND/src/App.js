@@ -36,6 +36,7 @@ import Addpkg from "./Component/Add_package";
 
 import { BrowserRouter as Router, Route, Routes, BrowserRouter } from "react-router-dom";
 
+//Staff Management
 import AddPayroll from "./StaffManagement/AddPayroll";
 import AddStaff from "./StaffManagement/AddStaff";
 import AddLeaveRequest from "./StaffManagement/AddLeaveRequest";
@@ -46,6 +47,9 @@ import StaffDetails from "./StaffManagement/StaffDetails";
 import EditStaff from "./StaffManagement/EditStaff";
 import EmployeePayroll from "./StaffManagement/EmployeePayroll";
 import EditPayroll from "./StaffManagement/EditPayroll";
+import EditAttendance from "./StaffManagement/EditAttendance";
+import EmployeeAttendance from "./StaffManagement/EmployeeAttendance";
+
 
 
 function App() {
@@ -85,6 +89,8 @@ function App() {
           <Route path="/editstaff/:id" element={<EditStaff/>}/>
           <Route path="/employeepayroll" element={<EmployeePayroll/>}/>
           <Route path="/editpayroll/:id" element={<EditPayroll/>}/>
+          <Route path="/editattendance/:id" element={<EditAttendance/>}/>
+          <Route path="/employeeattendance" element={<EmployeeAttendance/>}/>
           
          
         </Routes>

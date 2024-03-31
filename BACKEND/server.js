@@ -62,10 +62,12 @@ app.use("/customer", customerRouter);
 // SANJU
 const staffRouter = require("./Routes/sanjayan/staffdetails.js");
 const employeeRouter = require("./Routes/sanjayan/employeepayroll.js");
+const attendanceRouter = require("./Routes/sanjayan/employeeattendance.js");
 
 
 app.use("/staffdetails",staffRouter);
 app.use("/employeepayroll",employeeRouter);
+app.use("/employeeattendance",attendanceRouter);
 
 
 // server port allocation & server start

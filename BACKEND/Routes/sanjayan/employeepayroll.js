@@ -1,6 +1,5 @@
 const router = require("express").Router();
 let Employeepayroll = require("../../Models/Employeepayroll");
-// let Staffdetails = require("../../Models/Employeepayroll");
 
 //http://localhost:8090/staff/add
 

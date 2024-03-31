@@ -1,40 +1,57 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import "./StaffStyles.css";
 
 export default function AddAttendance(){
 
-    const [nic, setNic] = useState("");
+    const [nic, setNic] = useState("");  // State for NIC
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
     const [attendance, setAttendance] = useState("");
 
-    function sendData(e){
-      e.preventDefault();
-      //alert("Inserted");
+    const { id } = useParams(); // Get the ID from URL params
 
-      const newAttendance = {
+    // Fetch staff details from the server on component mount
+  useEffect(() => {
+    axios.get(`http://localhost:8090/employeeattendance/get/${id}`).then((res) => {
+      setNic(res.data.attendance.nic);
+      setName(res.data.attendance.name);
+      setDate(res.data.attendance.date);
+      setAttendance(res.data.attendance.attendance);
+    }).catch((err) => {
+      alert(err.message);
+    });
+  }, [id]);
 
-          nic,
-          name,
-          date,
-          attendance
-      }
+  // Function to update staff details
+  function updateAttendance(e) {
+    e.preventDefault();
 
-      axios.post("http://localhost:8090/employeeattendance/addattendance",newAttendance).then(()=>{
+    const updatedAttendance = {
+      nic,
+      name,
+      date,
+      attendance,
+    };
 
-            alert("Attendance Added")
-            window.location.reload();
-        }).catch((err)=>{
-            alert(err)
-        })
+    // Send updated staff details to the server
+    axios
+      .put(`http://localhost:8090/employeeattendance/editattendance/${id}`, updatedAttendance)
+      .then(() => {
+        alert("Attendance Updated");
+        window.location.href = "/EmployeeAttendance";
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }
 
-    }
 
     return(
 
-      <form onSubmit={sendData}>
-      <center><h1>Add Attendance</h1></center>
+      <form onSubmit={updateAttendance}>
+      <center><h1>Update Attendance</h1></center>
       <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
         <div className="sm:col-span-6">
           <label className="block text-sm font-medium leading-6 text-gray-900">
@@ -46,6 +63,7 @@ export default function AddAttendance(){
               name="nic"
               id="nic"
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              value={nic} //showing value
               onChange={(e)=>{
 
                 setNic(e.target.value);
@@ -65,6 +83,7 @@ export default function AddAttendance(){
               name="name"
               id="name"
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              value={name} //showing value
               onChange={(e)=>{
 
                 setName(e.target.value);
@@ -83,6 +102,7 @@ export default function AddAttendance(){
               name="date"
               id="date"
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              value={date} //showing value
               onChange={(e)=>{
 
                 setDate(e.target.value);
@@ -101,6 +121,7 @@ export default function AddAttendance(){
               name="attendance"
               id="attendance"
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              value={attendance} //showing value
               onChange={(e)=>{
 
                 setAttendance(e.target.value);
