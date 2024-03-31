@@ -34,7 +34,7 @@ export default function BookingPage() {
         <figure>
           <img className="rounded-full w-40 h-40 ms-20" src={imgSrc1} />
           <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400 ms-20">
-            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Manager Login</button>
+            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"><a href="/bookManageLog">Manager Login</a></button>
           </figcaption>
         </figure>
       </div>

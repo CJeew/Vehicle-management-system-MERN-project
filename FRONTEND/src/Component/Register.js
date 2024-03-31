@@ -47,22 +47,22 @@ export default function Register() {
           <select
             name="select"
             id="select"
-            class="block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 font-semibold text-gray-500 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+            class="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 font-semibold text-gray-500 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
           >
             <option class="font-semibold text-slate-300">Car</option>
             <option class="font-semibold text-slate-300">Motor Bike</option>
             <option class="font-semibold text-slate-300">Three Wheeler</option>
-            <option class="font-semibold text-slate-300">Havey Vehicle</option>
+            <option class="font-semibold text-slate-300">Heavy Vehicle</option>
           </select>
         </div>
         <div class="mt-6">
           <label
             for="password"
-            class="block text-sm font-medium leading-5 text-gray-700"
+            class="block text-sm font-medium leading-5 text-gray-300"
           >
             Password
           </label>
-          <div class="mt-1 rounded-md shadow-sm">
+          <div class="mt-1 rounded-md shadow-sm text-black">
             <input
               id="password"
               name="password"
@@ -76,17 +76,17 @@ export default function Register() {
         <div class="mt-6">
           <label
             for="password_confirmation"
-            class="block text-sm font-medium leading-5 text-gray-700"
+            class="block text-sm font-medium leading-5 text-gray-300"
           >
             Confirm Password
           </label>
-          <div class="mt-1 rounded-md shadow-sm">
+          <div class="mt-1 rounded-md shadow-sm text-black">
             <input
               id="password_confirmation"
               name="password_confirmation"
               type="password"
               required=""
-              class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+              class="appearance-none block w-full px-3 py-2 border border-black rounded-md placeholder-gray-800 focus:outline-none focus:shadow-outline-blue focus:border-blue-900 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
             ></input>
           </div>
         </div>

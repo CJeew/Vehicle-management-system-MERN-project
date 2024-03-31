@@ -31,7 +31,7 @@ function Add_Supplier() {
     return (
         <div className="container">
             <div className="Add">
-                <h1 className="text-3xl text-center bg-red-300">Add Supplier</h1>
+                <h1 className="text-3xl text-center">Add Supplier</h1>
                 <form>
                     <label>Name</label>
                     <input type="text" onChange={(e) => setName(e.target.value)} />
@@ -47,6 +47,9 @@ function Add_Supplier() {
 
                     <input className="btn" type="submit" value={"Add Supplier"} onClick={submit} />
                 </form>
+                <a href="/display"><button className="bg-green-600 radious-30px ">Display</button></a>
+                <a href="/update"><button className="bg-green-600 radious-30px ">Update</button></a>
+                <a href="/delete"><button className="bg-green-600 radious-30px ">Delete</button></a>
             </div>
         </div>
     //     <div className="flex justify-center items-center h-screen bg-gray-100">

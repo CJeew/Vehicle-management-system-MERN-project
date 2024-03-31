@@ -3,25 +3,25 @@ import "./Home.css";
 
 function Home() {
     return (
-        <div className="Container">
-            <h1>Maintaince and repair  </h1>
-            <h1 style= {{color: '#FF8A00'}}> Services</h1>
-            <br/>
-            <p>Transform the way you drive with Ryome Autocare,<br/> the pinnacle of accuracy in auto repair and <br/>maintenance.</p>
-           <div className="btns">          
-            <a href="/booking" class="text-whitesmoke" className="btn1"><button>BOOK NOW</button></a>
-            <a href="/createjob"className="btn2"><button>NEW JOB</button></a>
-            
+        <div className="flex justify-left mt-20 ml-14 h-screen text-white">
+         <div className="w-1/2 text-left">
+            <h1 className="text-5xl font-bold opacity-90">Maintenance & Repair <br /><span className="text-orange-500">Services</span></h1>
+            <br />
+            <p className="text-xl opacity-90">Transform the way you drive with Ryome Autocare, the pinnacle of accuracy in auto repair and maintenance.</p>
+            <div className="mt-6">
+            <a href="/booking" class="text-whitesmoke">
+                <button className="py-2 px-6 border-2 border-white bg-transparent text-white mr-4 hover:bg-red-500 hover:text-white transition duration-300" style={{ borderBottomLeftRadius: '1rem' }}>BOOK NOW</button>
+            </a>
+            <a href="/createjob">
+                <button className="py-2 px-6 border-2 border-white bg-transparent text-white hover:bg-red-500 hover:text-white transition duration-300" style={{ borderTopRightRadius: '1rem' }}>NEW JOB</button>
+            </a>
             </div>
-            <div className="SEC-2">
-                <h1 style= {{color: '#FF8A00'}}>MAIN </h1>
-                <h1>SERVICES </h1>
-            </div>
-            <div className="secImg">
 
+            <div className="mt-12">
+            <h1 className="text-3xl font-bold">MAIN SERVICES</h1>
             </div>
-            
-           
+            <div className="secImg"></div> 
+         </div>
         </div>
         
     );

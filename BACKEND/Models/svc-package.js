@@ -20,7 +20,7 @@ const packageSchema = new Schema({
         type : Number, 
         required : true
     },
-    catagory : {
+    category : {
         type : String, 
         required : true
     },

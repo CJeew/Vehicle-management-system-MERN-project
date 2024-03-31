@@ -28,29 +28,19 @@ import Profile from "./Component/Profile";
 
 import BookingPage from "./Component/BookingPage"; // import Booking Page
 import BookingPageCustomerLogin from "./Component/BookingPageCustomerLogin";  // import Booking Customer Login Page
+import BookingPageManagerLogin from "./Component/BookingPageManagerLogin";   // import Booking Manager Login Page
+
 import Home from "./Component/home";
 
 
+//service
 import Addpkg from "./Component/Add_package";
+import Servicehome from "./Component/servicehome";
 
 
-import { BrowserRouter as Router, Route, Routes, BrowserRouter } from "react-router-dom";
 
-//Staff Management
-import AddPayroll from "./StaffManagement/AddPayroll";
-import AddStaff from "./StaffManagement/AddStaff";
-import AddLeaveRequest from "./StaffManagement/AddLeaveRequest";
-import AddAttendance from "./StaffManagement/AddAttendance";
-import AddAnnouncement from "./StaffManagement/AddAnnouncement";
-import StaffHome from "./StaffManagement/StaffHome";
-import StaffDetails from "./StaffManagement/StaffDetails";
-import EditStaff from "./StaffManagement/EditStaff";
-import EmployeePayroll from "./StaffManagement/EmployeePayroll";
-import EditPayroll from "./StaffManagement/EditPayroll";
-import EditAttendance from "./StaffManagement/EditAttendance";
-import EmployeeAttendance from "./StaffManagement/EmployeeAttendance";
-
-
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import BookNowPage from "./Component/BookNowPage";
 
 function App() {
   return (
@@ -69,9 +59,13 @@ function App() {
           <Route path="/booking" element={<BookingPage/>}/>
           {/* <Route path="/customer" element={<Customerhome/>}/> */}
           <Route path="/addpkg" element={<Addpkg/>}/>
+          <Route path="/servicehome" element={<Servicehome/>}/>
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
+          <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
+          <Route path="/bookNow" element={<BookNowPage/>}/>
 
           {/* <Route path="/test" element={<Test/>}/> */}
+
 
           <Route path="/Chome" element={<Chome/>}/>
           <Route path="/Register" element={<Register/>}/>

@@ -1,42 +1,43 @@
 const router = require("express").Router(); // Import the Express module and access its Router function to create a new router object.
-let Package = require("../../Models/svc-package.js");// Import the Package model from the specified path.
+let Package = require("../../Models/svc-package.js"); // Import the Package model from the specified path.
 
 //add package
 router.route("/add").post((req, res) => {
   const pid = req.body.pid;
   const name = req.body.name;
   const description = req.body.description;
-  const unitprice = req.body.unitprice;
-  const catagory = req.body.catagory;
+  const unitprice = parseInt(req.body.unitprice);
+  console.log("test");
+  const category = req.body.category;
 
   //validate data
   //validate pid as number
   if (isNaN(pid)) {
     return res.status(400).json({ message: "pid must be a number" });
   }
-
-  //validate unitprice as number
+  console.log("test2");
+  // validate unitprice as number
   if (isNaN(unitprice)) {
     return res.status(400).json({ message: "unitprice must be a number" });
   }
-
+  console.log("test3");
   const newPackage = new Package({
     pid,
     name,
     description,
     unitprice,
-    catagory,
+    category,
   });
-
- 
 
   newPackage
     .save()
     .then(() => {
-      res.json("Package Added");
+      console.log("test res");
+      return res.json("Package Added");
     })
     .catch((err) => {
-      console.log(err);
+      console.log("test er");
+      return console.log(err);
     });
 });
 
@@ -54,24 +55,32 @@ router.route("/").get((req, res) => {
 
 router.route("/update/:id").put(async (req, res) => {
   let packageId = req.params.id;
-  const { pid, name, description, unitprice, catagory } = req.body;
+  const {name, description, unitprice, catagory } = req.body;
 
   const updatePackage = {
-    pid,
+    //pid,
     name,
     description,
     unitprice,
     catagory,
   };
 
-  const update = await Package.findByIdAndUpdate(packageId, updatePackage)
-    .then(() => {
-      res.status(200).send({ status: "Package Updated" });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).send({ status: "Error with updating data" });
-    });
+  try {
+    const resp = await Package.findByIdAndUpdate(packageId, updatePackage);
+
+    if (!resp) {
+      res.status(500).send({ status: "Recode with this id not found" });//handel error
+      return;
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ status: "Error with updating data" });//unexpected error
+    return;
+  }
+
+  res.status(200).send({ status: "Package Updated" });
+
+ 
 });
 
 //delete package
