@@ -57,7 +57,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import BookNowPage from "./Component/BookNowPage";
 import EditLeaveRequest from "./Component/EditLeaveRequest";
 import LeaveRequest from "./Component/LeaveRequest";
-import LoginForm from "./Component/LoginForm";
+
 
 function App() {
   return (
@@ -104,7 +104,7 @@ function App() {
           <Route path="/employeeattendance" element={<EmployeeAttendance/>}/>
           <Route path="/editleaverequest/:id" element={<EditLeaveRequest/>}/>
           <Route path="/leaverequest" element={<LeaveRequest/>}/>
-          <Route path="/loginform" element={<LoginForm/>}/>
+          
           
          
         </Routes>

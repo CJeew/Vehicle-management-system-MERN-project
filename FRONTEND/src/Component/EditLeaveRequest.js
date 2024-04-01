@@ -58,7 +58,7 @@ export default function EditLeaveRequest(){
 
       <form onSubmit={updateLeave}>
         <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
-        <center><h1>Add Leave Request</h1></center>
+        <center><h1>Update Leave Request</h1></center>
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div class="sm:col-span-3">
             <label class="block text-sm font-medium leading-6 text-gray-900">

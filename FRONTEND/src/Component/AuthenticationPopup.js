@@ -6,7 +6,7 @@ const AuthenticationPopup = ({ onAuthenticate }) => {
   const [error, setError] = useState('');
 
   const handleAuthenticate = () => {
-    // Perform authentication here (e.g., check username and password against backend)
+    // Perform authentication here (check username and password against backend)
     if (username === 'admin' && password === 'admin123') {
       onAuthenticate(true); // Pass authentication status to parent component
     } else {
