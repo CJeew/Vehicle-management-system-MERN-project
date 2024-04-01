@@ -37,6 +37,19 @@ import Home from "./Component/home";
 import Addpkg from "./Component/Add_package";
 import Servicehome from "./Component/servicehome";
 
+//staff
+import AddPayroll from "./Component/AddPayroll";
+import AddStaff from "./Component/AddStaff";
+import AddAttendance from "./Component/EditAttendance";
+import AddAnnouncement from "./Component/AddAnnouncement";
+import AddLeaveRequest from "./Component/AddLeaveRequest";
+import StaffHome from "./Component/StaffHome";
+import StaffDetails from "./Component/StaffDetails";
+import EditStaff from "./Component/AddLeaveRequest";
+import EmployeePayroll from "./Component/EmployeePayroll";
+import EditPayroll from "./Component/EditPayroll";
+import EditAttendance from "./Component/EditAttendance";
+import EmployeeAttendance from "./Component/EmployeeAttendance";
 
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
