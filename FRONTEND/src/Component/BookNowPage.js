@@ -7,9 +7,9 @@ export default function BookNowPage() {
   return (
     <div>
       <div className="relative">
-            <h1 className="ms-20 my-10 mt-20 text-6xl font-extrabold dark:text-white">Book Now</h1>
+            <h1 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Book Now</h1>
 
-            <form className="w-half bg-gray-100 p-6 ms-60 my-10 mt230 p-4 m-60 border-gray-300 rounded-lg min-h-min">
+            <form className="w-half bg-gray-100 p-6 ms-60 my-10 mt230 p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50">
                 <div class="grid grid-cols-1 gap-4">
                     <div class="form-group flex mx-10" >
                         <table class="w-full">
@@ -131,7 +131,9 @@ export default function BookNowPage() {
                 </div>
 
                 <div class="mt-5 mb-5 flex justify-center">
-                    <button type="submit" class="bookBtn text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-xl px-5 py-2.5 text-center me-2">Book Now</button>
+                    <button type="submit" class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                  hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
+                                  ease-in-out transform hover:scale-105">Book Now</button>
                 </div>
             </form>
         </div>
