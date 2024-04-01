@@ -61,6 +61,7 @@ router.route("/editleaverequest/:id").put(async(req,res) => {
     const update = await Leaverequest.findByIdAndUpdate(id, updateLeaverequest)  //updateStaff means upadate panna vendiya data oda object
     .then(() => {
 
+
         res.status(200).send({status: "Leave Request updated"})
     }).catch((err) => {
         console.log(err);

@@ -1,43 +1,47 @@
-import React, {useState} from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
+import AuthenticationPopup from './AuthenticationPopup';
 
+export default function AddLeaveRequest() {
+  const [nic, setNic] = useState('');
+  const [name, setName] = useState('');
+  const [date, setDate] = useState('');
+  const [noofdays, setNoofdays] = useState('');
+  const [reason, setReason] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
 
-export default function AddLeaveRequest(){
+  function sendData(e) {
+    e.preventDefault();
 
-    const [nic, setNic] = useState("");
-    const [name, setName] = useState("");
-    const [date, setDate] = useState("");
-    const [noofdays, setNoofdays] = useState("");
-    const [reason, setReason] = useState("");
+    const newLeaveRequest = {
+      nic,
+      name,
+      date,
+      noofdays,
+      reason,
+    };
 
-    function sendData(e){
-      e.preventDefault();
-      //alert("Inserted");
+    axios.post('http://localhost:8090/leaverequest/addleaverequest', newLeaveRequest)
+      .then(() => {
+        alert('Leave Request Added');
+        window.location.reload();
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
 
-      const newLeaverequest = {
-
-          nic,
-          name,
-          date,
-          noofdays,
-          reason
-      }
-
-      axios.post("http://localhost:8090/leaverequest/addleaverequest",newLeaverequest).then(()=>{
-
-            alert("Leave Request Added")
-            window.location.reload();
-        }).catch((err)=>{
-            alert(err)
-        })
-
+  const authenticate = (authenticated) => {
+    if (authenticated) {
+      // Redirect to another page (e.g., '/editleaverequest') after authentication
+      window.location.href = '/leaverequest';
     }
+  };
 
-    return(
-
-      <div>
-
-        <form onSubmit={sendData}>
+  return (
+    <div>
+      <form onSubmit={sendData}>
+      
         <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
           <center><h1>Add Leave Request</h1></center>
           <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -149,18 +153,17 @@ export default function AddLeaveRequest(){
           </div>
         </form>
 
-          <div class="flex justify-center mt-2">
-              <a
-                href="/leaverequest"
-                title="LeaveRequest"  
-              >
-                  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    View
-                  </button>
-              </a>
-          </div>
+        <div className="flex justify-center mt-2">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={() => setShowPopup(true)}
+          >
+            View
+          </button>
+        </div>
+      
 
-      </div>
-
-    )
+      {showPopup && <AuthenticationPopup onAuthenticate={authenticate} />}
+    </div>
+  );
 }
