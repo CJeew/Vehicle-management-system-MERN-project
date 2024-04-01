@@ -1,5 +1,4 @@
 import React from "react"
-import './StaffHome.css'
 
 export default function StaffHome() {
 
@@ -14,7 +13,7 @@ export default function StaffHome() {
           role="button"
         >
           Manage Employee
-          <div class="fire-effect"></div>
+    
         </a>
       </div>
 
@@ -26,7 +25,7 @@ export default function StaffHome() {
           role="button"
         >
           Employee Payroll
-          <div class="fire-effect"></div>
+          
         </a>
       </div>
 
@@ -38,7 +37,6 @@ export default function StaffHome() {
           role="button"
         >
           Leave Request
-          <div class="fire-effect"></div>
         </a>
       </div>
 
@@ -51,7 +49,6 @@ export default function StaffHome() {
             role="button"
           >
             Employee Attendance
-            <div class="fire-effect"></div>
           </a>
         </div>
 
@@ -63,7 +60,6 @@ export default function StaffHome() {
             role="button"
           >
             Announcement
-            <div class="fire-effect"></div>
           </a>
         </div>
       </div>
