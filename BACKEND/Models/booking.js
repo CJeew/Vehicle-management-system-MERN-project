@@ -2,6 +2,7 @@ const mongoose =require('mongoose');
 const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
+
     fname : {
         type : String,
         required : true
@@ -15,7 +16,7 @@ const bookSchema = new Schema({
         required : true
     },
     phoneNum : {
-        type : Number,
+        type : String,
         required : true
     },
 
