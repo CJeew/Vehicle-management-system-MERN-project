@@ -1,5 +1,5 @@
 import React from "react"
-import './StaffHome.css'
+
 
 export default function StaffHome() {
 
@@ -32,7 +32,7 @@ export default function StaffHome() {
 
       <div class="relative inline-flex group mr-4 fire-container">
         <a
-          href="#"
+          href="/addleaverequest"
           title="LeaveRequest"
           class="relative inline-flex items-center justify-center px-12 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
           role="button"
