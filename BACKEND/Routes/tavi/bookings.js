@@ -87,6 +87,7 @@ router.route("/updateBook/:id").post(async(req,res)=>{
     })
  })
 
+ //fetch data of one booking
  router.route("/get/:id").get(async(req,res)=>{
     let bookId = req.params.id;
     const book = await booking.findById(bookId)  //primary key - .findOne(email)
