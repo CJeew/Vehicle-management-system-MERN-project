@@ -16,7 +16,7 @@ export default function servicehome() {
                 
                   <div className="flex justify-center space-x-4 text-2xl mt-100">
                   <a href="#"> <button className="bg-gradient-to-r from-red-400 to-red-500 px-10 py-5 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px]">packages</button></a>
-                  <a href="#"><button className="bg-gradient-to-r from-red-400 to-red-500 px-10 py-5 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px]">services</button></a>
+                  <a href="#"><button className="bg-gradient-to-r from-red-400 to-red-500 px-10 py-5 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px]">Recodes</button></a>
                 </div>
 
                 
