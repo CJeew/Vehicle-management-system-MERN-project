@@ -18,6 +18,7 @@ import Profile from "./Component/Profile";
 
 
 
+
 //import Register from "./Component/Register";
 
 // import Login from "./Component/Login"; 
@@ -36,9 +37,25 @@ import Home from "./Component/home";
 import Addpkg from "./Component/Add_package";
 import Servicehome from "./Component/servicehome";
 
+//staff
+import AddPayroll from "./Component/AddPayroll";
+import AddStaff from "./Component/AddStaff";
+import AddAttendance from "./Component/AddAttendance";
+import AddAnnouncement from "./Component/AddAnnouncement";
+import AddLeaveRequest from "./Component/AddLeaveRequest";
+import StaffHome from "./Component/StaffHome";
+import StaffDetails from "./Component/StaffDetails";
+import EditStaff from "./Component/AddLeaveRequest";
+import EmployeePayroll from "./Component/EmployeePayroll";
+import EditPayroll from "./Component/EditPayroll";
+import EditAttendance from "./Component/EditAttendance";
+import EmployeeAttendance from "./Component/EmployeeAttendance";
+
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import BookNowPage from "./Component/BookNowPage";
+import EditLeaveRequest from "./Component/EditLeaveRequest";
+import LeaveRequest from "./Component/LeaveRequest";
 
 function App() {
   return (
@@ -69,8 +86,26 @@ function App() {
           <Route path="/Register" element={<Register/>}/>
           <Route path="/Review" element={<Review/>}/>
           <Route path="/Profile" element={<Profile/>}/>
+
+          {/* ----------Sanjayan---------- */}
+          <Route path="/addpayroll" element={<AddPayroll/>}/>
+          <Route path="/addstaff" element={<AddStaff/>}/>
+          <Route path="/addleaverequest" element={<AddLeaveRequest/>}/>
+          <Route path="/addattendance" element={<AddAttendance/>}/>
+          <Route path="/addannouncement" element={<AddAnnouncement/>}/>
+          <Route path="/staffhome" element={<StaffHome/>}/>
+          <Route path="/staffdetails" element={<StaffDetails/>}/>
+          <Route path="/editstaff/:id" element={<EditStaff/>}/>
+          <Route path="/employeepayroll" element={<EmployeePayroll/>}/>
+          <Route path="/editpayroll/:id" element={<EditPayroll/>}/>
+          <Route path="/editattendance/:id" element={<EditAttendance/>}/>
+          <Route path="/employeeattendance" element={<EmployeeAttendance/>}/>
+          <Route path="/editleaverequest/:id" element={<EditLeaveRequest/>}/>
+          <Route path="/leaverequest" element={<LeaveRequest/>}/>
+          
          
         </Routes>
+        
 
       </div>
     </Router>

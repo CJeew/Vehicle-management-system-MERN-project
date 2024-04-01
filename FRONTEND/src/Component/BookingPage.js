@@ -11,7 +11,7 @@ export default function BookingPage() {
   return ( 
     <div>
       <div className="relative">
-        <h1 className="ms-20 mt-20 m text-6xl font-extrabold dark:text-white">Book Now</h1>
+        <h1 className="ms-20 mt-20 m text-6xl font-extrabold text-white">Book Now</h1>
         <img src={imgSrc2} alt="Wipe Image" className="absolute top-4 right-10 mx-60 rounded-2xl" style={{ width: "400px", height: "600px" }}/>
       </div>
 
@@ -28,13 +28,17 @@ export default function BookingPage() {
         <figure>
           <img className="rounded-full w-40 h-40 ms-20" src={imgSrc} />
           <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400 ms-20">
-            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"><a href="/bookCusLog">Customer Login</a></button>
+            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                  hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
+                                  ease-in-out transform hover:scale-105"><a href="/bookCusLog">Customer Login</a></button>
           </figcaption>
         </figure>
         <figure>
           <img className="rounded-full w-40 h-40 ms-20" src={imgSrc1} />
           <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400 ms-20">
-            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"><a href="/bookManageLog">Manager Login</a></button>
+            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                  hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
+                                  ease-in-out transform hover:scale-105"><a href="/bookManageLog">Manager Login</a></button>
           </figcaption>
         </figure>
       </div>

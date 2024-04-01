@@ -1,5 +1,5 @@
 import React from "react";
-import "./Home.css";
+// import "./Home.css";
 import imgSrc from "./logo.png";
 import "./BookingPage.js";
 import "./BookingPage.css";
@@ -12,67 +12,52 @@ import "./Profile.js";
 
 function Header() {
   return (
-    <div className="txt">
-      <a href="/">
-        <img src={imgSrc} />
-      </a>
-      <ul type="none" className="nav_b">
-        {/* <div className="dropdown">
-          <li className="dropdownbtn">
-            <a href="">My function</a>
-          </li>
-          <div className="dropdowncontent">
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/add">Add</a>
-            </li>
-            <li>
-              <a href="/display">Display</a>
-            </li>
-            <li>
-              <a href="/update">Update</a>
-            </li>
-            <li>
-              <a href="/delete">Delete</a>
-            </li>
+      <div className="text-white py-4 ml-5">
+        
+          {/* ------Logo-------- */}
+
+          <nav className="flex flex-wrap justify-between items-center space-x-10 text-xl text-slate-50 " >
+
+          <div>
+            <img src= {imgSrc} alt="Logo" className="h-20 w-45 ml-10 mt-3" />
           </div>
-        </div> */}
 
-        <li>
-          <a href="/">Home</a>
-        </li>
+          {/* ------Navigation links------ */}
+           <div>
+            <a href="/" className="hover:none  transition duration-500 ease-in-out transform hover:text-orange-500">Home</a>
+           </div>
 
-        <li>
-          <div className="customer-btn">
-            <a href="/Customerlogin">Customer</a>
-          </div>
-        </li>
+           <div> 
+            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Customer</a>
+           </div>
 
-        <li>
-          <a href="/add">Supplier</a>
-        </li>
-        <li>
-          <a href="">Staff</a>
-        </li>
-        <li>
-          <a href="/">Inventory</a>
-        </li>
-        <li>
-          <a href="/">Finance</a>
-        </li>
-        <li>
-          <a href="servicehome">Services</a>
-        </li>
-        <li></li>
+           <div>
+            <a href="/add" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Suppliers</a>
+           </div>
 
-        <li>
-          <div class="bookBtn text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-xl px-5 py-2.5 text-center me-2 mb-2"><a href="/booking" class="text-whitesmoke">Book Now</a></div>
-        </li>
-      </ul>
-    </div>
-  );
+           <div>
+            <a href="/staffhome" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Staff</a>
+           </div>
+
+           <div>
+            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Inventory</a>
+           </div>
+
+           <div>
+            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Finance</a>
+           </div>
+
+           <div>
+            <a href = "/servicehome">
+            <button className=" py-2 px-5 border-2 border-slate-50 mr-3 bg-gray-900 bg-opacity-50
+                              transition duration-200 ease-in-out transform hover:scale-105 rounded-lg">Services</button>
+            </a>                  
+          
+          </div> 
+          </nav>
+        
+      </div>
+    );
 }
 
 export default Header;
