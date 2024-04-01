@@ -1,6 +1,7 @@
 import React from "react"
 
 
+
 export default function StaffHome() {
 
   return (
@@ -14,7 +15,7 @@ export default function StaffHome() {
           role="button"
         >
           Manage Employee
-          <div class="fire-effect"></div>
+    
         </a>
       </div>
 
@@ -26,7 +27,7 @@ export default function StaffHome() {
           role="button"
         >
           Employee Payroll
-          <div class="fire-effect"></div>
+          
         </a>
       </div>
 
@@ -38,7 +39,6 @@ export default function StaffHome() {
           role="button"
         >
           Leave Request
-          <div class="fire-effect"></div>
         </a>
       </div>
 
@@ -51,7 +51,6 @@ export default function StaffHome() {
             role="button"
           >
             Employee Attendance
-            <div class="fire-effect"></div>
           </a>
         </div>
 
@@ -63,7 +62,6 @@ export default function StaffHome() {
             role="button"
           >
             Announcement
-            <div class="fire-effect"></div>
           </a>
         </div>
       </div>
