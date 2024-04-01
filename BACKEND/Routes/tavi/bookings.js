@@ -1,7 +1,7 @@
 const router = require("express").Router();
 let booking = require("../../Models/booking");
 
-//create
+//create - working
 
 router.route("/addBooking").post((req,res)=>{
 
@@ -36,7 +36,7 @@ router.route("/addBooking").post((req,res)=>{
     })
 })
 
-//read
+//read - working
 
 router.route("/").get((req,res)=>{
     booking.find().then((bookings)=>{
