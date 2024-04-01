@@ -24,33 +24,33 @@ function Header() {
 
           {/* ------Navigation links------ */}
            <div>
-            <a href="/" className="hover:none  transition duration-500 ease-in-out transform hover:text-2xl">Home</a>
+            <a href="/" className="hover:none  transition duration-500 ease-in-out transform hover:text-orange-500">Home</a>
            </div>
 
            <div> 
-            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-2xl">Customer</a>
+            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Customer</a>
            </div>
 
            <div>
-            <a href="/add" className="hover:none transition duration-300 ease-in-out transform hover:text-2xl">Suppliers</a>
+            <a href="/add" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Suppliers</a>
            </div>
 
            <div>
-            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-2xl">Staff</a>
+            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Staff</a>
            </div>
 
            <div>
-            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-2xl">Inventory</a>
+            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Inventory</a>
            </div>
 
            <div>
-            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-2xl">Finance</a>
+            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Finance</a>
            </div>
 
            <div>
             <a href = "/servicehome">
             <button className=" py-2 px-5 border-2 border-slate-50 mr-3 bg-gray-900 bg-opacity-50
-                              transition duration-200 ease-in-out transform hover:scale-105">Services</button>
+                              transition duration-200 ease-in-out transform hover:scale-105 rounded-lg">Services</button>
             </a>                  
           
           </div> 
