@@ -40,7 +40,7 @@ import Servicehome from "./Component/servicehome";
 //staff
 import AddPayroll from "./Component/AddPayroll";
 import AddStaff from "./Component/AddStaff";
-import AddAttendance from "./Component/EditAttendance";
+import AddAttendance from "./Component/AddAttendance";
 import AddAnnouncement from "./Component/AddAnnouncement";
 import AddLeaveRequest from "./Component/AddLeaveRequest";
 import StaffHome from "./Component/StaffHome";
@@ -54,6 +54,8 @@ import EmployeeAttendance from "./Component/EmployeeAttendance";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import BookNowPage from "./Component/BookNowPage";
+import EditLeaveRequest from "./Component/EditLeaveRequest";
+import LeaveRequest from "./Component/LeaveRequest";
 
 function App() {
   return (
@@ -98,6 +100,8 @@ function App() {
           <Route path="/editpayroll/:id" element={<EditPayroll/>}/>
           <Route path="/editattendance/:id" element={<EditAttendance/>}/>
           <Route path="/employeeattendance" element={<EmployeeAttendance/>}/>
+          <Route path="/editleaverequest/:id" element={<EditLeaveRequest/>}/>
+          <Route path="/leaverequest" element={<LeaveRequest/>}/>
           
          
         </Routes>
