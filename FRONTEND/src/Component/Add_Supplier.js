@@ -45,7 +45,7 @@ function Add_Supplier() {
                     <label>Country</label>
                     <input type="text" onChange={(e) => setCountry(e.target.value)} />
 
-                    <input className="btn" type="submit" value={"Add Supplier"} onClick={submit} />
+                    <input className="btn" type="submit" value={"Add Supplier"} onClick={submit} /> 
                 </form>
                 <a href="/display"><button className="bg-green-600 radious-30px ">Display</button></a>
                 <a href="/update"><button className="bg-green-600 radious-30px ">Update</button></a>
