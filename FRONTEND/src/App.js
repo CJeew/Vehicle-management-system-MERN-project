@@ -20,12 +20,12 @@ import Profile from "./Component/Profile";
 
 
 //import Register from "./Component/Register";
+
 // import Login from "./Component/Login"; 
 // import Update from "./Components/Update";
 // import Test from "./Components/Test";
 //import Supplier_home from "./Component/Supplier_home";
 
-//booking
 import BookingPage from "./Component/BookingPage"; // import Booking Page
 import BookingPageCustomerLogin from "./Component/BookingPageCustomerLogin";  // import Booking Customer Login Page
 import BookingPageManagerLogin from "./Component/BookingPageManagerLogin";   // import Booking Manager Login Page
