@@ -20,9 +20,8 @@ function Header() {
 
           <div>
 
-           <a href="/"><img src= {imgSrc} alt="Logo" className="h-20 w-45 ml-10 mt-3" /></a>
-            <img src= {imgSrc} alt="Logo" className="h-16 w-43 ml-10 mt-3" />
-          </div>
+           <a href="/"><img src= {imgSrc} alt="Logo" className="h-16 w-43 ml-10 mt-3" /></a>
+`         `          </div>
 
           {/* ------Navigation links------ */}
            <div>
