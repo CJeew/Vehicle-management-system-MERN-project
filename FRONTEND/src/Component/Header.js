@@ -19,8 +19,9 @@ function Header() {
           <nav className="flex flex-wrap justify-between items-center space-x-10 text-xl text-slate-50 " >
 
           <div>
-            <img src= {imgSrc} alt="Logo" className="h-20 w-45 ml-10 mt-3" />
-          </div>
+
+           <a href="/"><img src= {imgSrc} alt="Logo" className="h-16 w-43 ml-10 mt-3" /></a>
+                   </div>
 
           {/* ------Navigation links------ */}
            <div>
