@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
-import './job.css'
+// import './job.css'
 
 function CreateJob() {
     const [jobNumber, setjobNumber] = useState("");
@@ -64,20 +64,20 @@ function CreateJob() {
                   
               {/*------ Line 01 starts------ */}
 
-                <div className="flex flex-wrap justify-between items-center space-x-2">
-                  <div className="flex items-center mb-2">  
+              <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
+                  <div className="">  
                     <label className = "mr-11">Job Number :</label>
-                    <input type="text" onChange={(e) => setjobNumber(e.target.value)} className="rounded-md w-50 h-10 opacity-80"/>
+                    <input type="text" onChange={(e) => setjobNumber(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base mt-2"/>
                   </div>
 
-                  <div className="flex items-center mb-2">
-                    <label className="mr-4">Job Date :</label>
+                  <div className="">
+                    <label className="mr-11">Job Date :</label>
                     <input type="date" onChange={(e) => setjobDate(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base"/>
                   </div>
 
-                  <div className="flex items-center mb-2">
-                    <label className="mr-4">Vehicle Type :</label>
-                    <select id="vehicle" onChange={(e) => setvehicleType(e.target.value)} className="rounded-md w-50 h-10 opacity-80 text-base">
+                  <div className="">
+                    <label className="mr-7">Vehicle Type :</label>
+                    <select id="vehicle" onChange={(e) => setvehicleType(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base mb-1">
                         <option value="">--Choose an option--</option>
                         <option value="car">Car</option>
                         <option value="Van">Van</option>
@@ -91,18 +91,19 @@ function CreateJob() {
                 {/* -------Line 01 ends------ */}
 
                 
-                <h2 className="Heading2 font-bold text-xl mb-3">Vehicle Details</h2>
+                <h2 className="Heading2 font-bold text-xl mb-3 mt-2">Vehicle Details</h2>
 
                 {/*------ Line 02 starts-------*/}
 
-                 <div className="flex flex-wrap justify-between items-center space-x-2">
-                  <div className="flex items-center mb-2"> 
+                <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
+                  <div className=""> 
                     <label className="mr-4">Vehicle Reg. No :</label>
-                    <input type="text" onChange={(e) => setregistrationNo(e.target.value)} className="rounded-md w-50 h-10 opacity-80" />
-                  </div>     
+                    <input type="text" onChange={(e) => setregistrationNo(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-2" />
+                  </div> 
 
-                    <label className="mr-2">Vehicle Make :</label>
-                    <select id="vehiclemake" onChange={(e) => setvehiclemake(e.target.value)} className="rounded-md w-50 h-10 opacity-80">
+                  <div>
+                  <label className="mr-2">Vehicle Make :</label>
+                    <select id="vehiclemake" onChange={(e) => setvehiclemake(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base">
                         <option value="">--Choose an option--</option>
                         <option value="toyota">Toyota</option>
                         <option value="BMW">BMW</option>
@@ -115,23 +116,27 @@ function CreateJob() {
                         <option value="Mitsubishi">Mitsubishi</option>
 
                     </select>
+                    </div>
 
+                  <div>
                     <label className="mr-4">Vehicle Model :</label>
-                    <input type="text" onChange={(e) => setvehicleModel(e.target.value)} className="rounded-md w-50 h-10 opacity-80"/>
+                    <input type="text" onChange={(e) => setvehicleModel(e.target.value)} className="rounded-md w-60 h-10 opacity-80"/>
+                  </div>  
                  </div> 
 
                  {/* ---------Line 02 ends----------  */}
 
                  {/* ----------Line 03 starts---------*/}
 
-                 <div className="flex flex-wrap justify-between items-center space-x-1">
-                  <div className="flex items-center mb-2"> 
-                    <label className="mr-4">Mileage :</label>
-                    <input type="text" onChange={(e) => setmileage(e.target.value)} className="rounded-md w-50 h-10 opacity-80 mt-3"/>
+                 <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
+                  <div className=""> 
+                    <label className="mr-14">Mileage :</label>
+                    <input type="text" onChange={(e) => setmileage(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-5 ml-5"/>
                   </div>
 
-                    <label className="mr-4">Year :</label>
-                    <select id="year" onChange={(e) => setyear(e.target.value)} className="rounded-md w-50 h-10 opacity-80 mt-3">
+                  <div>
+                    <label className="mr-11">Year :</label>
+                    <select id="year" onChange={(e) => setyear(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-3 ml-9">
                       <option value="">   </option>
                       {years.map((year) => (
                         <option key={year} value={year}>
@@ -139,38 +144,50 @@ function CreateJob() {
                         </option>
                       ))}
                     </select>
+                    </div>
 
-                    <label className="mr-2">Time In :</label><br />
-                    <input type="time" onChange={(e) => settimeIn(e.target.value)} className="rounded-md w-50 h-10 opacity-80  mt-3"/> 
-
-                    <label className="mr-4">Date & Time Out :</label>
-                    <input type="datetime-local" onChange={(e) => setout(e.target.value)} className="rounded-md w-50 h-10 opacity-80 mt-3"/>    
+                  <div>
+                    <label className="mr-11">Time In :</label>
+                    <input type="time" onChange={(e) => settimeIn(e.target.value)} className="rounded-md w-60 h-10 opacity-80  mt-3 ml-6"/> 
                   </div>
                   {/* -------Line 03 ends------- */}
 
-                  <h2 className="Heading2 font-bold text-xl mb-3">Customer Details </h2>
-
                   {/* ------Line 04 starts------- */}
 
-                  <div className="flex flex-wrap justify-between items-center space-x-2">
-                   <div className="flex items-center mb-2">
-                    <label className="mr-4">Name :</label>
-                    <input type="text" onChange={(e) => setname(e.target.value)} className="rounded-md w-50 h-10 opacity-80"/>  
-                   </div>
-
-                    <label className="mr-4">Contact No. :</label>
-                    <input type="tel" onChange={(e) => setcontactNumber(e.target.value)} className="rounded-md w-50 h-10 opacity-80"/>  
-
-                    <label className="mr-4">E-mail :</label>
-                    <input type="email" onChange={(e) => setemail(e.target.value)} className="rounded-md w-50 h-10 opacity-80"/> 
+                  <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4 mb-4">
+                    <label className="mr-11">Date & Time Out :</label>
+                    <input type="datetime-local" onChange={(e) => setout(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-3 ml-2 text-base"/>    
                   </div>
-                  {/* --------Line 04 ends------- */}
+                  </div>
+                  {/* -------Line 04 ends------- */}
 
-                  <h3 className="Heading3 font-bold text-lg mb-3">Service Type :</h3> 
+                  <h2 className="Heading2 font-bold text-xl mb-5 mt-3">Customer Details </h2>
 
-                   {/* --------Line 05 starts------- */}
+                  {/* ------Line 05 starts------- */}
 
-                   <div className="space-y-2 flex justify-between grid grid-cols-6 gap-4">
+                  <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
+                   <div className="">
+                    <label className="mr-11">Name :</label>
+                    <input type="text" onChange={(e) => setname(e.target.value)} className="rounded-md w-60 h-10 opacity-80 ml-10"/>  
+                   </div>
+             
+                   <div>
+                    <label className="mr-4">Contact No. :</label>
+                    <input type="tel" onChange={(e) => setcontactNumber(e.target.value)} className="rounded-md w-60 h-10 opacity-80"/>  
+                   </div> 
+
+                   <div>
+                    <label className="mr-11">E-mail :</label>
+                    <input type="email" onChange={(e) => setemail(e.target.value)} className="rounded-md w-60 h-10 opacity-80 ml-10"/> 
+                   </div>
+                  </div>
+                  {/* --------Line 05 ends------- */}
+
+                  <h3 className="Heading3 font-bold text-lg mb-3 mt-2">Service Type :</h3> 
+
+                   {/* --------Checkbox-Line 01 starts------- */}
+
+                   <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4 ">
                     <div>
                     <input type="checkbox" onChange={(e) => setserviceType(e.target.value)} className="mr-4  w-5 h-5" /> 
                     <label className="lg">Body Wash</label> 
@@ -185,7 +202,10 @@ function CreateJob() {
                     <input type="checkbox" onChange={(e) => setserviceType(e.target.value)} className="mr-4 w-5 h-5"/> 
                     <label>Engine Wash</label> 
                     </div>
+                   </div> 
 
+                   {/* --------Line 02 starts------- */}
+                  <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4 ">
                     <div>
                     <input type="checkbox" onChange={(e) => setserviceType(e.target.value)} className="mr-4 w-5 h-5"/> 
                     <label>Engine Cleanup</label> 
@@ -202,10 +222,10 @@ function CreateJob() {
                     </div>
                    </div>
 
-                  {/* --------Line 05 ends------- */}
+                  {/* --------Line 02 ends------- */}
 
-                  {/* --------Line 06 starts------- */}
-                  <div className="space-y-2 flex justify-between grid grid-cols-6 gap-4">
+                  {/* --------Line 03 starts------- */}
+                  <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
                     <div>
                     <input type="checkbox" onChange={(e) => setserviceType(e.target.value)} className="mr-4 w-5 h-5" /> 
                     <label>Under Oiling</label> 
@@ -220,7 +240,10 @@ function CreateJob() {
                     <input type="checkbox" onChange={(e) => setserviceType(e.target.value)} className="mr-4 w-5 h-5"/> 
                     <label>Greasing</label> 
                     </div>
+                   </div> 
 
+                   {/* --------Line 04 starts------- */}
+                   <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4 ">
                     <div>
                     <input type="checkbox" onChange={(e) => setserviceType(e.target.value)} className="mr-4 w-5 h-5"/> 
                     <label>Filter Replacement</label> 
@@ -236,10 +259,10 @@ function CreateJob() {
                     <label>Cut & Polish</label> 
                     </div>
                    </div>
-                  {/* --------Line 06 ends------- */}
+                  {/* --------Line 04 ends------- */}
 
-                  {/* --------Line 07 starts------- */}
-                  <div className="space-y-2 flex justify-between grid grid-cols-6 gap-2">
+                  {/* --------Line 05 starts------- */}
+                  <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
                     <div>
                     <input type="checkbox" onChange={(e) => setserviceType(e.target.value)} className="mr-4  w-5 h-5" /> 
                     <label>Engine Repairs </label> 
@@ -253,8 +276,11 @@ function CreateJob() {
                     <div>
                     <input type="checkbox" onChange={(e) => setserviceType(e.target.value)} className="mr-4 w-5 h-5"/> 
                     <label>Electrical System Repairs</label> 
-                    </div>
+                  </div>
+                  </div>
 
+                   {/* --------Line 06 starts------- */}
+                  <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4 ">
                     <div>
                     <input type="checkbox" onChange={(e) => setserviceType(e.target.value)} className="mr-4 w-5 h-5"/> 
                     <label>Tire Balancing</label> 
@@ -270,17 +296,18 @@ function CreateJob() {
                     <label>Tire Replacement</label> 
                     </div>
                    </div>
-                   {/* --------Line 07 ends------- */}
+                   
+                   {/* --------Line 06 ends------- */}
 
                    <h2 className="Heading2 font-bold text-xl mb-3">Additional Details</h2>
 
-                   {/* --------Line 08 starts------- */}
+                   {/* --------Line 07 starts------- */}
 
                   <div className="textbox mb-2">
                    <input type="text" onChange={(e) => setdetails(e.target.value)} className="rounded-md w-full h-auto py-2 px-6 opacity-80 text-base overflow-x-hidden max-w-full overflow-x-auto" style={{ height: '70px' }}/>
                   </div>
 
-                    {/* --------Line 08 ends------- */}
+                    {/* --------Line 07 ends------- */}
                   
                   <div className="button text-center mt-4">
                   <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
@@ -293,7 +320,7 @@ function CreateJob() {
 
 
 
-                    
+            
                 </form>
             </div>
         </div>

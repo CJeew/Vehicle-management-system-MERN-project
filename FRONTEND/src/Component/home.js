@@ -18,7 +18,7 @@ function Home() {
             </div>
 
             <div className="mt-12">
-            <h1 className="text-3xl font-bold">MAIN SERVICES</h1>
+            <h1 className="text-3xl font-bold"><span className="text-orange-500">MAIN </span>SERVICES</h1>
             </div>
             <div className="secImg"></div> 
          </div>
