@@ -4,8 +4,8 @@ import axios from "axios";
 function CreateJob() {
     const [jobNumber, setjobNumber] = useState("");
     const [jobDate, setjobDate] = useState("");
-    const [address, setvehicleType] = useState(""); // Include the 'address' state
-    const [country, setregistrationNo] = useState("");
+    const [vehicleType,, setvehicleType] = useState(""); // Include the 'address' state
+    const [RegNo, setregistrationNo] = useState("");
     const [vehicleMake, setvehiclemake] = useState("");
     const [vehicleModel, setvehicleModel] = useState("");
     const [mileage, setmileage] = useState("");
