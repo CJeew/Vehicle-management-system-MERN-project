@@ -1,9 +1,5 @@
 import React, {useState} from "react";
 import axios from "axios";
-<<<<<<< HEAD
-=======
-
->>>>>>> 7287847b93da60722f41095c478b67f74d9792e7
 
 export default function AddPayroll(){
 
