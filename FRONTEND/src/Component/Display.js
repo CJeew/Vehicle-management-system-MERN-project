@@ -68,18 +68,20 @@ export default function Display() {
 return (
     <div>
                 <h1 style={{ color: "red" }}>Display all Suppliers</h1>
-<div className="background-container">
+<div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
         
-
+        <div className="">
         <ul>
             {suppliers.map((supplier) => (
-                
+                <div className="flex">
                 <li style={{fontSize:20}} type="none" key={supplier.id}><label>Name :</label>{" "+supplier.name}<br/><label>Contact :</label>{" "+supplier.contact}<br/><label>Address :</label>{" "+supplier.address}<br/><label>Country :</label>{" "+supplier.country}<pre>{JSON.stringify()}</pre>            
                  <div className="line" style={{color:"white"}}>.</div>
-                </li>  //{JSON.stringify(supplier)}
+                </li>  
+                {/* {JSON.stringify(supplier)} */}
+                </div>
             ))}
         </ul>
-       
+       </div>
         </div>
     </div>
 );
