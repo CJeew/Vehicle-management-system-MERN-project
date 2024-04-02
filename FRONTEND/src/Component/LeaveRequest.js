@@ -36,7 +36,7 @@ export default function LeaveRequest() {
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">ID</th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">NIC</th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Name</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Date</th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Date (From)</th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">No of Days</th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Reason</th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Status</th>
