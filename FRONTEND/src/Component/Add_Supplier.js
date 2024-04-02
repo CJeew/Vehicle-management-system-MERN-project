@@ -35,7 +35,7 @@ function Add_Supplier() {
             <div className="flex justify-between items-center">
                 <form className="form1 text-lg text-gray-950 ">
                 <div className="flex flex-wrap justify-between items-center space-x-2 py-2">
-                    <label>Name</label>
+                    <label>Supplier Name</label>
                     <input type="text" onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div className="flex flex-wrap justify-between items-center space-x-5 py-2">
@@ -56,11 +56,20 @@ function Add_Supplier() {
                     </div>
                     <input className="bg-red-800 radius-2rm " type="submit" value={"Add Supplier"} onClick={submit} /> 
                 </form>
-                {/* <a href="/display"><button className="bg-green-600 radious-30px ">Display</button></a>
-                <a href="/update"><button className="bg-green-600 radious-30px ">Update</button></a>
-                <a href="/delete"><button className="bg-green-600 radious-30px ">Delete</button></a> */}
+
             </div>
+
         </div>
+        
+        <a href="/update"><button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                     hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+                                     ease-in-out transform hover:scale-105">Update</button></a>
+        <a href="/delete"><button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                     hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+                                     ease-in-out transform hover:scale-105">Delete</button></a>
+        <a href="/display"><button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                     hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+                                     ease-in-out transform hover:scale-105">Display</button></a>
         </div>
     
 );
