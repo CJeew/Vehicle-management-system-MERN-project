@@ -43,8 +43,7 @@ app.use("/svc-packages", svcPackagesRouter);
 const svcRecordsRouter = require("./Routes/dulanka/packages.js");
 app.use("/svc-records", svcRecordsRouter);
 
-
-
+// TAVI
 const bookingRouter = require("./Routes/tavi/bookings.js");
 app.use("/bookings", bookingRouter); //loading models file
 

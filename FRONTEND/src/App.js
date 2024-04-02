@@ -34,8 +34,12 @@ import Home from "./Component/home";
 
 
 //service
+//import add package
 import Addpkg from "./Component/Add_package";
+//import servicehome
 import Servicehome from "./Component/servicehome";
+//import pkghome
+import PkageHome from "./Component/Package_Homepage";
 
 //staff
 import AddPayroll from "./Component/AddPayroll";
