@@ -43,10 +43,9 @@ app.use("/svc-packages", svcPackagesRouter);
 const svcRecordsRouter = require("./Routes/dulanka/packages.js");
 app.use("/svc-records", svcRecordsRouter);
 
-
-//TAVI
-const bookingRouter = require("./Routes/tavi/booking.js");
-app.use("/booking", bookingRouter);
+// TAVI
+const bookingRouter = require("./Routes/tavi/bookings.js");
+app.use("/bookings", bookingRouter); //loading models file
 
 
 // CHIYAN
@@ -67,7 +66,16 @@ app.use("/manageorders", manageordersRouter);
 
 
 // SANJU
+const staffRouter = require("./Routes/sanjayan/staffdetails.js");
+const employeeRouter = require("./Routes/sanjayan/employeepayroll.js");
+const attendanceRouter = require("./Routes/sanjayan/employeeattendance.js");
+const leaverequestRouter = require("./Routes/sanjayan/leaverequest.js");
 
+
+app.use("/staffdetails",staffRouter);
+app.use("/employeepayroll",employeeRouter);
+app.use("/employeeattendance",attendanceRouter);
+app.use("/leaverequest",leaverequestRouter);
 
 
 // server port allocation & server start

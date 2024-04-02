@@ -7,79 +7,137 @@ export default function BookNowPage() {
   return (
     <div>
       <div className="relative">
-        <h1 className="ms-20 my-10 mt-20 text-6xl font-extrabold dark:text-white">Book Now</h1>
+            <h1 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Book Now</h1>
 
-        <form>
-            <div class="grid grid-cols-1 gap-4">
-                <div class="flex mx-10">
-                    <label for="firstname" class="block text-sm font-medium text-gray-200">First Name</label>
-                    <input type="text" id="firstname" name="firstname" class="mt-1 p-2 block border-gray-300 rounded-md"></input>
-                    
-                    <label for="lastname" class="block text-sm font-medium text-gray-200">Last Name</label>
-                    <input type="text" id="lastname" name="lastname" class="mt-1 p-2 block border-gray-300 rounded-md"></input>
-               
-                </div>
-                
-                <div>
-                    <label for="address" class="block text-sm font-medium text-gray-200">Address</label>
-                    <input type="text" id="address" name="address" class="mt-1 p-2 block border-gray-300 rounded-md"></input>
-                </div>
-                <div>
-                    <label for="phone" class="block text-sm font-medium text-gray-200">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md"></input>
-                </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-200">Email</label>
-                    <input type="email" id="email" name="email" class="mt-1 p-2 block border-gray-300 rounded-md"></input>
-                </div>
-                <div>
-                    <label for="vehicle-number" class="block text-sm font-medium text-gray-200">Vehicle Number</label>
-                    <input type="text" id="vehicle-number" name="vehicle-number" class="mt-1 p-2 block border-gray-300 rounded-md"></input>
-                </div>
-                <div>
-                    <label for="vehicle-type" class="block text-sm font-medium text-gray-200">Vehicle Type</label>
-                    <select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md">
-                        <option value="car">Car</option>
-                        <option value="truck">Truck</option>
-                        <option value="motorcycle">Motorcycle</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="date" class="block text-sm font-medium text-gray-200">Date</label>
-                    <input type="date" id="date" name="date" class="mt-1 p-2 block  border-gray-300 rounded-md"></input>
-                </div>
-                <div>
-                    <label for="time" class="block text-sm font-medium text-gray-200">Time</label>
-                    <input type="time" id="time" name="time" class="mt-1 p-2 block  border-gray-300 rounded-md"></input>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-200">Services</label>
-                    <div class="mt-1 space-y-2">
-                        <div class="flex items-center">
-                            <input id="service1" name="services" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"></input>
-                            <label for="service1" class="ml-2 block text-sm text-gray-900">Service 1</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input id="service2" name="services" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"></input>
-                            <label for="service2" class="ml-2 block text-sm text-gray-900">Service 2</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input id="service3" name="services" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"></input>
-                            <label for="service3" class="ml-2 block text-sm text-gray-900">Service 3</label>
+            <form className="w-half bg-gray-100 p-6 ms-60 my-10 mt230 p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50">
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="form-group flex mx-10" >
+                        <table class="w-full">
+                            <tr>
+                                <td><label for="firstname" class="block text-sm font-medium text-black my-4">First Name</label></td>
+                                <td><input type="text" id="firstname" name="firstname" class="mt-1 p-2 block border-gray-300 rounded-md text-black" required></input></td>
+                                <td> <label for="lastname" class="block text-sm font-medium text-black my-4">Last Name</label></td>
+                                <td> <input type="text" id="lastname" name="lastname" class="mt-1 p-2 block border-gray-300 rounded-md text-black"  required></input></td>
+                            </tr> 
+                            <tr>   
+                                <td><label for="address" class="block text-sm font-medium text-black my-4">Address</label></td>
+                                <td><input type="textarea" id="address" name="address" class="mt-1 p-2 block border-gray-300 rounded-md text-black"  required></input></td>
+                                <td><label for="phone" class="block text-sm font-medium text-black my-4">Phone Number</label></td>
+                                <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black"  required></input></td>
+                            </tr>
+                            <tr>
+                                <td><label for="email" class="block text-sm font-medium text-black my-4">Email</label></td>
+                                <td><input type="email" id="email" name="email" class="mt-1 p-2 block border-gray-300 rounded-md text-black me-10"  required></input></td>
+                            </tr>
+
+                            <br></br>
+                            <br></br>
+
+                            <tr>
+                                <td><label for="vehicle-number" class="block text-sm font-medium text-black me-5 my-4">Vehicle Number</label></td>
+                                <td><input type="text" id="vehicle-number" name="vehicle-number" class="mt-1 p-2 block border-gray-300 rounded-md text-black"  required></input></td>
+                                <td><label for="vehicle-type" class="block text-sm font-medium text-black me-5 my-4">Vehicle Type</label></td> 
+                                <td><select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black">
+                                    <option value="car">Car</option>
+                                    <option value="truck">Truck</option>
+                                    <option value="motorcycle">Motorcycle</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <br></br>
+                            <br></br>
+
+                            <tr>
+                                <td><label for="date" class="block text-sm font-medium text-black me-5 my-4">Date</label></td>
+                                <td><input type="date" id="date" name="date" class="mt-1 p-2 block  border-gray-300 rounded-md text-black"  required></input></td>
+
+                                <td><label for="time" class="block text-sm font-medium text-black  me-5 my-4">Time</label></td>
+                                <td><input type="time" id="time" name="time" class="mt-1 p-2 block  border-gray-300 rounded-md text-black"  required></input></td>
+                            </tr>
+
+
+                        </table>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block text-sm font-medium text-black mx-10">Services</label>
+                        <div class="mt-5 space-y-2 flex mx-10">
+                            <table>
+                                <tr>
+                                    <td><div class="mt-1 flex items-center me-10">
+                                        <input id="service" name="services" type="checkbox"></input>
+                                        <label for="service">Body Wash</label>
+                                        </div></td> 
+                                    <td><div class="flex items-center me-10">
+                                        <input id="service" name="services" type="checkbox"></input>
+                                        <label for="service">Interior Clean</label>
+                                        </div></td>
+                                    <td><div class="flex items-center me-10">
+                                        <input id="service" name="services" type="checkbox"></input>
+                                        <label for="service">Under Wash</label>
+                                        </div></td>
+                                    <td><div class="flex items-center me-10">
+                                        <input id="service" name="services" type="checkbox"></input>
+                                        <label for="service">Under Oil</label>
+                                        </div></td>  
+                                    <td><div class="flex items-center me-10">
+                                        <input id="service" name="services" type="checkbox"></input>
+                                        <label for="service">Engine Wash</label>
+                                        </div></td>
+                                    <td><div class="flex items-center me-10">
+                                        <input id="service" name="services" type="checkbox"></input>
+                                        <label for="service">Wheels Remove</label>
+                                        </div></td>
+                                    <td><div class="flex items-center me-10">
+                                        <input id="service" name="services" type="checkbox"></input>
+                                        <label for="service">Oil Change</label>
+                                        </div></td>
+                                </tr> 
+
+                                <tr>
+                                    <td><div class="flex items-center me-10">
+                                        <input id="service" name="services" type="checkbox"></input>
+                                        <label for="service">Waxing</label>
+                                        </div></td>
+                                    <td><div class="flex items-center me-10">
+                                        <input id="service" name="services" type="checkbox"></input>
+                                        <label for="service">Cut and Polish</label>
+                                        </div></td>  
+                                    <td><div class="flex items-center me-10">
+                                        <input id="service" name="services" type="checkbox"></input>
+                                        <label for="service">Engine Cleanup</label>
+                                        </div></td>
+                                    <td><div class="flex items-center me-10">
+                                        <input id="service" name="services" type="checkbox"></input>
+                                        <label for="service">Full Service</label>
+                                        </div></td>
+                                    <td><div class="flex items-center me-10">
+                                        <input id="service" name="services" type="checkbox"></input>
+                                        <label for="service">Filter Change</label>
+                                        </div></td>
+                                    <td><div class="flex items-center me-10">
+                                        <input id="service" name="services" type="checkbox"></input>
+                                        <label for="service">Greasing</label>
+                                        </div></td>
+                                    <td><div class="flex items-center me-10">
+                                        <input id="service" name="services" type="checkbox"></input>
+                                        <label for="service">Full Interior Clean</label>
+                                        </div></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="mt-6">
-                <button type="submit" class=" px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-500">Submit</button>
-            </div>
-        </form>
-
-        
-
+                <div class="mt-5 mb-5 flex justify-center">
+                    <button type="submit" class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                  hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
+                                  ease-in-out transform hover:scale-105">Book Now</button>
+                </div>
+            </form>
         </div>
-      </div>
+    </div>
   );
 }
                                                                                                          
