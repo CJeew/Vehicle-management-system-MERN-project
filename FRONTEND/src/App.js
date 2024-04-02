@@ -78,9 +78,12 @@ function App() {
           <Route path="/delete" element={<Delete/>}/>
           {/* <Route path="/update" element={<Update/>}/> */}
           <Route path="/booking" element={<BookingPage/>}/>
-          {/* <Route path="/customer" element={<Customerhome/>}/> */}
+          
+      {/* <Route path="/customer" element={<Customerhome/>}/> */}
+                  {/*service and record*/}
           <Route path="/addpkg" element={<Addpkg/>}/>
           <Route path="/servicehome" element={<Servicehome/>}/>
+          <Route path="/PkageHome" element={<PkageHome/>}/>
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
           <Route path="/bookNow" element={<BookNowPage/>}/>
