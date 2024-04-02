@@ -38,6 +38,7 @@ import Servicehome from "./Component/servicehome";
 
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Inventory_Menu from "./Component/Inventory/Inventory_Menu";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
           <Route path="/servicehome" element={<Servicehome/>}/>
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
+          <Route path="/inventory" element={<Inventory_Menu />} />
 
           {/* <Route path="/test" element={<Test/>}/> */}
 

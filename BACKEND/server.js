@@ -53,8 +53,15 @@ app.use("/booking", bookingRouter);
 const customerRouter = require("./Routes/chiyaan/customer.js");
 app.use("/customer", customerRouter);
 
-// AKIL
+// AKEEL
+const managepartsRouter=require("./Routes/akeel/manageparts.js");
+app.use("/manageparts", managepartsRouter);
 
+const issueditemsRouter=require("./Routes/akeel/issueditems.js");
+app.use("/issueditems", issueditemsRouter);
+
+const manageordersRouter=require("./Routes/akeel/manageorders.js");
+app.use("/manageorders", manageordersRouter);
 
 // SHAJEEH
 
