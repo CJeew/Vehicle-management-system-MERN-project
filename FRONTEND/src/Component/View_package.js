@@ -22,7 +22,7 @@ export default function View_package() {
     <div>
       <div className="flex justify-center items-center w-full">
         <div className="grid grid-cols-2 gap-8 bg-gray-200 bg-opacity-70 rounded-lg p-14 mt-16 mx-5 max-w-7xl">
-          {packages.map((pkg) => (
+          {packages.filter((pkg) => pkg.catagory === "Interior").map((pkg) => (
             <div
               className="flex flex-col justify-center items-center bg-black text-white rounded-lg px-8 py-4"
               key={pkg.pid}
