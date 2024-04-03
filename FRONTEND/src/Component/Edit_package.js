@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function AddPackage() {
+function EditPackage() {
   // add package form
   const [pid, setPid] = useState(0);
   const [name, setName] = useState("");
@@ -90,4 +90,4 @@ function AddPackage() {
   );
 }
 
-export default AddPackage;
+export default EditPackage;

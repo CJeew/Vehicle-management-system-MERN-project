@@ -40,6 +40,12 @@ import Addpkg from "./Component/Add_package";
 import Servicehome from "./Component/servicehome";
 //import pkghome
 import PkageHome from "./Component/Package_Homepage";
+//import view package
+import Viewpkg from "./Component/View_package";
+//import Edit package
+import Editpkg from "./Component/Edit_package";
+//import Delete package
+import Deletepkg from "./Component/Delete_package"; 
 
 //staff
 import AddPayroll from "./Component/AddPayroll";
@@ -80,10 +86,16 @@ function App() {
           <Route path="/booking" element={<BookingPage/>}/>
           
       {/* <Route path="/customer" element={<Customerhome/>}/> */}
+
                   {/*service and record*/}
           <Route path="/addpkg" element={<Addpkg/>}/>
           <Route path="/servicehome" element={<Servicehome/>}/>
-          <Route path="/PkageHome" element={<PkageHome/>}/>
+          <Route path="/pkageHome" element={<PkageHome/>}/>
+          <Route path="/viewpkg" element={<Viewpkg/>}/>
+          <Route path="/editpkg" element={<Editpkg/>}/>
+          <Route path="/deletepkg" element={<Deletepkg/>}/>
+          
+
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
           <Route path="/bookNow" element={<BookNowPage/>}/>
