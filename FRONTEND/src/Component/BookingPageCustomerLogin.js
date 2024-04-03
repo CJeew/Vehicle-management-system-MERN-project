@@ -36,7 +36,7 @@ export default function BookingPageCustomerLogin() {
       <div class="mt-10 mb-5 flex justify-center">
                     <button type="submit" class="mt-10 w-56 h-12 bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-900 hover:via-red-800 
                                   hover:to-red-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
-                                  ease-in-out transform hover:scale-105"><a href="/bookNow">Book Now</a></button>
+                                  ease-in-out transform hover:scale-105"><a href="/addBooking">Book Now</a></button>
                 </div>
             </div>
       </div>
