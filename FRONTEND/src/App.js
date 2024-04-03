@@ -69,6 +69,7 @@ import EditLeaveRequest from "./Component/EditLeaveRequest";
 import LeaveRequest from "./Component/LeaveRequest";
 import EditAnnouncement from "./Component/EditAnnouncement";
 import EmployeeAnnouncement from "./Component/EmployeeAnnouncement";
+import AddBooking from "./Component/AddBooking";
 
 
 function App() {
@@ -92,15 +93,12 @@ function App() {
                   {/*service and record*/}
           <Route path="/addpkg" element={<Addpkg/>}/>
           <Route path="/servicehome" element={<Servicehome/>}/>
-          <Route path="/pkageHome" element={<PkageHome/>}/>
-          <Route path="/viewpkg" element={<Viewpkg/>}/>
-          <Route path="/editpkg" element={<Editpkg/>}/>
-          <Route path="/deletepkg" element={<Deletepkg/>}/>
-          
-
+          <Route path="/PkageHome" element={<PkageHome/>}/>
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
           <Route path="/bookNow" element={<BookNowPage/>}/>
+          <Route path="/addBooking" element={<AddBooking/>}/>
+
 
           {/* <Route path="/test" element={<Test/>}/> */}
 
