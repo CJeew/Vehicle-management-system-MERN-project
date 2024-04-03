@@ -5,21 +5,29 @@ import axios from "axios";
 
 export default function Package_Homepage() {
   return (
-    <div className="text-2xl mt-48 flex justify-center mx-16 space-x-4 mx-8">
-      <a href="#">
-        <button className="bg-gradient-to-r from-red-400 to-red-500 px-4 py-5 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px]">
+    <div className="flex  justify-center items-center">
+      <div className="text-2xl  grid grid-cols-2 mt-56 gap-8">
+        <a href="addpkg">
+        <button className="bg-gradient-to-r from-red-400 to-red-500 px-2 py-4 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full">
           Add Package
         </button>
-        <button className="bg-gradient-to-r from-red-400 to-red-500 px-4 py-5 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px]">
-          Edit Package
+        </a>
+        <a href="viewpkg">
+        <button className="bg-gradient-to-r from-red-400 to-red-500 px-2 py-4 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full">
+          View Package
         </button>
-        <button className="bg-gradient-to-r from-red-400 to-red-500 px-4 py-5 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px]">
+        </a>
+        <a href="editpkg">
+        <button className="bg-gradient-to-r from-red-400 to-red-500 px-2 py-4 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full">
           Update Package
         </button>
-        <button className="bg-gradient-to-r from-red-400 to-red-500 px-4 py-5 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px]">
+        </a>
+        <a href="deletepkg">
+        <button className="bg-gradient-to-r from-red-400 to-red-500 px-2 py-4 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full">
           Delete Package
         </button>
-      </a>
+        </a>
+      </div>
     </div>
   );
 }
