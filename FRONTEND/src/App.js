@@ -67,6 +67,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import BookNowPage from "./Component/BookNowPage";
 import EditLeaveRequest from "./Component/EditLeaveRequest";
 import LeaveRequest from "./Component/LeaveRequest";
+import EditAnnouncement from "./Component/EditAnnouncement";
+import EmployeeAnnouncement from "./Component/EmployeeAnnouncement";
 
 
 function App() {
@@ -123,6 +125,9 @@ function App() {
           <Route path="/employeeattendance" element={<EmployeeAttendance/>}/>
           <Route path="/editleaverequest/:id" element={<EditLeaveRequest/>}/>
           <Route path="/leaverequest" element={<LeaveRequest/>}/>
+          <Route path="/editannouncement/:id" element={<EditAnnouncement/>}/>
+          <Route path="/employeeannouncement" element={<EmployeeAnnouncement/>}/>
+          
           
           
          
