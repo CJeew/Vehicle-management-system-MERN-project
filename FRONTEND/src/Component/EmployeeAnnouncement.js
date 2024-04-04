@@ -33,11 +33,11 @@ export default function EmployeeAnnouncement() {
 
   // Card component to display announcement details
   const AnnouncementCard = ({ announcement, onClose }) => (
-    <div class="bg-white rounded-lg shadow-lg p-4 mb-20">
+    <div class="bg-white rounded-lg shadow-lg p-4 mb-20 relative">  {/* Added relative class for positioning the X button*/}
       <button
-        className="absolute top-0 right-0 bg-gray-200 hover:bg-gray-300 text-gray-800 hover:text-gray-900 rounded-full h-6 w-6 flex items-center justify-center"
+        className="absolute top-0 right-0 bg-red-400 hover:bg-red-500 text-gray-800 hover:text-gray-900 rounded-full h-6 w-6 flex items-center justify-center"
         onClick={onClose}
-      >
+      >   {/* Added top-0 right-0 for positioning the X button*/}
         X
       </button>
       <h2 className="text-lg font-bold mb-2">{announcement.title}</h2>
