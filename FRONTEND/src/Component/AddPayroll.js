@@ -13,7 +13,7 @@ export default function AddPayroll(){
 
     function sendData(e){
         //e.preventDefault();
-        //alert("Inserted");
+        alert("Payroll Inserted");
 
         const newPayroll = {
 

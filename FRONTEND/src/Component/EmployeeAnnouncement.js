@@ -4,6 +4,7 @@ import axios from "axios";
 export default function EmployeeAnnouncement() {
   const [employeeannouncement, setAnnouncement] = useState([]); // State for storing announcement details
   const [selectedAnnouncement, setSelectedAnnouncement] = useState(null); // State for storing the selected announcement
+  const [searchTerm, setSearchTerm] = useState(""); // State for storing search term
 
   // Fetch announcement details from the server on component mount
   useEffect(() => {
@@ -31,28 +32,64 @@ export default function EmployeeAnnouncement() {
   }
 
   // Card component to display announcement details
-  const AnnouncementCard = ({ announcement, onClose  }) => (
+  const AnnouncementCard = ({ announcement, onClose }) => (
     <div class="bg-white rounded-lg shadow-lg p-4 mb-20">
-       <button
-      className="absolute top-0 right-0 bg-gray-200 hover:bg-gray-300 text-gray-800 hover:text-gray-900 rounded-full h-6 w-6 flex items-center justify-center"
-      onClick={onClose}
-    >
+      <button
+        className="absolute top-0 right-0 bg-gray-200 hover:bg-gray-300 text-gray-800 hover:text-gray-900 rounded-full h-6 w-6 flex items-center justify-center"
+        onClick={onClose}
+      >
         X
-    </button> 
+      </button>
       <h2 className="text-lg font-bold mb-2">{announcement.title}</h2>
       <p className="text-sm text-gray-500 mb-4">{announcement.date}</p>
       <p className="text-base text-gray-700">{announcement.announcement}</p>
     </div>
-    
+
   );
 
-    // Function to handle closing the card
-    const onCloseCard = () => {
-        setSelectedAnnouncement(null);
-    };
+  // Function to handle closing the card
+  const onCloseCard = () => {
+    setSelectedAnnouncement(null);
+  };
+
+  // Function to filter announcements based on search term
+  const filteredAnnouncement = employeeannouncement.filter((announcement) =>
+    announcement.date.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    announcement.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div>
+
+      {/* Search bar */}
+      <div className="relative">
+        <input
+          type="text"
+          placeholder="Search here.."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="border border-gray-300 p-2 rounded-md mb-4 pl-10"
+        // Added pl-10 class for left padding to accommodate the icon
+        />
+        <div className="absolute inset-y-5 left-0 flex items-center pl-3 pointer-events-none top-[0.4rem]">
+          {/* Search icon */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-gray-300"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </div>
+      </div>
+
       {/* Table to display announcement details */}
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
@@ -68,7 +105,7 @@ export default function EmployeeAnnouncement() {
           {/* Table body */}
           <tbody>
             {/* Loop through announcement details and display in table rows */}
-            {employeeannouncement.map((announcement, index) => (
+            {filteredAnnouncement.map((announcement, index) => (
               <tr key={index} className="bg-white border-b border-gray-200 hover:bg-gray-50">
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{announcement.date}</td>
@@ -111,6 +148,6 @@ export default function EmployeeAnnouncement() {
 
     </div>
 
-    
+
   );
 };
