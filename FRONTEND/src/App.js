@@ -111,7 +111,7 @@ function App() {
           <Route path="/viewpkg" element={<Viewpkg/>}/>
          
 
-          {/*booking*/}
+          {/*---------Tavini-------------Booking------------------------------*/}
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
           <Route path="/bookNow" element={<BookNowPage/>}/>

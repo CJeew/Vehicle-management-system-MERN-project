@@ -6,8 +6,7 @@ import "./BookingPage.css";
 //import imgSrc from "./customer.png";
 //import imgSrc1 from "./manager.png";
 //import imgSrc2 from "./wipe.jpg";
-
-import imgSrc3 from "./vacuum.jpg";
+//import imgSrc3 from "./vacuum.jpg";
 
 export default function BookingPageCustomerLogin() {
   return (
