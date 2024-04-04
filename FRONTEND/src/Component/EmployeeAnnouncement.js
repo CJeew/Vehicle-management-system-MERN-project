@@ -59,7 +59,7 @@ export default function EmployeeAnnouncement() {
   );
 
   return (
-    <div>
+    <div class="mt-5">
 
       {/* Search bar */}
       <div className="relative">
@@ -91,11 +91,11 @@ export default function EmployeeAnnouncement() {
       </div>
 
       {/* Table to display announcement details */}
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto max-h-[25rem] overflow-y-scroll">
         <table className="min-w-full divide-y divide-gray-200">
           {/* Table header */}
           <thead>
-            <tr className="bg-blue-500 text-white">
+            <tr className="bg-blue-500 text-white sticky top-0">  {/* Added bg-blue-500 for blue background and text-white for white text and Added sticky and top-0 for sticky header*/}
               <th scope="col" className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">ID</th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">Date</th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">Title</th>
