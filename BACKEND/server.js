@@ -69,14 +69,14 @@ app.use("/finance",finacneRouter);
 
 // SANJU 
 const staffRouter = require("./Routes/sanjayan/staffdetails.js");
-const employeeRouter = require("./Routes/sanjayan/employeepayroll.js");
+const payrollRouter = require("./Routes/sanjayan/employeepayroll.js");
 const attendanceRouter = require("./Routes/sanjayan/employeeattendance.js");
 const leaverequestRouter = require("./Routes/sanjayan/leaverequest.js");
 const announcementRouter = require("./Routes/sanjayan/employeeannouncement.js");
 
 
 app.use("/staffdetails",staffRouter);
-app.use("/employeepayroll",employeeRouter);
+app.use("/employeepayroll",payrollRouter);
 app.use("/employeeattendance",attendanceRouter);
 app.use("/leaverequest",leaverequestRouter);
 app.use("/employeeannouncement",announcementRouter);
