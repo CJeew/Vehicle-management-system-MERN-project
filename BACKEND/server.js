@@ -43,16 +43,10 @@ app.use("/svc-packages", svcPackagesRouter);
 const svcRecordsRouter = require("./Routes/dulanka/packages.js");
 app.use("/svc-records", svcRecordsRouter);
 
- HEAD
 
 //TAVI
 const bookingRouter = require("./Routes/tavi/booking.js");
 app.use("/booking", bookingRouter);
-
-// TAVI
-const bookingRouter = require("./Routes/tavi/bookings.js");
-app.use("/bookings", bookingRouter); //loading models file
-c83424f8a3791c3eb1c0faedf56b9dde4fc71beb
 
 
 // CHIYAN
