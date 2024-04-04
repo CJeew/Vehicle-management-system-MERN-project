@@ -45,7 +45,7 @@ app.use("/svc-records", svcRecordsRouter);
 
 
 //TAVI
-const bookingRouter = require("./Routes/tavi/booking.js");
+const bookingRouter = require("./Routes/tavi/bookings.js");
 app.use("/booking", bookingRouter);
 
 
