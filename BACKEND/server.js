@@ -56,7 +56,8 @@ app.use("/customer", customerRouter);
 
 
 // SHAJEEH
-
+const finacneRouter = require("./Routes/shajeeh/finances.js");
+app.use("/finance",finacneRouter);
 
 // SANJU
 const staffRouter = require("./Routes/sanjayan/staffdetails.js");
