@@ -67,7 +67,7 @@ app.use("/manageorders", manageordersRouter);
 const finacneRouter = require("./Routes/shajeeh/finances.js");
 app.use("/finance",finacneRouter);
 
-// SANJU
+// SANJU 
 const staffRouter = require("./Routes/sanjayan/staffdetails.js");
 const employeeRouter = require("./Routes/sanjayan/employeepayroll.js");
 const attendanceRouter = require("./Routes/sanjayan/employeeattendance.js");
