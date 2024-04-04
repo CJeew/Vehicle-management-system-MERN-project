@@ -15,6 +15,8 @@ import Chome from "./Component/Chome";
 import Register from "./Component/Register";
 import Review from "./Component/Review";
 import Profile from "./Component/Profile";
+import Customerlogin from "./Component/Customerlogin";
+import Cmanager from "./Component/Cmanager";
 
 
 
@@ -82,6 +84,7 @@ import Additems from "./Component/Inventory/Additems";
 
 
 
+
 function App() {
   return (
     <Router>
@@ -121,6 +124,10 @@ function App() {
           <Route path="/Register" element={<Register/>}/>
           <Route path="/Review" element={<Review/>}/>
           <Route path="/Profile" element={<Profile/>}/>
+          <Route path="/Customerlogin" element={<Customerlogin/>}/>
+          <Route path="/Cmanager" element={<Cmanager/>}/>
+
+
 
           {/* ----------Sanjayan---------- */}
           <Route path="/addpayroll" element={<AddPayroll/>}/>

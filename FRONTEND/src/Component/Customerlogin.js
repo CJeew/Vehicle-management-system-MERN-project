@@ -11,7 +11,7 @@ export default function Customerlogin() {
     >
       
       <section class="bg-gray-800 bg-opacity-50 flex w-[30rem] flex-col space-y-10">
-        <div class="my-10 text-center text-4xl font-medium">Ryome Auto Cares</div>
+        <div class="my-10 text-center text-4xl font-medium">Login</div>
     
         <div
           class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500"
