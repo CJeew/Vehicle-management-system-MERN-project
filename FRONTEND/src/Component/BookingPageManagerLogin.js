@@ -2,7 +2,7 @@ import React from "react";
 import "./Home.css";
 import "./BookingPage.js";
 import "./BookingPage.css";
-import imgSrc3 from "./vacuum.jpg";
+//import imgSrc3 from "./vacuum.jpg";
 
 export default function BookingPageManagerLogin() {
   return (
