@@ -63,6 +63,17 @@ import EditLeaveRequest from "./Component/EditLeaveRequest";
 import LeaveRequest from "./Component/LeaveRequest";
 
 
+// inventory
+import Inventory_Menu from "./Component/Inventory/Inventory_Menu";
+import ManageItems from "./Component/Inventory/ManageItems";
+import Additems from "./Component/Inventory/Additems";  
+import UpdateItems from "./Component/Inventory/UpdateItems";
+
+
+
+
+
+
 function App() {
   return (
     <Router>
@@ -108,7 +119,15 @@ function App() {
           <Route path="/employeeattendance" element={<EmployeeAttendance/>}/>
           <Route path="/editleaverequest/:id" element={<EditLeaveRequest/>}/>
           <Route path="/leaverequest" element={<LeaveRequest/>}/>
-          
+
+
+
+         
+
+          <Route path="/inventory" element={<Inventory_Menu/>}/>
+          <Route path="/manageitems" element={<ManageItems/>}/>
+          <Route path="/additems" element={<Additems/>}/>
+          <Route path="/updateitems/:id" element={<UpdateItems/>}/>
           
          
         </Routes>
