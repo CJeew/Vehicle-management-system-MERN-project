@@ -40,6 +40,12 @@ import Addpkg from "./Component/Add_package";
 import Servicehome from "./Component/servicehome";
 //import pkghome
 import PkageHome from "./Component/Package_Homepage";
+//import view package
+import Viewpkg from "./Component/View_package";
+//import Edit package
+import Editpkg from "./Component/Edit_package";
+//import Delete package
+import Deletepkg from "./Component/Delete_package"; 
 
 //staff
 import AddPayroll from "./Component/AddPayroll";
@@ -49,7 +55,7 @@ import AddAnnouncement from "./Component/AddAnnouncement";
 import AddLeaveRequest from "./Component/AddLeaveRequest";
 import StaffHome from "./Component/StaffHome";
 import StaffDetails from "./Component/StaffDetails";
-import EditStaff from "./Component/AddLeaveRequest";
+import EditStaff from "./Component/EditStaff";
 import EmployeePayroll from "./Component/EmployeePayroll";
 import EditPayroll from "./Component/EditPayroll";
 import EditAttendance from "./Component/EditAttendance";
@@ -63,6 +69,18 @@ import EditLeaveRequest from "./Component/EditLeaveRequest";
 import LeaveRequest from "./Component/LeaveRequest";
 import EditAnnouncement from "./Component/EditAnnouncement";
 import EmployeeAnnouncement from "./Component/EmployeeAnnouncement";
+import AddBooking from "./Component/AddBooking";
+
+
+// inventory
+import Inventory_Menu from "./Component/Inventory/Inventory_Menu";
+import ManageItems from "./Component/Inventory/ManageItems";
+import Additems from "./Component/Inventory/Additems";  
+import UpdateItems from "./Component/Inventory/UpdateItems";
+
+
+
+
 
 
 function App() {
@@ -82,13 +100,20 @@ function App() {
           <Route path="/booking" element={<BookingPage/>}/>
           
       {/* <Route path="/customer" element={<Customerhome/>}/> */}
+
                   {/*service and record*/}
           <Route path="/addpkg" element={<Addpkg/>}/>
           <Route path="/servicehome" element={<Servicehome/>}/>
           <Route path="/PkageHome" element={<PkageHome/>}/>
+          <Route path="/viewpkg" element={<Viewpkg/>}/>
+         
+
+          {/*booking*/}
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
           <Route path="/bookNow" element={<BookNowPage/>}/>
+          <Route path="/addBooking" element={<AddBooking/>}/>
+
 
           {/* <Route path="/test" element={<Test/>}/> */}
 
@@ -117,6 +142,15 @@ function App() {
           <Route path="/employeeannouncement" element={<EmployeeAnnouncement/>}/>
           
           
+
+
+
+         
+
+          <Route path="/inventory" element={<Inventory_Menu/>}/>
+          <Route path="/manageitems" element={<ManageItems/>}/>
+          <Route path="/additems" element={<Additems/>}/>
+          <Route path="/updateitems/:id" element={<UpdateItems/>}/>
           
          
         </Routes>
