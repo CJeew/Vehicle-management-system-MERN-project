@@ -6,14 +6,22 @@ let supplier = require("../../Models/supplier");
 router.route("/add").post((req, res) => {
   const name = req.body.name;
   const contact = req.body.contact;
+  const contact_2 = req.body.contact_2;
+  const Email = req.body.Email;
+  const Website = req.body.Website;
+  const Main_supplies = req.body.Main_supplies;
   const address = req.body.address;
-  const country = req.body.country;
+  const Additional_note = req.body.Additional_note;
 
   const newSupplier = new supplier({
     name,
     contact,
+    contact_2,
+    Email,
+    Website,
+    Main_supplies,
     address,
-    country,
+    Additional_note
   });
 
   newSupplier
@@ -40,12 +48,16 @@ router.route("/").get((req, res) => {
 //CRUD (update page) code segment
 router.route("/update/:id").put(async (req, res) => {
   let userId = req.params.id; //code for get the individual id from the url
-  const { name, contact, address, country } = req.body;
+  const { name, contact, contact_2, Email, Website, Main_supplies, address, country } = req.body;
 
   //object for supplier update
   const updateSupplier = {
     name,
     contact,
+    contact_2,
+    Email,
+    Website,
+    Main_supplies,
     address,
     country,
   };
