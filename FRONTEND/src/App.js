@@ -29,7 +29,8 @@ import Profile from "./Component/Profile";
 import BookingPage from "./Component/BookingPage"; // import Booking Page
 import BookingPageCustomerLogin from "./Component/BookingPageCustomerLogin";  // import Booking Customer Login Page
 import BookingPageManagerLogin from "./Component/BookingPageManagerLogin";   // import Booking Manager Login Page
-
+import AddBooking from "./Component/AddBooking";
+import BookingList from "./Component/BookingList";
 import Home from "./Component/home";
 
 
@@ -69,7 +70,7 @@ import EditLeaveRequest from "./Component/EditLeaveRequest";
 import LeaveRequest from "./Component/LeaveRequest";
 import EditAnnouncement from "./Component/EditAnnouncement";
 import EmployeeAnnouncement from "./Component/EmployeeAnnouncement";
-import AddBooking from "./Component/AddBooking";
+
 
 
 function App() {
@@ -98,6 +99,7 @@ function App() {
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
           <Route path="/bookNow" element={<BookNowPage/>}/>
           <Route path="/addBooking" element={<AddBooking/>}/>
+          <Route path ="/bookingList" element={<BookingList/>}/>
 
 
           {/* <Route path="/test" element={<Test/>}/> */}

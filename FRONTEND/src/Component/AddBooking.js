@@ -14,8 +14,9 @@ function AddBooking(){
     const[tTime, setTime] = useState("");
     const[serviceBox, setService] = useState("");
 
-    function submit(e){
+    function sendBook(e){
         e.preventDefault();
+        //alert of inserted
 
         const newBooking = {
             fname,
@@ -30,9 +31,10 @@ function AddBooking(){
             serviceBox
         };
 
-        axios.post("http://localhost:8090/addBooking", newBooking)
+        axios.post("http://localhost:8090/bookCusLog/addBooking", newBooking)
         .then(()=>{
             alert("Booking Added");
+            window.location.reload();
         }).catch((err)=>{
             alert(err);
         });
@@ -43,7 +45,7 @@ function AddBooking(){
       <div className="relative">
             <h1 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Book Now</h1>
 
-            <form className="w-half bg-gray-100 p-6 ms-60 my-10 mt230 p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50">
+            <form onSubmit={sendBook} className="w-half bg-gray-100 p-6 ms-60 my-10 mt230 p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50">
                 <div class="grid grid-cols-1 gap-4">
                     <div class="form-group flex mx-10" >
                         <table class="w-full">
@@ -167,7 +169,7 @@ function AddBooking(){
                 <div class="mt-5 mb-5 flex justify-center">
                     <button type="submit" class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                   hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
-                                  ease-in-out transform hover:scale-105" value={"Add Booking"} onClick={submit}>Book Now</button>
+                                  ease-in-out transform hover:scale-105" value={"Add Booking"} onClick={sendBook}>Book Now</button>
                 </div>
             </form>
         </div>
