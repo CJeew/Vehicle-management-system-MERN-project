@@ -49,7 +49,7 @@ import AddAnnouncement from "./Component/AddAnnouncement";
 import AddLeaveRequest from "./Component/AddLeaveRequest";
 import StaffHome from "./Component/StaffHome";
 import StaffDetails from "./Component/StaffDetails";
-import EditStaff from "./Component/AddLeaveRequest";
+import EditStaff from "./Component/EditStaff";
 import EmployeePayroll from "./Component/EmployeePayroll";
 import EditPayroll from "./Component/EditPayroll";
 import EditAttendance from "./Component/EditAttendance";
