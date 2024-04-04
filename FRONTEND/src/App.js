@@ -15,6 +15,8 @@ import Chome from "./Component/Chome";
 import Register from "./Component/Register";
 import Review from "./Component/Review";
 import Profile from "./Component/Profile";
+import Customerlogin from "./Component/Customerlogin";
+import Cmanager from "./Component/Cmanager";
 
 
 
@@ -56,7 +58,7 @@ import AddAnnouncement from "./Component/AddAnnouncement";
 import AddLeaveRequest from "./Component/AddLeaveRequest";
 import StaffHome from "./Component/StaffHome";
 import StaffDetails from "./Component/StaffDetails";
-import EditStaff from "./Component/AddLeaveRequest";
+import EditStaff from "./Component/EditStaff";
 import EmployeePayroll from "./Component/EmployeePayroll";
 import EditPayroll from "./Component/EditPayroll";
 import EditAttendance from "./Component/EditAttendance";
@@ -70,6 +72,17 @@ import EditLeaveRequest from "./Component/EditLeaveRequest";
 import LeaveRequest from "./Component/LeaveRequest";
 import EditAnnouncement from "./Component/EditAnnouncement";
 import EmployeeAnnouncement from "./Component/EmployeeAnnouncement";
+
+
+
+// inventory
+import Inventory_Menu from "./Component/Inventory/Inventory_Menu";
+import ManageItems from "./Component/Inventory/ManageItems";
+import Additems from "./Component/Inventory/Additems";  
+
+
+
+
 
 
 
@@ -95,6 +108,10 @@ function App() {
           <Route path="/addpkg" element={<Addpkg/>}/>
           <Route path="/servicehome" element={<Servicehome/>}/>
           <Route path="/PkageHome" element={<PkageHome/>}/>
+          <Route path="/viewpkg" element={<Viewpkg/>}/>
+         
+
+          {/*booking*/}
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
           <Route path="/bookNow" element={<BookNowPage/>}/>
@@ -109,6 +126,10 @@ function App() {
           <Route path="/Register" element={<Register/>}/>
           <Route path="/Review" element={<Review/>}/>
           <Route path="/Profile" element={<Profile/>}/>
+          <Route path="/Customerlogin" element={<Customerlogin/>}/>
+          <Route path="/Cmanager" element={<Cmanager/>}/>
+
+
 
           {/* ----------Sanjayan---------- */}
           <Route path="/addpayroll" element={<AddPayroll/>}/>
@@ -129,7 +150,15 @@ function App() {
           <Route path="/employeeannouncement" element={<EmployeeAnnouncement/>}/>
           
           
-          
+
+
+
+         
+
+          <Route path="/inventory" element={<Inventory_Menu/>}/>
+          <Route path="/manageitems" element={<ManageItems/>}/>
+          <Route path="/additems" element={<Additems/>}/>
+                    
          
         </Routes>
         

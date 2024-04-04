@@ -1,5 +1,5 @@
 import React from "react";
-// import "./Home.css";
+import "./Home.css";
 import imgSrc from "./logo.png";
 import "./BookingPage.js";
 import "./BookingPage.css";
@@ -29,7 +29,7 @@ function Header() {
            </div>
 
            <div> 
-            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Customer</a>
+            <a href="/Customerlogin" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Customer</a>
            </div>
 
            <div>
@@ -41,7 +41,7 @@ function Header() {
            </div>
 
            <div>
-            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Inventory</a>
+            <a href="/inventory" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Inventory</a>
            </div>
 
            <div>

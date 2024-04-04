@@ -85,7 +85,7 @@ function AddPackage() {
           >
             <option value="Interior">Interior</option>
             <option value="Exterior">Exterior</option>
-            <option value="Hybrid Services">Hybrid Services</option>
+          
           </select>
 
           <div className="flex justify-center   ">
