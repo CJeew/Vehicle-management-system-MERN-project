@@ -55,7 +55,7 @@ import AddAnnouncement from "./Component/AddAnnouncement";
 import AddLeaveRequest from "./Component/AddLeaveRequest";
 import StaffHome from "./Component/StaffHome";
 import StaffDetails from "./Component/StaffDetails";
-import EditStaff from "./Component/AddLeaveRequest";
+import EditStaff from "./Component/EditStaff";
 import EmployeePayroll from "./Component/EmployeePayroll";
 import EditPayroll from "./Component/EditPayroll";
 import EditAttendance from "./Component/EditAttendance";
@@ -70,6 +70,16 @@ import LeaveRequest from "./Component/LeaveRequest";
 import EditAnnouncement from "./Component/EditAnnouncement";
 import EmployeeAnnouncement from "./Component/EmployeeAnnouncement";
 import AddBooking from "./Component/AddBooking";
+
+
+// inventory
+import Inventory_Menu from "./Component/Inventory/Inventory_Menu";
+import ManageItems from "./Component/Inventory/ManageItems";
+import Additems from "./Component/Inventory/Additems";  
+
+
+
+
 
 
 function App() {
@@ -131,7 +141,15 @@ function App() {
           <Route path="/employeeannouncement" element={<EmployeeAnnouncement/>}/>
           
           
-          
+
+
+
+         
+
+          <Route path="/inventory" element={<Inventory_Menu/>}/>
+          <Route path="/manageitems" element={<ManageItems/>}/>
+          <Route path="/additems" element={<Additems/>}/>
+                    
          
         </Routes>
         

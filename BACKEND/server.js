@@ -59,11 +59,19 @@ c83424f8a3791c3eb1c0faedf56b9dde4fc71beb
 const customerRouter = require("./Routes/chiyaan/customer.js");
 app.use("/customer", customerRouter);
 
-// AKIL
+// AKEEL
+const managepartsRouter=require("./Routes/akeel/manageparts.js");
+app.use("/manageparts", managepartsRouter);
 
+const issueditemsRouter=require("./Routes/akeel/issueditems.js");
+app.use("/issueditems", issueditemsRouter);
+
+const manageordersRouter=require("./Routes/akeel/manageorders.js");
+app.use("/manageorders", manageordersRouter);
 
 // SHAJEEH
-
+const finacneRouter = require("./Routes/shajeeh/finances.js");
+app.use("/finance",finacneRouter);
 
 // SANJU
 const staffRouter = require("./Routes/sanjayan/staffdetails.js");
