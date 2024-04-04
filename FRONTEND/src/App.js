@@ -76,7 +76,6 @@ import AddBooking from "./Component/AddBooking";
 import Inventory_Menu from "./Component/Inventory/Inventory_Menu";
 import ManageItems from "./Component/Inventory/ManageItems";
 import Additems from "./Component/Inventory/Additems";  
-import UpdateItems from "./Component/Inventory/UpdateItems";
 
 
 
@@ -150,8 +149,7 @@ function App() {
           <Route path="/inventory" element={<Inventory_Menu/>}/>
           <Route path="/manageitems" element={<ManageItems/>}/>
           <Route path="/additems" element={<Additems/>}/>
-          <Route path="/updateitems/:id" element={<UpdateItems/>}/>
-          
+                    
          
         </Routes>
         
