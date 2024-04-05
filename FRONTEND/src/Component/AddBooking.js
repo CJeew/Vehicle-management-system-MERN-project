@@ -9,7 +9,7 @@ function AddBooking(){
     const[phoneNum, setPhoneNum] = useState("");
     const[eMail, setEmail] = useState("");   
     const[vNum, setVNum] = useState("");
-    const[vType, setVType] = useState("");
+    const[vType, setvType] = useState("");
     const[dDate, setDate] = useState("");
     const[tTime, setTime] = useState("");
     const[serviceBox, setService] = useState("");
@@ -31,7 +31,7 @@ function AddBooking(){
             serviceBox
         };
 
-        axios.post("http://localhost:8090/bookCusLog/addBooking", newBooking)
+        axios.post("http://localhost:8090/booking/addBooking", newBooking)
         .then(()=>{
             alert("Booking Added");
             window.location.reload();
@@ -73,11 +73,18 @@ function AddBooking(){
                                 <td><label for="vehicle-number" class="block text-sm font-medium text-black me-5 my-4">Vehicle Number</label></td>
                                 <td><input type="text" id="vehicle-number" name="vehicle-number" class="mt-1 p-2 block border-gray-300 rounded-md text-black"  required onChange={(e) => setVNum(e.target.value)}></input></td>
                                 <td><label for="vehicle-type" class="block text-sm font-medium text-black me-5 my-4">Vehicle Type</label></td> 
-                                <td><select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" onChange={(e) => setVType(e.target.value)}>
+                                <td><select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" onChange={(e) => setvType(e.target.value)}>
+                                        <option value="">Select Vehicle Type</option> {/* Add an empty option for default selection */}
+                                        <option value="car">Car</option>
+                                        <option value="truck">Truck</option>
+                                        <option value="motorcycle">Motorcycle</option>
+                                    </select>
+
+                                    {/* <select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" onChange={(e) => setVType(e.target.value)}>
                                     <option value="car">Car</option>
                                     <option value="truck">Truck</option>
                                     <option value="motorcycle">Motorcycle</option>
-                                    </select>
+                                    </select> */}
                                 </td>
                             </tr>
 
