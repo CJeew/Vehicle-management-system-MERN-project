@@ -13,7 +13,7 @@ export default function AddPayroll(){
 
     function sendData(e){
         //e.preventDefault();
-        //alert("Inserted");
+        alert("Payroll Inserted");
 
         const newPayroll = {
 
@@ -39,7 +39,7 @@ export default function AddPayroll(){
     return(
 
         <form onSubmit={sendData}>
-          <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
+          <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5 mx-auto w-2/3">
           <center><h1>Add Payroll</h1></center>
         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">

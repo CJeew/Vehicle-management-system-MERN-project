@@ -6,8 +6,8 @@ import "./Chome.js";
 export default function Register() {
   return (
     <div class="mx-14 mt-10 border-2 border-blue-400 rounded-lg">
-      <div class="mt-10 text-center font-bold">AUTO FIX</div>
-      <div class="mt-3 text-center text-4xl font-bold">
+      <div class="text-white mt-10 text-center font-bold">AUTO FIX</div>
+      <div class="text-white mt-3 text-center text-4xl font-bold">
         Customer Registration
       </div>
       <div class="p-8">

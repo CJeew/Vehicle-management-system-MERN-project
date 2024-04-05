@@ -181,4 +181,8 @@ navigate("/ManageItems");
       </div>
     </form>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b783a04c847da0c568488bbec9b330d3f1e52f8b
