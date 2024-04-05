@@ -34,27 +34,15 @@ export default function Customerlogin() {
         </div>
         < dev>
         
-        <a
-              
-            href="/Chome"
-            title="Register"
-            class="mx-5 my-2 relative inline-flex items-center justify-center px-12 py-3 text-lg font-bold text-white transition-all duration-200 bg-gradient-to-tr from-red-800 to-red-700 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-            role="button"
-          >
-            As Customer
-          </a>
+        <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                  hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
+                                  ease-in-out transform hover:scale-105"><a href="/Chome">Customer Login</a></button>
         
         
           
-          <a
-                
-              href="/Cmanager"
-              title="Register"
-              class=" relative inline-flex items-center justify-center px-16 py-3 text-lg font-bold text-white transition-all duration-200 bg-gradient-to-tr from-red-800 to-red-700 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-              role="button"
-            >
-              As  Manager
-            </a>
+        <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                  hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
+                                  ease-in-out transform hover:scale-105"><a href="/Cmanager">Manager Login</a></button>
           </dev>
         <a>If you do not have an account click<a href="/Register" class="font-bold text-white" ><u>Register</u></a></a>
         
