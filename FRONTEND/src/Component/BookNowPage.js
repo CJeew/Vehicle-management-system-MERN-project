@@ -1,3 +1,4 @@
+{/* 
 import React from "react";
 import "./Home.css";
 import "./BookingPage.js";
@@ -140,4 +141,4 @@ export default function BookNowPage() {
     </div>
   );
 }
-                                                                                                         
+     */}                                                                                                    
