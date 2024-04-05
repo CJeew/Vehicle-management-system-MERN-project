@@ -34,7 +34,6 @@ import BookingPageCustomerLogin from "./Component/BookingPageCustomerLogin";  //
 import BookingPageManagerLogin from "./Component/BookingPageManagerLogin";   // import Booking Manager Login Page
 import AddBooking from "./Component/AddBooking";
 import BookingList from "./Component/BookingList";
-import BookNowPage from "./Component/BookNowPage";
 import BookRead from "./Component/BookRead";
 
 
@@ -126,7 +125,6 @@ function App() {
           {/*---------Tavini-------------Booking------------------------------*/}
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
-          <Route path="/bookNow" element={<BookNowPage/>}/>
           <Route path="/addBooking" element={<AddBooking/>}/>
           <Route path="/bookingList" element={<BookingList/>}/>
           <Route path="/bookRead" element={<BookRead/>}/>
