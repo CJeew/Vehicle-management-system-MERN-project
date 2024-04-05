@@ -79,11 +79,7 @@ import EditAnnouncement from "./Component/EditAnnouncement";
 import EmployeeAnnouncement from "./Component/EmployeeAnnouncement";
 
 
-
-// inventory
-import Inventory_Menu from "./Component/Inventory/Inventory_Menu";
-import ManageItems from "./Component/Inventory/ManageItems";
-import Additems from "./Component/Inventory/Additems";  
+  
 
 
 
@@ -95,7 +91,7 @@ import Additems from "./Component/Inventory/Additems";
 import Inventory_Menu from "./Component/Inventory/Inventory_Menu";
 import ManageItems from "./Component/Inventory/ManageItems";
 import Additems from "./Component/Inventory/Additems";  
-import UpdateItems from "./Component/Inventory/Updateitem"
+import Updateitem from "./Component/Inventory/Updateitem";
 
 
 
@@ -163,21 +159,9 @@ function App() {
           <Route path="/employeeattendance" element={<EmployeeAttendance/>}/>
           <Route path="/editleaverequest/:id" element={<EditLeaveRequest/>}/>
           <Route path="/leaverequest" element={<LeaveRequest/>}/>
-<<<<<<< HEAD
-
-
-
-         
-
-          <Route path="/inventory" element={<Inventory_Menu/>}/>
-          <Route path="/manageitems" element={<ManageItems/>}/>
-          <Route path="/additems" element={<Additems/>}/>
-          <Route path="/updateitems/:id" element={<UpdateItems/>}/>
-=======
           <Route path="/editannouncement/:id" element={<EditAnnouncement/>}/>
           <Route path="/employeeannouncement" element={<EmployeeAnnouncement/>}/>
           
->>>>>>> b783a04c847da0c568488bbec9b330d3f1e52f8b
           
 
 
@@ -187,6 +171,7 @@ function App() {
           <Route path="/inventory" element={<Inventory_Menu/>}/>
           <Route path="/manageitems" element={<ManageItems/>}/>
           <Route path="/additems" element={<Additems/>}/>
+          <Route path="/updateitems" element={<Updateitem/>}/>
                     
          
         </Routes>
