@@ -74,7 +74,7 @@ export default function StaffDetails() {
 //     </table>
 //   </div>
 //   {/* Button to add a new staff member */}
-//   <div className="mt-4">
+//   <div class="mt-4">
 //     <a href="/addstaff" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
 //       Add
 //     </a>
@@ -116,22 +116,22 @@ export default function StaffDetails() {
   );
 
   return (
-    <div>
+    <div class="mt-5">
       {/* Search bar */}
-      <div className="relative">
+      <div class="relative">
         <input
           type="text"
           placeholder="Search here.."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="border border-gray-300 p-2 rounded-md mb-4 pl-10"
+          class="border border-gray-300 p-2 rounded-md mb-4 pl-10"
         // Added pl-10 class for left padding to accommodate the icon
         />
-        <div className="absolute inset-y-5 left-0 flex items-center pl-3 pointer-events-none top-[0.4rem]">
+        <div class="absolute inset-y-5 left-0 flex items-center pl-3 pointer-events-none top-[0.4rem]">
           {/* Search icon */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-gray-300"
+            class="h-6 w-6 text-gray-300"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -149,11 +149,11 @@ export default function StaffDetails() {
 
 
       {/* Table to display staff details */}
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
+      <div class="overflow-x-auto max-h-[25rem] overflow-y-scroll">
+        <table class="min-w-full divide-y divide-gray-200">
 
           <thead>
-            <tr class="bg-blue-500 text-white"> {/* Added bg-blue-500 for blue background and text-white for white text */}
+            <tr class="bg-blue-500 text-white sticky top-0"> {/* Added bg-blue-500 for blue background and text-white for white text and Added sticky and top-0 for sticky header*/}
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">ID</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">NIC</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Name</th>
@@ -197,8 +197,8 @@ export default function StaffDetails() {
         </table>
       </div>
       {/* Button to add a new staff member */}
-      <div className="mt-4">
-        <a href="/addstaff" className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <div class="mt-4">
+        <a href="/addstaff" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Add
         </a>
       </div>
