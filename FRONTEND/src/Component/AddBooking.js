@@ -59,25 +59,28 @@ function AddBooking(){
                                 <td><label for="address" class="block text-sm font-medium text-black my-4">Address</label></td>
                                 <td><input type="textarea" id="address" name="address" class="mt-1 p-2 block border-gray-300 rounded-md text-black"  required onChange={(e) => setAddress(e.target.value)}></input></td>
                                 <td><label for="phone" class="block text-sm font-medium text-black my-4">Phone Number</label></td>
-                                <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black"  required onChange={(e) => setPhoneNum(e.target.value)}></input></td>
+                                <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="07XXXXXXXX" required onChange={(e) => setPhoneNum(e.target.value)}></input></td>
                             </tr>
                             <tr>
                                 <td><label for="email" class="block text-sm font-medium text-black my-4">Email</label></td>
-                                <td><input type="email" id="email" name="email" class="mt-1 p-2 block border-gray-300 rounded-md text-black me-10"  required onChange={(e) => setEmail(e.target.value)}></input></td>
+                                <td><input type="email" id="email" name="email" class="mt-1 p-2 block border-gray-300 rounded-md text-black me-10" placeholder="abcd123@gmail.com" required onChange={(e) => setEmail(e.target.value)}></input></td>
                             </tr>
 
                             <br></br>
                             <br></br>
 
                             <tr>
-                                <td><label for="vehicle-number" class="block text-sm font-medium text-black me-5 my-4">Vehicle Number</label></td>
-                                <td><input type="text" id="vehicle-number" name="vehicle-number" class="mt-1 p-2 block border-gray-300 rounded-md text-black"  required onChange={(e) => setVNum(e.target.value)}></input></td>
+                                <td><label for="vehicle-number" class="block text-sm font-medium text-black me-5 my-4" >Vehicle Number</label></td>
+                                <td><input type="text" id="vehicle-number" name="vehicle-number" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="AB-XXXX"  required onChange={(e) => setVNum(e.target.value)}></input></td>
                                 <td><label for="vehicle-type" class="block text-sm font-medium text-black me-5 my-4">Vehicle Type</label></td> 
                                 <td><select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" onChange={(e) => setvType(e.target.value)}>
                                         <option value="">Select Vehicle Type</option> {/* Add an empty option for default selection */}
                                         <option value="car">Car</option>
-                                        <option value="truck">Truck</option>
-                                        <option value="motorcycle">Motorcycle</option>
+                                        <option value="van">Van</option>
+                                        <option value="cab">Cab</option>
+                                        <option value="jeep">Jeep</option>
+                                        <option value="motorbike">Motor Bike</option>
+                                        <option value="minilorry">Mini Lorry</option>
                                     </select>
 
                                     {/* <select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" onChange={(e) => setVType(e.target.value)}>
