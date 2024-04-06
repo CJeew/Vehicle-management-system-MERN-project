@@ -34,7 +34,6 @@ import BookingPageCustomerLogin from "./Component/BookingPageCustomerLogin";  //
 import BookingPageManagerLogin from "./Component/BookingPageManagerLogin";   // import Booking Manager Login Page
 import AddBooking from "./Component/AddBooking";
 import BookingList from "./Component/BookingList";
-import BookNowPage from "./Component/BookNowPage";
 import BookRead from "./Component/BookRead";
 
 
@@ -79,12 +78,19 @@ import EditAnnouncement from "./Component/EditAnnouncement";
 import EmployeeAnnouncement from "./Component/EmployeeAnnouncement";
 
 
+  
+
+
+
+
+
+
 
 // inventory
 import Inventory_Menu from "./Component/Inventory/Inventory_Menu";
 import ManageItems from "./Component/Inventory/ManageItems";
 import Additems from "./Component/Inventory/Additems";  
-
+import Updateitem from "./Component/Inventory/Updateitem";
 
 
 
@@ -119,7 +125,6 @@ function App() {
           {/*---------Tavini-------------Booking------------------------------*/}
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
-          <Route path="/bookNow" element={<BookNowPage/>}/>
           <Route path="/addBooking" element={<AddBooking/>}/>
           <Route path="/bookingList" element={<BookingList/>}/>
           <Route path="/bookRead" element={<BookRead/>}/>
@@ -164,6 +169,7 @@ function App() {
           <Route path="/inventory" element={<Inventory_Menu/>}/>
           <Route path="/manageitems" element={<ManageItems/>}/>
           <Route path="/additems" element={<Additems/>}/>
+          <Route path="/updateitems" element={<Updateitem/>}/>
                     
          
         </Routes>

@@ -23,8 +23,8 @@ export default function BookRead() {
 
 return (
     <div>
-                <h1 style={{ color: "red" }}>Display all Bookings</h1>
-<div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
+            <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Booking List</h2>
+            <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
         
         <div className="">
         <ul>
