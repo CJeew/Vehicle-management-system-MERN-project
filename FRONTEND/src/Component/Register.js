@@ -5,7 +5,7 @@ import "./Home.css";
 import "./Register.js";
 import "./Chome.js";
 
-export default function Register() {
+function Register() {
   const[cname, setcname] = useState("");
     const[cnic, setcnic] = useState("");
     const[cphone, setcphone] = useState("");
@@ -15,11 +15,11 @@ export default function Register() {
     const[cpass, setcpass] = useState("");
     
 
-    function sendregister(e){
+    function sendRegister(e){
         e.preventDefault();
         //alert of inserted
 
-        const newRegister = {
+        const newCustomer = {
             cname,
             cnic,
             cphone,
@@ -30,7 +30,7 @@ export default function Register() {
             
         };
 
-        axios.post("http://localhost:8090/customer/Register", newRegister)
+        axios.post("http://localhost:8090/customer/Register", newCustomer)
         .then(()=>{
             alert("Profile Added");
             window.location.reload();
@@ -39,7 +39,7 @@ export default function Register() {
         });
     }
   return (
-    <form onSubmit={sendregister}>
+    <form onSubmit={sendRegister}>
     <div class="mx-14 mt-10 border-2 border-blue-400 rounded-lg">
       <div class="text-white mt-10 text-center font-bold">AUTO FIX</div>
       <div class="text-white mt-3 text-center text-4xl font-bold">
@@ -82,8 +82,7 @@ export default function Register() {
           <select required onChange={(e) => setcvtype(e.target.value)}
             name="select"
             id="select"
-            class="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 font-semibold text-gray-500 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
-          >
+            class="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 font-semibold text-gray-500 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm">
             <option class="font-semibold text-slate-300">Car</option>
             <option class="font-semibold text-slate-300">Motor Bike</option>
             <option class="font-semibold text-slate-300">Three Wheeler</option>
@@ -93,8 +92,7 @@ export default function Register() {
         <div class="mt-6">
           <label
             for="password"
-            class="block text-sm font-medium leading-5 text-gray-300"
-          >
+            class="block text-sm font-medium leading-5 text-gray-300">
             Password
           </label>
           <div class="mt-1 rounded-md shadow-sm text-black">
@@ -103,8 +101,7 @@ export default function Register() {
               name="password"
               type="password"
               
-              class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-            ></input>
+              class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"></input>
           </div>
         </div>
 
@@ -130,9 +127,11 @@ export default function Register() {
       <div class="text-center">
         <button type="submit" class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                   hover:to-amber-700 text-white font-bold py-3 px-10 rounded-lg mr-2 opacity-90 transition duration-300
-                                  ease-in-out transform hover:scale-105" value={"Add profile"} onClick={sendregister}>Register</button>
+                                  ease-in-out transform hover:scale-105" value={"Add profile"} onClick={sendRegister}>Register</button>
       </div>
       <b></b>
     </div></form>
   );
 }
+
+export default Register;

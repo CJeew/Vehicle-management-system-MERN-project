@@ -41,7 +41,7 @@ function AddBooking(){
     }
 
     return(
-        <div>
+    <div>
       <div className="relative">
             <h1 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Book Now</h1>
 
