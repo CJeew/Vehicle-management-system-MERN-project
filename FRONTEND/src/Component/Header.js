@@ -1,5 +1,5 @@
 import React from "react";
-// import "./Home.css";
+import "./Home.css";
 import imgSrc from "./logo.png";
 import "./BookingPage.js";
 import "./BookingPage.css";
@@ -20,27 +20,8 @@ function Header() {
 
           <div>
 
-<<<<<<< HEAD
-        <li>
-          <a href="/add">Supplier</a>
-        </li>
-        <li>
-          <a href="">Staff</a>
-        </li>
-        <li>
-          <a href="/inventory">Inventory</a>
-        </li>
-        <li>
-          <a href="/">Finance</a>
-        </li>
-        <li>
-          <a href="servicehome">Services</a>
-        </li>
-        <li></li>
-=======
            <a href="/"><img src= {imgSrc} alt="Logo" className="h-16 w-43 ml-10 mt-3" /></a>
                    </div>
->>>>>>> 8a4833ecac7985ced8f0ce5a68e95a1808ba8359
 
           {/* ------Navigation links------ */}
            <div>
@@ -60,7 +41,7 @@ function Header() {
            </div>
 
            <div>
-            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Inventory</a>
+            <a href="/inventory" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Inventory</a>
            </div>
 
            <div>
