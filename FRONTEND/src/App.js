@@ -28,11 +28,15 @@ import Cmanager from "./Component/Cmanager";
 // import Test from "./Components/Test";
 //import Supplier_home from "./Component/Supplier_home";
 
+//Booking------------------------------------------------------------------------------------------
 import BookingPage from "./Component/BookingPage"; // import Booking Page
 import BookingPageCustomerLogin from "./Component/BookingPageCustomerLogin";  // import Booking Customer Login Page
 import BookingPageManagerLogin from "./Component/BookingPageManagerLogin";   // import Booking Manager Login Page
 import AddBooking from "./Component/AddBooking";
 import BookingList from "./Component/BookingList";
+import BookRead from "./Component/BookRead";
+
+
 import Home from "./Component/home";
 
 
@@ -67,11 +71,18 @@ import EmployeeAttendance from "./Component/EmployeeAttendance";
 
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import BookNowPage from "./Component/BookNowPage";
+
 import EditLeaveRequest from "./Component/EditLeaveRequest";
 import LeaveRequest from "./Component/LeaveRequest";
 import EditAnnouncement from "./Component/EditAnnouncement";
 import EmployeeAnnouncement from "./Component/EmployeeAnnouncement";
+
+
+  
+
+
+
+
 
 
 
@@ -79,7 +90,7 @@ import EmployeeAnnouncement from "./Component/EmployeeAnnouncement";
 import Inventory_Menu from "./Component/Inventory/Inventory_Menu";
 import ManageItems from "./Component/Inventory/ManageItems";
 import Additems from "./Component/Inventory/Additems";  
-
+import Updateitem from "./Component/Inventory/Updateitem";
 
 
 
@@ -114,9 +125,9 @@ function App() {
           {/*---------Tavini-------------Booking------------------------------*/}
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
-          <Route path="/bookNow" element={<BookNowPage/>}/>
           <Route path="/addBooking" element={<AddBooking/>}/>
-          <Route path ="/bookingList" element={<BookingList/>}/>
+          <Route path="/bookingList" element={<BookingList/>}/>
+          <Route path="/bookRead" element={<BookRead/>}/>
 
 
           {/* <Route path="/test" element={<Test/>}/> */}
@@ -158,6 +169,7 @@ function App() {
           <Route path="/inventory" element={<Inventory_Menu/>}/>
           <Route path="/manageitems" element={<ManageItems/>}/>
           <Route path="/additems" element={<Additems/>}/>
+          <Route path="/updateitems" element={<Updateitem/>}/>
                     
          
         </Routes>

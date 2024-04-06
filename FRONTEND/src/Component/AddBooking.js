@@ -9,7 +9,7 @@ function AddBooking(){
     const[phoneNum, setPhoneNum] = useState("");
     const[eMail, setEmail] = useState("");   
     const[vNum, setVNum] = useState("");
-    const[vType, setVType] = useState("");
+    const[vType, setvType] = useState("");
     const[dDate, setDate] = useState("");
     const[tTime, setTime] = useState("");
     const[serviceBox, setService] = useState("");
@@ -31,7 +31,7 @@ function AddBooking(){
             serviceBox
         };
 
-        axios.post("http://localhost:8090/bookCusLog/addBooking", newBooking)
+        axios.post("http://localhost:8090/booking/addBooking", newBooking)
         .then(()=>{
             alert("Booking Added");
             window.location.reload();
@@ -41,7 +41,7 @@ function AddBooking(){
     }
 
     return(
-        <div>
+    <div>
       <div className="relative">
             <h1 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Book Now</h1>
 
@@ -59,25 +59,35 @@ function AddBooking(){
                                 <td><label for="address" class="block text-sm font-medium text-black my-4">Address</label></td>
                                 <td><input type="textarea" id="address" name="address" class="mt-1 p-2 block border-gray-300 rounded-md text-black"  required onChange={(e) => setAddress(e.target.value)}></input></td>
                                 <td><label for="phone" class="block text-sm font-medium text-black my-4">Phone Number</label></td>
-                                <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black"  required onChange={(e) => setPhoneNum(e.target.value)}></input></td>
+                                <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="07XXXXXXXX" required onChange={(e) => setPhoneNum(e.target.value)}></input></td>
                             </tr>
                             <tr>
                                 <td><label for="email" class="block text-sm font-medium text-black my-4">Email</label></td>
-                                <td><input type="email" id="email" name="email" class="mt-1 p-2 block border-gray-300 rounded-md text-black me-10"  required onChange={(e) => setEmail(e.target.value)}></input></td>
+                                <td><input type="email" id="email" name="email" class="mt-1 p-2 block border-gray-300 rounded-md text-black me-10" placeholder="abcd123@gmail.com" required onChange={(e) => setEmail(e.target.value)}></input></td>
                             </tr>
 
                             <br></br>
                             <br></br>
 
                             <tr>
-                                <td><label for="vehicle-number" class="block text-sm font-medium text-black me-5 my-4">Vehicle Number</label></td>
-                                <td><input type="text" id="vehicle-number" name="vehicle-number" class="mt-1 p-2 block border-gray-300 rounded-md text-black"  required onChange={(e) => setVNum(e.target.value)}></input></td>
+                                <td><label for="vehicle-number" class="block text-sm font-medium text-black me-5 my-4" >Vehicle Number</label></td>
+                                <td><input type="text" id="vehicle-number" name="vehicle-number" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="AB-XXXX"  required onChange={(e) => setVNum(e.target.value)}></input></td>
                                 <td><label for="vehicle-type" class="block text-sm font-medium text-black me-5 my-4">Vehicle Type</label></td> 
-                                <td><select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" onChange={(e) => setVType(e.target.value)}>
+                                <td><select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" onChange={(e) => setvType(e.target.value)}>
+                                        <option value="">Select Vehicle Type</option> {/* Add an empty option for default selection */}
+                                        <option value="car">Car</option>
+                                        <option value="van">Van</option>
+                                        <option value="cab">Cab</option>
+                                        <option value="jeep">Jeep</option>
+                                        <option value="motorbike">Motor Bike</option>
+                                        <option value="minilorry">Mini Lorry</option>
+                                    </select>
+
+                                    {/* <select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" onChange={(e) => setVType(e.target.value)}>
                                     <option value="car">Car</option>
                                     <option value="truck">Truck</option>
                                     <option value="motorcycle">Motorcycle</option>
-                                    </select>
+                                    </select> */}
                                 </td>
                             </tr>
 
@@ -101,87 +111,84 @@ function AddBooking(){
                         <div class="mt-5 space-y-2 flex mx-10">
                             <table>
                                 <tr>
-                                    <td><div class="mt-1 flex items-center me-10">
+                                    <td><div class="mt-1 flex items-center me-10 ml-10">
                                         <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
                                         <label for="service">Body Wash</label>
                                         </div></td> 
-                                    <td><div class="flex items-center me-10">
-                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
-                                        <label for="service">Interior Clean</label>
-                                        </div></td>
-                                    <td><div class="flex items-center me-10">
+                                    <td><div class="flex items-center me-10 ml-10">
                                         <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
                                         <label for="service">Under Wash</label>
                                         </div></td>
-                                    <td><div class="flex items-center me-10">
-                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
-                                        <label for="service">Under Oil</label>
-                                        </div></td>  
-                                    <td><div class="flex items-center me-10">
+                                    <td><div class="flex items-center me-10 ml-10">
                                         <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
                                         <label for="service">Engine Wash</label>
                                         </div></td>
-                                    <td><div class="flex items-center me-10">
+                                    <td><div class="flex items-center me-10 ml-10">
                                         <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
-                                        <label for="service">Wheels Remove</label>
-                                        </div></td>
+                                        <label for="service">Engine Cleanup</label>
+                                        </div></td>     
                                     
                                 </tr> 
 
                                 <tr>
-                                    <td><div class="flex items-center me-10">
+                                    <td><div class="flex items-center me-10 ml-10">
                                         <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
-                                        <label for="service">Waxing</label>
+                                        <label for="service">Interior Cleaning</label>
                                         </div></td>
-                                    <td><div class="flex items-center me-10">
+                                    <td><div class="flex items-center me-10 ml-10">
                                         <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
-                                        <label for="service">Cut and Polish</label>
+                                        <label for="service">Vaccuming</label>
+                                        </div></td>
+                                    <td><div class="flex items-center me-10 ml-10">
+                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
+                                        <label for="service">Under Oiling</label>
+                                        </div></td>
+                                    <td><div class="flex items-center me-10 ml-10">
+                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
+                                        <label for="service">Oil Changing</label>
                                         </div></td>  
-                                    <td><div class="flex items-center me-10">
-                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
-                                        <label for="service">Engine Cleanup</label>
-                                        </div></td>
-                                    <td><div class="flex items-center me-10">
-                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
-                                        <label for="service">Full Service</label>
-                                        </div></td>
-                                    <td><div class="flex items-center me-10">
-                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
-                                        <label for="service">Filter Change</label>
-                                        </div></td>
-                                    <td><div class="flex items-center me-10">
-                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
-                                        <label for="service">Greasing</label>
-                                        </div></td>
-                                    
+                            
                                 </tr>
 
                                 <tr>
-                                    <td><div class="flex items-center me-10">
-                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
-                                        <label for="service">Waxing</label>
-                                        </div></td>
-                                    <td><div class="flex items-center me-10">
-                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
-                                        <label for="service">Cut and Polish</label>
-                                        </div></td>  
-                                    <td><div class="flex items-center me-10">
-                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
-                                        <label for="service">Engine Cleanup</label>
-                                        </div></td>
-                                    <td><div class="flex items-center me-10">
-                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
-                                        <label for="service">Full Service</label>
-                                        </div></td>
-                                    <td><div class="flex items-center me-10">
-                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
-                                        <label for="service">Filter Change</label>
-                                        </div></td>
-                                    <td><div class="flex items-center me-10">
+                                <td><div class="flex items-center me-10 ml-10">
                                         <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
                                         <label for="service">Greasing</label>
                                         </div></td>
+                                    <td><div class="flex items-center me-10 ml-10">
+                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
+                                        <label for="service">Filter Change</label>
+                                        </div></td>
+                                    <td><div class="flex items-center me-10 ml-10">
+                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
+                                        <label for="service">Waxing</label>
+                                        </div></td>
+                                    <td><div class="flex items-center me-10 ml-10">
+                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
+                                        <label for="service">Cut & Polish</label>
+                                        </div></td>
+                                                                              
+                                </tr>
+
+                                <tr>
+                                <td><div class="flex items-center me-10 ml-10">
+                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
+                                        <label for="service">Engine Repairs</label>
+                                        </div></td>
                                     
+                                    <td><div class="flex items-center me-10 ml-10">
+                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
+                                        <label for="service">Electrical System Repairs</label>
+                                        </div></td>
+                                    <td><div class="flex items-center me-10 ml-10">
+                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
+                                        <label for="service">Wheel Alignment</label>
+                                        </div></td>
+                                    <td><div class="flex items-center me-10 ml-10">
+                                        <input id="service" name="services" type="checkbox" onChange={(e) => setService(e.target.value)}></input>
+                                        <label for="service">Full Service</label>
+                                        </div></td>
+
                                 </tr>
                             </table>
                         </div>
