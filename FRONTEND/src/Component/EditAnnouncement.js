@@ -1,41 +1,58 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
-export default function AddAnnouncement(){
+export default function EditAnnouncement(){
 
-    const [date, setDate] = useState("");
+    const [date, setDate] = useState(""); // State for date
     const [title, setTitle] = useState("");
     const [announcement, setAnnouncement] = useState("");
 
-    function sendData(e){
-      e.preventDefault();
-      //alert("Inserted");
+    const { id } = useParams(); // Get the ID from URL params
 
-      const newAnnouncement = {
+    // Fetch announcement details from the server on component mount
+  useEffect(() => {
+    axios.get(`http://localhost:8090/employeeannouncement/get/${id}`).then((res) => {
+        setDate(res.data.announcement.date);
+        setTitle(res.data.announcement.title);
+        setAnnouncement(res.data.announcement.announcement);
 
-        date,
-        title,
-        announcement
-      }
+    }).catch((err) => {
+      alert(err.message);
+    });
+  }, [id]);
 
-      axios.post("http://localhost:8090/employeeannouncement/addannouncement",newAnnouncement).then(()=>{
+    // Function to update announcement details
+  function updateAnnouncement(e) {
+    e.preventDefault();
 
-      alert("Announcement Added")
-      window.location.reload();
-  }).catch((err)=>{
-      alert(err)
-  })
+    const updatedAnnouncement = {
+      date,
+      title,
+      announcement,
+    };
 
-}
+    // Send updated announcement details to the server
+    axios
+      .put(`http://localhost:8090/employeeannouncement/editannouncement/${id}`, updatedAnnouncement)
+      .then(() => {
+        alert("Announcement Updated");
+        window.location.href = "/EmployeeAnnouncement";
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }
+
 
     
 
 
     return(
 
-      <form onSubmit={sendData}>
+      <form onSubmit={updateAnnouncement}>
         <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-auto w-2/3">
-      <center><h1>Add Announcement</h1></center>
+      <center><h1>Edit Announcement</h1></center>
       <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
         <div className="sm:col-span-3">
           <label className="block text-sm font-medium leading-6 text-gray-900">
@@ -47,6 +64,7 @@ export default function AddAnnouncement(){
               name="date"
               id="date"
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              value={date} //showing value
               onChange={(e)=>{
 
                 setDate(e.target.value);
@@ -66,6 +84,7 @@ export default function AddAnnouncement(){
             name="title"
             id="title"
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            value={title} //showing value
             onChange={(e)=>{
 
               setTitle(e.target.value);
@@ -89,6 +108,7 @@ export default function AddAnnouncement(){
                     rows={5}
                     cols={12}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value={announcement} //showing value
                     onChange={(e)=>{
 
                       setAnnouncement(e.target.value);

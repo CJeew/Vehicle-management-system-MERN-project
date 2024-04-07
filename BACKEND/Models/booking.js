@@ -1,7 +1,7 @@
 const mongoose =require('mongoose');
 const Schema = mongoose.Schema;
 
-const bookSchema = new Schema({
+const bookingSchema = new Schema({
 
     fname : {
         type : String,
@@ -52,7 +52,7 @@ const bookSchema = new Schema({
 })
 
 
-const booking = mongoose.model("Booking",bookSchema);
+const booking = mongoose.model("Booking",bookingSchema);
 
 module.exports = booking;
  

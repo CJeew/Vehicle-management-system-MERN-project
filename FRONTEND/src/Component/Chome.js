@@ -14,7 +14,7 @@ export default function Chome() {
       <dev>
         <a></a>{" "}
       </dev>
-      <div class="relative inline-flex  group">
+      <div class="mx-10 relative inline-flex  group">
         <div class="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
         <a
           href="/Profile"
@@ -24,7 +24,7 @@ export default function Chome() {
         >
           Profile
         </a>
-      </div>
+      </div>  <dev></dev>
       <dev>
         <a></a>{" "}
       </dev>
