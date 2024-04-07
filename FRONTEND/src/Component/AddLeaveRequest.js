@@ -42,7 +42,7 @@ export default function AddLeaveRequest() {
     <div>
       <form onSubmit={sendData}>
       
-        <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
+        <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5 mx-auto w-2/3">
           <center><h1>Add Leave Request</h1></center>
           <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div class="sm:col-span-3">

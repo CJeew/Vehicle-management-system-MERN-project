@@ -15,6 +15,8 @@ import Chome from "./Component/Chome";
 import Register from "./Component/Register";
 import Review from "./Component/Review";
 import Profile from "./Component/Profile";
+import Customerlogin from "./Component/Customerlogin";
+import Cmanager from "./Component/Cmanager";
 
 
 
@@ -26,9 +28,14 @@ import Profile from "./Component/Profile";
 // import Test from "./Components/Test";
 //import Supplier_home from "./Component/Supplier_home";
 
+//Booking------------------------------------------------------------------------------------------
 import BookingPage from "./Component/BookingPage"; // import Booking Page
 import BookingPageCustomerLogin from "./Component/BookingPageCustomerLogin";  // import Booking Customer Login Page
 import BookingPageManagerLogin from "./Component/BookingPageManagerLogin";   // import Booking Manager Login Page
+import AddBooking from "./Component/AddBooking";
+import BookingList from "./Component/BookingList";
+import BookRead from "./Component/BookRead";
+
 
 import Home from "./Component/home";
 
@@ -56,7 +63,7 @@ import AddAnnouncement from "./Component/AddAnnouncement";
 import AddLeaveRequest from "./Component/AddLeaveRequest";
 import StaffHome from "./Component/StaffHome";
 import StaffDetails from "./Component/StaffDetails";
-import EditStaff from "./Component/AddLeaveRequest";
+import EditStaff from "./Component/EditStaff";
 import EmployeePayroll from "./Component/EmployeePayroll";
 import EditPayroll from "./Component/EditPayroll";
 import EditAttendance from "./Component/EditAttendance";
@@ -65,12 +72,30 @@ import EmployeeAttendance from "./Component/EmployeeAttendance";
 
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import BookNowPage from "./Component/BookNowPage";
+
 import EditLeaveRequest from "./Component/EditLeaveRequest";
 import LeaveRequest from "./Component/LeaveRequest";
 import EditAnnouncement from "./Component/EditAnnouncement";
 import EmployeeAnnouncement from "./Component/EmployeeAnnouncement";
-import AddBooking from "./Component/AddBooking";
+
+
+  
+
+
+
+
+
+
+
+// inventory
+import Inventory_Menu from "./Component/Inventory/Inventory_Menu";
+import ManageItems from "./Component/Inventory/ManageItems";
+import Additems from "./Component/Inventory/Additems";  
+import Updateitem from "./Component/Inventory/Updateitem";
+
+
+
+
 
 
 function App() {
@@ -99,11 +124,12 @@ function App() {
           <Route path="/viewpkg" element={<Viewpkg/>}/>
          
 
-          {/*booking*/}
+          {/*---------Tavini-------------Booking------------------------------*/}
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
-          <Route path="/bookNow" element={<BookNowPage/>}/>
           <Route path="/addBooking" element={<AddBooking/>}/>
+          <Route path="/bookingList" element={<BookingList/>}/>
+          <Route path="/bookRead" element={<BookRead/>}/>
 
 
           {/* <Route path="/test" element={<Test/>}/> */}
@@ -113,6 +139,10 @@ function App() {
           <Route path="/Register" element={<Register/>}/>
           <Route path="/Review" element={<Review/>}/>
           <Route path="/Profile" element={<Profile/>}/>
+          <Route path="/Customerlogin" element={<Customerlogin/>}/>
+          <Route path="/Cmanager" element={<Cmanager/>}/>
+
+
 
           {/* ----------Sanjayan---------- */}
           <Route path="/addpayroll" element={<AddPayroll/>}/>
@@ -133,7 +163,16 @@ function App() {
           <Route path="/employeeannouncement" element={<EmployeeAnnouncement/>}/>
           
           
-          
+
+
+
+         
+
+          <Route path="/inventory" element={<Inventory_Menu/>}/>
+          <Route path="/manageitems" element={<ManageItems/>}/>
+          <Route path="/additems" element={<Additems/>}/>
+          <Route path="/updateitems" element={<Updateitem/>}/>
+                    
          
         </Routes>
         
