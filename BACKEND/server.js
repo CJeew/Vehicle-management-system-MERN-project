@@ -53,6 +53,9 @@ app.use("/booking", bookingRouter);
 const customerRouter = require("./Routes/chiyaan/customer.js");
 app.use("/customer", customerRouter);
 
+const ReviewRouter = require("./Routes/chiyaan/reviewAdd.js");
+app.use("/reviewAdd", ReviewRouter);
+
 // AKEEL
 const managepartsRouter=require("./Routes/akeel/manageparts.js");
 app.use("/manageparts", managepartsRouter);
