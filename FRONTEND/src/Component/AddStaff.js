@@ -12,10 +12,51 @@ export default function AddStaff() {
     const [mobileno, setMobileno] = useState("");
     const [joindate, setJoindate] = useState("");
 
+    const [nicError, setNicError] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [mobilenoError, setMobilenoError] = useState("");
+
+    function validateNIC(value) {
+      const nicVal = /^(?:[0-9]{9}[vV]{1}|[0-9]{12})$/;
+      return nicVal.test(value);
+    }
+  
+    function validateMobileNo(value) {
+      const mobileVal = /^[0-9]{10}$/;
+      return mobileVal.test(value);
+    }
+  
+    function validateEmail(value) {
+      const emailVal = /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
+      return emailVal.test(value);
+    }
+  
+
     function sendData(e){
         e.preventDefault();
         //alert("Inserted");
 
+        if (!validateNIC(nic)) {
+          setNicError("Please enter a valid NIC.");
+          return;
+        } else {
+          setNicError("");
+        }
+    
+        if (!validateMobileNo(mobileno)) {
+          setMobilenoError("Please enter a valid mobile number.");
+          return;
+        } else {
+          setMobilenoError("");
+        }
+    
+        if (!validateEmail(email)) {
+          setEmailError("Please enter a valid email address.");
+          return;
+        } else {
+          setEmailError("");
+        }
+    
         const newStaff = {
 
             nic,
@@ -55,8 +96,10 @@ return (
             onChange={(e)=>{
 
               setNic(e.target.value);
+              setNicError("");
             }}
           />
+          {nicError && <p className="text-red-500">{nicError}</p>}
         </div>
       </div>
 
@@ -91,8 +134,10 @@ return (
                   onChange={(e)=>{
 
                     setEmail(e.target.value);
+                    setEmailError("");
                   }}
                 />
+                {emailError && <p className="text-red-500">{emailError}</p>}
               </div>
             </div>
       
@@ -146,8 +191,10 @@ return (
             onChange={(e)=>{
 
               setMobileno(e.target.value);
+              setMobilenoError("");
             }}
           />
+          {mobilenoError && <p className="text-red-500">{mobilenoError}</p>}
         </div>
       </div>
 
