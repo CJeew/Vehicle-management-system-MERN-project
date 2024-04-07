@@ -58,6 +58,15 @@ router.route("/editleaverequest/:id").put(async(req,res) => {
       status,
     }
 
+    // Check if any required field is empty
+    const requiredFields = ["nic", "name", "date", "noofdays", "reason", "status"];
+    const emptyFields = requiredFields.filter(field => !req.body[field]);
+    
+    if (emptyFields.length > 0) {
+        return res.status(400).send({ message: `Fields cannot be empty: ${emptyFields.join(", ")}` });
+    }
+
+    //------------------
     const update = await Leaverequest.findByIdAndUpdate(id, updateLeaverequest)  //updateStaff means upadate panna vendiya data oda object
     .then(() => {
 

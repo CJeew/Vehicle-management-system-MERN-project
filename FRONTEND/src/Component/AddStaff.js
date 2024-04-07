@@ -98,7 +98,7 @@ return (
               setNic(e.target.value);
               setNicError("");
             }}
-          />
+          required/>
           {nicError && <p className="text-red-500">{nicError}</p>}
         </div>
       </div>
@@ -117,7 +117,7 @@ return (
 
               setName(e.target.value);
             }}
-          />
+            required/>
         </div>
       </div>
 
@@ -136,7 +136,7 @@ return (
                     setEmail(e.target.value);
                     setEmailError("");
                   }}
-                />
+                  required/>
                 {emailError && <p className="text-red-500">{emailError}</p>}
               </div>
             </div>
@@ -155,7 +155,7 @@ return (
 
                     setAddress(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
      
@@ -174,7 +174,7 @@ return (
 
               setDesignation(e.target.value);
             }}
-          />
+            required/>
         </div>
       </div>
 
@@ -193,7 +193,7 @@ return (
               setMobileno(e.target.value);
               setMobilenoError("");
             }}
-          />
+            required/>
           {mobilenoError && <p className="text-red-500">{mobilenoError}</p>}
         </div>
       </div>
@@ -212,7 +212,7 @@ return (
 
               setJoindate(e.target.value);
             }}
-          />
+            required/>
         </div>
       </div>
     </div>

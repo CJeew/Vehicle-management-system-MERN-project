@@ -62,6 +62,15 @@ router.route("/editpayroll/:id").put(async(req,res) => {
       salary,
     }
 
+    // Check if any required field is empty
+    const requiredFields = ["nic", "name", "otstatus"];
+    const emptyFields = requiredFields.filter(field => !req.body[field]);
+    
+    if (emptyFields.length > 0) {
+        return res.status(400).send({ message: `Fields cannot be empty: ${emptyFields.join(", ")}` });
+    }
+
+    //------------------
     const update = await Employeepayroll.findByIdAndUpdate(id, updatePayroll)  //updateStaff means upadate panna vendiya data oda object
     .then(() => {
 

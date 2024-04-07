@@ -52,7 +52,7 @@ export default function EditPayroll(){
         window.location.href = "/EmployeePayroll";
       })
       .catch((err) => {
-        alert(err.message);
+        alert(err.response.data.message);
       });
   }
 
@@ -138,7 +138,7 @@ export default function EditPayroll(){
 
                     setOtpayment(e.target.value);
                   }}
-                />
+                required/>
               </div>
             </div>
 
@@ -157,7 +157,7 @@ export default function EditPayroll(){
 
                     setBonus(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -176,7 +176,7 @@ export default function EditPayroll(){
 
                     setPenaltyamt(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -195,7 +195,7 @@ export default function EditPayroll(){
 
                     setSalary(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
           </div>

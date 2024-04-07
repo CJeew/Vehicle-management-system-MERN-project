@@ -40,7 +40,7 @@ export default function EditAnnouncement(){
         window.location.href = "/EmployeeAnnouncement";
       })
       .catch((err) => {
-        alert(err.message);
+        alert(err.response.data.message);
       });
   }
 

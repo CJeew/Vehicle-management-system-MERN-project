@@ -59,7 +59,7 @@ export default function AddLeaveRequest() {
 
                     setNic(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -77,7 +77,7 @@ export default function AddLeaveRequest() {
 
                     setName(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -95,7 +95,7 @@ export default function AddLeaveRequest() {
 
                     setDate(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -113,7 +113,7 @@ export default function AddLeaveRequest() {
 
                     setNoofdays(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -131,7 +131,7 @@ export default function AddLeaveRequest() {
 
                     setReason(e.target.value);
                   }}
-                />
+                  required/>
 
               </div>
             </div>

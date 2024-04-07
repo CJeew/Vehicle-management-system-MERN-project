@@ -51,7 +51,7 @@ export default function AddAnnouncement(){
 
                 setDate(e.target.value);
               }}
-            />
+              required/>
           </div>
         </div>
         </div>
@@ -70,7 +70,7 @@ export default function AddAnnouncement(){
 
               setTitle(e.target.value);
             }}
-          />
+            required/>
         </div>
       </div>
 
@@ -93,7 +93,7 @@ export default function AddAnnouncement(){
 
                       setAnnouncement(e.target.value);
                     }}
-                  />
+                    required/>
                 </div>
               </div>
         

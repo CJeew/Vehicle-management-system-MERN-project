@@ -56,7 +56,7 @@ export default function AddPayroll(){
 
                     setNic(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -74,7 +74,7 @@ export default function AddPayroll(){
 
                     setName(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -114,7 +114,7 @@ export default function AddPayroll(){
 
                     setOtpayment(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -132,7 +132,7 @@ export default function AddPayroll(){
 
                     setBonus(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -150,7 +150,7 @@ export default function AddPayroll(){
 
                     setPenaltyamt(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -168,7 +168,7 @@ export default function AddPayroll(){
 
                     setSalary(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
           </div>
