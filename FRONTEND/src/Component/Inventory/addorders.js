@@ -27,10 +27,10 @@ export default function Addorderitems() {
     
     };
 
-    axios.post("http://localhost:8090/manageorder/add", newAddorderitems)
+    axios.post("http://localhost:8090/manageorders/add", newAddorderitems)
       .then(() => {
         alert("Item Order Added");
-        navigate("/manageorders");
+        navigate("/managedorders");
        
       })
       .catch((err) => {
@@ -106,7 +106,7 @@ export default function Addorderitems() {
       </div>
       <div className="mt-6 flex items-center justify-end gap-x-6">
      
-      <button type="button" className="text-sm font-semibold leading-6 text-gray-900" onClick={() => navigate('/manageorders')}>
+      <button type="button" className="text-sm font-semibold leading-6 text-gray-900" onClick={() => navigate('/managedorders')}>
           Cancel
         </button>
         

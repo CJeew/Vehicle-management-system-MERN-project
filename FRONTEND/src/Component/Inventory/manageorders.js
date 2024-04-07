@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from "axios";
+
+import axios from 'axios';
+
 import { Link , useNavigate} from 'react-router-dom';
 import {useReactToPrint} from "react-to-print"
 
@@ -18,19 +20,19 @@ export default function ManageOrders() {
     getItems();
   }, [])
 
+  
   const onDeleteClick = async (itemId) => {
     await axios.delete(`http://localhost:8090/manageorders/delete/${itemId}`);
     alert('Item Deleted Successfully');
     window.location.reload();
   }
 
-  const ComponentsRef=useRef();
+  const ComponentsRef= useRef();
   const handlePrint = useReactToPrint({
     content:()=>ComponentsRef.current,
     DocumentTittle:"order report",
     onafterprint:()=>alert ("user report successfully ")
   })
-
 
   return (
     <div className="h-screen w-screen bg-gray flex justify-center items-center flex-wrap relative">
@@ -38,7 +40,7 @@ export default function ManageOrders() {
       
         <a href="/Addorder" className="inline-block bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded">
         
-          +Add Orders
+          +Add Items
         </a>
       </div>
       <div className="absolute top-8 right-8">
@@ -57,7 +59,7 @@ export default function ManageOrders() {
               <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Need Quantity</th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Order Code</th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Action</th>
-             
+            
             </tr>
           </thead>
           <tbody>
@@ -69,7 +71,7 @@ export default function ManageOrders() {
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.suppliername}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.needquantity}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.ordercode}</td>
-             
+               
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div className="flex items-center justify-end gap-2">
                     <a href={`/manageorderupdate/${item._id}`} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
@@ -88,3 +90,4 @@ export default function ManageOrders() {
     </div>
   );
 };
+
