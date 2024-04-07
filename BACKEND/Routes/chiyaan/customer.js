@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const customer = require("../../Models/customer");
+let customer = require("../../Models/customer");
+
 
 //create - working
 
@@ -15,7 +16,7 @@ router.route("/Register").post((req,res)=>{
     
     
 
-    const newRegister = new register({
+    const newCustomer = new customer({
         cname,
         cnic,
         cpass,
@@ -26,7 +27,7 @@ router.route("/Register").post((req,res)=>{
         
     })
 
-    newRegister.save().then(()=>{
+    newCustomer.save().then(()=>{
         res.json("Registeration Done");
     }).catch((err)=>{
         console.log(err);

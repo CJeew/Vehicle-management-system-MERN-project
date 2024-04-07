@@ -1,7 +1,7 @@
 const mongoose =require('mongoose');
 const Schema = mongoose.Schema;
 
-const RegisterSchema = new Schema({
+const customerSchema = new Schema({
 
     cname : {
         type : String,
@@ -40,7 +40,7 @@ const RegisterSchema = new Schema({
 })
 
 
-const customer = mongoose.model("Register",RegisterSchema);
+const customer = mongoose.model("Register",customerSchema);
 
 module.exports = customer;
  

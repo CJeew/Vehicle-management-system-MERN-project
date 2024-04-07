@@ -117,6 +117,7 @@ export default function StaffDetails() {
 
   return (
     <div class="mt-5">
+      
       {/* Search bar */}
       <div class="relative">
         <input
