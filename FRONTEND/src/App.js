@@ -49,6 +49,7 @@ import Servicehome from "./Component/servicehome";
 import PkageHome from "./Component/Package_Homepage";
 //import view package
 import Viewpkg from "./Component/View_package";
+import Viewpkg2 from "./Component/View_package2";
 //import Edit package
 import Editpkg from "./Component/Edit_package";
 //import Delete package
@@ -119,6 +120,7 @@ function App() {
           <Route path="/addpkg" element={<Addpkg/>}/>
           <Route path="/servicehome" element={<Servicehome/>}/>
           <Route path="/PkageHome" element={<PkageHome/>}/>
+          <Route path="/viewpkg2" element={<Viewpkg2/>}/>
           <Route path="/viewpkg" element={<Viewpkg/>}/>
          
 

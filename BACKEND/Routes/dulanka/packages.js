@@ -9,7 +9,7 @@ router.route("/add").post((req, res) => {
   const unitprice = parseInt(req.body.unitprice);
   console.log("test");
   const category = req.body.category;
-
+  console.log(req.body);
   //validate data
   //validate pid as number
   if (isNaN(pid)) {
@@ -55,14 +55,14 @@ router.route("/").get((req, res) => {
 
 router.route("/update/:id").put(async (req, res) => {
   let packageId = req.params.id;
-  const {name, description, unitprice, catagory } = req.body;
+  const {name, description, unitprice, category } = req.body;
 
   const updatePackage = {
     //pid,
     name,
     description,
     unitprice,
-    catagory,
+    category,
   };
 
   try {

@@ -8,7 +8,7 @@ import "./Chome.js";
 
 export default function Review() {
   
-      const[cmail, setcmail] = useState("");
+      const[Cmail, setcmail] = useState("");
       const[rating, setrating] = useState("");
       const[message, setmessage] = useState("");
       
@@ -18,7 +18,7 @@ export default function Review() {
           //alert of inserted
   
           const newReview = {
-              cmail,
+              Cmail,
               rating,
               message,
               
@@ -99,11 +99,9 @@ export default function Review() {
           <label for="message" class="text-white block mb-1">
             Message
           </label>
-          <input required onChange={(e) => setmessage(e.target.value)} >
-          
-            
-            id= "message"
-            class= "text-white text-black w-full py-2 px-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          <input required onChange={(e) => setmessage(e.target.value)}
+            id= "message" type="text"
+            class= "text-black text-black w-full py-2 px-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
          
           </input>
         </div>
