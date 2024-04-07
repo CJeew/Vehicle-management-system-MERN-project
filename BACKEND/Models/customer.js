@@ -33,7 +33,7 @@ const customerSchema = new Schema({
     cvtype : {
         type : String,
         required : true
-    },
+    }
 
     
     
