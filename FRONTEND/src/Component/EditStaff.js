@@ -52,7 +52,7 @@ export default function EditStaff() {
         window.location.href = "/StaffDetails";
       })
       .catch((err) => {
-        alert(err.message);
+        alert(err.response.data.message);
       });
   }
 

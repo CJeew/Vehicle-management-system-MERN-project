@@ -57,7 +57,7 @@ function AddBooking(){
                             </tr> 
                             <tr>   
                                 <td><label for="address" class="block text-sm font-medium text-black my-4">Address</label></td>
-                                <td><input type="textarea" id="address" name="address" class="mt-1 p-2 block border-gray-300 rounded-md text-black"  required onChange={(e) => setAddress(e.target.value)}></input></td>
+                                <td><input type="textarea" id="address" name="address" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="Kottawa" required onChange={(e) => setAddress(e.target.value)}></input></td>
                                 <td><label for="phone" class="block text-sm font-medium text-black my-4">Phone Number</label></td>
                                 <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="07XXXXXXXX" required onChange={(e) => setPhoneNum(e.target.value)}></input></td>
                             </tr>

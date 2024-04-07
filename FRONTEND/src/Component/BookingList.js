@@ -7,7 +7,7 @@ export default function BookingList() {
   // Fetch booking details from the server on component mount
   useEffect(() => {
     function getBooking() {
-      axios.get("http://localhost:8090/bookingList/").then((res) => {
+      axios.get("http://localhost:8090/bookinglist").then((res) => {
         console.log(res);
         setBooking(res.data);
       }).catch((err) => {
@@ -25,13 +25,11 @@ export default function BookingList() {
   }
 
   return (
-    
-
     <div>
+
   {/* Table to display booking details */}
   <div class="overflow-x-auto">
     <table class="min-w-full divide-y divide-gray-200">
-      <thead>
         <tr class="bg-blue-500 text-white"> {/* Added bg-blue-500 for blue background and text-white for white text */}
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">First Name</th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Last Name</th>
@@ -44,7 +42,6 @@ export default function BookingList() {
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Time</th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Services</th>
         </tr>
-      </thead>
       <tbody>
         {/* Loop through staff details and display in table rows */}
         {bookinglist.map((bookinglist, index) => (

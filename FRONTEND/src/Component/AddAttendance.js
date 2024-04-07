@@ -51,7 +51,7 @@ export default function AddAttendance(){
 
                 setNic(e.target.value);
               }}
-            />
+              required/>
           </div>
         </div>
         </div>
@@ -70,7 +70,7 @@ export default function AddAttendance(){
 
                 setName(e.target.value);
               }}
-            />
+              required/>
           </div>
         </div>
 
@@ -88,7 +88,7 @@ export default function AddAttendance(){
 
                 setDate(e.target.value);
               }}
-            />
+              required/>
           </div>
         </div>
 
@@ -106,7 +106,7 @@ export default function AddAttendance(){
 
                 setAttendance(e.target.value);
               }}
-            />
+              required/>
           </div>
         </div>
   

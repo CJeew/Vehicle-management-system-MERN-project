@@ -61,7 +61,16 @@ router.route("/editstaff/:id").put(async(req,res) => {
       joindate,
     }
 
-    const update = await Staffdetails.findByIdAndUpdate(id, updateStaff)  //updateStaff means upadate panna vendiya data oda object
+    // Check if any required field is empty
+    const requiredFields = ["nic", "name", "designation", "address", "email", "mobileno", "joindate"];
+    const emptyFields = requiredFields.filter(field => !req.body[field]);
+    
+    if (emptyFields.length > 0) {
+        return res.status(400).send({ message: `Fields cannot be empty: ${emptyFields.join(", ")}` });
+    }
+
+    //------------------
+    const update = await Staffdetails.findByIdAndUpdate(id, updateStaff)  //updateStaff means update panna vendiya data oda object
     .then(() => {
 
         res.status(200).send({status: "User updated"})

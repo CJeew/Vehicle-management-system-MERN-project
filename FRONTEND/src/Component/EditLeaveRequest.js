@@ -49,7 +49,7 @@ export default function EditLeaveRequest(){
         window.location.href = "/LeaveRequest";
       })
       .catch((err) => {
-        alert(err.message);
+        alert(err.response.data.message);
       });
   }
 

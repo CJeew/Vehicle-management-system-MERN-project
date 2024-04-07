@@ -80,9 +80,10 @@ function AddPackage() {
             Category
           </label>
           <select
-            className="px-3 py-1 rounded-lg border border-black-400 w-full text-black"
+            className="px-3 py-1 rounded-lg border border-black-400 w-full text-black" required
             onChange={(e) => setCategory(e.target.value)}
           >
+            <option selected disabled value="">Select Category</option>
             <option value="Interior">Interior</option>
             <option value="Exterior">Exterior</option>
           

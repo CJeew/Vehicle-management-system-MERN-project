@@ -43,7 +43,7 @@ export default function AddAttendance(){
         window.location.href = "/EmployeeAttendance";
       })
       .catch((err) => {
-        alert(err.message);
+        alert(err.response.data.message);
       });
   }
 
