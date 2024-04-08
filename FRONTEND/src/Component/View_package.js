@@ -20,7 +20,8 @@ export default function View_package() {
   }, []);
   return (
     <div>
-    <div className="flex  justify-center items-center w-full gap-8">
+       <div className="text-2xl flex justify-center items-center">
+    <div className="gap-16 grid grid-cols-2 mt-8">
       <a href="viewpkg">
         <button className="bg-gradient-to-r from-red-400 to-red-500 px-2 py-4 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full ">
         Interior
@@ -31,6 +32,8 @@ export default function View_package() {
         Exterior
         </button>
         </a>
+        </div>
+        </div>
       <div className="flex justify-center items-center w-full">
         <div className="grid grid-cols-2 gap-8 bg-gray-200 bg-opacity-70 rounded-lg p-14 mt-16 mx-5 max-w-7xl">
           {packages.filter((pkg) => pkg.category === "Interior").map((pkg) => (
@@ -46,6 +49,6 @@ export default function View_package() {
         </div>
       </div>
     </div>
-    </div>
+  
   );
 }
