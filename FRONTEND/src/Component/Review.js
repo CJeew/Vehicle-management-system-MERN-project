@@ -15,7 +15,7 @@ function Review() {
       function sendreview(e){
           e.preventDefault();
           //alert of inserted
-  
+
           const newReview = {
               cmail,
               rating,
