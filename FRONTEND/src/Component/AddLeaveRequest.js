@@ -59,7 +59,7 @@ export default function AddLeaveRequest() {
 
                     setNic(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -77,7 +77,7 @@ export default function AddLeaveRequest() {
 
                     setName(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -95,7 +95,7 @@ export default function AddLeaveRequest() {
 
                     setDate(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -113,7 +113,7 @@ export default function AddLeaveRequest() {
 
                     setNoofdays(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -131,7 +131,7 @@ export default function AddLeaveRequest() {
 
                     setReason(e.target.value);
                   }}
-                />
+                  required/>
 
               </div>
             </div>
@@ -141,9 +141,6 @@ export default function AddLeaveRequest() {
           </div>
 
           <div class="mt-6 flex items-center justify-end gap-x-6">
-            <button type="button" class="text-sm font-semibold leading-6 text-gray-900">
-              Cancel
-            </button>
             <button
               type="submit"
               class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
@@ -153,13 +150,16 @@ export default function AddLeaveRequest() {
           </div>
         </form>
 
-        <div className="flex justify-center mt-2">
+        <div className="flex justify-between mt-3 ">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-[14.5rem]"
             onClick={() => setShowPopup(true)}
-          >
+            >
             View
           </button>
+          <a href="/staffhome" type="button" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-[14.5rem]">
+              Prev
+            </a>
         </div>
       
 

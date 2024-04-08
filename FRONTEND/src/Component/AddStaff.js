@@ -98,7 +98,7 @@ return (
               setNic(e.target.value);
               setNicError("");
             }}
-          />
+          required/>
           {nicError && <p className="text-red-500">{nicError}</p>}
         </div>
       </div>
@@ -117,7 +117,7 @@ return (
 
               setName(e.target.value);
             }}
-          />
+            required/>
         </div>
       </div>
 
@@ -136,7 +136,7 @@ return (
                     setEmail(e.target.value);
                     setEmailError("");
                   }}
-                />
+                  required/>
                 {emailError && <p className="text-red-500">{emailError}</p>}
               </div>
             </div>
@@ -155,7 +155,7 @@ return (
 
                     setAddress(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
      
@@ -174,7 +174,7 @@ return (
 
               setDesignation(e.target.value);
             }}
-          />
+            required/>
         </div>
       </div>
 
@@ -193,7 +193,7 @@ return (
               setMobileno(e.target.value);
               setMobilenoError("");
             }}
-          />
+            required/>
           {mobilenoError && <p className="text-red-500">{mobilenoError}</p>}
         </div>
       </div>
@@ -212,15 +212,15 @@ return (
 
               setJoindate(e.target.value);
             }}
-          />
+            required/>
         </div>
       </div>
     </div>
 
     <div class="mt-6 flex items-center justify-end gap-x-6">
-      <button type="button" class="text-sm font-semibold leading-6 text-gray-900">
+      <a href="/staffdetails" type="button" class="text-sm font-semibold leading-6 text-gray-900">
         Cancel
-      </button>
+      </a>
       <button
         type="submit"
         class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">

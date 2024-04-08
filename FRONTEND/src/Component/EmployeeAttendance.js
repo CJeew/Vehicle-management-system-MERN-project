@@ -104,9 +104,12 @@ export default function EmployeeAttendance() {
         </table>
       </div>
       {/* Button to add a new attendance */}
-      <div className="mt-4">
-        <a href="/addattendance" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <div className="mt-4 flex justify-between">
+        <a href="/addattendance" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-3 mb-5">
           Add
+        </a>
+        <a href="/staffhome" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-3 mb-5">
+          Prev
         </a>
       </div>
     </div>
