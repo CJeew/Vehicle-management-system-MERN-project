@@ -23,7 +23,7 @@ function Review() {
    
           };
   
-          axios.post("http://localhost:8090/reviewAdd", newReview)
+          axios.post("http://localhost:8090/reviewAdd/Review", newReview)
           .then(()=>{
               alert("Review Added");
               window.location.reload();
@@ -35,29 +35,29 @@ function Review() {
   <div>
     <form onSubmit={sendreview}>
     <div>
-      <form class="max-w-md mx-auto mt-16 p-4 bg-gray-800 bg-opacity-50 shadow rounded">
-        <h2 class="text-white text-2xl font-bold mb-4">Feedback Form</h2>
-        <div class="mb-4" text-black>
-          <label for="email" class="text-white block mb-1 ">
+      <form className="max-w-md mx-auto mt-16 p-4 bg-gray-800 bg-opacity-50 shadow rounded">
+        <h2 className="text-white text-2xl font-bold mb-4">Feedback Form</h2>
+        <div className="mb-4 text-black" >
+          <label for="email" className="text-white block mb-1 ">
             Email
           </label>
           <input required onChange={(e) => setCmail(e.target.value)}
             
             type="email"
             id="email"
-            class=" text-black w-full py-2 px-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className=" text-black w-full py-2 px-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           ></input>
         </div>
         
-        <div class="mb-4">
-          <label class="text-white block mb-1">Rating</label>
-          <div class="flex items-center space-x-2">
+        <div classNames="mb-4">
+          <label className="text-white block mb-1">Rating</label>
+          <div className="flex items-center space-x-2">
             <input required onChange={(e) => setrating(e.target.value)}
               type="radio"
               name="rating"
               id="rating1"
               value="1"
-              class=" text-white focus:outline-none focus:ring-2 focus:ring-red"
+              className=" text-white focus:outline-none focus:ring-2 focus:ring-red"
             ></input>
             <label for="rating1" text-white>1 </label>
             <input required onChange={(e) => setrating(e.target.value)}
@@ -65,7 +65,7 @@ function Review() {
               name="rating"
               id="rating2"
               value="2"
-              class="focus:outline-none focus:ring-2 focus:ring-red"
+              className="focus:outline-none focus:ring-2 focus:ring-red"
             ></input>
             <label for="rating2">2</label>
             <input required onChange={(e) => setrating(e.target.value)}
@@ -73,7 +73,7 @@ function Review() {
               name="rating"
               id="rating3"
               value="3"
-              class="focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="focus:outline-none focus:ring-2 focus:ring-blue-500"
             ></input>
             <label for="rating3">3</label>
             <input required onChange={(e) => setrating(e.target.value)}
