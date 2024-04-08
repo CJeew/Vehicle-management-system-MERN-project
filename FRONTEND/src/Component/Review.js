@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -6,9 +5,9 @@ import "./Home.css";
 import "./Review.js";
 import "./Chome.js";
 
-export default function Review() {
+function Review() {
   
-      const[Cmail, setcmail] = useState("");
+      const[cmail, setCmail] = useState("");
       const[rating, setrating] = useState("");
       const[message, setmessage] = useState("");
       
@@ -18,7 +17,7 @@ export default function Review() {
           //alert of inserted
   
           const newReview = {
-              Cmail,
+              cmail,
               rating,
               message,
               
@@ -42,7 +41,7 @@ export default function Review() {
           <label for="email" class="text-white block mb-1 ">
             Email
           </label>
-          <input required onChange={(e) => setcmail(e.target.value)}
+          <input required onChange={(e) => setCmail(e.target.value)}
             
             type="email"
             id="email"
@@ -113,3 +112,4 @@ export default function Review() {
     </div></form>
   );
 }
+export default Review;

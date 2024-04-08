@@ -35,8 +35,6 @@ const customerSchema = new Schema({
         required : true
     }
 
-    
-    
 })
 
 

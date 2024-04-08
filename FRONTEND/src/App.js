@@ -93,6 +93,21 @@ import ManageItems from "./Component/Inventory/ManageItems";
 import Additems from "./Component/Inventory/Additems";  
 import Updateitem from "./Component/Inventory/Updateitem";
 import Updatepkg from "./Component/Updatepkg";
+import IssuedItems from "./Component/Inventory/Issueditems";
+import IssuedItemsAdditems from "./Component/Inventory/issuedAdditems";
+
+import IssuedEditItems from "./Component/Inventory/issuedUpdateitems";
+import ManageOrders from "./Component/Inventory/manageorders";
+
+import Addorderitems from "./Component/Inventory/addorders";
+import OrderEditItems from "./Component/Inventory/manageorderupdate";
+
+
+
+
+
+
+
 
 
 
@@ -143,6 +158,7 @@ function App() {
           <Route path="/Profile" element={<Profile/>}/>
           <Route path="/Customerlogin" element={<Customerlogin/>}/>
           <Route path="/Cmanager" element={<Cmanager/>}/>
+          
 
 
 
@@ -161,6 +177,12 @@ function App() {
           <Route path="/employeeattendance" element={<EmployeeAttendance/>}/>
           <Route path="/editleaverequest/:id" element={<EditLeaveRequest/>}/>
           <Route path="/leaverequest" element={<LeaveRequest/>}/>
+
+
+
+         
+
+          
           <Route path="/editannouncement/:id" element={<EditAnnouncement/>}/>
           <Route path="/employeeannouncement" element={<EmployeeAnnouncement/>}/>
           
@@ -173,7 +195,15 @@ function App() {
           <Route path="/inventory" element={<Inventory_Menu/>}/>
           <Route path="/manageitems" element={<ManageItems/>}/>
           <Route path="/additems" element={<Additems/>}/>
-          <Route path="/updateitems" element={<Updateitem/>}/>
+          <Route path="/updateitems/:id" element={<Updateitem/>}/>
+          <Route path="/issueditems" element={<IssuedItems/>}/>
+          <Route path="/issuedAdditems" element={<IssuedItemsAdditems/>}/>
+          <Route path="/issuedupdateitems/:id" element={<IssuedEditItems/>}/>
+          <Route path="/managedorders/" element={<ManageOrders/>}/>
+          <Route path="/Addorder/" element={<Addorderitems/>}/>
+          <Route path="/manageorderupdate/:id" element={<OrderEditItems/>}/>
+
+
                     
          
         </Routes>

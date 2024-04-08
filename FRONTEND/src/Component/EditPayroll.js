@@ -52,7 +52,7 @@ export default function EditPayroll(){
         window.location.href = "/EmployeePayroll";
       })
       .catch((err) => {
-        alert(err.message);
+        alert(err.response.data.message);
       });
   }
 
@@ -138,7 +138,7 @@ export default function EditPayroll(){
 
                     setOtpayment(e.target.value);
                   }}
-                />
+                required/>
               </div>
             </div>
 
@@ -157,7 +157,7 @@ export default function EditPayroll(){
 
                     setBonus(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -176,7 +176,7 @@ export default function EditPayroll(){
 
                     setPenaltyamt(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -195,15 +195,15 @@ export default function EditPayroll(){
 
                     setSalary(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
           </div>
 
           <div className="mt-6 flex items-center justify-end gap-x-6">
-        <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
+        <a href="/employeepayroll" type="button" className="text-sm font-semibold leading-6 text-gray-900">
           Cancel
-        </button>
+        </a>
         <button
           type="submit"
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">

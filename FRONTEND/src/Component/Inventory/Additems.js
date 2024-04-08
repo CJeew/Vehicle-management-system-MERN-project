@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link , useNavigate} from 'react-router-dom'
 
 
-
 export default function Additems() {
   const [itemcode, setItemcode] = useState("");
   const [itemname, setItemname] = useState("");
@@ -15,9 +14,7 @@ export default function Additems() {
   const [remark, setRemark] = useState("");
   const [isactive, setIsactive] = useState("");
 
-const navigate =useNavigate()
-
-
+  const navigate = useNavigate()
 
   function sendData(e) {
     e.preventDefault();
@@ -37,8 +34,8 @@ const navigate =useNavigate()
     axios.post("http://localhost:8090/manageparts/add", newAdditems)
       .then(() => {
         alert("Item Added");
-        
-navigate("/ManageItems");
+        navigate("/ManageItems");
+       
       })
       .catch((err) => {
         alert(err);
@@ -169,7 +166,9 @@ navigate("/ManageItems");
       </div>
       <div className="mt-6 flex items-center justify-end gap-x-6">
      
-        <button type="button" className="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+      <button type="button" className="text-sm font-semibold leading-6 text-gray-900" onClick={() => navigate('/manageitems')}>
+          Cancel
+        </button>
         
         <button
       

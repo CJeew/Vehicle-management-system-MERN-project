@@ -52,6 +52,15 @@ router.route("/editannouncement/:id").put(async(req,res) => {
       
     }
 
+    // Check if any required field is empty
+    const requiredFields = ["date", "title", "announcement"];
+    const emptyFields = requiredFields.filter(field => !req.body[field]);
+    
+    if (emptyFields.length > 0) {
+        return res.status(400).send({ message: `Fields cannot be empty: ${emptyFields.join(", ")}` });
+    }
+
+    //------------------
     const update = await Employeeannouncement.findByIdAndUpdate(id, updateAnnouncement)  //updateAnnouncement means upadate panna vendiya data oda object
     .then(() => {
 
