@@ -13,8 +13,6 @@ router.route("/Register").post((req,res)=>{
     const cmail = req.body.cmail;
     const cvnum = req.body.cvnum;
     const cvtype = req.body.cvtype;
-    
-    
 
     const newCustomer = new customer({
         cname,
@@ -23,8 +21,7 @@ router.route("/Register").post((req,res)=>{
         cphone,
         cmail,
         cvnum,
-        cvtype,
-        
+        cvtype
     })
 
     newCustomer.save().then(()=>{

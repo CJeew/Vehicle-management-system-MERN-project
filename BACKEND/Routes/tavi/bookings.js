@@ -21,7 +21,7 @@ router.route("/addBooking").post((req,res)=>{
         lname,
         address,
         phoneNum,
-        eMail,
+        eMail, 
         vNum,
         vType,
         dDate,

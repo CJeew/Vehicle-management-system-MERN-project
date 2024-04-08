@@ -6,7 +6,7 @@ import "./Register.js";
 import "./Chome.js";
 
 function Register() {
-  const[cname, setcname] = useState("");
+    const[cname, setcname] = useState("");
     const[cnic, setcnic] = useState("");
     const[cphone, setcphone] = useState("");
     const[cmail, setcmail] = useState("");
@@ -41,7 +41,7 @@ function Register() {
   return (
     <form onSubmit={sendRegister}>
     <div class="mx-14 mt-10 border-2 border-blue-400 rounded-lg">
-      <div class="text-white mt-10 text-center font-bold">AUTO FIX</div>
+   
       <div class="text-white mt-3 text-center text-4xl font-bold">
         Customer Registration
       </div>

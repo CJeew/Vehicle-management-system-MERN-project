@@ -139,6 +139,7 @@ function App() {
           <Route path="/Profile" element={<Profile/>}/>
           <Route path="/Customerlogin" element={<Customerlogin/>}/>
           <Route path="/Cmanager" element={<Cmanager/>}/>
+          
 
 
 
