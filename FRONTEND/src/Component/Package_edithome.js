@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import axios from "axios";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 export default function Package_edithome() {
   const [packages, setPackages] = useState([]);
@@ -46,7 +46,7 @@ export default function Package_edithome() {
               <h2 className="text-xl font-bold mb-2">{pkg.name}</h2>
               <p className="text-base text-gray-200">{pkg.description}</p>
               <h4 className="text-lg text-red-700 font-bold">RS. {pkg.unitprice.toFixed(2)}</h4>
-              <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4"><FontAwesomeIcon icon="fa-solid fa-pen" />
+              <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4">
                 </button>
             </div>
           ))}
