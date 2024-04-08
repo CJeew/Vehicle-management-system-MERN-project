@@ -92,7 +92,6 @@ import Inventory_Menu from "./Component/Inventory/Inventory_Menu";
 import ManageItems from "./Component/Inventory/ManageItems";
 import Additems from "./Component/Inventory/Additems";  
 import Updateitem from "./Component/Inventory/Updateitem";
-import Updatepkg from "./Component/Updatepkg";
 import IssuedItems from "./Component/Inventory/Issueditems";
 import IssuedItemsAdditems from "./Component/Inventory/issuedAdditems";
 
