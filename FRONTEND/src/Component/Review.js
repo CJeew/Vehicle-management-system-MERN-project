@@ -7,7 +7,7 @@ import "./Chome.js";
 
 function Review() {
   
-      const[Cmail, setCmail] = useState("");
+      const[cmail, setCmail] = useState("");
       const[rating, setrating] = useState("");
       const[message, setmessage] = useState("");
       
@@ -17,7 +17,7 @@ function Review() {
           //alert of inserted
   
           const newReview = {
-              Cmail,
+              cmail,
               rating,
               message,
               
