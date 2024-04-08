@@ -26,7 +26,7 @@ function Register() {
             cmail,
             cpass,
             cvnum,
-            cvtype,
+            cvtype
             
         };
 
