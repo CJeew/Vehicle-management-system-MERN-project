@@ -33,7 +33,7 @@ export default function AddLeaveRequest() {
 
   const authenticate = (authenticated) => {
     if (authenticated) {
-      // Redirect to another page after authentication
+      //Redirect to another page after authentication
       window.location.href = '/leaverequest';
     }
   };
