@@ -19,9 +19,8 @@ function Review() {
           const newReview = {
               cmail,
               rating,
-              message,
-              
-              
+              message
+   
           };
   
           axios.post("http://localhost:8090/reviewAdd", newReview)
@@ -33,6 +32,7 @@ function Review() {
           });
       }
   return (
+  <div>
     <form onSubmit={sendreview}>
     <div>
       <form class="max-w-md mx-auto mt-16 p-4 bg-gray-800 bg-opacity-50 shadow rounded">
@@ -109,7 +109,7 @@ function Review() {
                                   hover:to-amber-700 text-white font-bold py-3 px-10 rounded-lg mr-2 opacity-90 transition duration-300
                                   ease-in-out transform hover:scale-105" value={"Add Review"} onClick={sendreview}>Submit</button>
       </form>
-    </div></form>
+    </div></form></div>
   );
 }
 export default Review;

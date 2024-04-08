@@ -44,9 +44,7 @@ router.route("/updatereview/:id").post(async(req,res)=>{
     const updatereview = {
         cmail,
         rating,
-        message,
-        
-        
+        message
     }
     const update = await reviewAdd.findByIdUpdate(revid, updatereview)  //await - waiting until the before update finish to execute next update
     .then(()=>{  
