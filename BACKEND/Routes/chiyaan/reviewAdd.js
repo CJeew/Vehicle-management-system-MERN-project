@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const reviewAdd = require("../../Models/reviewAdd");
+let reviewAdd = require("../../Models/reviewAdd");
 
 
 
@@ -10,16 +10,11 @@ router.route("/Review").post((req,res)=>{
     const cmail = req.body.cmail;
     const rating = req.body.rating;
     const message = req.body.message; 
-    
-    
-    
-
-    const newReview = new review({
+ 
+    const newReview = new reviewAdd({
         cmail,
         rating,
-        message,
-        
-        
+        message  
     })
 
     newReview.save().then(()=>{
@@ -49,9 +44,7 @@ router.route("/updatereview/:id").post(async(req,res)=>{
     const updatereview = {
         cmail,
         rating,
-        message,
-        
-        
+        message
     }
     const update = await reviewAdd.findByIdUpdate(revid, updatereview)  //await - waiting until the before update finish to execute next update
     .then(()=>{  

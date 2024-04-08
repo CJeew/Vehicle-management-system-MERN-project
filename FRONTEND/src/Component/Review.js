@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -6,9 +5,9 @@ import "./Home.css";
 import "./Review.js";
 import "./Chome.js";
 
-export default function Review() {
+function Review() {
   
-      const[Cmail, setcmail] = useState("");
+      const[cmail, setCmail] = useState("");
       const[rating, setrating] = useState("");
       const[message, setmessage] = useState("");
       
@@ -16,13 +15,12 @@ export default function Review() {
       function sendreview(e){
           e.preventDefault();
           //alert of inserted
-  
+
           const newReview = {
-              Cmail,
+              cmail,
               rating,
-              message,
-              
-              
+              message
+   
           };
   
           axios.post("http://localhost:8090/reviewAdd/Review", newReview)
@@ -34,31 +32,32 @@ export default function Review() {
           });
       }
   return (
+  <div>
     <form onSubmit={sendreview}>
     <div>
-      <form class="max-w-md mx-auto mt-16 p-4 bg-gray-800 bg-opacity-50 shadow rounded">
-        <h2 class="text-white text-2xl font-bold mb-4">Feedback Form</h2>
-        <div class="mb-4" text-black>
-          <label for="email" class="text-white block mb-1 ">
+      <form className="max-w-md mx-auto mt-16 p-4 bg-gray-800 bg-opacity-50 shadow rounded">
+        <h2 className="text-white text-2xl font-bold mb-4">Feedback Form</h2>
+        <div className="mb-4 text-black" >
+          <label for="email" className="text-white block mb-1 ">
             Email
           </label>
-          <input required onChange={(e) => setcmail(e.target.value)}
+          <input required onChange={(e) => setCmail(e.target.value)}
             
             type="email"
             id="email"
-            class=" text-black w-full py-2 px-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className=" text-black w-full py-2 px-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           ></input>
         </div>
         
-        <div class="mb-4">
-          <label class="text-white block mb-1">Rating</label>
-          <div class="flex items-center space-x-2">
+        <div classNames="mb-4">
+          <label className="text-white block mb-1">Rating</label>
+          <div className="flex items-center space-x-2">
             <input required onChange={(e) => setrating(e.target.value)}
               type="radio"
               name="rating"
               id="rating1"
               value="1"
-              class=" text-white focus:outline-none focus:ring-2 focus:ring-red"
+              className=" text-white focus:outline-none focus:ring-2 focus:ring-red"
             ></input>
             <label for="rating1" text-white>1 </label>
             <input required onChange={(e) => setrating(e.target.value)}
@@ -66,7 +65,7 @@ export default function Review() {
               name="rating"
               id="rating2"
               value="2"
-              class="focus:outline-none focus:ring-2 focus:ring-red"
+              className="focus:outline-none focus:ring-2 focus:ring-red"
             ></input>
             <label for="rating2">2</label>
             <input required onChange={(e) => setrating(e.target.value)}
@@ -74,7 +73,7 @@ export default function Review() {
               name="rating"
               id="rating3"
               value="3"
-              class="focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="focus:outline-none focus:ring-2 focus:ring-blue-500"
             ></input>
             <label for="rating3">3</label>
             <input required onChange={(e) => setrating(e.target.value)}
@@ -110,6 +109,7 @@ export default function Review() {
                                   hover:to-amber-700 text-white font-bold py-3 px-10 rounded-lg mr-2 opacity-90 transition duration-300
                                   ease-in-out transform hover:scale-105" value={"Add Review"} onClick={sendreview}>Submit</button>
       </form>
-    </div></form>
+    </div></form></div>
   );
 }
+export default Review;
