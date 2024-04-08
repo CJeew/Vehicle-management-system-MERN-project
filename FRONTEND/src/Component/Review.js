@@ -24,7 +24,7 @@ function Review() {
               
           };
   
-          axios.post("http://localhost:8090/Review", newReview)
+          axios.post("http://localhost:8090/reviewAdd/Review", newReview)
           .then(()=>{
               alert("Review Added");
               window.location.reload();
