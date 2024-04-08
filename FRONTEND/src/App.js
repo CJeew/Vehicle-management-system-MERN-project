@@ -51,7 +51,9 @@ import PkageHome from "./Component/Package_Homepage";
 import Viewpkg from "./Component/View_package";
 import Viewpkg2 from "./Component/View_package2";
 //import Edit package
-//import Editpkg from "./Component/Edit_package";
+import Pkgedithome from "./Component/Package_edithome";
+
+import Editpkg from "./Component/Edit_package";
 //import Delete package
 import Deletepkg from "./Component/Delete_package"; 
 
@@ -131,13 +133,14 @@ function App() {
           
       {/* <Route path="/customer" element={<Customerhome/>}/> */}
 
-                  {/*service and record*/}
+                  {/* Dulanka ---service and record */}
           <Route path="/addpkg" element={<Addpkg/>}/>
           <Route path="/servicehome" element={<Servicehome/>}/>
           <Route path="/PkageHome" element={<PkageHome/>}/>
           <Route path="/viewpkg2" element={<Viewpkg2/>}/>
           <Route path="/viewpkg" element={<Viewpkg/>}/>
-          {/*<Route path="/editpkg" element={<Editpkg/>}/>
+          <Route path="/Pkgedithome" element={<Pkgedithome/>}/>
+          <Route path="/editpkg/:id" element={<Editpkg/>}/>
          
 
           {/*---------Tavini-------------Booking------------------------------*/}
