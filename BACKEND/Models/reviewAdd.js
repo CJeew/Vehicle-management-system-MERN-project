@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const ReviewSchema = new Schema({
 
-    Cmail : {
+    cmail : {
         type : String,
         required : true
     },
