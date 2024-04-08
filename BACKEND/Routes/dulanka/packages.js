@@ -69,7 +69,7 @@ router.route("/update/:id").put(async (req, res) => {
     const resp = await Package.findByIdAndUpdate(packageId, updatePackage);
 
     if (!resp) {
-      res.status(500).send({ status: "Recode with this id not found" });//handel error
+      res.status(500).send({ status: "package with this id not found" });//handeled error
       return;
     }
   } catch (err) {
