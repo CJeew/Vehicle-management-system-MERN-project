@@ -18,24 +18,24 @@ export default function BookingPageCustomerLogin() {
       <ul class="flex mx-10 mb-10">
         <li><a href="#" class="ms-10 me-5 block max-w-sm p-6 bg-black border border-black-200 rounded-lg shadow-md hover:bg-black-100 dark:bg-black-800 dark:border-black-700 dark:hover:bg-black-700 opacity-80 transition duration-300
                                   ease-in-out transform hover:scale-105">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Upcoming Appointments</h5>
-        <p class="font-normal text-gray-700 dark:text-gray-400">Detailed rundown of your forthcoming appointments, encompassing all relevant specifics and scheduling particulars.</p></a></li>
+        <h5 class="mb-2 text-3xl font-bold tracking-tight text-white">Service History</h5><br></br>
+        <p class="font-normal text-gray-700 dark:text-gray-400">Access to an exhaustive record of your completed appointments, complete with comprehensive details and relevant insights.</p></a></li>
         
         <li><a href="#" class="ms-20 me-5 block max-w-sm p-6 bg-black border border-black-200 rounded-lg shadow-md hover:bg-black-100 dark:bg-black-800 dark:border-black-700 dark:hover:bg-black-700 opacity-80 transition duration-300
                                   ease-in-out transform hover:scale-105">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Completed Appointments</h5>
-        <p class="font-normal text-gray-700 dark:text-gray-400">Access to an exhaustive record of your completed appointments, complete with comprehensive details and relevant insights.</p></a></li>
+        <h5 class="mb-2 text-3xl font-bold tracking-tight text-white">Business Hours</h5><br></br>
+        <p class="font-normal text-gray-700 dark:text-gray-400">Check out our business hours and plan your visit accordingly! We're here to serve you during our scheduled times</p></a></li>
 
-        <li><a href="#" class="ms-20 block max-w-sm p-6 bg-black border border-black-200 rounded-lg shadow-md hover:bg-black-100 dark:bg-black-800 dark:border-black-700 dark:hover:bg-black-700 opacity-80 transition duration-300
+        <li><a href="/Review" class="ms-20 block max-w-sm p-6 bg-black border border-black-200 rounded-lg shadow-md hover:bg-black-100 dark:bg-black-800 dark:border-black-700 dark:hover:bg-black-700 opacity-80 transition duration-300
                                   ease-in-out transform hover:scale-105">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Cancelled Appointments</h5>
-        <p class="font-normal text-gray-700 dark:text-gray-400">Summary of your cancelled appointments, containing detailed information and any relevant insights.</p></a></li>
+        <h5 class="mb-2 text-3xl font-bold tracking-tight text-white">Feedback and Ratings</h5><br></br>
+        <p class="font-normal text-gray-700 dark:text-gray-400">Your feedback fuels our growth! We'd love to hear about your experience. Rate us and let us know how we're doing! </p></a></li>
       </ul>
 
       <div class="mt-10 mb-5 flex justify-center">
-                    <button type="submit" class="mt-10 w-56 h-12 bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-900 hover:via-red-800 
+                    <button type="submit" class="mt-10 w-56 h-16 bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-900 hover:via-red-800 
                                   hover:to-red-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
-                                  ease-in-out transform hover:scale-105"><a href="/addBooking">Book Now</a></button>
+                                  ease-in-out transform hover:scale-105 text-xl"><a href="/addBooking">Book Now</a></button>
                 </div>
             </div>
       </div>
