@@ -107,8 +107,8 @@ import OrderEditItems from "./Component/Inventory/manageorderupdate";
 
 
 
-
-
+//Financial
+import Transaction from "./Component/Financial/TransactionView";
 
 
 
@@ -208,6 +208,12 @@ function App() {
           <Route path="/managedorders/" element={<ManageOrders/>}/>
           <Route path="/Addorder/" element={<Addorderitems/>}/>
           <Route path="/manageorderupdate/:id" element={<OrderEditItems/>}/>
+
+
+
+
+          {/* ----------Shajeeh---------- */}
+          <Route path="/Finance" element={<Transaction/>}/>
 
 
                     
