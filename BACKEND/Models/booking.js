@@ -46,7 +46,7 @@ const bookingSchema = new Schema({
     },
 
     serviceBox : {
-        type : String,
+        type : [String],
         required : true
     }
 })

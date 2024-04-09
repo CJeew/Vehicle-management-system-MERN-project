@@ -17,6 +17,8 @@ import Review from "./Component/Review";
 import Profile from "./Component/Profile";
 import Customerlogin from "./Component/Customerlogin";
 import Cmanager from "./Component/Cmanager";
+import CustomerList from "./Component/CustomerList";
+import CustomerReview from "./Component/CustomerReview";
 
 
 
@@ -33,7 +35,6 @@ import BookingPage from "./Component/BookingPage"; // import Booking Page
 import BookingPageCustomerLogin from "./Component/BookingPageCustomerLogin";  // import Booking Customer Login Page
 import BookingPageManagerLogin from "./Component/BookingPageManagerLogin";   // import Booking Manager Login Page
 import AddBooking from "./Component/AddBooking";
-import BookingList from "./Component/BookingList";
 import BookRead from "./Component/BookRead";
 
 
@@ -147,7 +148,6 @@ function App() {
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
           <Route path="/addBooking" element={<AddBooking/>}/>
-          <Route path="/bookingList" element={<BookingList/>}/>
           <Route path="/bookRead" element={<BookRead/>}/>
 
 
@@ -160,6 +160,8 @@ function App() {
           <Route path="/Profile" element={<Profile/>}/>
           <Route path="/Customerlogin" element={<Customerlogin/>}/>
           <Route path="/Cmanager" element={<Cmanager/>}/>
+          <Route path="/CustomerList" element={<CustomerList/>}/>
+          <Route path="/CustomerReview" element={<CustomerReview/>}/>
           
 
 

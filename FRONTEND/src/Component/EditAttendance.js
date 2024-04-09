@@ -51,7 +51,7 @@ export default function AddAttendance(){
     return(
 
       <form onSubmit={updateAttendance}>
-        <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
+        <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5 mx-auto w-2/3">
       <center><h1>Update Attendance</h1></center>
       <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
         <div className="sm:col-span-6">
