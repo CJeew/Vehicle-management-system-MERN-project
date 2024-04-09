@@ -73,7 +73,7 @@ export default function AddStaff() {
             alert("Staff Added")
             window.location.reload();
         }).catch((err)=>{
-            alert(err)
+            alert(err.response.data.message)
         })
 
     }

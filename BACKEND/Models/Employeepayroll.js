@@ -14,6 +14,11 @@ const payrollSchema = new Schema({
         required: true
     },
 
+    date:{
+        type: String,
+        required: true
+    },
+
     otstatus : {
         type : String,
         required: true
