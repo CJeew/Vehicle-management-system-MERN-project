@@ -9,7 +9,8 @@ export default function BookRead() {
             axios.get("http://localhost:8090/booking/")
                 .then((res) => {
                     console.log("Response from server:", res.data); 
-                    setBooking(res.data);
+                    const reverseList = res.data.reverse();
+                    setBooking(reverseList);
                 })
                 .catch((err) => {
                     console.error("Error fetching data:", err);
@@ -19,13 +20,6 @@ export default function BookRead() {
 
         getBooking();
     }, []);
-
-    // Function to handle deletion of a payroll
-  const onDeleteClick = async (bookId) => {
-    await axios.delete(`http://localhost:8090/booking/delete/${bookId}`);
-    alert('Booking Deleted Successfully');
-    window.location.reload(); // Refresh page after successful deletion
-  }
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -54,8 +48,6 @@ return (
                     <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Date</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Time</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Services</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Function</th>
-                    
                 </tr>
             </thead>
             <tbody>
@@ -70,19 +62,6 @@ return (
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(booking.dDate)}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.tTime}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.serviceBox}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <div class="flex items-center justify-start gap-2">
-
-                                {/*Accept booking button */}
-                                <button href="" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    Accept
-                                </button>
-                                {/* Reject booking button  */}
-                                <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    Reject
-                                </button>
-                            </div>
-                            </td>
                     </tr>
                 ))}
             </tbody>
