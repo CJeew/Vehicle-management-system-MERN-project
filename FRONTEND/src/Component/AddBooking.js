@@ -30,30 +30,18 @@ function AddBooking(){
             dDate,
             tTime,
             serviceBox
-        };
+            };
+        
 
-        const currentDate = new Date;                //get the current date
-        const selectedDate  = new Date(dDate);       // Parse the selected date
-
-        if(selectedDate <= currentDate){
-            alert("Please select a future date.");
-            return;
-        }
-
-        // Validate phone number
-        if (!/^[\d]{10}$/.test(phoneNum)) {         //checking 10 digits
-            alert("Please enter 10 digit valid phone number 07XXXXXXXX.");
-            return;
-        }
-
-        axios.post("http://localhost:8090/booking/addBooking", newBooking)
-        .then(()=>{
-            alert("Booking Added");
-            window.location.reload();
-        }).catch((err)=>{
-            alert(err);
-        });
-
+        
+        
+            axios.post("http://localhost:8090/booking/addBooking", newBooking)
+            .then(()=>{
+                alert("Booking Added");
+                window.location.reload();
+            }).catch((err)=>{
+                alert(err);
+            });
         }
             //checkbox function
             function handleCheckboxChange(e){
@@ -87,13 +75,13 @@ function AddBooking(){
                             </tr> 
                             <tr>   
                                 <td><label for="address" class="block text-sm font-medium text-black my-4">Address</label></td>
-                                <td><input type="textarea" id="address" name="address" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: Kottawa" required onChange={(e) => setAddress(e.target.value)}></input></td>
+                                <td><input type="textarea" id="address" name="address" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="Kottawa" required onChange={(e) => setAddress(e.target.value)}></input></td>
                                 <td><label for="phone" class="block text-sm font-medium text-black my-4">Phone Number</label></td>
-                                <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: 07XXXXXXXX" required onChange={(e) => setPhoneNum(e.target.value)}></input></td>
+                                <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="07XXXXXXXX" required onChange={(e) => setPhoneNum(e.target.value)}></input></td>
                             </tr>
                             <tr>
                                 <td><label for="email" class="block text-sm font-medium text-black my-4">Email</label></td>
-                                <td><input type="email" id="email" name="email" class="mt-1 p-2 block border-gray-300 rounded-md text-black me-10" placeholder="ex: abcd123@gmail.com" required onChange={(e) => setEmail(e.target.value)}></input></td>
+                                <td><input type="email" id="email" name="email" class="mt-1 p-2 block border-gray-300 rounded-md text-black me-10" placeholder="abcd123@gmail.com" required onChange={(e) => setEmail(e.target.value)}></input></td>
                             </tr>
 
                             <br></br>
@@ -101,7 +89,7 @@ function AddBooking(){
 
                             <tr>
                                 <td><label for="vehicle-number" class="block text-sm font-medium text-black me-5 my-4" >Vehicle Number</label></td>
-                                <td><input type="text" id="vehicle-number" name="vehicle-number" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: AB-XXXX"  required onChange={(e) => setVNum(e.target.value)}></input></td>
+                                <td><input type="text" id="vehicle-number" name="vehicle-number" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="AB-XXXX"  required onChange={(e) => setVNum(e.target.value)}></input></td>
                                 <td><label for="vehicle-type" class="block text-sm font-medium text-black me-5 my-4">Vehicle Type</label></td> 
                                 <td><select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" onChange={(e) => setvType(e.target.value)}>
                                         <option value="">Select Vehicle Type</option> {/* Add an empty option for default selection */}
