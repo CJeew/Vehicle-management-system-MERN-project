@@ -16,7 +16,7 @@ export default function BookingPageCustomerLogin() {
       {/*<img src={imgSrc3} alt="Vacuum Image" className="absolute top-4 right-10 mx-60 rounded-2xl" style={{ width: "400px", height: "600px" }}/>*/}
 
       <ul class="flex mx-10 mb-10">
-        <li><a href="#" class="ms-10 me-5 block max-w-sm p-6 bg-black border border-black-200 rounded-lg shadow-md hover:bg-black-100 dark:bg-black-800 dark:border-black-700 dark:hover:bg-black-700 opacity-80 transition duration-300
+        <li><a href="/serviceHistory" class="ms-10 me-5 block max-w-sm p-6 bg-black border border-black-200 rounded-lg shadow-md hover:bg-black-100 dark:bg-black-800 dark:border-black-700 dark:hover:bg-black-700 opacity-80 transition duration-300
                                   ease-in-out transform hover:scale-105">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Upcoming Appointments</h5>
         <p class="font-normal text-gray-700 dark:text-gray-400">Detailed rundown of your forthcoming appointments, encompassing all relevant specifics and scheduling particulars.</p></a></li>

@@ -37,6 +37,7 @@ import BookingPageManagerLogin from "./Component/BookingPageManagerLogin";   // 
 import AddBooking from "./Component/AddBooking";
 import BookingList from "./Component/BookingList";
 import BookRead from "./Component/BookRead";
+import ServiceHistory from "./Component/ServiceHistory";
 
 
 import Home from "./Component/home";
@@ -131,7 +132,7 @@ function App() {
           <Route path="/display" element={<Display/>}/> 
           <Route path="/delete" element={<Delete/>}/>
           {/* <Route path="/update" element={<Update/>}/> */}
-          <Route path="/booking" element={<BookingPage/>}/>
+         
           
       {/* <Route path="/customer" element={<Customerhome/>}/> */}
 
@@ -146,11 +147,13 @@ function App() {
          
 
           {/*---------Tavini-------------Booking------------------------------*/}
+          <Route path="/booking" element={<BookingPage/>}/>
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
           <Route path="/addBooking" element={<AddBooking/>}/>
           <Route path="/bookingList" element={<BookingList/>}/>
           <Route path="/bookRead" element={<BookRead/>}/>
+          <Route path="/serviceHistory" element={<ServiceHistory/>}/>
 
 
           {/* <Route path="/test" element={<Test/>}/> */}

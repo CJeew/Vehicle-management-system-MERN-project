@@ -93,12 +93,12 @@ function AddBooking(){
                                 <td><label for="vehicle-type" class="block text-sm font-medium text-black me-5 my-4">Vehicle Type</label></td> 
                                 <td><select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" onChange={(e) => setvType(e.target.value)}>
                                         <option value="">Select Vehicle Type</option> {/* Add an empty option for default selection */}
-                                        <option value="car">Car</option>
-                                        <option value="van">Van</option>
-                                        <option value="cab">Cab</option>
-                                        <option value="jeep">Jeep</option>
-                                        <option value="motorbike">Motor Bike</option>
-                                        <option value="minilorry">Mini Lorry</option>
+                                        <option value="Car">Car</option>
+                                        <option value="Van">Van</option>
+                                        <option value="Cab">Cab</option>
+                                        <option value="Jeep">Jeep</option>
+                                        <option value="Motorbike">Motor Bike</option>
+                                        <option value="Minilorry">Mini Lorry</option>
                                     </select>
 
                                     {/* <select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" onChange={(e) => setVType(e.target.value)}>
