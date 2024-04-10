@@ -49,8 +49,7 @@ export default function BookRead() {
             day: 'numeric'
         });
     };
-
-    
+   
 
 return (
     <div>
@@ -79,7 +78,7 @@ return (
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.eMail}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.vNum}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.vType}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(booking.dDate)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-red-500">{formatDate(booking.dDate)}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.tTime}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.serviceBox}</td>
                     </tr>
@@ -87,6 +86,5 @@ return (
             </tbody>
         </table>
     </div>
-
 );
 }
