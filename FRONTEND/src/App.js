@@ -7,8 +7,12 @@ import Add_Supplier from "./Component/Add_Supplier";
 import Delete from "./Component/Delete";
 // import Display from "./Components/Display";
 import Display from "./Component/Display";
-//import Update from "./Component/Update";
+
+//Jobs
 import Create_Job from "./Component/job";
+import ViewJobs from "./Component/ViewJobs";
+import JobDetails from "./Component/jobDetails";
+
 
 //Customer
 import Chome from "./Component/Chome";
@@ -69,9 +73,14 @@ function App() {
           {/* <Route path="" */}
           <Route path="/" element={  <Home/>}/>
           <Route path="/add" element={<Add_Supplier />} />
-          <Route path="/createjob" element={<Create_Job />} />
           <Route path="/display" element={<Display/>}/> 
           <Route path="/delete" element={<Delete/>}/>
+
+          <Route path="/createjob" element={<Create_Job />} />
+          <Route path="/viewjobs" element={<ViewJobs />} />
+          <Route path="/job/:jobNumber" element={<JobDetails />} />
+
+
           {/* <Route path="/update" element={<Update/>}/> */}
           <Route path="/booking" element={<BookingPage/>}/>
           {/* <Route path="/customer" element={<Customerhome/>}/> */}
