@@ -21,7 +21,7 @@ export default function Transaction() {
 
   const onDeleteClick = async (itemId) => {
     await axios.delete(`http://localhost:8090/finance/delete/${itemId}`);
-    alert('Item Deleted Successfully');
+    alert('Transaction Deleted Successfully');
     window.location.reload();
   }
   const ComponentsRef= useRef();
@@ -35,8 +35,8 @@ export default function Transaction() {
     <div className="h-screen w-screen bg-gray flex justify-center items-center flex-wrap relative">
       <div className="absolute top-8 left-8">
       
-        <a href="/additems" className="inline-block bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded">
-          +Add Items
+        <a href="/AddTransaction" className="inline-block bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded">
+          +Add Transaction
         </a>
       </div>
       <div className="absolute top-8 right-8">
