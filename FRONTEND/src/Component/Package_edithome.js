@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 
-import 'primeicons/primeicons.css';
-        
-
+import "primeicons/primeicons.css";
 
 export default function Package_edithome() {
   const [packages, setPackages] = useState([]);
@@ -24,7 +22,10 @@ export default function Package_edithome() {
   }, []);
   return (
     <div>
-        <h2 className="text-3xl mb-6 flex justify-center mt-8 font-bold text-white"> Interior</h2>
+      <h2 className="text-3xl mb-6 flex justify-center mt-8 font-bold text-white">
+        {" "}
+        Interior
+      </h2>
       <div className="flex justify-center flex-col items-center w-full  ">
         <div className="grid grid-cols-2 gap-8 bg-gray-200 bg-opacity-70 rounded-lg p-14 mt-16 mx-5 w-full max-w-7xl">
           {packages
@@ -39,6 +40,7 @@ export default function Package_edithome() {
                 <h4 className="text-lg text-red-700 font-bold">
                   RS. {pkg.unitprice.toFixed(2)}
                 </h4>
+                <div className="flex justify-center items-center gap-4">
                 <a href={`/editpkg/${pkg._id}`}>
                   <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4">
                     <i
@@ -47,11 +49,21 @@ export default function Package_edithome() {
                     ></i>
                   </button>
                 </a>
+                <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4">
+                <i
+                      className="pi pi-pen-to-square"
+                      style={{ fontSize: "1rem" }}
+                    ></i>
+                </button>
+                </div>
               </div>
             ))}
         </div>
 
-        <h2 className="text-3xl mb-6 mt-16 flex justify-left mt-8 font-bold text-white"> Exterior</h2>
+        <h2 className="text-3xl mb-6 mt-16 flex justify-left mt-8 font-bold text-white">
+          {" "}
+          Exterior
+        </h2>
         <div className="grid grid-cols-2 gap-8 bg-gray-200 bg-opacity-70 rounded-lg p-14 mt-10 mx-5 w-full max-w-7xl">
           {packages
             .filter((pkg) => pkg.category === "Exterior")
@@ -65,6 +77,7 @@ export default function Package_edithome() {
                 <h4 className="text-lg text-red-700 font-bold ">
                   RS. {pkg.unitprice.toFixed(2)}
                 </h4>
+                <div className="flex justify-center items-center gap-4">
                 <a href={`/editpkg/${pkg._id}`}>
                   <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4">
                     <i
@@ -73,6 +86,13 @@ export default function Package_edithome() {
                     ></i>
                   </button>
                 </a>
+                <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4">
+                <i
+                      className="pi pi-pen-to-square"
+                      style={{ fontSize: "1rem" }}
+                    ></i>
+                </button>
+                </div>
               </div>
             ))}
         </div>
