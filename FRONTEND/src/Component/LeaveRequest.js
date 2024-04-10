@@ -99,7 +99,7 @@ export default function LeaveRequest() {
                       Edit
                     </a>
                     {/* Delete leave button  */}
-                    <button onClick={() => onDeleteClick(leaverequest._id)} class="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    <button onClick={() => onDeleteClick(leaverequest._id)} class="bg-transparent hover:bg-red-600 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                       Delete
                     </button>
                   </div>

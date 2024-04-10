@@ -121,7 +121,7 @@ export default function EmployeeAnnouncement() {
                       View
                     </button>
                     {/* Delete announcement button */}
-                    <button onClick={() => onDeleteClick(announcement._id)} className="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    <button onClick={() => onDeleteClick(announcement._id)} className="bg-transparent hover:bg-red-600 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                       Delete
                     </button>
                   </div>
