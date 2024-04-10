@@ -20,10 +20,20 @@ export default function Package_edithome() {
     }
     getPackages();
   }, []);
+  function DeletePackage(id) {
+    axios
+      .delete(`http://localhost:8090/svc-packages/delete/${id}`)
+      .then((res) => {
+        console.log("Response from server:", res.data);
+        setPackages(packages.filter((pkg) => pkg._id !== id));
+      })
+      .catch((err) => {
+        console.error("Error fetching data:", err);
+      });
+  }
   return (
     <div>
       <h2 className="text-3xl mb-6 flex justify-center mt-8 font-bold text-white">
-        {" "}
         Interior
       </h2>
       <div className="flex justify-center flex-col items-center w-full  ">
@@ -41,27 +51,26 @@ export default function Package_edithome() {
                   RS. {pkg.unitprice.toFixed(2)}
                 </h4>
                 <div className="flex justify-center items-center gap-4">
-                <a href={`/editpkg/${pkg._id}`}>
-                  <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4">
+                  <a href={`/editpkg/${pkg._id}`}>
+                    <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4">
+                      <i
+                        className="pi pi-pen-to-square"
+                        style={{ fontSize: "1rem" }}
+                      ></i>
+                    </button>
+                  </a>
+                  <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4" onClick={() => DeletePackage(pkg._id)}>  
                     <i
-                      className="pi pi-pen-to-square"
+                      className="pi pi-trash"
                       style={{ fontSize: "1rem" }}
                     ></i>
                   </button>
-                </a>
-                <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4">
-                <i
-                      className="pi pi-pen-to-square"
-                      style={{ fontSize: "1rem" }}
-                    ></i>
-                </button>
                 </div>
               </div>
             ))}
         </div>
 
         <h2 className="text-3xl mb-6 mt-16 flex justify-left mt-8 font-bold text-white">
-          {" "}
           Exterior
         </h2>
         <div className="grid grid-cols-2 gap-8 bg-gray-200 bg-opacity-70 rounded-lg p-14 mt-10 mx-5 w-full max-w-7xl">
@@ -78,26 +87,25 @@ export default function Package_edithome() {
                   RS. {pkg.unitprice.toFixed(2)}
                 </h4>
                 <div className="flex justify-center items-center gap-4">
-                <a href={`/editpkg/${pkg._id}`}>
-                  <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4">
+                  <a href={`/editpkg/${pkg._id}`}>
+                    <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4">
+                      <i
+                        className="pi pi-pen-to-square"
+                        style={{ fontSize: "1rem" }}
+                      ></i>
+                    </button>
+                  </a>
+                  <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4" onClick={() => DeletePackage(pkg._id)}>  
                     <i
-                      className="pi pi-pen-to-square"
+                      className="pi pi-trash"
                       style={{ fontSize: "1rem" }}
                     ></i>
                   </button>
-                </a>
-                <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4">
-                <i
-                      className="pi pi-pen-to-square"
-                      style={{ fontSize: "1rem" }}
-                    ></i>
-                </button>
                 </div>
               </div>
             ))}
         </div>
       </div>
     </div>
-  
   );
 }

@@ -27,6 +27,7 @@ function Edit_package() {
       .put(`http://localhost:8090/svc-packages/update/${id}`, editPackage)
       .then(() => {
         alert("Package updated");
+        window.location.href = "/viewpkg";
       })
       .catch((err) => {
         alert(err.message); //error message
@@ -90,7 +91,7 @@ function Edit_package() {
           <label className="block mb-2 text-sm font-bold text-gray-700">
             Category
           </label>
-          <select className="px-3 py-1 rounded-lg border border-black-400 w-full text-black" required
+          <select className="px-3 py-1 rounded-lg border border-black-400 w-full text-black" required value={category}
             onChange={(e) => setCategory(e.target.value)}>
             <option selected disabled value="">Select Category</option>
             <option value="Interior">Interior</option>
@@ -103,7 +104,7 @@ function Edit_package() {
               className="btn-indigo bg-gradient-to-r from-red-400 to-red-500 px-2 py-2 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] mt-4"
               type="submit"
             >
-              Add Package
+               update
             </button>
           </div>
         </form>
