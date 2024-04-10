@@ -32,9 +32,6 @@ function AddBooking(){
             serviceBox
             };
         
-
-        
-        
             axios.post("http://localhost:8090/booking/addBooking", newBooking)
             .then(()=>{
                 alert("Booking Added");
@@ -47,7 +44,7 @@ function AddBooking(){
             function handleCheckboxChange(e){
             const value = e.target.value;
             const checked = e.target.checked;
-                
+
 
             //update service type state based on checkbox value
             if(checked){
@@ -55,7 +52,7 @@ function AddBooking(){
             }else{
                 setService(prevState => prevState.filter(item => item !== value));   //Remove from Array
             }
-            
+
         }
     
     return(
