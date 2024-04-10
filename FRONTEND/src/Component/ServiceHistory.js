@@ -4,6 +4,18 @@ import axios from "axios";
 export default function BookRead() {
     const [bookings, setBooking] = useState([]);
 
+    const getBooking = () => {
+        axios.get("http://localhost:8090/booking/")
+            .then((res) => {
+                const filteredBookings = filterPastBookings(res.data);
+                setBooking(filteredBookings);
+            })
+            .catch((err) => {
+                console.error("Error fetching data:", err);
+                alert(err.message);
+            });
+    };
+    
     useEffect(() => {
         function getBooking() {
             axios.get("http://localhost:8090/booking/")
@@ -21,17 +33,7 @@ export default function BookRead() {
         getBooking();
     }, []);
 
-    const getBooking = () => {
-        axios.get("http://localhost:8090/booking/")
-            .then((res) => {
-                const filteredBookings = filterPastBookings(res.data);
-                setBooking(filteredBookings);
-            })
-            .catch((err) => {
-                console.error("Error fetching data:", err);
-                alert(err.message);
-            });
-    };
+    
 
     const filterPastBookings = (bookings) => {
         const currentDate = new Date();
