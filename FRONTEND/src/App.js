@@ -131,7 +131,7 @@ function App() {
           <Route path="/display" element={<Display/>}/> 
           <Route path="/delete" element={<Delete/>}/>
           {/* <Route path="/update" element={<Update/>}/> */}
-          <Route path="/booking" element={<BookingPage/>}/>
+         
           
       {/* <Route path="/customer" element={<Customerhome/>}/> */}
 
@@ -146,6 +146,7 @@ function App() {
          
 
           {/*---------Tavini-------------Booking------------------------------*/}
+          <Route path="/booking" element={<BookingPage/>}/>
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
           <Route path="/addBooking" element={<AddBooking/>}/>
