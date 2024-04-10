@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./BookingPage.css";
 import axios from "axios";
-
 function AddBooking(){
     const[fname, setFname] = useState("");
     const[lname, setLname] = useState("");
@@ -13,8 +12,6 @@ function AddBooking(){
     const[dDate, setDate] = useState("");
     const[tTime, setTime] = useState("");
     const[serviceBox, setService] = useState("");
-
-
     //alert of inserted
     function sendBook(e){
         e.preventDefault();
@@ -30,31 +27,44 @@ function AddBooking(){
             dDate,
             tTime,
             serviceBox
-            };
-        
-            axios.post("http://localhost:8090/booking/addBooking", newBooking)
-            .then(()=>{
-                alert("Booking Added");
-                window.location.reload();
-            }).catch((err)=>{
-                alert(err);
-            });
+        };
+
+        const currentDate = new Date;                //get the current date
+        const selectedDate  = new Date(dDate);       // Parse the selected date
+
+        if(selectedDate <= currentDate){
+            alert("Please select a future date.");
+            return;
+        }
+
+        // Validate phone number
+        if (!/^[\d]{10}$/.test(phoneNum)) {         //checking 10 digits
+            alert("Please enter 10 digit valid phone number 07XXXXXXXX.");
+            return;
+        }
+
+        axios.post("http://localhost:8090/booking/addBooking", newBooking)
+        .then(()=>{
+            alert("Booking Added");
+            window.location.reload();
+        }).catch((err)=>{
+            alert(err);
+        });
+
         }
             //checkbox function
             function handleCheckboxChange(e){
             const value = e.target.value;
             const checked = e.target.checked;
-
-
+                
             //update service type state based on checkbox value
             if(checked){
                 setService(prevState =>[...prevState,value]);   //Add to Array
             }else{
                 setService(prevState => prevState.filter(item => item !== value));   //Remove from Array
             }
-
+            
         }
-    
     return(
     <div>
       <div className="relative">
@@ -72,13 +82,13 @@ function AddBooking(){
                             </tr> 
                             <tr>   
                                 <td><label for="address" class="block text-sm font-medium text-black my-4">Address</label></td>
-                                <td><input type="textarea" id="address" name="address" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="Kottawa" required onChange={(e) => setAddress(e.target.value)}></input></td>
+                                <td><input type="textarea" id="address" name="address" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: Kottawa" required onChange={(e) => setAddress(e.target.value)}></input></td>
                                 <td><label for="phone" class="block text-sm font-medium text-black my-4">Phone Number</label></td>
-                                <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="07XXXXXXXX" required onChange={(e) => setPhoneNum(e.target.value)}></input></td>
+                                <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: 07XXXXXXXX" required onChange={(e) => setPhoneNum(e.target.value)}></input></td>
                             </tr>
                             <tr>
                                 <td><label for="email" class="block text-sm font-medium text-black my-4">Email</label></td>
-                                <td><input type="email" id="email" name="email" class="mt-1 p-2 block border-gray-300 rounded-md text-black me-10" placeholder="abcd123@gmail.com" required onChange={(e) => setEmail(e.target.value)}></input></td>
+                                <td><input type="email" id="email" name="email" class="mt-1 p-2 block border-gray-300 rounded-md text-black me-10" placeholder="ex: abcd123@gmail.com" required onChange={(e) => setEmail(e.target.value)}></input></td>
                             </tr>
 
                             <br></br>
@@ -86,7 +96,7 @@ function AddBooking(){
 
                             <tr>
                                 <td><label for="vehicle-number" class="block text-sm font-medium text-black me-5 my-4" >Vehicle Number</label></td>
-                                <td><input type="text" id="vehicle-number" name="vehicle-number" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="AB-XXXX"  required onChange={(e) => setVNum(e.target.value)}></input></td>
+                                <td><input type="text" id="vehicle-number" name="vehicle-number" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: AB-XXXX"  required onChange={(e) => setVNum(e.target.value)}></input></td>
                                 <td><label for="vehicle-type" class="block text-sm font-medium text-black me-5 my-4">Vehicle Type</label></td> 
                                 <td><select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" onChange={(e) => setvType(e.target.value)}>
                                         <option value="">Select Vehicle Type</option> {/* Add an empty option for default selection */}
@@ -97,12 +107,6 @@ function AddBooking(){
                                         <option value="Motorbike">Motor Bike</option>
                                         <option value="Minilorry">Mini Lorry</option>
                                     </select>
-
-                                    {/* <select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" onChange={(e) => setVType(e.target.value)}>
-                                    <option value="car">Car</option>
-                                    <option value="truck">Truck</option>
-                                    <option value="motorcycle">Motorcycle</option>
-                                    </select> */}
                                 </td>
                             </tr>
 
@@ -181,8 +185,7 @@ function AddBooking(){
                                     <td><div class="flex items-center me-10 ml-10">
                                         <input id="service" name="services" type="checkbox" value="Cut & Polish /" onChange={handleCheckboxChange}></input>
                                         <label for="service">Cut & Polish</label>
-                                        </div></td>
-                                                                              
+                                        </div></td>                  
                                 </tr>
 
                                 <tr>
@@ -203,7 +206,6 @@ function AddBooking(){
                                         <input id="service" name="services" type="checkbox" value="Full Service /" onChange={handleCheckboxChange}></input>
                                         <label for="service">Full Service</label>
                                         </div></td>
-
                                 </tr>
                             </table>
                         </div>
@@ -219,8 +221,6 @@ function AddBooking(){
         </div>
     </div>
     );
-
-
 }
 
 export default AddBooking;
