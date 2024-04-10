@@ -10,6 +10,8 @@ export default function BookRead() {
                 .then((res) => {
                     console.log("Response from server:", res.data); 
                     setBooking(res.data);
+                    const reverseList = res.data.reverse();
+                    setBooking(reverseList);
                 })
                 .catch((err) => {
                     console.error("Error fetching data:", err);
@@ -70,13 +72,13 @@ return (
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.serviceBox}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex items-center justify-start gap-2">
-                                {/* Edit booking button */}
-                                <a href={`/booking/${booking._id}`} type="button" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    Edit
-                                </a>
-                                {/* Delete booking button  */}
-                                <button onClick={() => onDeleteClick(booking._id)} class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    Delete
+                                {/*Accept booking button */}
+                                <button href="" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                    Accept
+                                </button>
+                                {/* Reject booking button  */}
+                                <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                    Reject
                                 </button>
                             </div>
                             </td>
