@@ -45,7 +45,7 @@ function Header() {
            </div>
 
            <div>
-            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Finance</a>
+            <a href="/Finance" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Finance</a>
            </div>
 
            <div>

@@ -35,6 +35,7 @@ import BookingPage from "./Component/BookingPage"; // import Booking Page
 import BookingPageCustomerLogin from "./Component/BookingPageCustomerLogin";  // import Booking Customer Login Page
 import BookingPageManagerLogin from "./Component/BookingPageManagerLogin";   // import Booking Manager Login Page
 import AddBooking from "./Component/AddBooking";
+import BookingList from "./Component/BookingList";
 import BookRead from "./Component/BookRead";
 import ServiceHistory from "./Component/ServiceHistory";
 
@@ -107,9 +108,9 @@ import OrderEditItems from "./Component/Inventory/manageorderupdate";
 
 
 
-
-
-
+//Financial
+import Transaction from "./Component/Financial/TransactionView";
+import AddTransaction from "./Component/Financial/AddTransaction";
 
 
 
@@ -131,7 +132,7 @@ function App() {
           <Route path="/display" element={<Display/>}/> 
           <Route path="/delete" element={<Delete/>}/>
           {/* <Route path="/update" element={<Update/>}/> */}
-          <Route path="/booking" element={<BookingPage/>}/>
+         
           
       {/* <Route path="/customer" element={<Customerhome/>}/> */}
 
@@ -146,9 +147,11 @@ function App() {
          
 
           {/*---------Tavini-------------Booking------------------------------*/}
+          <Route path="/booking" element={<BookingPage/>}/>
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
           <Route path="/addBooking" element={<AddBooking/>}/>
+          <Route path="/bookingList" element={<BookingList/>}/>
           <Route path="/bookRead" element={<BookRead/>}/>
           <Route path="/serviceHistory" element={<ServiceHistory/>}/>
 
@@ -209,6 +212,12 @@ function App() {
           <Route path="/Addorder/" element={<Addorderitems/>}/>
           <Route path="/manageorderupdate/:id" element={<OrderEditItems/>}/>
 
+
+
+
+          {/* ----------Shajeeh---------- */}
+          <Route path="/TransactionView" element={<Transaction/>}/>
+          <Route path="/AddTransaction" element={<AddTransaction />} />
 
                     
          
