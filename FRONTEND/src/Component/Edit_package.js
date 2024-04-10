@@ -51,7 +51,7 @@ function Edit_package() {
     <div className="  w-full flex justify-center items-center ">
       <div className="w-full max-w-96 mt-24 bg-white p-8 rounded-lg shadow-md bg-gray-200 bg-opacity-70">
         <h1 className="text-3xl mb-6 text-center font-bold text-gray-800">
-          Add Package
+          Update Package
         </h1>
         <form onSubmit={submit}>
           <div className="mb-4">
@@ -90,22 +90,20 @@ function Edit_package() {
           <label className="block mb-2 text-sm font-bold text-gray-700">
             Category
           </label>
-          <select
-            className="px-3 py-1 rounded-lg border border-black-400 w-full text-black" required
-            onChange={(e) => setCategory(e.target.value)}
-          >
+          <select className="px-3 py-1 rounded-lg border border-black-400 w-full text-black" required
+            onChange={(e) => setCategory(e.target.value)}>
             <option selected disabled value="">Select Category</option>
             <option value="Interior">Interior</option>
             <option value="Exterior">Exterior</option>
           
           </select>
 
-          <div className="flex justify-center   ">
+          <div className="flex justify-center">
             <button
               className="btn-indigo bg-gradient-to-r from-red-400 to-red-500 px-2 py-2 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] mt-4"
               type="submit"
             >
-              Add Package
+              update 
             </button>
           </div>
         </form>
