@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
+import { useReactToPrint } from 'react-to-print';
 
 export default function StaffDetails() {
 //   const [staffdetails, setStaff] = useState([]); // State for storing staff details
@@ -85,6 +86,7 @@ export default function StaffDetails() {
 
   const [staffdetails, setStaff] = useState([]); // State for storing staff details
   const [searchTerm, setSearchTerm] = useState(""); // State for storing search term
+  const componentRef = useRef();  //Add a reference for accessing the component to be printed
 
   // Fetch staff details from the server on component mount
   useEffect(() => {
@@ -115,43 +117,58 @@ export default function StaffDetails() {
     staff.joindate.toLowerCase().includes(searchTerm.toLowerCase()) 
   );
 
+  //Generate PDF
+  const generatePDF = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: "Staff Details",
+    onAfterPrint: () => alert("Data Saved in PDF"),
+    onPrintError: () => alert("Error in Printing"),
+
+  });
+
   return (
     <div class="mt-5">
       
       {/* Search bar */}
-      <div class="relative">
-        <input
-          type="text"
-          placeholder="Search here.."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          class="border border-gray-300 p-2 rounded-md mb-4 pl-10"
-        // Added pl-10 class for left padding to accommodate the icon
-        />
-        <div class="absolute inset-y-5 left-0 flex items-center pl-3 pointer-events-none top-[0.4rem]">
-          {/* Search icon */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 text-gray-300"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
+      <div class="flex justify-between">
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="Search here.."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            class="border border-gray-300 p-2 rounded-md mb-4 pl-10"
+          // Added pl-10 class for left padding to accommodate the icon
+          />
+          <div class="absolute inset-y-5 left-0 flex items-center pl-3 pointer-events-none top-[0.4rem]">
+            {/* Search icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-gray-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
         </div>
+
+        <button onClick={generatePDF} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mr-[1rem]">
+          Generate PDF
+        </button>
       </div>
 
 
 
       {/* Table to display staff details */}
       <div class="overflow-x-auto max-h-[25rem] overflow-y-scroll">
-        <table class="min-w-full divide-y divide-gray-200">
+        <table class="min-w-full divide-y divide-gray-200" ref={componentRef}>
 
           <thead>
             <tr class="bg-blue-500 text-white sticky top-0"> {/* Added bg-blue-500 for blue background and text-white for white text and Added sticky and top-0 for sticky header*/}
