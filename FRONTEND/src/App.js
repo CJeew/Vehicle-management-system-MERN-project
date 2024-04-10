@@ -36,6 +36,7 @@ import BookingPageCustomerLogin from "./Component/BookingPageCustomerLogin";  //
 import BookingPageManagerLogin from "./Component/BookingPageManagerLogin";   // import Booking Manager Login Page
 import AddBooking from "./Component/AddBooking";
 import BookRead from "./Component/BookRead";
+import ServiceHistory from "./Component/ServiceHistory";
 
 
 import Home from "./Component/home";
@@ -149,6 +150,7 @@ function App() {
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
           <Route path="/addBooking" element={<AddBooking/>}/>
           <Route path="/bookRead" element={<BookRead/>}/>
+          <Route path="/serviceHistory" element={<ServiceHistory/>}/>
 
 
           {/* <Route path="/test" element={<Test/>}/> */}
