@@ -32,7 +32,7 @@ router.route("/addr").post((req, res) => {
 });
 //read recordes
 router.route("/").get((req, res) => {
-  Recode.find()
+  Recorde.find()
     .then((recorde) => {
       res.json(recorde);
     })

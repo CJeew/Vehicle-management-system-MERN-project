@@ -4,10 +4,8 @@ const Schema = mongoose.Schema;
 
 //shema
 const serviceRecordSchema = new Schema({
-    id : {
-        type : String,
-        required : true
-    },
+   
+
     name : {
         type : String,
         required : true
