@@ -109,9 +109,9 @@ import OrderEditItems from "./Component/Inventory/manageorderupdate";
 
 
 //Financial
-import Transaction from "./Component/Financial/TransactionView";
+import TransactionView from "./Component/Financial/TransactionView";
 import AddTransaction from "./Component/Financial/AddTransaction";
-
+import UpdateTransaction from "./Component/Financial/Update_Transaction";
 
 
 
@@ -216,8 +216,9 @@ function App() {
 
 
           {/* ----------Shajeeh---------- */}
-          <Route path="/TransactionView" element={<Transaction/>}/>
+          <Route path="/Finance" element={<TransactionView/>}/>
           <Route path="/AddTransaction" element={<AddTransaction />} />
+          <Route path="/Update_Transaction/:id" element={<UpdateTransaction />}/>
 
                     
          
