@@ -33,7 +33,7 @@ function Header() {
            </div>
 
            <div>
-            <a href="/add" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Suppliers</a>
+            <a href="/display" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Suppliers</a>
            </div>
 
            <div>
