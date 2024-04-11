@@ -40,7 +40,7 @@ app.use("/job", JobRouter);
 const svcPackagesRouter = require("./Routes/dulanka/packages.js");
 app.use("/svc-packages", svcPackagesRouter);
 
-const svcRecordsRouter = require("./Routes/dulanka/packages.js");
+const svcRecordsRouter = require("./Routes/dulanka/servicerecode.js");
 app.use("/svc-records", svcRecordsRouter);
 
 

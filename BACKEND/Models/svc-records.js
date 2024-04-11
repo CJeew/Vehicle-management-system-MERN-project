@@ -17,7 +17,7 @@ const serviceRecordSchema = new Schema({
         required : true
     },
  date : {
-        type : date, 
+        type : Date, 
         required : true
     },
     catagory : {
