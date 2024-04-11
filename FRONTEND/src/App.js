@@ -214,7 +214,7 @@ function App() {
 
 
           {/* ----------Shajeeh---------- */}
-          <Route path="/TransactionView" element={<TransactionView/>}/>
+          <Route path="/Finance" element={<TransactionView/>}/>
           <Route path="/AddTransaction" element={<AddTransaction />} />
 
                     
