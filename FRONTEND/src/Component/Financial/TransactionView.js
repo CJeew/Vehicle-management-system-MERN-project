@@ -4,7 +4,7 @@ import { Link , useNavigate} from 'react-router-dom';
 import {useReactToPrint} from "react-to-print"
 
 
-export default function Transaction() {
+export default function TransactionView() {
   const [items, setItems] = useState([]); 
 
   useEffect(() => {
