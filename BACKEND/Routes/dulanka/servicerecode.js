@@ -1,55 +1,40 @@
 const router = require("express").Router(); // Import the Express module and access its Router function to create a new router object.
-let Package = require("../../Models/svc-recodes.js"); // Import the Package model from the specified path.
+let Recorde = require("../../Models/svc-records.js"); // Import the Package model from the specified path.
 
 //add recodes
 
-router.route("/addrecodes").post((req, res) => {
-  const rid = req.body.rid;
+router.route("/addr").post((req, res) => {
+  
   const service = req.body.service;
   const customer = req.body.customer;
-  const vehicle = req.body.discription;
   const date = req.body.date;
+  const category = req.body.category;
+  
 
-  //validate data
-  //validate  data as string
-  if (typeof service !== "string") {
-    return res.status(400).json({ message: "service must be a string" });
-  }
-  if (typeof customer !== "string") {
-    return res.status(400).json({ message: "customer must be a string" });
-  }
-  if (typeof vehicle !== "string") {
-    return res.status(400).json({ message: "vehicle must be a string" });
-  }
-  if (typeof date !== "string") {
-    return res.status(400).json({ message: "date must be a string" });
-  }
-
-
-  const newRecode = new Recode({
-    rid,
+  const newRecorde = new Recorde({
+    
     service,
     customer,
-    vehicle,
     date,
+    category,
   });
 
-  newRecode
+  newRecorde
     .save()
     .then(() => {
       console.log("test res");
-      return res.json("Recode added");
+      return res.json("Recorde added");
     })
     .catch((err) => {
       console.log("test err");
       return console.log(err); //check the error
     });
 });
-//read recodes
+//read recordes
 router.route("/").get((req, res) => {
-  Recode.find()
-    .then((recode) => {
-      res.json(recode);
+  Recorde.find()
+    .then((recorde) => {
+      res.json(recorde);
     })
     .catch((err) => {
       console.log(err);
@@ -59,7 +44,7 @@ router.route("/").get((req, res) => {
 
 router.route("/update/:id").put(async(req, res) => {
   let recordeId = req.params.id;
-  const { service, customer, vehicle, date } = req.body;
+  const { service, customer, vehicle, date,category } = req.body;
 
   const updatePackage = {
     //rid,
@@ -67,13 +52,14 @@ router.route("/update/:id").put(async(req, res) => {
     customer,
     vehicle,
     date,
+    category,
   };
 
   try{
-    const resp = await Recode.findByIdAndUpdate(recodeId, updaterecode);
+    const resp = await Recode.findByIdAndUpdate(recordeId, updaterecorde);
 
     if (!resp) {
-      res.status(500).send({ status: "Recode with this id not found" });//handel error
+      res.status(500).send({ status: "Recorde with this id not found" });//handel error
       return;
     }
 
@@ -82,6 +68,6 @@ router.route("/update/:id").put(async(req, res) => {
     res.status(500).send({ status: "Error with updating data" });//unexpected error
     return;
   }
- res.status(200).send({ status: "Recode Updated" });
+ res.status(200).send({ status: "Recorde Updated" });
 });
 module.exports = router; // Export the router object to be used in the server.js file.

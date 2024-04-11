@@ -4,10 +4,8 @@ const Schema = mongoose.Schema;
 
 //shema
 const serviceRecordSchema = new Schema({
-    id : {
-        type : String,
-        required : true
-    },
+   
+
     name : {
         type : String,
         required : true
@@ -17,7 +15,7 @@ const serviceRecordSchema = new Schema({
         required : true
     },
  date : {
-        type : date, 
+        type : Date, 
         required : true
     },
     catagory : {

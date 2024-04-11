@@ -10,7 +10,7 @@ export default function servicehome() {
           packages
         </button>
       </a>
-      <a href="#">
+      <a href="addrec">
         <button className="bg-gradient-to-r from-red-400 to-red-500 px-8 py-5 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px]">
           Recodes
         </button>
