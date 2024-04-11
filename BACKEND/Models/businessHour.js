@@ -5,27 +5,27 @@ const hourSettingSchema = new Schema({
 
     day : {
         type : String,
-        required : true
+        required : false
     },
 
     timeFrom : {
         type : String,
-        required : true
+        required : false
     },
 
     timeTo : {
         type : String,
-        required : true
+        required : false
     },
 
     busyDate : {
         type : Date,
-        required : true
+        required : false
     },
 
     event : {
         type : String,
-        required : true
+        required : false
     }
 })
 

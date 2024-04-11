@@ -4,10 +4,10 @@ let hourSetting = require("../../Models/businessHour");
 
 //create
 
-router.route("/addHourSetting").post((req,res)=>{
+router.route("/addHourSetting").post(async(req,res)=>{
 
     const day = req.body.day;
-    const timeFrom = req.body.timeFrom;
+    const timeFrom = req.body.timeFrom;0
     const timeTo = req.body.timeTo;
     const busyDate = req.body.busyDate;
     const event = req.body.event;
@@ -29,9 +29,9 @@ router.route("/addHourSetting").post((req,res)=>{
 
 // read
 
-router.route("/readHours/:id").get(async(req,res)=>{
+router.route("/").get(async(req,res)=>{
     businessHour.find().then((businessHours)=>{
-        res.json()
+        res.json(businessHours);
     }).catch((err)=>{
         console.log(err);
     })
@@ -71,3 +71,5 @@ router.route("/deleteSetting/:id").delete(async(req, res)=>{
         res.status(500).send({stats: "Error with deleting business hours", error:err.message});
     })
  })
+
+ module.exports = router;
