@@ -48,6 +48,8 @@ app.use("/svc-records", svcRecordsRouter);
 const bookingRouter = require("./Routes/tavi/bookings.js");
 app.use("/booking", bookingRouter);
 
+const hourSettingRouter = require("./Routes/tavi/businessHours.js");
+app.use("/hourSetting", hourSettingRouter);
 
 // CHIYAN
 const customerRouter = require("./Routes/chiyaan/customer.js");

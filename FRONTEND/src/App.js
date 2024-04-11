@@ -41,7 +41,7 @@ import BookingPageManagerLogin from "./Component/BookingPageManagerLogin";   // 
 import AddBooking from "./Component/AddBooking";
 import BookRead from "./Component/BookRead";
 import ServiceHistory from "./Component/ServiceHistory";
-
+import AddBusinessHours from "./Component/AddBusinessHours";
 
 import Home from "./Component/home";
 
@@ -112,11 +112,13 @@ import OrderEditItems from "./Component/Inventory/manageorderupdate";
 
 
 //Financial
+
 import Transaction from "./Component/Financial/TransactionView";
 import AddTransaction from "./Component/Financial/AddTransaction";
 
-
-
+import TransactionView from "./Component/Financial/TransactionView";
+import AddTransaction from "./Component/Financial/AddTransaction";
+import UpdateTransaction from "./Component/Financial/Update_Transaction";
 
 
 
@@ -161,6 +163,9 @@ function App() {
           <Route path="/addBooking" element={<AddBooking/>}/>
           <Route path="/bookRead" element={<BookRead/>}/>
           <Route path="/serviceHistory" element={<ServiceHistory/>}/>
+
+
+          <Route path="/addHourSetting" element={<AddBusinessHours/>}/>
 
 
           {/* <Route path="/test" element={<Test/>}/> */}
@@ -223,8 +228,14 @@ function App() {
 
 
           {/* ----------Shajeeh---------- */}
+
           <Route path="/TransactionView" element={<Transaction/>}/>
           <Route path="/AddTransaction" element={<AddTransaction />} />
+
+          <Route path="/Finance" element={<TransactionView/>}/>
+          <Route path="/AddTransaction" element={<AddTransaction />} />
+          <Route path="/Update_Transaction/:id" element={<UpdateTransaction />}/>
+
 
                     
          

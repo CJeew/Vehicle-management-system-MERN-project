@@ -38,7 +38,7 @@ router.route("/addBooking").post((req,res)=>{
 
 //read - working
 
-router.route("/").get((req,res)=>{
+router.route("/").get(async(req,res)=>{
     booking.find().then((bookings)=>{
         res.json(bookings);
     }).catch((err)=>{

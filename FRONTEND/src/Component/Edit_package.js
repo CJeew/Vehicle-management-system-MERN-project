@@ -91,7 +91,12 @@ function Edit_package() {
           <label className="block mb-2 text-sm font-bold text-gray-700">
             Category
           </label>
+
           <select className="px-3 py-1 rounded-lg border border-black-400 w-full text-black" required value={category}
+
+          <select className="px-3 py-1 rounded-lg border border-black-400 w-full text-black" required 
+          value={category}
+
             onChange={(e) => setCategory(e.target.value)}>
             <option selected disabled value="">Select Category</option>
             <option value="Interior">Interior</option>
