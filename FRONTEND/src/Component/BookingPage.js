@@ -25,17 +25,22 @@ export default function BookingPage() {
       <small className="ms-20 text-2xl font-semibold text-gray-400 dark:text-gray-400">and often make payment arrangements if necessary.</small>
 
       <div className="flex ms-20 my-20">
-        <figure>
-          <img className="rounded-full w-40 h-40 ms-20" src={imgSrc} />
-          <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400 ms-20">
+      <figure class="ml-10 mr-10 block max-w-sm p-6 bg-black border border-black-200 rounded-lg shadow-md 
+                        hover:bg-black-100 dark:bg-black-800 dark:border-black-700 dark:hover:bg-black-700 
+                        opacity-80 transition duration-300 ease-in-out transform hover:scale-105">
+          <img className="rounded-full w-40 h-40 " src={imgSrc} />
+
+          <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">
             <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                   hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
                                   ease-in-out transform hover:scale-105"><a href="/bookCusLog">Customer Login</a></button>
           </figcaption>
-        </figure>
-        <figure>
-          <img className="rounded-full w-40 h-40 ms-20" src={imgSrc1} />
-          <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400 ms-20">
+      </figure>
+
+      <figure class="block max-w-sm p-6 bg-black border border-black-200 rounded-lg shadow-md hover:bg-black-100 dark:bg-black-800 dark:border-black-700 dark:hover:bg-black-700 opacity-80 transition duration-300
+                                  ease-in-out transform hover:scale-105">
+          <img className="rounded-full w-40 h-40" src={imgSrc1} />
+          <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400 ">
             <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                   hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
                                   ease-in-out transform hover:scale-105"><a href="/bookManageLog">Manager Login</a></button>

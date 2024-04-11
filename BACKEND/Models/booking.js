@@ -1,7 +1,7 @@
 const mongoose =require('mongoose');
 const Schema = mongoose.Schema;
 
-const bookSchema = new Schema({
+const bookingSchema = new Schema({
 
     fname : {
         type : String,
@@ -46,13 +46,13 @@ const bookSchema = new Schema({
     },
 
     serviceBox : {
-        type : String,
+        type : [String],
         required : true
     }
 })
 
 
-const booking = mongoose.model("Booking",bookSchema);
+const booking = mongoose.model("Booking",bookingSchema);
 
 module.exports = booking;
  

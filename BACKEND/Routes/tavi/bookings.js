@@ -21,7 +21,7 @@ router.route("/addBooking").post((req,res)=>{
         lname,
         address,
         phoneNum,
-        eMail,
+        eMail, 
         vNum,
         vType,
         dDate,
@@ -30,19 +30,19 @@ router.route("/addBooking").post((req,res)=>{
     })
 
     newBooking.save().then(()=>{
-        res.json("Reservation Done")
+        res.json("Reservation Done");
     }).catch((err)=>{
         console.log(err);
-    })
-})
+    });
+});
 
 //read - working
 
 router.route("/").get((req,res)=>{
     booking.find().then((bookings)=>{
-        res.json(bookings)
+        res.json(bookings);
     }).catch((err)=>{
-        console.log(err)
+        console.log(err);
     })
 })
 

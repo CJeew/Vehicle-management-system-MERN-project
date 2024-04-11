@@ -9,7 +9,7 @@ router.route("/add").post((req, res) => {
   const unitprice = parseInt(req.body.unitprice);
   console.log("test");
   const category = req.body.category;
-
+  console.log(req.body);
   //validate data
   //validate pid as number
   if (isNaN(pid)) {
@@ -55,32 +55,30 @@ router.route("/").get((req, res) => {
 
 router.route("/update/:id").put(async (req, res) => {
   let packageId = req.params.id;
-  const {name, description, unitprice, catagory } = req.body;
+  const { name, description, unitprice, category } = req.body;
 
   const updatePackage = {
     //pid,
     name,
     description,
     unitprice,
-    catagory,
+    category,
   };
 
   try {
     const resp = await Package.findByIdAndUpdate(packageId, updatePackage);
 
     if (!resp) {
-      res.status(500).send({ status: "Recode with this id not found" });//handel error
+      res.status(500).send({ status: "package with this id not found" }); //handeled error
       return;
     }
   } catch (err) {
     console.log(err);
-    res.status(500).send({ status: "Error with updating data" });//unexpected error
+    res.status(500).send({ status: "Error with updating data" }); //unexpected error
     return;
   }
 
   res.status(200).send({ status: "Package Updated" });
-
- 
 });
 
 //delete package
@@ -102,15 +100,12 @@ router.route("/delete/:id").delete(async (req, res) => {
 
 router.route("/get/:id").get(async (req, res) => {
   let packageId = req.params.id;
-  await Package.findById(packageId)
-    .then(() => {
-      res.status(200).send({ status: "Package fetched", package: package });
+  Package.findById(packageId)
+    .then((packages) => {
+      res.json(packages);
     })
-    .catch(() => {
-      console.log(err.message);
-      res
-        .status(500)
-        .send({ status: "Error with get package", error: err.message });
+    .catch((err) => {
+      console.log(err);
     });
 });
 

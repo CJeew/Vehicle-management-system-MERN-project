@@ -33,7 +33,7 @@ export default function AddLeaveRequest() {
 
   const authenticate = (authenticated) => {
     if (authenticated) {
-      // Redirect to another page after authentication
+      //Redirect to another page after authentication
       window.location.href = '/leaverequest';
     }
   };
@@ -42,7 +42,7 @@ export default function AddLeaveRequest() {
     <div>
       <form onSubmit={sendData}>
       
-        <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
+        <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5 mx-auto w-2/3">
           <center><h1>Add Leave Request</h1></center>
           <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div class="sm:col-span-3">
@@ -55,11 +55,12 @@ export default function AddLeaveRequest() {
                   name="nic"
                   id="nic"
                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  pattern="[0-9]{9}[vV]{1}|[0-9]{12}"
                   onChange={(e)=>{
 
                     setNic(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -77,7 +78,7 @@ export default function AddLeaveRequest() {
 
                     setName(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -95,7 +96,7 @@ export default function AddLeaveRequest() {
 
                     setDate(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -113,7 +114,7 @@ export default function AddLeaveRequest() {
 
                     setNoofdays(e.target.value);
                   }}
-                />
+                  required/>
               </div>
             </div>
 
@@ -131,7 +132,7 @@ export default function AddLeaveRequest() {
 
                     setReason(e.target.value);
                   }}
-                />
+                  required/>
 
               </div>
             </div>
@@ -141,9 +142,6 @@ export default function AddLeaveRequest() {
           </div>
 
           <div class="mt-6 flex items-center justify-end gap-x-6">
-            <button type="button" class="text-sm font-semibold leading-6 text-gray-900">
-              Cancel
-            </button>
             <button
               type="submit"
               class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
@@ -153,13 +151,16 @@ export default function AddLeaveRequest() {
           </div>
         </form>
 
-        <div className="flex justify-center mt-2">
+        <div className="flex justify-between mt-3 ">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-[14.5rem]"
             onClick={() => setShowPopup(true)}
-          >
+            >
             View
           </button>
+          <a href="/staffhome" type="button" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-[14.5rem]">
+              Prev
+            </a>
         </div>
       
 

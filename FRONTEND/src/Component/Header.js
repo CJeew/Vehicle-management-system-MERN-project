@@ -1,9 +1,8 @@
 import React from "react";
-// import "./Home.css";
+import "./Home.css";
 import imgSrc from "./logo.png";
 import "./BookingPage.js";
 import "./BookingPage.css";
-import { Link } from "react-router-dom";
 import "./Chome.js";
 import "./Chome.css";
 import "./Register.js";
@@ -19,8 +18,10 @@ function Header() {
           <nav className="flex flex-wrap justify-between items-center space-x-10 text-xl text-slate-50 " >
 
           <div>
+
             <img src= {imgSrc} alt="Logo" className="h-16 w-43 ml-10 mt-3 mr-20" />
           </div>
+
 
           {/* ------Navigation links------ */}
            <div>
@@ -28,7 +29,7 @@ function Header() {
            </div>
 
            <div> 
-            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Customer</a>
+            <a href="/Customerlogin" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Customer</a>
            </div>
 
            <div>
@@ -40,11 +41,11 @@ function Header() {
            </div>
 
            <div>
-            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Inventory</a>
+            <a href="/inventory" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Inventory</a>
            </div>
 
            <div>
-            <a href="#" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Finance</a>
+            <a href="/Finance" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Finance</a>
            </div>
 
            <div>

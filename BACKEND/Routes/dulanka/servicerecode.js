@@ -4,11 +4,27 @@ let Package = require("../../Models/svc-recodes.js"); // Import the Package mode
 //add recodes
 
 router.route("/addrecodes").post((req, res) => {
-  const rid = req.body.pid;
-  const service = req.body.name;
-  const customer = req.body.description;
-  const vehicle = req.body.unitprice;
-  const date = req.body.category;
+  const rid = req.body.rid;
+  const service = req.body.service;
+  const customer = req.body.customer;
+  const vehicle = req.body.discription;
+  const date = req.body.date;
+
+  //validate data
+  //validate  data as string
+  if (typeof service !== "string") {
+    return res.status(400).json({ message: "service must be a string" });
+  }
+  if (typeof customer !== "string") {
+    return res.status(400).json({ message: "customer must be a string" });
+  }
+  if (typeof vehicle !== "string") {
+    return res.status(400).json({ message: "vehicle must be a string" });
+  }
+  if (typeof date !== "string") {
+    return res.status(400).json({ message: "date must be a string" });
+  }
+
 
   const newRecode = new Recode({
     rid,

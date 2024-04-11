@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+
+
 export default function ViewJobs() {
   const [allJobs, setallJobs] = useState([]);
 
@@ -21,29 +23,31 @@ export default function ViewJobs() {
 
       getJobs();
   }, []);
+  
 
+  
 
 // Function to handle job deletion
-  //  const deleteJob = (jobNumber) => {
-  //   const confirmDelete = window.confirm("Are you sure you want to delete this job?");
+  const deleteJob = async (jobId) => {
 
-  //   if (confirmDelete) {
-  //     console.log("Deleting job with jobNumber:", jobNumber);
-  //     axios.delete(`http://localhost:8090/job/delete`,  { data: { jobNumber } })
-  //       .then((res) => {
-  //         console.log(res.data);
-          
-  //         // Remove the deleted job from the state
-  //         setallJobs(allJobs.filter(job => job._number !== jobNumber));
-  //         alert("Job deleted successfully");
-  //       })
+    const confirm = window.confirm('Are you sure you want to delete this job?');
 
-  //       .catch((err) => {
-  //         console.error("Error deleting job:", err);
-  //         alert("Could not delete job. Please try again later.");
-  //       });
-  //   }
-  // };
+    if(confirm){
+      try{
+        await axios.delete(`http://localhost:8090/job/delete/${jobId}`);
+        alert('User Deleted Successfully');
+        window.location.reload(); 
+
+      } catch(error){
+        console.error('Error deleting job',error);
+        alert('Failed to delete the job');
+        
+      }
+    
+    }
+  }
+
+
 
 
     return (
@@ -81,7 +85,8 @@ export default function ViewJobs() {
 
         {allJobs.map((job) => (
           <div className="container bg-gray-200 bg-opacity-70 rounded-lg py-1 mt-2">
-          <Link key={job._id} to={`/job/${job.jobNumber}`} >
+            
+          <Link key={job._jobNumber} to={`/details/${job.jobNumber}`} >
             <div className="space-y-2 flex justify-between grid grid-cols-5 gap-4 mt-3 mb-3 text-center ">
 
               <div className="mt-2 text-lg">
@@ -108,7 +113,7 @@ export default function ViewJobs() {
                                   ease-in-out transform hover:scale-105">Update</button>
 
               {/* Delete button */}
-              <button className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-900 hover:via-red-700 
+              <button onClick={(e) => {deleteJob(job._id, job.jobNumber); e.preventDefault();}} className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-900 hover:via-red-700 
                                   hover:to-red-600 text-white font-bold py-2 px-5 rounded-lg mr-2 opacity-80 transition duration-300
                                   ease-in-out transform hover:scale-105">Delete</button>
                 

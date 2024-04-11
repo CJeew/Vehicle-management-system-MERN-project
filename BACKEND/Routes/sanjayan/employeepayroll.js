@@ -7,6 +7,7 @@ router.route("/addpayroll").post((req,res)=>{
 
     const nic = req.body.nic;
     const name = req.body.name;
+    const date = req.body.date;
     const otstatus = req.body.otstatus;
     const otpayment = Number(req.body.otpayment);
     const bonus = Number(req.body.bonus);
@@ -17,6 +18,7 @@ router.route("/addpayroll").post((req,res)=>{
 
         nic,
         name,
+        date,
         otstatus,
         otpayment,
         bonus,
@@ -50,11 +52,12 @@ router.route("/").get((req,res)=>{
 router.route("/editpayroll/:id").put(async(req,res) => {
 
     let id = req.params.id;
-    const {nic,name,otstatus,otpayment,bonus,penaltyamt,salary} = req.body;
+    const {nic,name,date,otstatus,otpayment,bonus,penaltyamt,salary} = req.body;
 
     const updatePayroll = {
       nic,
       name,
+      date,
       otstatus,
       otpayment,
       bonus,
@@ -62,6 +65,15 @@ router.route("/editpayroll/:id").put(async(req,res) => {
       salary,
     }
 
+    // Check if any required field is empty
+    const requiredFields = ["nic", "name", "date", "otstatus"];
+    const emptyFields = requiredFields.filter(field => !req.body[field]);
+    
+    if (emptyFields.length > 0) {
+        return res.status(400).send({ message: `Fields cannot be empty: ${emptyFields.join(", ")}` });
+    }
+
+    //------------------
     const update = await Employeepayroll.findByIdAndUpdate(id, updatePayroll)  //updateStaff means upadate panna vendiya data oda object
     .then(() => {
 

@@ -45,6 +45,7 @@ function CreateJob() {
         axios.post("http://localhost:8090/job/addJob", newJob)
             .then(() => {
                 alert("Job Added");
+                window.location.reload(); 
             })
             .catch((err) => {
                 alert(err);
@@ -313,7 +314,7 @@ function CreateJob() {
                     </div>
 
                     <div>
-                    <input type="checkbox" value="Electrical system reapir" onChange={handleCheckboxChange} className="mr-4 w-5 h-5"/> 
+                    <input type="checkbox" value="Electrical system repair" onChange={handleCheckboxChange} className="mr-4 w-5 h-5"/> 
                     <label>Electrical System Repairs</label> 
                   </div>
                   </div>

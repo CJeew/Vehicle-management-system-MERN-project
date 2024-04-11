@@ -44,32 +44,45 @@ const svcRecordsRouter = require("./Routes/dulanka/packages.js");
 app.use("/svc-records", svcRecordsRouter);
 
 
-
+//TAVI
 const bookingRouter = require("./Routes/tavi/bookings.js");
-app.use("/bookings", bookingRouter); //loading models file
+app.use("/booking", bookingRouter);
 
 
 // CHIYAN
 const customerRouter = require("./Routes/chiyaan/customer.js");
 app.use("/customer", customerRouter);
 
-// AKIL
+const ReviewRouter = require("./Routes/chiyaan/reviewAdd.js");
+app.use("/reviewAdd", ReviewRouter);
 
+// AKEEL
+const managepartsRouter=require("./Routes/akeel/manageparts.js");
+app.use("/manageparts", managepartsRouter);
+
+const issueditemsRouter=require("./Routes/akeel/issueditems.js");
+app.use("/issueditems", issueditemsRouter);
+
+const manageordersRouter=require("./Routes/akeel/manageorders.js");
+app.use("/manageorders", manageordersRouter);
 
 // SHAJEEH
+const finacneRouter = require("./Routes/shajeeh/finances.js");
+app.use("/finance",finacneRouter);
 
-
-// SANJU
+// SANJU 
 const staffRouter = require("./Routes/sanjayan/staffdetails.js");
-const employeeRouter = require("./Routes/sanjayan/employeepayroll.js");
+const payrollRouter = require("./Routes/sanjayan/employeepayroll.js");
 const attendanceRouter = require("./Routes/sanjayan/employeeattendance.js");
 const leaverequestRouter = require("./Routes/sanjayan/leaverequest.js");
+const announcementRouter = require("./Routes/sanjayan/employeeannouncement.js");
 
 
 app.use("/staffdetails",staffRouter);
-app.use("/employeepayroll",employeeRouter);
+app.use("/employeepayroll",payrollRouter);
 app.use("/employeeattendance",attendanceRouter);
 app.use("/leaverequest",leaverequestRouter);
+app.use("/employeeannouncement",announcementRouter);
 
 
 // server port allocation & server start

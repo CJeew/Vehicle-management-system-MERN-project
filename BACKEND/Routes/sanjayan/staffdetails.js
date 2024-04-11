@@ -3,7 +3,7 @@ let Staffdetails = require("../../Models/Staffdetails");
 
 //http://localhost:8090/staff/add
 
-router.route("/addstaff").post((req,res)=>{
+router.route("/addstaff").post(async (req,res)=>{
 
     const nic = req.body.nic;
     const name = req.body.name;
@@ -12,7 +12,14 @@ router.route("/addstaff").post((req,res)=>{
     const email = req.body.email;
     const mobileno = Number(req.body.mobileno);
     const joindate = req.body.joindate;
+
+    // Check if a staff with the same NIC already exists
+    const existingStaff = await Staffdetails.findOne({ nic });
+    if (existingStaff) {
+        return res.status(400).json({ message: 'The staff already exists with this NIC' });
+    }
     
+    //If there are no any existing details, the new staff will be added here
     const newStaff = new Staffdetails({
 
         nic,
@@ -61,7 +68,16 @@ router.route("/editstaff/:id").put(async(req,res) => {
       joindate,
     }
 
-    const update = await Staffdetails.findByIdAndUpdate(id, updateStaff)  //updateStaff means upadate panna vendiya data oda object
+    // Check if any required field is empty
+    const requiredFields = ["nic", "name", "designation", "address", "email", "mobileno", "joindate"];
+    const emptyFields = requiredFields.filter(field => !req.body[field]);
+    
+    if (emptyFields.length > 0) {
+        return res.status(400).send({ message: `Fields cannot be empty: ${emptyFields.join(", ")}` });
+    }
+
+    //------------------
+    const update = await Staffdetails.findByIdAndUpdate(id, updateStaff)  //updateStaff means update panna vendiya data oda object
     .then(() => {
 
         res.status(200).send({status: "User updated"})

@@ -1,25 +1,30 @@
-import React, {useState, useEffect} from "react";
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
+
 const JobDetails = () => {
+  const [jobDetails, setJobDetails] = useState({}); 
   const { jobNumber } = useParams();
-  const [jobDetails, setJobDetails] = useState({});
+  const decodedJobNumber = decodeURIComponent(jobNumber);
 
   useEffect(() => {
-    // Fetch job details using jobNumber
-    axios.get(`http://localhost:8090/job/${jobNumber}`)
-      .then((response) => {
+    const fetchJobDetails = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8090/job/details/${decodedJobNumber}`); 
         setJobDetails(response.data);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching job details:", error);
-      });
+      }
+    };
+
+    fetchJobDetails();
   }, [jobNumber]);
 
-  // if (!jobDetails) {
-  //   return <div>Loading...</div>;
-  // }
+
+const deleteJob = () => {
+  alert("Are you sure you want to delete this job?");
+};
 
   
   return (
@@ -34,7 +39,7 @@ const JobDetails = () => {
         <div className="mt-4 text-lg">
         <div className="space-y-8 flex justify-between grid grid-cols-3 gap-4">
           <div>
-            <p className="mt-7"><strong>Job Number:</strong> {jobDetails.jobNumber}</p>
+            <p className="mt-7 mr-"><strong>Job Number:</strong> {jobDetails.jobNumber}</p>
           </div>
 
           <div>
@@ -118,13 +123,18 @@ const JobDetails = () => {
  
         </div>
         <div className="flex justify-end items-end space-x-4">
+        <a href="/createjob">
+                <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                  hover:to-amber-700 text-white font-bold py-2 px-5 rounded-lg mr-2 opacity-80 transition duration-300
+                                  ease-in-out transform hover:scale-105">New Jobs</button>
+                </a>
           {/* update button */}
           <button className="bg-gradient-to-r from-green-600 via-green-800 to-green-950 hover:from-green-950 hover:via-green-700 
                                   hover:to-green-600 text-white font-bold py-2 px-5 rounded-lg mr-2 opacity-80 transition duration-300
                                   ease-in-out transform hover:scale-105">Update</button>
 
            {/* Delete button */}
-           <button className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-900 hover:via-red-700 
+           <button onClick={(e) => {deleteJob(); e.preventDefault();}} className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-900 hover:via-red-700 
                                   hover:to-red-600 text-white font-bold py-2 px-5 rounded-lg mr-2 opacity-80 transition duration-300
                                   ease-in-out transform hover:scale-105">Delete</button>
         </div>

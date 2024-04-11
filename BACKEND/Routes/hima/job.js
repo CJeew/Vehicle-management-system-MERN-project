@@ -69,18 +69,26 @@ router.route("/viewjobs").get((req, res) => {
 });
 
 
+
+
 //Fetch data related to the job number
-router.route('/job/:jobNumber').get((req,res) => {
+router.get('/details/:jobNumber', async (req, res) => {
   const jobNumber = req.params.jobNumber;
-  jobModel
-    .find({ jobNumber: jobNumber })
-    .then((jobs) => {
-      res.json(jobs);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ error: 'Internal server error' });
-    });
+
+  try {
+    // Query the database to find the document with the jobNumber
+    const details = await jobModel.findOne({ jobNumber });
+
+    if (!details) {
+      return res.status(404).json({ message: 'Data not found' });
+    }
+
+    res.json(details);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
 });
 
 
@@ -120,21 +128,28 @@ router.route('/job/:jobNumber').get((req,res) => {
 //     })
 // });
 
+
 //Delete function
-router.route("/delete/:jobNumber").delete(async (req, res) => {
-  const {jobNumber} = req.body;
+router.route("/delete/:_id").delete(async (req, res) => {
+  let jobId = req.params._id;
 
-    try {
-      // Find the job by ID and delete it
-      await jobModel.findOneAndDelete({jobNumber});
-      res.json({ message: "Job deleted successfully" });
+  await jobModel.findByIdAndDelete(jobId)
+  .then(() => {
+      res.status(200).send({status: "Job deleted"});
+  }).catch((err) => {
+      console.log(err.message);
+      res.status(500).send({status: "Cannot delete the job", error: err.message});
+  })
+})
 
-    } catch (error) {
 
-      console.error("Error deleting job:", error);
-      res.status(500).json({ error: "Could not delete job" });
-    }
-});
+
+  // jobModel.findByIdAndDelete(req.params.jobNumber)
+
+  //   .then(() => res.json("Deleted Successfully!"))
+  //   .catch((err) => res.status(400).json("Error: "+ err))
+
+
 
 
 

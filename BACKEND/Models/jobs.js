@@ -52,7 +52,7 @@ const jobSchema = new Schema({
     },
     timeout : {
         type : String, 
-        required : true
+       
     },
     name : {
         type : String, 

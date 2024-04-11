@@ -5,6 +5,7 @@ import "./Chome.css";
 import "./Chome.js";
 import "./Customerlogin.js"
 import "./Profile.js"
+import "./CustomerList.js"
 export default function Cmanager() {
   return (
     <div class="flex h-screen w-full items-center justify-center  bg-cover bg-no-repeat">
@@ -16,13 +17,16 @@ export default function Cmanager() {
           </div>
           <form action="#">
             <div class="mb-4 text-lg">
-              <input class="rounded-3xl border-none bg-red-500 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="text" name="name" placeholder="CustomerID" />
+              <input class="rounded-3xl border-none bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                  hover:to-amber-700 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="text" name="name" placeholder="CustomerID" />
             </div>
     
             
             <div class="mt-8 flex justify-center text-lg text-black">
                 
-              <button type="submit" class="rounded-3xl bg-red-900 bg-opacity-50 px-10 py-2 text-white shadow-xl backdrop-blur-md transition-colors duration-300 hover:bg-red-600"><a href="/Profile">Get Details</a></button>
+            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                  hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
+                                  ease-in-out transform hover:scale-105"><a href="/Profile">Get Details</a></button>
             
             </div>
           </form>
@@ -33,11 +37,12 @@ export default function Cmanager() {
       <div class="text-white">
           <div class="mb-8 flex flex-col items-center">
             
-            <span class="text-gray-300">Customer List</span>
+            <span class="text-gray-300">Customer List </span>
           </div>
           <form action="#">
             
-            <div class="rounded-3xl border-none bg-red-500 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop--md">
+            <div class="rounded-3xl border-none bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                  hover:to-amber-700 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop--md">
             <select class ="bg-red-500 bg-opacity-5 " > 
             <option class="font-semibold text-slate-300">Car</option>
             <option class="font-semibold text-slate-300">Motor Bike</option>
@@ -49,9 +54,19 @@ export default function Cmanager() {
     
             
             <div class="mt-8 flex justify-center text-lg text-black">
-              <button type="submit" class="rounded-3xl bg-red-900 bg-opacity-50 px-10 py-2 text-white shadow-xl backdrop-blur-md transition-colors duration-300 hover:bg-red-600">Get List</button>
+            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                  hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
+                                  ease-in-out transform hover:scale-105"><a href="/CustomerList">Get List</a></button>
             </div>
           </form>
+          
         </div>
       </div>
+      <div class="absolute bottom-10 right-15">
+    <button class="position-relative bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                    hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
+                    ease-in-out transform hover:scale-100 top-50px">
+        <a href="/CustomerReview">Reviews</a>
+    </button>
+</div>
     </div>);}
