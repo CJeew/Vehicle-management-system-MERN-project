@@ -7,8 +7,12 @@ import Add_Supplier from "./Component/Add_Supplier";
 import Delete from "./Component/Delete";
 // import Display from "./Components/Display";
 import Display from "./Component/Display";
-//import Update from "./Component/Update";
+
+//Jobs
 import Create_Job from "./Component/job";
+import ViewJobs from "./Component/ViewJobs";
+import JobDetails from "./Component/jobDetails";
+
 
 //Customer
 import Chome from "./Component/Chome";
@@ -38,7 +42,6 @@ import AddBooking from "./Component/AddBooking";
 import BookRead from "./Component/BookRead";
 import ServiceHistory from "./Component/ServiceHistory";
 import AddBusinessHours from "./Component/AddBusinessHours";
-
 
 import Home from "./Component/home";
 
@@ -112,11 +115,13 @@ import OrderEditItems from "./Component/Inventory/manageorderupdate";
 
 
 //Financial
-import TransactionView from "./Component/Financial/TransactionView";
+
+import Transaction from "./Component/Financial/TransactionView";
 import AddTransaction from "./Component/Financial/AddTransaction";
+
+import TransactionView from "./Component/Financial/TransactionView";
+// import AddTransaction from "./Component/Financial/AddTransaction";
 import UpdateTransaction from "./Component/Financial/Update_Transaction";
-
-
 
 
 
@@ -131,9 +136,14 @@ function App() {
           {/* <Route path="" */}
           <Route path="/" element={  <Home/>}/>
           <Route path="/add" element={<Add_Supplier />} />
-          <Route path="/createjob" element={<Create_Job />} />
           <Route path="/display" element={<Display/>}/> 
           <Route path="/delete" element={<Delete/>}/>
+
+          <Route path="/createjob" element={<Create_Job />} />
+          <Route path="/viewjobs" element={<ViewJobs />} />
+          <Route path="/details/:jobNumber" element={<JobDetails />} />
+
+
           {/* <Route path="/update" element={<Update/>}/> */}
          
           
@@ -157,6 +167,8 @@ function App() {
           <Route path="/addBooking" element={<AddBooking/>}/>
           <Route path="/bookRead" element={<BookRead/>}/>
           <Route path="/serviceHistory" element={<ServiceHistory/>}/>
+
+
           <Route path="/addHourSetting" element={<AddBusinessHours/>}/>
 
 

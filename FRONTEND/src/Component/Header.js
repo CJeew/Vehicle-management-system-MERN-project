@@ -3,7 +3,6 @@ import "./Home.css";
 import imgSrc from "./logo.png";
 import "./BookingPage.js";
 import "./BookingPage.css";
-import { Link } from "react-router-dom";
 import "./Chome.js";
 import "./Chome.css";
 import "./Register.js";
@@ -20,8 +19,9 @@ function Header() {
 
           <div>
 
-           <a href="/"><img src= {imgSrc} alt="Logo" className="h-16 w-43 ml-10 mt-3" /></a>
-                   </div>
+            <img src= {imgSrc} alt="Logo" className="h-16 w-43 ml-10 mt-3 mr-20" />
+          </div>
+
 
           {/* ------Navigation links------ */}
            <div>
@@ -33,7 +33,7 @@ function Header() {
            </div>
 
            <div>
-            <a href="/add" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Suppliers</a>
+            <a href="/display" className="hover:none transition duration-300 ease-in-out transform hover:text-orange-500">Suppliers</a>
            </div>
 
            <div>
