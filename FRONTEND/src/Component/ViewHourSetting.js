@@ -23,9 +23,6 @@ export default function ViewHourSetting() {
     return(
         <div>
             <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Business Hours</h2>
-            <div class="flex space-x-60">
-            <p className="text-2xl font-bold ms-20 my-10 mt-20 text-white ">Business Hours</p>
-            <p className="text-2xl font-bold ms-20 my-10 mt-20 mx-10  text-white">Holidays</p></div>
             <div class="flex">
             
             <table  class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 ms-20">
@@ -49,5 +46,4 @@ export default function ViewHourSetting() {
     </div>
 </div>
     );
-
 }

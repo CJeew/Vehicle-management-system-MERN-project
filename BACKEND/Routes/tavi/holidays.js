@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const holidaySetting = require("../../Models/holiday");
-let hourSetting = require("../../Models/holiday");
+
 
 
 //create
 
-router.route("/addHolidaySetting").post(async(req,res)=>{
+router.route("/addHolidays").post((req,res)=>{
 
     const busyDate = req.body.busyDate;
     const event = req.body.event;
@@ -19,12 +19,12 @@ router.route("/addHolidaySetting").post(async(req,res)=>{
         res.json("Holidays Setting Up Successfull");
     }).catch((err)=>{
         console.log(err);
-    })
-})
+    });
+});
 
 // read
 
-router.route("/").get((req,res)=>{
+router.route("/").get(async(req,res)=>{
     holidaySetting.find().then((holidays)=>{
         res.json(holidays);
     }).catch((err)=>{
