@@ -34,12 +34,16 @@ router.route("/addstaff").post(async (req,res)=>{
         mobileno,
         joindate
     })
+    
+    //then / catch are used for handling asynchronous operations such as database queries
 
     newStaff.save().then(()=>{
         res.json("Staff Added")
     }).catch((err)=>{
-        console.log(err);  //debugging and identify issues
-    })                     //then / catch are used for handling asynchronous operations such as database queries
+        console.log(err); //debugging and identify issues
+        res.status(500).json({ message: "Error adding staff", error: err.message });
+                            
+    })                     
 })
 
 //http://Localhost:8090/staff/
