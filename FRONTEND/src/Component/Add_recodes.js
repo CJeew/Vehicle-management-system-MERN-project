@@ -56,14 +56,21 @@ function Add_recodes(){
             />
             <label className="block mb-2 text-sm font-bold text-gray-700">
             Category</label>
-            <input type="text" className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+            <select
+            className="px-3 py-1 rounded-lg border border-black-400 w-full text-black" required
             onChange={(e) => setCategory(e.target.value)}
-            required
-            />
-            <button className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+          >
+            <option selected disabled value="">Select Category</option>
+            <option value="Interior">Interior</option>
+            <option value="Exterior">Exterior</option>
+          
+          </select>
+          <div className="flex items-center justify-center">
+            <button className= "btn-indigo bg-gradient-to-r from-red-400 to-red-500 px-2 py-2 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] mt-4"
             type="submit">
             Add Recorde
             </button>
+          </div>
     </form>
         </div>
 
