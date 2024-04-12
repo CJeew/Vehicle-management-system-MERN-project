@@ -210,21 +210,15 @@ function App() {
           <Route path="/employeeattendance" element={<EmployeeAttendance/>}/>
           <Route path="/editleaverequest/:id" element={<EditLeaveRequest/>}/>
           <Route path="/leaverequest" element={<LeaveRequest/>}/>
-
-
-
-         
-
-          
           <Route path="/editannouncement/:id" element={<EditAnnouncement/>}/>
           <Route path="/employeeannouncement" element={<EmployeeAnnouncement/>}/>
-          
-          
 
 
 
          
 
+          
+          
           <Route path="/inventory" element={<Inventory_Menu/>}/>
           <Route path="/manageitems" element={<ManageItems/>}/>
           <Route path="/additems" element={<Additems/>}/>
