@@ -46,7 +46,8 @@ import AddBusinessHours from "./Component/AddBusinessHours";
 import Home from "./Component/home";
 
 
-//service
+//---------service--------------------------
+//-----------Packages-----------------------
 //import add package
 import Addpkg from "./Component/Add_package";
 //import servicehome
@@ -58,10 +59,12 @@ import Viewpkg from "./Component/View_package";
 import Viewpkg2 from "./Component/View_package2";
 //import Edit package
 import Pkgedithome from "./Component/Package_edithome";
-
 import Editpkg from "./Component/Edit_package";
-//import Delete package
-import Deletepkg from "./Component/Delete_package"; 
+
+//----------Record-------------------------
+import Addrec from "./Component/Add_recodes";
+
+
 
 //staff
 import AddPayroll from "./Component/AddPayroll";
@@ -154,6 +157,7 @@ function App() {
           <Route path="/viewpkg" element={<Viewpkg/>}/>
           <Route path="/Pkgedithome" element={<Pkgedithome/>}/>
           <Route path="/editpkg/:id" element={<Editpkg/>}/>
+          <Route path="/addrec" element={<Addrec/>}/>
          
 
           {/*---------Tavini-------------Booking------------------------------*/}
