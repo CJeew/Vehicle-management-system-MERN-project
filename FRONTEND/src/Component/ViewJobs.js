@@ -35,7 +35,7 @@ export default function ViewJobs() {
     if(confirm){
       try{
         await axios.delete(`http://localhost:8090/job/delete/${jobId}`);
-        alert('User Deleted Successfully');
+        alert('Job Deleted Successfully');
         window.location.reload(); 
 
       } catch(error){
