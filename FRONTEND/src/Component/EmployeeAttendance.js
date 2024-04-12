@@ -4,6 +4,7 @@ import axios from "axios";
 export default function EmployeeAttendance() {
   const [employeeattendance, setAttendance] = useState([]); // State for storing attendance details
   const [searchTerm, setSearchTerm] = useState(""); // State for storing search term
+  const [sortOrder, setSortOrder] = useState("asc"); // State for sorting order, default is ascending
 
   // Fetch attendance details from the server on component mount
   useEffect(() => {
@@ -31,6 +32,20 @@ export default function EmployeeAttendance() {
     attendance.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     attendance.date.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  // Function to handle sorting by date
+  const sortByDate = () => {
+    const sortedAttendance = [...employeeattendance].sort((a, b) => {
+      if (sortOrder === "asc") {
+        return new Date(a.date) - new Date(b.date);
+      } else {
+        return new Date(b.date) - new Date(a.date);
+      }
+    });
+    setAttendance(sortedAttendance);
+    setSortOrder(sortOrder === "asc" ? "desc" : "asc"); // Toggle sorting order
+  };
+
 
   return (
 
@@ -72,7 +87,19 @@ export default function EmployeeAttendance() {
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">ID</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">NIC</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Name</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Date</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">
+                {/* Sort by date button */}
+                <button onClick={sortByDate} className="text-left text-xs font-bold text-black uppercase tracking-wider">
+                  Date
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block ml-1" viewBox="0 0 25 25" fill="currentColor">
+                    {sortOrder === "asc" ? (
+                      <path fillRule="evenodd" d="M10 3a1 1 0 00-1.707-.707l-7 7a1 1 0 001.414 1.414L5 5.414V17a1 1 0 102 0V5.414l2.293 2.293a1 1 0 101.414-1.414l-3-3z" clipRule="evenodd" />
+                    ) : (
+                      <path fillRule="evenodd" d="M10 17a1 1 0 01-1.707.707l-7-7a1 1 0 111.414-1.414L5 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 111.414 1.414l-3 3z" clipRule="evenodd" />
+                    )}
+                  </svg>
+                </button>
+              </th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Attendance</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Action</th>
             </tr>
@@ -93,7 +120,10 @@ export default function EmployeeAttendance() {
                       Edit
                     </a>
                     {/* Delete attendance button  */}
-                    <button onClick={() => onDeleteClick(employeeattendance._id)} class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+
+
+                    <button onClick={() => onDeleteClick(employeeattendance._id)} class="bg-transparent hover:bg-red-600 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+
                       Delete
                     </button>
                   </div>

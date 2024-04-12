@@ -3,7 +3,9 @@ let Staffdetails = require("../../Models/Staffdetails");
 
 //http://localhost:8090/staff/add
 
-router.route("/addstaff").post((req,res)=>{
+router.route("/addstaff").post(async (req,res)=>{
+
+    //async used for handle asynchronous operations
 
     const nic = req.body.nic;
     const name = req.body.name;
@@ -12,7 +14,16 @@ router.route("/addstaff").post((req,res)=>{
     const email = req.body.email;
     const mobileno = Number(req.body.mobileno);
     const joindate = req.body.joindate;
-    
+
+    // Check if a staff with the same NIC already exists
+    const existingStaff = await Staffdetails.findOne({ nic });
+    if (existingStaff) {
+        return res.status(400).json({ message: 'The staff already exists with this NIC' });
+    }
+    //200 for success, 400 for bad request, 500 for internal server error
+    //await ensures that the code execution waits until the database operation finishes before proceeding
+
+    //If there are no any existing details, the new staff will be added here
     const newStaff = new Staffdetails({
 
         nic,
@@ -27,8 +38,8 @@ router.route("/addstaff").post((req,res)=>{
     newStaff.save().then(()=>{
         res.json("Staff Added")
     }).catch((err)=>{
-        console.log(err);
-    })
+        console.log(err);  //debugging and identify issues
+    })                     //then / catch are used for handling asynchronous operations such as database queries
 })
 
 //http://Localhost:8090/staff/

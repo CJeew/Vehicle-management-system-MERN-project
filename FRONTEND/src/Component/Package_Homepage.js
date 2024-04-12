@@ -17,14 +17,9 @@ export default function Package_Homepage() {
           View Package
         </button>
         </a>
-        <a href="editpkg">
+        <a href="Pkgedithome">
         <button className="bg-gradient-to-r from-red-400 to-red-500 px-2 py-4 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full">
           Update Package
-        </button>
-        </a>
-        <a href="deletepkg">
-        <button className="bg-gradient-to-r from-red-400 to-red-500 px-2 py-4 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full">
-          Delete Package
         </button>
         </a>
       </div>

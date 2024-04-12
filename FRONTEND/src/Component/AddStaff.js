@@ -12,50 +12,16 @@ export default function AddStaff() {
     const [mobileno, setMobileno] = useState("");
     const [joindate, setJoindate] = useState("");
 
-    const [nicError, setNicError] = useState("");
-    const [emailError, setEmailError] = useState("");
-    const [mobilenoError, setMobilenoError] = useState("");
-
-    function validateNIC(value) {
-      const nicVal = /^(?:[0-9]{9}[vV]{1}|[0-9]{12})$/;
-      return nicVal.test(value);
-    }
   
-    function validateMobileNo(value) {
-      const mobileVal = /^[0-9]{10}$/;
-      return mobileVal.test(value);
-    }
-  
-    function validateEmail(value) {
-      const emailVal = /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
-      return emailVal.test(value);
-    }
+    // function validateEmail(value) {
+    //   const emailVal = /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
+    //   return emailVal.test(value);
+    // }
   
 
     function sendData(e){
         e.preventDefault();
         //alert("Inserted");
-
-        if (!validateNIC(nic)) {
-          setNicError("Please enter a valid NIC.");
-          return;
-        } else {
-          setNicError("");
-        }
-    
-        if (!validateMobileNo(mobileno)) {
-          setMobilenoError("Please enter a valid mobile number.");
-          return;
-        } else {
-          setMobilenoError("");
-        }
-    
-        if (!validateEmail(email)) {
-          setEmailError("Please enter a valid email address.");
-          return;
-        } else {
-          setEmailError("");
-        }
     
         const newStaff = {
 
@@ -73,7 +39,7 @@ export default function AddStaff() {
             alert("Staff Added")
             window.location.reload();
         }).catch((err)=>{
-            alert(err)
+            alert(err.response.data.message)
         })
 
     }
@@ -93,13 +59,14 @@ return (
             name="nic"
             id="nic"
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            pattern="[0-9]{9}[vV]{1}|[0-9]{12}"
             onChange={(e)=>{
 
               setNic(e.target.value);
-              setNicError("");
+              
             }}
           required/>
-          {nicError && <p className="text-red-500">{nicError}</p>}
+         
         </div>
       </div>
 
@@ -131,13 +98,14 @@ return (
                   name="email"
                   id="email"
                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                   onChange={(e)=>{
 
                     setEmail(e.target.value);
-                    setEmailError("");
+                    //setEmailError("");
                   }}
                   required/>
-                {emailError && <p className="text-red-500">{emailError}</p>}
+                {/* {emailError && <p className="text-red-500">{emailError}</p>} */}
               </div>
             </div>
       
@@ -188,13 +156,13 @@ return (
             name="mobileno"
             id="mobileno"
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            pattern="[0-9]{10}"
             onChange={(e)=>{
 
               setMobileno(e.target.value);
-              setMobilenoError("");
+              
             }}
-            required/>
-          {mobilenoError && <p className="text-red-500">{mobilenoError}</p>}
+            required/>       
         </div>
       </div>
 

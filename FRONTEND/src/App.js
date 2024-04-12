@@ -7,8 +7,12 @@ import Add_Supplier from "./Component/Add_Supplier";
 import Delete from "./Component/Delete";
 // import Display from "./Components/Display";
 import Display from "./Component/Display";
-//import Update from "./Component/Update";
+
+//Jobs
 import Create_Job from "./Component/job";
+import ViewJobs from "./Component/ViewJobs";
+import JobDetails from "./Component/jobDetails";
+
 
 //Customer
 import Chome from "./Component/Chome";
@@ -17,6 +21,8 @@ import Review from "./Component/Review";
 import Profile from "./Component/Profile";
 import Customerlogin from "./Component/Customerlogin";
 import Cmanager from "./Component/Cmanager";
+import CustomerList from "./Component/CustomerList";
+import CustomerReview from "./Component/CustomerReview";
 
 
 
@@ -33,14 +39,15 @@ import BookingPage from "./Component/BookingPage"; // import Booking Page
 import BookingPageCustomerLogin from "./Component/BookingPageCustomerLogin";  // import Booking Customer Login Page
 import BookingPageManagerLogin from "./Component/BookingPageManagerLogin";   // import Booking Manager Login Page
 import AddBooking from "./Component/AddBooking";
-import BookingList from "./Component/BookingList";
 import BookRead from "./Component/BookRead";
-
+import ServiceHistory from "./Component/ServiceHistory";
+import AddBusinessHours from "./Component/AddBusinessHours";
 
 import Home from "./Component/home";
 
 
-//service
+//---------service--------------------------
+//-----------Packages-----------------------
 //import add package
 import Addpkg from "./Component/Add_package";
 //import servicehome
@@ -51,9 +58,13 @@ import PkageHome from "./Component/Package_Homepage";
 import Viewpkg from "./Component/View_package";
 import Viewpkg2 from "./Component/View_package2";
 //import Edit package
+import Pkgedithome from "./Component/Package_edithome";
 import Editpkg from "./Component/Edit_package";
-//import Delete package
-import Deletepkg from "./Component/Delete_package"; 
+
+//----------Record-------------------------
+import Addrec from "./Component/Add_recodes";
+
+
 
 //staff
 import AddPayroll from "./Component/AddPayroll";
@@ -103,12 +114,14 @@ import OrderEditItems from "./Component/Inventory/manageorderupdate";
 
 
 
+//Financial
 
+import Transaction from "./Component/Financial/TransactionView";
+import AddTransaction from "./Component/Financial/AddTransaction";
 
-
-
-
-
+import TransactionView from "./Component/Financial/TransactionView";
+// import AddTransaction from "./Component/Financial/AddTransaction";
+import UpdateTransaction from "./Component/Financial/Update_Transaction";
 
 
 
@@ -123,28 +136,40 @@ function App() {
           {/* <Route path="" */}
           <Route path="/" element={  <Home/>}/>
           <Route path="/add" element={<Add_Supplier />} />
-          <Route path="/createjob" element={<Create_Job />} />
           <Route path="/display" element={<Display/>}/> 
           <Route path="/delete" element={<Delete/>}/>
+
+          <Route path="/createjob" element={<Create_Job />} />
+          <Route path="/viewjobs" element={<ViewJobs />} />
+          <Route path="/details/:jobNumber" element={<JobDetails />} />
+
+
           {/* <Route path="/update" element={<Update/>}/> */}
-          <Route path="/booking" element={<BookingPage/>}/>
+         
           
       {/* <Route path="/customer" element={<Customerhome/>}/> */}
 
-                  {/*service and record*/}
+                  {/* Dulanka ---service and record */}
           <Route path="/addpkg" element={<Addpkg/>}/>
           <Route path="/servicehome" element={<Servicehome/>}/>
           <Route path="/PkageHome" element={<PkageHome/>}/>
           <Route path="/viewpkg2" element={<Viewpkg2/>}/>
           <Route path="/viewpkg" element={<Viewpkg/>}/>
+          <Route path="/Pkgedithome" element={<Pkgedithome/>}/>
+          <Route path="/editpkg/:id" element={<Editpkg/>}/>
+          <Route path="/addrec" element={<Addrec/>}/>
          
 
           {/*---------Tavini-------------Booking------------------------------*/}
+          <Route path="/booking" element={<BookingPage/>}/>
           <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
           <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
           <Route path="/addBooking" element={<AddBooking/>}/>
-          <Route path="/bookingList" element={<BookingList/>}/>
           <Route path="/bookRead" element={<BookRead/>}/>
+          <Route path="/serviceHistory" element={<ServiceHistory/>}/>
+
+
+          <Route path="/addHourSetting" element={<AddBusinessHours/>}/>
 
 
           {/* <Route path="/test" element={<Test/>}/> */}
@@ -156,6 +181,9 @@ function App() {
           <Route path="/Profile" element={<Profile/>}/>
           <Route path="/Customerlogin" element={<Customerlogin/>}/>
           <Route path="/Cmanager" element={<Cmanager/>}/>
+          <Route path="/CustomerList" element={<CustomerList/>}/>
+          <Route path="/CustomerReview" element={<CustomerReview/>}/>
+          
 
 
 
@@ -200,6 +228,13 @@ function App() {
           <Route path="/Addorder/" element={<Addorderitems/>}/>
           <Route path="/manageorderupdate/:id" element={<OrderEditItems/>}/>
 
+
+
+
+          {/* ----------Shajeeh---------- */}
+          <Route path="/Finance" element={<TransactionView/>}/>
+          <Route path="/AddTransaction" element={<AddTransaction />} />
+          <Route path="/Update_Transaction/:id" element={<UpdateTransaction />}/>
 
                     
          

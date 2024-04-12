@@ -4,7 +4,7 @@ import axios from "axios";
 
 function AddPackage() {
   // add package form
-  const [pid, setPid] = useState("");
+ 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [unitPrice, setUnitPrice] = useState(0);
@@ -14,7 +14,6 @@ function AddPackage() {
     e.preventDefault();
 
     const newPackage = {
-      pid,
       name,
       description,
       unitprice: parseFloat(unitPrice), // Ensure unitPrice is correctly formatted as a number
@@ -38,17 +37,7 @@ function AddPackage() {
           Add Package
         </h1>
         <form onSubmit={submit}>
-          <div className="mb-4">
-            <label className="block mb-2 text-sm font-bold text-gray-700">
-              PID
-            </label>
-            <input
-              type="text"
-              className="px-3 py-1 rounded-lg border border-black-400 w-full text-black"
-              onChange={(e) => setPid(e.target.value)}
-              required
-            />
-          </div>
+          
           <label className="block mb-2 text-sm font-bold text-gray-700">
             Name
           </label>

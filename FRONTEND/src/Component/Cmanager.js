@@ -5,6 +5,7 @@ import "./Chome.css";
 import "./Chome.js";
 import "./Customerlogin.js"
 import "./Profile.js"
+import "./CustomerList.js"
 export default function Cmanager() {
   return (
     <div class="flex h-screen w-full items-center justify-center  bg-cover bg-no-repeat">
@@ -36,7 +37,7 @@ export default function Cmanager() {
       <div class="text-white">
           <div class="mb-8 flex flex-col items-center">
             
-            <span class="text-gray-300">Customer List</span>
+            <span class="text-gray-300">Customer List </span>
           </div>
           <form action="#">
             
@@ -55,9 +56,17 @@ export default function Cmanager() {
             <div class="mt-8 flex justify-center text-lg text-black">
             <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                   hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
-                                  ease-in-out transform hover:scale-105"><a href="/">Get List</a></button>
+                                  ease-in-out transform hover:scale-105"><a href="/CustomerList">Get List</a></button>
             </div>
           </form>
+          
         </div>
       </div>
+      <div class="absolute bottom-10 right-15">
+    <button class="position-relative bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                    hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
+                    ease-in-out transform hover:scale-100 top-50px">
+        <a href="/CustomerReview">Reviews</a>
+    </button>
+</div>
     </div>);}
