@@ -10,6 +10,7 @@ export default function Additems() {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [suppliername, setSuppliername] = useState("");
+  const [ reorderlevel,setReorderLevel] = useState("");
   const [stocklimit, setStocklimit] = useState("");
   const [remark, setRemark] = useState("");
   const [isactive, setIsactive] = useState("");
@@ -26,6 +27,7 @@ export default function Additems() {
       description,
       price,
       suppliername,
+      reorderlevel,
       stocklimit,
       remark,
       isactive,
@@ -43,11 +45,11 @@ export default function Additems() {
   }
 
   return (
-    <form onSubmit={sendData} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
+<form onSubmit={sendData} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-auto w-1/4">
      
       <center><h1>Add Item</h1></center>
 
-      <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
+      <div className="mt-4">
         <div>
           <label htmlFor="itemcode" className="block text-sm font-medium leading-6 text-gray-900">Item Code</label>
           <input
@@ -111,6 +113,17 @@ export default function Additems() {
             id="suppliername"
             value={suppliername}
             onChange={(e) => setSuppliername(e.target.value)}
+            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          />
+        </div>
+        <div>
+          <label htmlFor="reorderlevel" className="block text-sm font-medium leading-6 text-gray-900">Reorder Level</label>
+          <input
+            type="number"
+            name="reorderlevel"
+            id="reorderlevel"
+            value={reorderlevel}
+            onChange={(e) => setReorderLevel(e.target.value)}
             className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>

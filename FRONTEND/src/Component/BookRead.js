@@ -22,7 +22,7 @@ export default function BookRead() {
         getBooking();
     }, []);
 
-    // Function to handle deletion of a payroll
+    // Function to handle deletion of a booking
   const onDeleteClick = async (bookId) => {
     await axios.delete(`http://localhost:8090/booking/delete/${bookId}`);
     alert('Booking Deleted Successfully');

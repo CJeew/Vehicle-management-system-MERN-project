@@ -9,6 +9,7 @@ router.route("/add").post((req, res) => {
     const description = req.body.description;
     const suppliername = req.body.suppliername;
     const price = req.body.price;
+    const reorderlevel = req.body.reorderlevel;
     const stocklimit = req.body.stocklimit;
     const remark = req.body.remark;
     const isactive = req.body.isactive;
@@ -20,6 +21,7 @@ router.route("/add").post((req, res) => {
          description,
          suppliername,
          price,
+         reorderlevel,
          stocklimit,
          remark,
          isactive,
@@ -51,7 +53,7 @@ router.route("/").get((req, res) => {
 //CRUD (update page) code segment
 router.route("/update/:id").put(async (req, res) => {
     let userId = req.params.id; //code for get the individual id from the url
-    const { itemcode, itemname, category,description,suppliername,price,stocklimit,remark,isactive } = req .body;
+    const { itemcode, itemname, category,description,suppliername,price,reorderlevel,stocklimit,remark,isactive } = req .body;
   
     //object for supplier update
     const updatemanageparts = {
@@ -62,6 +64,7 @@ router.route("/update/:id").put(async (req, res) => {
         description,
         suppliername,
         price,
+        reorderlevel,
         stocklimit,
         remark,
         isactive,
@@ -109,5 +112,15 @@ router.route("/delete/:id").delete(async (req, res) => {
       });
   });
 
+  router.get('/checkReorderLevel', async (req, res) => {
+    try {
+        const items = await manageparts.find();
+        const alerts = items.filter(item => item.stocklimit < item.reorderlevel);
+        res.json(alerts);
+    } catch (error) {
+        console.error("Error checking reorder levels:", error);
+        res.status(500).json({ error: "Failed to check reorder levels" });
+    }
+});
 
 module.exports = router;

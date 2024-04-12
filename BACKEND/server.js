@@ -40,7 +40,7 @@ app.use("/job", JobRouter);
 const svcPackagesRouter = require("./Routes/dulanka/packages.js");
 app.use("/svc-packages", svcPackagesRouter);
 
-const svcRecordsRouter = require("./Routes/dulanka/packages.js");
+const svcRecordsRouter = require("./Routes/dulanka/servicerecode.js");
 app.use("/svc-records", svcRecordsRouter);
 
 
@@ -50,6 +50,9 @@ app.use("/booking", bookingRouter);
 
 const hourSettingRouter = require("./Routes/tavi/businessHours.js");
 app.use("/hourSetting", hourSettingRouter);
+
+const holidaySettingRouter = require("./Routes/tavi/holidays.js");
+app.use("/holidaySetting", holidaySettingRouter);
 
 // CHIYAN
 const customerRouter = require("./Routes/chiyaan/customer.js");

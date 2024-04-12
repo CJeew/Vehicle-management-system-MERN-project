@@ -4,10 +4,7 @@ const Schema = mongoose.Schema;
 // schema 
 
 const packageSchema = new Schema({
-    pid  : {
-        type : Number,
-        required : true
-    },
+   
     name : {
         type : String,
         required : true
