@@ -7,7 +7,7 @@ function Add_recodes(){
     const [service, setService] = useState("");
     const [customer, setCustomer] = useState("");
     const [date, setDate] = useState("");
-    const [category, setcategory] = useState("");
+    const [category, setCategory] = useState("");
 
     function submit(e){
         e.preventDefault(); //prevent default form submission behavior      
@@ -18,7 +18,8 @@ function Add_recodes(){
             date,
             category
         };
-        axios.post("http://localhost:8090/svc-records/addr", newRecorde)
+        axios
+        .post("http://localhost:8090/svc-records/addr", newRecorde)
         .then(()=>{        
             alert("Recode Added");
         }        
@@ -56,7 +57,7 @@ function Add_recodes(){
             <label className="block mb-2 text-sm font-bold text-gray-700">
             Category</label>
             <input type="text" className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-            onChange={(e) => setcategory(e.target.value)}
+            onChange={(e) => setCategory(e.target.value)}
             required
             />
             <button className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"

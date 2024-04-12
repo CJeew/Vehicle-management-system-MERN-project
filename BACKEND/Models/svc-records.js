@@ -14,7 +14,7 @@ const serviceRecordSchema = new Schema({
         type : String,
         required : true
     },
- date : {
+    date : {
         type : Date, 
         required : true
     },
@@ -25,3 +25,8 @@ const serviceRecordSchema = new Schema({
    
     
 })
+
+
+const ServiceRecord = mongoose.model('ServiceRecord',serviceRecordSchema);
+
+module.exports = ServiceRecord;
