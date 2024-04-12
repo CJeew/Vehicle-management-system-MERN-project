@@ -6,22 +6,29 @@ const Schema = mongoose.Schema;
 const serviceRecordSchema = new Schema({
    
 
-    name : {
-        type : String,
-        required : true
-    },
+   
+
     service :{
         type : String,
         required : true
     },
- date : {
+    customer : {
+        type : String, 
+        required : true
+    },
+    date : {
         type : Date, 
         required : true
     },
-    catagory : {
+    category : {
         type : String, 
         required : true
     },
    
     
 })
+
+
+const ServiceRecord = mongoose.model('ServiceRecord',serviceRecordSchema);
+
+module.exports = ServiceRecord;
