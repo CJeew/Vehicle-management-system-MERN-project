@@ -15,7 +15,7 @@ export default function BookRead() {
                 alert(err.message);
             });
     };
-    
+   
     useEffect(() => {
         function getBooking() {
             axios.get("http://localhost:8090/booking/")
@@ -29,9 +29,9 @@ export default function BookRead() {
                     alert(err.message);
                 });
         }
-
         getBooking();
-    }, []);
+
+        }, []);
 
     
 

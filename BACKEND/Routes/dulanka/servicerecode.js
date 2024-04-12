@@ -8,6 +8,7 @@ router.route("/addr").post((req, res) => {
   const service = req.body.service;
   const customer = req.body.customer;
   const date = req.body.date;
+  console.log("test");
   const category = req.body.category;
   
 
