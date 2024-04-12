@@ -26,11 +26,22 @@ router.route("/addpayroll").post(async(req,res)=>{
         salary
     })
 
-    await newPayroll.save().then(()=>{
+    try {
+        const { nic, date } = req.body;
+
+        // Check if NIC and date already exist in the database
+        const existingPayroll = await Employeepayroll.findOne({ nic, date });
+        if (existingPayroll) {
+            return res.status(400).json({ message: "This NIC already exists with the same date" });
+        }
+
+    // Create new payroll entry if NIC and date are valid and not already in the database
+    await newPayroll.save();
         res.json("Payroll Added")
-    }).catch((err)=>{
+    }catch(err){
         console.log(err);
-    })
+        res.status(500).json({ message: "Error adding payroll", error: err.message });
+    }
 })
 
 
