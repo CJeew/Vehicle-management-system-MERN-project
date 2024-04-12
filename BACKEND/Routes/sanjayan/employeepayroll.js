@@ -3,7 +3,7 @@ let Employeepayroll = require("../../Models/Employeepayroll");
 
 //http://localhost:8090/staff/add
 
-router.route("/addpayroll").post((req,res)=>{
+router.route("/addpayroll").post(async(req,res)=>{
 
     const nic = req.body.nic;
     const name = req.body.name;
@@ -26,7 +26,7 @@ router.route("/addpayroll").post((req,res)=>{
         salary
     })
 
-    newPayroll.save().then(()=>{
+    await newPayroll.save().then(()=>{
         res.json("Payroll Added")
     }).catch((err)=>{
         console.log(err);

@@ -80,13 +80,14 @@ import React from "react";
 
 export default function StaffHome() {
   return (
-    <div className="h-screen w-screen grid grid-cols-3 gap-2 justify-center items-center mt-[5rem] ">
+    <div className="h-screen w-screen grid grid-cols-3 gap-2 justify-center items-center mt-[5rem]">
+
       {/* First Row */}
       <div className="relative inline-flex group mr-2 col-span-3 sm:col-span-1 ml-[6rem]">
         <a
           href="/staffdetails"
           title="ManageEmployee"
-          className="relative inline-flex items-center justify-center px-12 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+          className="relative inline-flex items-center justify-center px-12 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900  hover:scale-105 hover:bg-gradient-to-r from-red-700 to-blue"
           role="button"
         >
           Manage Employee
@@ -97,7 +98,7 @@ export default function StaffHome() {
         <a
           href="/employeepayroll"
           title="Payroll"
-          className="relative inline-flex items-center justify-center px-12 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+          className="relative inline-flex items-center justify-center px-12 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900  hover:scale-105 hover:bg-gradient-to-r from-red-700 to-blue"
           role="button"
         >
           Employee Payroll
@@ -108,7 +109,7 @@ export default function StaffHome() {
         <a
           href="/addleaverequest"
           title="LeaveRequest"
-          className="relative inline-flex items-center justify-center px-12 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+          className="relative inline-flex items-center justify-center px-12 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900  hover:scale-105 hover:bg-gradient-to-r from-red-700 to-blue"
           role="button"
         >
           Leave Request
@@ -120,7 +121,7 @@ export default function StaffHome() {
         <a
           href="/employeeattendance"
           title="Attendance"
-          className="relative items-center justify-center px-8 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 whitespace-nowrap"
+          className="relative items-center justify-center px-8 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 whitespace-nowrap  hover:scale-105 hover:bg-gradient-to-r from-red-700 to-blue"
           role="button"
         >
           Employee Attendance
@@ -131,7 +132,7 @@ export default function StaffHome() {
         <a
           href="/employeeannouncement"
           title="Announcement"
-          className="relative inline-flex items-center justify-center px-12 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+          className="relative inline-flex items-center justify-center px-12 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900  hover:scale-105 hover:bg-gradient-to-r from-red-700 to-blue"
           role="button"
         >
           Announcement
