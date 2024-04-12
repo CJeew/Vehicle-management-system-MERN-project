@@ -16,16 +16,6 @@ const hourSettingSchema = new Schema({
     timeTo : {
         type : String,
         required : false
-    },
-
-    busyDate : {
-        type : Date,
-        required : false
-    },
-
-    event : {
-        type : String,
-        required : false
     }
 })
 

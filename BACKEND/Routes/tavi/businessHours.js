@@ -9,28 +9,25 @@ router.route("/addHourSetting").post(async(req,res)=>{
     const day = req.body.day;
     const timeFrom = req.body.timeFrom;0
     const timeTo = req.body.timeTo;
-    const busyDate = req.body.busyDate;
-    const event = req.body.event;
+
    
     const newHourSetting = new hourSetting({
         day,
         timeFrom,
-        timeTo,
-        busyDate,
-        event
+        timeTo
     })
 
     newHourSetting.save().then(()=>{
         res.json("Business Hours Setting Up Successfull");
     }).catch((err)=>{
         console.log(err);
-    });
-});
+    })
+})
 
 // read
 
-router.route("/").get(async(req,res)=>{
-    businessHour.find().then((businessHours)=>{
+router.route("/").get((req,res)=>{
+    hourSetting.find().then((businessHours)=>{
         res.json(businessHours);
     }).catch((err)=>{
         console.log(err);
@@ -41,21 +38,19 @@ router.route("/").get(async(req,res)=>{
 
 router.route("/updateSetting/:id").post(async(req,res)=>{
     let settingId = req.params.id;
-    const{day, timeFrom, timeTo, busyDate, event} = req.body; 
+    const{day, timeFrom, timeTo} = req.body; 
 
     const updateSetting = {
         day, 
         timeFrom,
-        timeTo, 
-        busyDate, 
-        event
+        timeTo
     }
-    const updateHours = await businessHour.findByIdUpdate(settingId, updateSetting)  //await - waiting until the before update finish to execute next update
+    const updateHours = await hourSetting.findByIdUpdate(settingId, updateSetting)  //await - waiting until the before update finish to execute next update
     .then(()=>{  
         res.status(200).send({status: "Business Hours Setting Updated"})
     }).catch((err)=>{
         console.log(err);
-        res.status(500).send({status: "Error with updating data", error: err.message});
+        res.status(500).send({status: "Error with updating business hours", error: err.message});
     })
  })
 
@@ -63,7 +58,7 @@ router.route("/updateSetting/:id").post(async(req,res)=>{
 
 router.route("/deleteSetting/:id").delete(async(req, res)=>{
     let settingId = req.params.id;
-    await businessHour.findByIdAndDelete(settingId)
+    await hourSetting.findByIdAndDelete(settingId)
     then(()=> {
         res.status(200).send({status: "Business Hours Deleted"});
     }).catch((err)=>{
