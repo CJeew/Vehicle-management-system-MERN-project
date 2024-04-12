@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function ViewHolidaySetting() {
-    const [holidays, setSetting] = useState([]);
+export default function ViewHolidaysSetting() {
+    const [holidays, setSet] = useState([]);
 
     useEffect(() => {
-        function getSetting() {
+        function getSet() {
             axios.get("http://localhost:8090/holidaySetting")
                 .then((res) => {
                     console.log("Response from server:", res.data); 
-                    setSetting(res.data);
+                    setSet(res.data);
                 })
                 .catch((err) => {
                     console.error("Error fetching data:", err);
@@ -17,7 +17,7 @@ export default function ViewHolidaySetting() {
                 });
         }
 
-        getSetting();
+        getSet();
     }, []);
 
     const formatDate = (dateString) => {
@@ -31,10 +31,7 @@ export default function ViewHolidaySetting() {
 
     return(
         <div>
-            <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Business Hours</h2>
-            <div class="flex space-x-60">
-            <p className="text-2xl font-bold ms-20 my-10 mt-20 text-white ">Business Hours</p>
-            <p className="text-2xl font-bold ms-20 my-10 mt-20 mx-10  text-white">Holidays</p></div>
+            <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Holidays</h2>
             <div class="flex">      
 
         <table  class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10">

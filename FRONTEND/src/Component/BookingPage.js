@@ -16,13 +16,13 @@ export default function BookingPage() {
       </div>
 
       <br />
-      <small className="ms-20 text-2xl font-semibold text-gray-400 dark:text-gray-400">Simplifies the process of making reservations by providing</small>
+      <small className="ms-20 text-xl opacity-90 mt-5 text-white">Simplifies the process of making reservations by providing</small>
       <br />
-      <small className="ms-20 text-2xl font-semibold text-gray-400 dark:text-gray-400">a convenient online platform where users can easily</small>
+      <small className="ms-20 text-xl opacity-90 mt-5 text-white">a convenient online platform where users can easily</small>
       <br />
-      <small className="ms-20 text-2xl font-semibold text-gray-400 dark:text-gray-400">select their desired date and time, choose the service,</small>
+      <small className="ms-20 text-xl opacity-90 mt-5 text-white">select their desired date and time, choose the service,</small>
       <br />
-      <small className="ms-20 text-2xl font-semibold text-gray-400 dark:text-gray-400">and often make payment arrangements if necessary.</small>
+      <small className="ms-20 text-xl opacity-90 mt-5 text-white">and often make payment arrangements if necessary.</small>
 
       <div className="flex ms-20 my-20">
       <figure class="ml-10 mr-10 block max-w-sm p-6 bg-black border border-black-200 rounded-lg shadow-md 
