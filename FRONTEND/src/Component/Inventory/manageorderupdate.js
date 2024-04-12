@@ -49,7 +49,7 @@ export default function OrderEditItems() {
     try {
       await axios.put(`http://localhost:8090/manageorders/update/${id}`, item);
       alert("Item Updated");
-      window.location.href = "/manageorders";
+      window.location.href = "/managedorders";
     } catch (error) {
       alert(error.message);
     }
@@ -58,9 +58,10 @@ export default function OrderEditItems() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <form onSubmit={updateItems} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
-      <center><h1>Order Update Item</h1></center>
-      <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
+    <form onSubmit={updateItems} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-auto w-1/4">
+    <center><h1 className="font-bold">Order Update Item</h1></center>
+
+      <div className="mt-4">
         <div>
           <label htmlFor="itemcode" className="block text-sm font-medium leading-6 text-gray-900">Item Code</label>
           <input
@@ -120,7 +121,7 @@ export default function OrderEditItems() {
      
       </div>
       <div className="mt-6 flex items-center justify-end gap-x-6">
-      <button type="button" className="text-sm font-semibold leading-6 text-gray-900" onClick={() => navigate('/manageorders')}>
+      <button type="button" className="text-sm font-semibold leading-6 text-gray-900" onClick={() => navigate('/managedorders')}>
           Cancel
         </button>
         <button

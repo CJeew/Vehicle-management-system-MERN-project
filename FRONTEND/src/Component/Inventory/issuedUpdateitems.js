@@ -58,9 +58,9 @@ export default function IssuedEditItems() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <form onSubmit={updateItems} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
+    <form onSubmit={updateItems} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-auto w-1/4">
       <center><h1>Issued Update Item</h1></center>
-      <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
+      <div className="mt-4">
         <div>
           <label htmlFor="itemcode" className="block text-sm font-medium leading-6 text-gray-900">Item Code</label>
           <input
@@ -97,7 +97,7 @@ export default function IssuedEditItems() {
         <div>
           <label htmlFor="quantity" className="block text-sm font-medium leading-6 text-gray-900">Quantity</label>
           <input
-            type="text"
+            type="number"
             name="quantity"
             id="quantity"
             value={item.quantity}
