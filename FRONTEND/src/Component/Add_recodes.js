@@ -30,7 +30,7 @@ function Add_recodes(){
 
  return (
     <div className="  w-full flex justify-center items-center  ">
-        <div className="w-full max-w-108 mt-24 bg-white p-8 rounded-lg shadow-md bg-gray-200 bg-opacity-70">
+        <div className="w-full max-w-2xl mt-24 bg-white p-8 rounded-lg shadow-md bg-gray-200 bg-opacity-70">
         <h1 className="text-3xl mb-6 text-center font-bold text-gray-800">
           Add Recordes
         </h1>
