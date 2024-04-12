@@ -7,10 +7,9 @@ let hourSetting = require("../../Models/businessHour");
 router.route("/addHourSetting").post(async(req,res)=>{
 
     const day = req.body.day;
-    const timeFrom = req.body.timeFrom;0
+    const timeFrom = req.body.timeFrom;
     const timeTo = req.body.timeTo;
-
-   
+    
     const newHourSetting = new hourSetting({
         day,
         timeFrom,

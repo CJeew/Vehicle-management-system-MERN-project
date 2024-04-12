@@ -51,6 +51,9 @@ app.use("/booking", bookingRouter);
 const hourSettingRouter = require("./Routes/tavi/businessHours.js");
 app.use("/hourSetting", hourSettingRouter);
 
+const holidaySettingRouter = require("./Routes/tavi/holidays.js");
+app.use("/holidaySetting", holidaySettingRouter);
+
 // CHIYAN
 const customerRouter = require("./Routes/chiyaan/customer.js");
 app.use("/customer", customerRouter);
