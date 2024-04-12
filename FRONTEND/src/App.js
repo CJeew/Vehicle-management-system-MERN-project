@@ -42,6 +42,11 @@ import AddBooking from "./Component/AddBooking";
 import BookRead from "./Component/BookRead";
 import ServiceHistory from "./Component/ServiceHistory";
 import AddBusinessHours from "./Component/AddBusinessHours";
+import ViewHourSetting from "./Component/ViewHourSetting";
+import ViewHolidaySetting from "./Component/ViewHolidaysSetting";
+import AddHolidays from "./Component/AddHolidays";
+
+
 
 import Home from "./Component/home";
 
@@ -167,9 +172,12 @@ function App() {
           <Route path="/addBooking" element={<AddBooking/>}/>
           <Route path="/bookRead" element={<BookRead/>}/>
           <Route path="/serviceHistory" element={<ServiceHistory/>}/>
-
-
           <Route path="/addHourSetting" element={<AddBusinessHours/>}/>
+          <Route path="/addHolidaySetting" element={<AddHolidays/>}/>
+          <Route path="/viewHourSetting" element={<ViewHourSetting/>}/>
+          <Route path="/viewHolidaySetting" element={<ViewHolidaySetting/>}/>
+          
+
 
 
           {/* <Route path="/test" element={<Test/>}/> */}
