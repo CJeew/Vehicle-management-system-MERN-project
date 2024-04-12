@@ -6,19 +6,21 @@ const Schema = mongoose.Schema;
 const serviceRecordSchema = new Schema({
    
 
-    name : {
+   
+
+    service :{
         type : String,
         required : true
     },
-    service :{
-        type : String,
+    customer : {
+        type : String, 
         required : true
     },
     date : {
         type : Date, 
         required : true
     },
-    catagory : {
+    category : {
         type : String, 
         required : true
     },
