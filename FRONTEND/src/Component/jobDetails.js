@@ -22,9 +22,27 @@ const JobDetails = () => {
   }, [jobNumber]);
 
 
-const deleteJob = () => {
-  alert("Are you sure you want to delete this job?");
-};
+
+
+// Function to handle job deletion
+const deleteJob = async (jobId) => {
+
+  const confirm = window.confirm('Are you sure you want to delete this job?');
+
+  if(confirm){
+    try{
+      await axios.delete(`http://localhost:8090/job/delete/${jobId}`);
+      alert('Job Deleted Successfully');
+      window.location.reload('/viewjobs'); 
+
+    } catch(error){
+      console.error('Error deleting job',error);
+      alert('Failed to delete the job');
+      
+    }
+  
+  }
+}
 
   
   return (
@@ -134,7 +152,7 @@ const deleteJob = () => {
                                   ease-in-out transform hover:scale-105">Update</button>
 
            {/* Delete button */}
-           <button onClick={(e) => {deleteJob(); e.preventDefault();}} className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-900 hover:via-red-700 
+           <button onClick={(e) => {deleteJob(jobDetails._id, jobDetails.jobNumber); e.preventDefault();}} className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-900 hover:via-red-700 
                                   hover:to-red-600 text-white font-bold py-2 px-5 rounded-lg mr-2 opacity-80 transition duration-300
                                   ease-in-out transform hover:scale-105">Delete</button>
         </div>
