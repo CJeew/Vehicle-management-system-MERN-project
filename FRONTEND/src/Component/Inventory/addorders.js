@@ -39,11 +39,11 @@ export default function Addorderitems() {
   }
 
   return (
-    <form onSubmit={sendData} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
+    <form onSubmit={sendData} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-auto w-1/4">
      
       <center><h1>Add Order</h1></center>
 
-      <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
+      <div className="mt-4">
         <div>
           <label htmlFor="itemcode" className="block text-sm font-medium leading-6 text-gray-900">Item Code</label>
           <input
@@ -80,7 +80,7 @@ export default function Addorderitems() {
         <div>
           <label htmlFor="needquantity" className="block text-sm font-medium leading-6 text-gray-900">Need Quantity</label>
           <input
-            type="text"
+            type="number"
             name="needquantity"
             id="needquantity"
             value={needquantity}
@@ -101,6 +101,7 @@ export default function Addorderitems() {
         </div>
        
      
+      
       
       
       </div>
