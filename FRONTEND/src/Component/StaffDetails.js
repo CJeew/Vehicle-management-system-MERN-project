@@ -127,10 +127,12 @@ export default function StaffDetails() {
   });
 
   return (
-    <div class="mt-5">
+    <div class="mt-3">
+
+      <h2 class="text-white mb-2 text-center text-3xl font-bold text-white">Employee Details</h2>
       
       {/* Search bar */}
-      <div class="flex justify-between">
+      <div class="flex justify-between ml-1">
         <div class="relative">
           <input
             type="text"
@@ -167,11 +169,11 @@ export default function StaffDetails() {
 
 
       {/* Table to display staff details */}
-      <div class="overflow-x-auto max-h-[25rem] overflow-y-scroll">
+      <div class="overflow-x-auto max-h-[25rem] overflow-y-scroll ml-1 mr-1 rounded-md overflow-hidden">
         <table class="min-w-full divide-y divide-gray-200" ref={componentRef}>
 
           <thead>
-            <tr class="bg-blue-500 text-white sticky top-0"> {/* Added bg-blue-500 for blue background and text-white for white text and Added sticky and top-0 for sticky header*/}
+            <tr class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-700 text-white sticky top-0"> {/* Added bg-blue-500 for blue background and text-white for white text and Added sticky and top-0 for sticky header*/}
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">ID</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">NIC</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Name</th>
