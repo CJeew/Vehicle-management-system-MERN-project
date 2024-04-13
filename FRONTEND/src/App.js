@@ -12,6 +12,7 @@ import Display from "./Component/Display";
 import Create_Job from "./Component/job";
 import ViewJobs from "./Component/ViewJobs";
 import JobDetails from "./Component/jobDetails";
+import UpdateJobs from "./Component/UpdateJobs";
 
 
 //Customer
@@ -147,6 +148,7 @@ function App() {
           <Route path="/createjob" element={<Create_Job />} />
           <Route path="/viewjobs" element={<ViewJobs />} />
           <Route path="/details/:jobNumber" element={<JobDetails />} />
+          <Route path="/updatejobs/:jobNumber" element={<UpdateJobs/>}/>
 
 
           {/* <Route path="/update" element={<Update/>}/> */}
