@@ -46,6 +46,8 @@ import ViewHourSetting from "./Component/ViewHourSetting";
 import ViewHolidaysSetting from "./Component/ViewHolidaysSetting";
 import AddHolidays from "./Component/AddHolidays";
 import EditBookRead from "./Component/EditBookRead";
+import EditHourSetting from "./Component/EditHourSetting";
+import EditHolidaySetting from "./Component/EditHolidaySetting";
 
 
 import Home from "./Component/home";
@@ -177,6 +179,8 @@ function App() {
           <Route path="/viewHourSetting" element={<ViewHourSetting/>}/>
           <Route path="/viewHolidaysSetting" element={<ViewHolidaysSetting/>}/>
           <Route path="/editBookRead" element={<EditBookRead/>}/>
+          <Route path="/editHourSetting" element={<EditHourSetting/>}/>
+          <Route path="/editHolidaySetting" element={<EditHolidaySetting/>}/>
           
 
 

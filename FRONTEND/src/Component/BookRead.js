@@ -78,7 +78,7 @@ return (
                                 <a href={'/editBookRead/${bookings._id}'} type="button" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                                     Edit
                                 </a>
-                                {/* Reject booking button  */}
+                                {/* Delete booking button  */}
                                 <button onClick={() => onDeleteClick(booking._id)} class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                                     Delete
                                 </button>
