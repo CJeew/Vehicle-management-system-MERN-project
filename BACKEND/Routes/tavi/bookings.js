@@ -78,7 +78,7 @@ router.route("/updateBook/:id").post(async(req,res)=>{
  router.route("/delete/:id").delete(async(req, res)=>{
     let bookId = req.params.id;
     await booking.findByIdAndDelete(bookId)
-    then(()=> {
+    .then(()=> {
         res.status(200).send({status: "Booking Cancelled"});
     }).catch((err)=>{
         console.log(err.message);
@@ -90,9 +90,9 @@ router.route("/updateBook/:id").post(async(req,res)=>{
  router.route("/get/:id").get(async(req,res)=>{
     let bookId = req.params.id;
     const book = await booking.findById(bookId)  //primary key - .findOne(email)
-    .then(()=>{
-        res.status(200).send({status: "Booking Fetched", book: book})
-    }).catch(()=>{
+    .then((book)=>{
+        res.status(200).send({status: "Booking Fetched", book})
+    }).catch((err)=>{
         console.log(err.message);
         res.status(500).send({status: "Error with get booking", error: err.message});
     })
