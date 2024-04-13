@@ -20,7 +20,7 @@ export default function AddStaff() {
   
 
     function sendData(e){
-        e.preventDefault();
+        e.preventDefault();  //prevent the default behavior of form submission (eg: automatically refresh the page) if allowed, we can't get any message from backend
         //alert("Inserted");
     
         const newStaff = {

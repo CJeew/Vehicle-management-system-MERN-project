@@ -58,7 +58,7 @@ router.route("/updateSetting/:id").post(async(req,res)=>{
 router.route("/deleteSetting/:id").delete(async(req, res)=>{
     let settingId = req.params.id;
     await hourSetting.findByIdAndDelete(settingId)
-    then(()=> {
+    .then(()=> {
         res.status(200).send({status: "Business Hours Deleted"});
     }).catch((err)=>{
         console.log(err.message);

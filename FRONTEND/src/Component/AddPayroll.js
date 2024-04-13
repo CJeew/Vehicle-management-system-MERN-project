@@ -13,7 +13,7 @@ export default function AddPayroll(){
     const [salary, setSalary] = useState("");
 
     function sendData(e){
-        //e.preventDefault();
+        e.preventDefault();  
         //alert("Payroll Inserted");
 
         const newPayroll = {

@@ -36,9 +36,9 @@ router.route("/addpayroll").post(async(req,res)=>{
         }
 
     // Create new payroll entry if NIC and date are valid and not already in the database
-    await newPayroll.save();
+    await newPayroll.save().then(()=>{
         res.json("Payroll Added")
-    }catch(err){
+    })} catch(err){
         console.log(err);
         res.status(500).json({ message: "Error adding payroll", error: err.message });
     }

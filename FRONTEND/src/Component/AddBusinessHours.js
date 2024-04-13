@@ -32,7 +32,7 @@ function AddBusinessHours(){
       <div className="relative">
             <h1 className="ms-20 my-15 mt-20 text-5xl font-extrabold text-white">Business Hours Setting</h1>
             
-            <a href="/viewHourSetting"><button class="bg-gradient-to-r from-yellow-700 via-y ellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+            <a href="/editHourSetting"><button class="bg-gradient-to-r from-yellow-700 via-y ellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                   hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
                                   ease-in-out transform hover:scale-105 justify-end mx-60 mt-10">View Business Hours</button></a>
             
