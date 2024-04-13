@@ -26,7 +26,7 @@ export default function AddAttendance(){
             alert("Attendance Added")
             window.location.reload();
         }).catch((err)=>{
-            alert(err)
+            alert(err.response.data.message)
         })
 
     }
