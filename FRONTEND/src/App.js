@@ -12,6 +12,7 @@ import Display from "./Component/Display";
 import Create_Job from "./Component/job";
 import ViewJobs from "./Component/ViewJobs";
 import JobDetails from "./Component/jobDetails";
+import UpdateJobs from "./Component/UpdateJobs";
 
 
 //Customer
@@ -45,7 +46,9 @@ import AddBusinessHours from "./Component/AddBusinessHours";
 import ViewHourSetting from "./Component/ViewHourSetting";
 import ViewHolidaysSetting from "./Component/ViewHolidaysSetting";
 import AddHolidays from "./Component/AddHolidays";
-
+import EditBookRead from "./Component/EditBookRead";
+import EditHourSetting from "./Component/EditHourSetting";
+import EditHolidaySetting from "./Component/EditHolidaySetting";
 
 
 import Home from "./Component/home";
@@ -147,6 +150,7 @@ function App() {
           <Route path="/createjob" element={<Create_Job />} />
           <Route path="/viewjobs" element={<ViewJobs />} />
           <Route path="/details/:jobNumber" element={<JobDetails />} />
+          <Route path="/updatejobs/:jobNumber" element={<UpdateJobs/>}/>
 
 
           {/* <Route path="/update" element={<Update/>}/> */}
@@ -176,6 +180,9 @@ function App() {
           <Route path="/addHolidays" element={<AddHolidays/>}/>
           <Route path="/viewHourSetting" element={<ViewHourSetting/>}/>
           <Route path="/viewHolidaysSetting" element={<ViewHolidaysSetting/>}/>
+          <Route path="/editBookRead" element={<EditBookRead/>}/>
+          <Route path="/editHourSetting" element={<EditHourSetting/>}/>
+          <Route path="/editHolidaySetting" element={<EditHolidaySetting/>}/>
           
 
 

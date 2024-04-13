@@ -56,7 +56,7 @@ router.route("/updateHoliday/:id").post(async(req,res)=>{
 router.route("/deleteHoliday/:id").delete(async(req, res)=>{
     let holidayId = req.params.id;
     await holidaySetting.findByIdAndDelete(holidayId)
-    then(()=> {
+    .then(()=> {
         res.status(200).send({status: "Holidays Deleted"});
     }).catch((err)=>{
         console.log(err.message);

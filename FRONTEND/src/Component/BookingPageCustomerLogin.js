@@ -47,10 +47,6 @@ export default function BookingPageCustomerLogin() {
       </ul>
       <div>..</div>
 
-      
-
-
-     
             </div>
       </div>
   );

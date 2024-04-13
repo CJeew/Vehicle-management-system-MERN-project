@@ -19,7 +19,7 @@ function Header() {
 
           <div>
 
-            <img src= {imgSrc} alt="Logo" className="h-16 w-43 ml-10 mt-3 mr-20" />
+            <a href="/"><img src= {imgSrc} alt="Logo" className="h-16 w-43 ml-10 mt-3 mr-20" /></a>
           </div>
 
 
