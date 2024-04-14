@@ -43,7 +43,7 @@ router.route("/").get((req, res) => {
 });
 //update recodes
 
-router.route("/update/:id").put(async(req, res) => {
+router.route("/updaterec/:id").put(async(req, res) => {
   let recordeId = req.params.id;
   const { service, customer, vehicle, date,category } = req.body;
 
