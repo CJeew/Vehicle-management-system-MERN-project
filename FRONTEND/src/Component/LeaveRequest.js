@@ -20,9 +20,12 @@ export default function LeaveRequest() {
 
   // Function to handle deletion of a leave request
   const onDeleteClick = async (userId) => {
+    const confirmed = window.confirm("Are you sure you want to delete this leave request?");
+    if (confirmed) {
     await axios.delete(`http://localhost:8090/leaverequest/delete/${userId}`);
     alert('Leave Request Deleted Successfully');
     window.location.reload(); // Refresh page after successful deletion
+    }
   }
 
   // Function to filter leave requests based on search term
