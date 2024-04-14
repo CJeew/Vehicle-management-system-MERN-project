@@ -23,7 +23,7 @@ export default function ServiceHome() {
             Packages
           </button>
         </a>
-        <a href="addrec">
+        <a href="rechome">
           <button className="bg-gradient-to-r from-red-400 to-red-500 px-8 py-5 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px]">
             <i className="pi pi-wrench" style={{ fontSize: "2rem" }}></i>{" "}
             <i className="pi pi-server" style={{ fontSize: "2rem" }}></i>

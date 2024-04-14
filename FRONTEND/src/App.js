@@ -71,6 +71,7 @@ import Editpkg from "./Component/Edit_package";
 
 //----------Record-------------------------
 import Addrec from "./Component/Add_recodes";
+import Rechome from "./Component/Recordshome";
 
 
 
@@ -167,6 +168,8 @@ function App() {
           <Route path="/Pkgedithome" element={<Pkgedithome/>}/>
           <Route path="/editpkg/:id" element={<Editpkg/>}/>
           <Route path="/addrec" element={<Addrec/>}/>
+          <Route path="/rechome" element={<Rechome/>}/>
+
          
 
           {/*---------Tavini-------------Booking------------------------------*/}
