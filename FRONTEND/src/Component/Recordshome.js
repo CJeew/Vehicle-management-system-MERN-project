@@ -8,7 +8,7 @@ export default function Recordshome() {
     <div className="flex justify-center items-center">
       <div className="grid grid-rows-1 p-10 bg-gray-200 bg-opacity-70 rounded-lg m-5 max-w-3xl mt-10 ">
         <p className="text-3xl font-bold text-gray-800 text-center ">
-        Welcome to the Service Record Page
+         Service Record.
         </p>
         <img src={imgSrc} alt="recodeimg" className="w-2/4 mx-auto mt-10 rounded-2xl" />
         <div className="text-2xl grid grid-cols-2 mt-10 gap-6">
