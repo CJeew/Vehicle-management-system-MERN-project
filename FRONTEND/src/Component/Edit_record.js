@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Home.css";
 import { useParams } from "react-router-dom";
 function Edit_record() {
+  const { id } = useParams();
   // recodes form
   const [service, setService] = useState("");
   const [customer, setCustomer] = useState("");
