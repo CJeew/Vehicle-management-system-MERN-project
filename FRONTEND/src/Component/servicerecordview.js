@@ -79,7 +79,7 @@ export default function ServiceRecordView() {
                 <div class="flex items-center justify-start gap-2">
                   {/*Edit record button */}
                   <a
-                    href={"//${records._id}"}
+                    href={`/editrec/${record._id}`}
                     type="button"
                     class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                   >

@@ -43,7 +43,7 @@ export default function Package_edithome() {
             .map((pkg) => (
               <div
                 className="flex flex-col justify-center items-center bg-black bg-opacity-75 text-white rounded-lg px-8 py-4"
-                key={pkg.pid}
+                key={pkg.name}
               >
                 <h2 className="text-xl font-bold mb-2">{pkg.name}</h2>
                 <p className="text-base text-gray-200">{pkg.description}</p>
