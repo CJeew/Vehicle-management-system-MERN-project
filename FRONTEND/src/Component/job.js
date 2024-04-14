@@ -42,6 +42,43 @@ function CreateJob() {
             timeIn,
         };
 
+//Job date and date out validation
+
+        const currentDate = new Date();
+        const selectedJobdDate = new Date(jobDate);
+        const selectedDateOut = new Date(dateout);
+
+        if (selectedJobdDate > currentDate){
+          alert("Please enter a valid date for job Date.");
+          return;
+        }
+
+        if((selectedDateOut > currentDate) || (selectedDateOut < selectedJobdDate)){
+          alert("please enter a valid date for date out.");
+          return;
+        }
+
+  //Mileage validation
+
+        if (isNaN(mileage)){
+          alert("The value entered for mileage is invalid. Please enter a valid number.");
+          return;
+        }
+
+  //Phone number validation
+        if(!/^[\d]{10}$/.test(contactNumber)){
+          alert("Please enter a valid contact number.");
+          return;
+        }
+
+  //E-mail validation
+        const isValidEmail = /\S+@\S+\.|S+/.test(email);
+
+        if(!isValidEmail) {
+          alert("Please enter a valid email address.");
+          return
+        }
+
         axios.post("http://localhost:8090/job/addJob", newJob)
             .then(() => {
                 alert("Job Added");
@@ -213,12 +250,12 @@ function CreateJob() {
              
                    <div>
                     <label className="mr-4">Contact No. :</label>
-                    <input type="tel" onChange={(e) => setcontactNumber(e.target.value)} className="rounded-md w-60 h-10 opacity-80"/>  
+                    <input type="tel" placeholder="  ex : 07xxxxxxxx" onChange={(e) => setcontactNumber(e.target.value)} className="rounded-md w-60 h-10 opacity-80"/>  
                    </div> 
 
                    <div>
                     <label className="mr-11">E-mail :</label>
-                    <input type="email" onChange={(e) => setemail(e.target.value)} className="rounded-md w-60 h-10 opacity-80 ml-10"/> 
+                    <input type="email" placeholder="  ex :abcd123@gmail.com" onChange={(e) => setemail(e.target.value)} className="rounded-md w-60 h-10 opacity-80 ml-10"/> 
                    </div>
                   </div>
                   {/* --------Line 05 ends------- */}
