@@ -103,9 +103,12 @@ export default function StaffDetails() {
 
   // Function to handle deletion of a staff member
   const onDeleteClick = async (userId) => {
+    const confirmed = window.confirm("Are you sure you want to delete this staff entry?");
+    if (confirmed) {
     await axios.delete(`http://localhost:8090/staffdetails/delete/${userId}`);
     alert('User Deleted Successfully');
     window.location.reload(); // Refresh page after successful deletion
+    }
   }
 
   // Function to filter staff details based on search term
