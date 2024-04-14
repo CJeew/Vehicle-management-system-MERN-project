@@ -24,7 +24,7 @@ export default function ViewHolidaysSetting() {
         const date = new Date(dateString);
         return date.toLocaleDateString('en-UK', {
             year: 'numeric',
-            month: 'numeric',
+            month: 'long',
             day: 'numeric'
         });
     };

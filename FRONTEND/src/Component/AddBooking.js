@@ -29,6 +29,7 @@ function AddBooking(){
             serviceBox
         };
 
+        
         const currentDate = new Date;                //get the current date
         const selectedDate  = new Date(dDate);       // Parse the selected date
 
