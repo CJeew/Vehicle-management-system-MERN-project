@@ -22,8 +22,8 @@ export default function ServiceRecordView() {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">
-        service recode
+      <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white text-center">
+        Service Recode.
       </h2>
 
       <table class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10 w-full">

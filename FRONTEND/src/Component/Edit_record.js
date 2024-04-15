@@ -2,52 +2,56 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Home.css";
 import { useParams } from "react-router-dom";
+
 function Edit_record() {
   const { id } = useParams();
-  // recodes form
+
   const [service, setService] = useState("");
   const [customer, setCustomer] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(""); // Initialize with an empty string
   const [category, setCategory] = useState("");
 
   function submit(e) {
-    e.preventDefault(); //prevent default form submission behavior
+    e.preventDefault();
 
-    const editRecorde = {
+    const editRecord = { 
       service,
       customer,
       date,
       category,
     };
+
     axios
-      .put(`http://localhost:8090/svc-records/updaterec/${id}`, editRecorde)
+      .put(`http://localhost:8090/svc-records/updaterec/${id}`, editRecord)
       .then(() => {
-        alert("Recode updated"); //alert message
-        window.location.href = "/viewrec"; //redirect to viewrec page
+        alert("Record updated");
+        window.location.href = "/recview";
       })
       .catch((err) => {
-        alert(err.message); //error message
+        alert(err.message);
       });
   }
+
   useEffect(() => {
     axios
-      .get(`http://localhost:8090/svc-records/${id}`)
+      .get(`http://localhost:8090/svc-records/get/${id}`)
       .then((res) => {
-        setService(res.data.service);
-        setCustomer(res.data.customer);
-        setDate(res.data.date);
-        setCategory(res.data.category);
+        const { service, customer, date, category } = res.data;
+        setService(service);
+        setCustomer(customer);
+        setDate(new Date(date).toISOString().split('T')[0]); // Convert to date format
+        setCategory(category);
       })
       .catch((err) => {
-        alert(err.message); //error message
+        alert(err.message);
       });
-  }, []);
+  }, [id]); // Include id as dependency
 
   return (
-    <div className="  w-full flex justify-center items-center  ">
+    <div className="w-full flex justify-center items-center">
       <div className="w-full max-w-2xl mt-24 bg-white p-8 rounded-lg shadow-md bg-gray-200 bg-opacity-70">
         <h1 className="text-3xl mb-6 text-center font-bold text-gray-800">
-          Edit Recordes
+          Edit Records
         </h1>
         <form onSubmit={submit}>
           <label className="block mb-2 text-sm font-bold text-gray-700">
@@ -89,7 +93,7 @@ function Edit_record() {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option selected disabled value="">
+            <option disabled value="">
               Select Category
             </option>
             <option value="Interior">Interior</option>
@@ -100,7 +104,7 @@ function Edit_record() {
               className="btn-indigo bg-gradient-to-r from-red-400 to-red-500 px-2 py-2 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] mt-4"
               type="submit"
             >
-            update
+              Update
             </button>
           </div>
         </form>
