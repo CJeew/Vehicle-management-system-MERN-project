@@ -75,13 +75,6 @@ router.route("/updatecustomer/:id").post(async(req,res)=>{
     await customer.findByIdAndDelete(cusid)
     .then(()=> {
         res.status(200).send({status: "Profile deleted"});
-
- router.route("/cdelete/:id").delete(async(req, res)=>{
-    let cusid = req.params.id;
-    await customer.findByIdAndDelete(cusid)
-    then(()=> {
-        res.status(200).send({status: "Profile deletered"});
-
     }).catch((err)=>{
         console.log(err.message);
         res.status(500).send({stats: "Error with deleting Profile", error:err.message});
