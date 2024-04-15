@@ -51,13 +51,13 @@ function Review() {
         
         <div classNames="mb-4">
           <label className="text-white block mb-1">Rating</label>
-          <div className="flex items-center space-x-2">
+          <div className="text-white flex items-center space-x-2">
             <input required onChange={(e) => setrating(e.target.value)}
               type="radio"
               name="rating"
               id="rating1"
               value="1"
-              className=" text-white focus:outline-none focus:ring-2 focus:ring-red"
+              className=" focus:outline-none focus:ring-2 focus:ring-red"
             ></input>
             <label for="rating1" text-white>1 </label>
             <input required onChange={(e) => setrating(e.target.value)}
