@@ -6,46 +6,36 @@ import "./Chome.js";
 
 export default function Customerlogin() {
   return (
-    <main
-      class="mx-auto flex min-h-screen w-full items- justify-center  text-white"
-    >
+    <form className="bg-gray-100 p-6 ms-60 my-10 p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50">
+    <div>
+      <div class="text-black mt-3 text-center text-4xl font-bold">Customer Login</div>
       
-      <section class="bg-gray-800 bg-opacity-50 flex w-[30rem] flex-col space-y-10">
-        <div class="my-10 text-center text-4xl font-medium">Login</div>
-    
-        <div
-          class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500"
-        >
-          <input
-            type="text"
-            placeholder="Email or Username"
-            class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
-          />
+        <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 mt-10">
+          <input type="text" placeholder="Email or Username" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"/>
         </div>
     
         <div
-          class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500"
-        >
-          <input
-            type="password"
-            placeholder="Password"
-            class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
-          />
+          class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 mt-10">
+          <input type="password" placeholder="Password" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"/>
         </div>
-        < dev>
-        
+        < div>
+        <div class="mt-5 mb-5 flex justify-center">
         <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                   hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
-                                  ease-in-out transform hover:scale-105"><a href="/Chome">Customer Login</a></button>
+                                  ease-in-out transform hover:scale-105 mt-5"><a href="/Chome">Customer Login</a></button>
         
         
           
         <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                   hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
-                                  ease-in-out transform hover:scale-105"><a href="/Cmanager">Manager Login</a></button>
-          </dev>
-        <a>If you do not have an account click<a href="/Register" class="font-bold text-white" ><u>Register</u></a></a>
+                                  ease-in-out transform hover:scale-105 mt-5"><a href="/Cmanager">Manager Login</a></button>
+          </div>
+          </div>
+          <div class="mt-5 mb-5 flex justify-center">
+        <a><b>If you do not have an account click </b><a href="/Register" class="font-bold text-white" ><u>Register</u></a></a></div>
         
-      </section>
-    </main>
+     
+ 
+        </div>
+        </form>
   );}
