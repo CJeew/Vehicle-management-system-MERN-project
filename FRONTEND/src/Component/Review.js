@@ -15,6 +15,22 @@ function Review() {
       function sendreview(e){
           e.preventDefault();
           //alert of inserted
+          // Check if email is entered
+          if (!cmail) {
+          alert("Please enter your email.");
+          return;
+           }
+
+          // Check if a rating is selected
+           if (!rating) {
+           alert("Please select a rating.");
+          return;
+           }
+           // Check if a message is fill
+           if (!message) {
+           alert("Please give your peedback.");
+          return;
+           }
 
           const newReview = {
               cmail,

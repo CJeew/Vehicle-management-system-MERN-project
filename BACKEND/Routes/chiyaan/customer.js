@@ -8,7 +8,8 @@ router.route("/Register").post((req,res)=>{
 
     const cname = req.body.cname;
     const cnic = req.body.cnic;
-    const cpass = req.body.cpass; 
+    const cpass = req.body.cpass;
+    const cpass2 = req.body.cpass2; 
     const cphone = req.body.cphone;
     const cmail = req.body.cmail;
     const cvnum = req.body.cvnum;
@@ -18,6 +19,7 @@ router.route("/Register").post((req,res)=>{
         cname,
         cnic,
         cpass,
+        cpass2,
         cphone,
         cmail,
         cvnum,
@@ -46,7 +48,7 @@ router.route("/").get((req,res)=>{
 
 router.route("/updatecustomer/:id").post(async(req,res)=>{
     let cusid = req.params.id;
-    const{cname, cnic, cphone, cmail, cpass, cvnum, cvtype, } = req.body; 
+    const{cname, cnic, cphone, cmail, cpass, cpass2,cvnum, cvtype, } = req.body; 
 
     const updatecustomer = {
         cname,
@@ -54,6 +56,7 @@ router.route("/updatecustomer/:id").post(async(req,res)=>{
         cphone,
         cmail,
         cpass,
+        cpass2,
         cvnum,
         cvtype,
         
