@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import {useReactToPrint} from 'react-to-print';
+//import {useReactToPrint} from 'react-to-print';
 
 export default function BookRead() {
     const [bookings, setBooking] = useState([]);
