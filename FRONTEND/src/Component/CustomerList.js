@@ -22,12 +22,11 @@ export default function RegisterRead() {
     }, []);
 
     // Function to handle deletion of a payroll
-  const onDeleteClick = async (Cusid) => {
-    await axios.delete(`http://localhost:8090/customer/delete/${Cusid}`);
-    alert('Profile Deleted Successfully');
-    window.location.reload(); // Refresh page after successful deletion
-  }
-
+    const onDeleteClick = async (userID) => {
+        await axios.delete(`http://localhost:8090/CustomerList/delete/${userID}`);
+        alert('Profile Deleted Successfully');
+        window.location.reload(); // Refresh page after successful deletion
+      }
    
     
 
