@@ -52,14 +52,14 @@ export default function Package_edithome() {
                 </h4>
                 <div className="flex justify-center items-center gap-4">
                   <a href={`/editpkg/${pkg._id}`}>
-                    <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4">
+                    <button className="bg-green-700 text-white font-bold py-2 px-4 rounded mt-4">
                       <i
                         className="pi pi-pen-to-square"
                         style={{ fontSize: "1rem" }}
                       ></i>
                     </button>
                   </a>
-                  <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4" onClick={() => DeletePackage(pkg._id)}>  
+                  <button className="bg-red-700 text-white font-bold py-2 px-4 rounded mt-4" onClick={() => DeletePackage(pkg._id)}>  
                     <i
                       className="pi pi-trash"
                       style={{ fontSize: "1rem" }}
@@ -88,14 +88,14 @@ export default function Package_edithome() {
                 </h4>
                 <div className="flex justify-center items-center gap-4">
                   <a href={`/editpkg/${pkg._id}`}>
-                    <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4">
+                    <button className="bg-green-700 text-white font-bold py-2 px-4 rounded mt-4">
                       <i
                         className="pi pi-pen-to-square"
                         style={{ fontSize: "1rem" }}
                       ></i>
                     </button>
                   </a>
-                  <button className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4" onClick={() => DeletePackage(pkg._id)}>  
+                  <button className="bg-red-700 text-white font-bold py-2 px-4 rounded mt-4" onClick={() => DeletePackage(pkg._id)}>  
                     <i
                       className="pi pi-trash"
                       style={{ fontSize: "1rem" }}

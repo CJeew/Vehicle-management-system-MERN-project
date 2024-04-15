@@ -22,17 +22,23 @@ export default function Package_Homepage() {
         </div>
         <div className="text-1xl grid grid-cols-3 mt-6 gap-8">
           <a href="addpkg">
-            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900   px-2 py-3 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full">
+            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                     hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+                                     ease-in-out transform hover:scale-105">
               Add Package
             </button>
           </a>
           <a href="viewpkg">
-            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900  px-2 py-3 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full">
+            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                     hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+                                     ease-in-out transform hover:scale-105">
               View Package
             </button>
           </a>
           <a href="Pkgedithome">
-            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900  px-2 py-3 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full">
+            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                     hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+                                     ease-in-out transform hover:scale-105">
               Update Package
             </button>
           </a>

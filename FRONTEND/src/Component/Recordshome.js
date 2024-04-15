@@ -13,12 +13,16 @@ export default function Recordshome() {
         <img src={imgSrc} alt="recodeimg" className="w-2/4 mx-auto mt-10 rounded-2xl" />
         <div className="text-1xl grid grid-cols-2 mt-8 gap-6">
           <a href="addrec">
-            <button className=" py-3 px-2 bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900  text-white font-bold uppercase  hover:text-black rounded-[10px] w-full">
+            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                     hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+                                     ease-in-out transform hover:scale-105">
               Add Record
             </button>
           </a>
           <a href="recview">
-            <button className=" py-3 px-2 bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 text-white font-bold uppercase hover:text-black rounded-[10px] w-full">
+            <button className=" bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                     hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+                                     ease-in-out transform hover:scale-105">
               View records
             </button>
           </a>
