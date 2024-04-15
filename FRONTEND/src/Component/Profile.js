@@ -65,11 +65,11 @@ export default function Profile() {
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex items-center justify-start gap-2">
                                 {/*Edit booking button */}
-                                <a href={'/editBookRead/${bookings._id}'} type="button" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                <a href={'/editBookRead/${bookings._id}'} type="button" class="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                                     Edit
                                 </a>
                                 {/* Delete booking button  */}
-                                <button onClick={() => onDeleteClick(customer._id)} class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                <button onClick={() => onDeleteClick(customer._id)} class="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                                     Delete
                                 </button>
                             </div>
