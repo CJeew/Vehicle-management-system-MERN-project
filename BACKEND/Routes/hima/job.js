@@ -129,7 +129,7 @@ router.get('/details/:jobNumber', async (req, res) => {
 // });
 
 
-//Delete function
+//Delete Job function
 router.route("/delete/:_id").delete(async (req, res) => {
   let jobId = req.params._id;
 
@@ -143,11 +143,59 @@ router.route("/delete/:_id").delete(async (req, res) => {
 })
 
 
+//Update job function
+router.route("/updatejobs/:jobNumber").put(async(req,res) => {
 
-  // jobModel.findByIdAndDelete(req.params.jobNumber)
+  let jobNumber = req.params.jobNumber;
+  const {
+    jobnumber,
+    jobDate,
+    vehicleType,
+    RegNo,
+    vehicleMake,
+    vehicleModel,
+    mileage,
+    year,
+    timeIn,
+    timeout,
+    dateout,
+    name,
+    contactNumber,
+    email,    
+    serviceType,
+    details} = req.body;
 
-  //   .then(() => res.json("Deleted Successfully!"))
-  //   .catch((err) => res.status(400).json("Error: "+ err))
+  const updateJob = {
+    jobnumber,
+    jobDate,
+    vehicleType,
+    RegNo,
+    vehicleMake,
+    vehicleModel,
+    mileage,
+    timeIn,
+    year,
+    timeout,
+    dateout,
+    name,
+    contactNumber,
+    email,
+    serviceType,
+    details,
+  }
+
+  await jobModel.findByIdAndUpdate(jobNumber, updateJob)  
+  .then(() => {
+      res.status(200).send({status: "Successfully updated the job"})
+
+  }).catch((err) => {
+      console.log(err);
+      res.status(500).send({status: "Cannot update", error: err.message});
+  }) 
+})
+
+
+
 
 
 

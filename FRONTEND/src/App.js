@@ -1,4 +1,3 @@
-
 // import Header from "./Components/Header";
 import Header from "./Component/Header";
 // import Add_Supplier from "./Components/Add_Supplier";
@@ -13,7 +12,7 @@ import Update from "./Component/Update";
 import Create_Job from "./Component/job";
 import ViewJobs from "./Component/ViewJobs";
 import JobDetails from "./Component/jobDetails";
-
+import UpdateJobs from "./Component/UpdateJobs";
 
 //Customer
 import Chome from "./Component/Chome";
@@ -25,29 +24,32 @@ import Cmanager from "./Component/Cmanager";
 import CustomerList from "./Component/CustomerList";
 import CustomerReview from "./Component/CustomerReview";
 
-
-
-
 //import Register from "./Component/Register";
 
-// import Login from "./Component/Login"; 
+// import Login from "./Component/Login";
 // import Update from "./Components/Update";
 // import Test from "./Components/Test";
 //import Supplier_home from "./Component/Supplier_home";
 
 //Booking------------------------------------------------------------------------------------------
 import BookingPage from "./Component/BookingPage"; // import Booking Page
-import BookingPageCustomerLogin from "./Component/BookingPageCustomerLogin";  // import Booking Customer Login Page
-import BookingPageManagerLogin from "./Component/BookingPageManagerLogin";   // import Booking Manager Login Page
+import BookingPageCustomerLogin from "./Component/BookingPageCustomerLogin"; // import Booking Customer Login Page
+import BookingPageManagerLogin from "./Component/BookingPageManagerLogin"; // import Booking Manager Login Page
 import AddBooking from "./Component/AddBooking";
 import BookRead from "./Component/BookRead";
 import ServiceHistory from "./Component/ServiceHistory";
 import AddBusinessHours from "./Component/AddBusinessHours";
+import ViewHourSetting from "./Component/ViewHourSetting";
+import ViewHolidaysSetting from "./Component/ViewHolidaysSetting";
+import AddHolidays from "./Component/AddHolidays";
+import EditBookRead from "./Component/EditBookRead";
+import EditHourSetting from "./Component/EditHourSetting";
+import EditHolidaySetting from "./Component/EditHolidaySetting";
 
 import Home from "./Component/home";
 
-
-//service
+//---------service--------------------------
+//-----------Packages-----------------------
 //import add package
 import Addpkg from "./Component/Add_package";
 //import servicehome
@@ -61,8 +63,12 @@ import Viewpkg2 from "./Component/View_package2";
 import Pkgedithome from "./Component/Package_edithome";
 
 import Editpkg from "./Component/Edit_package";
-//import Delete package
-// import Deletepkg from "./Component/Delete_package"; 
+
+//----------Record-------------------------
+import Addrec from "./Component/Add_recodes";
+import Rechome from "./Component/Recordshome";
+import Recview from "./Component/servicerecordview";
+import Editrec from "./Component/Edit_record";
 
 //staff
 import AddPayroll from "./Component/AddPayroll";
@@ -78,8 +84,6 @@ import EditPayroll from "./Component/EditPayroll";
 import EditAttendance from "./Component/EditAttendance";
 import EmployeeAttendance from "./Component/EmployeeAttendance";
 
-
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import EditLeaveRequest from "./Component/EditLeaveRequest";
@@ -87,19 +91,10 @@ import LeaveRequest from "./Component/LeaveRequest";
 import EditAnnouncement from "./Component/EditAnnouncement";
 import EmployeeAnnouncement from "./Component/EmployeeAnnouncement";
 
-
-  
-
-
-
-
-
-
-
 // inventory
 import Inventory_Menu from "./Component/Inventory/Inventory_Menu";
 import ManageItems from "./Component/Inventory/ManageItems";
-import Additems from "./Component/Inventory/Additems";  
+import Additems from "./Component/Inventory/Additems";
 import Updateitem from "./Component/Inventory/Updateitem";
 import IssuedItems from "./Component/Inventory/Issueditems";
 import IssuedItemsAdditems from "./Component/Inventory/issuedAdditems";
@@ -110,8 +105,6 @@ import ManageOrders from "./Component/Inventory/manageorders";
 import Addorderitems from "./Component/Inventory/addorders";
 import OrderEditItems from "./Component/Inventory/manageorderupdate";
 
-
-
 //Financial
 
 import Transaction from "./Component/Financial/TransactionView";
@@ -121,129 +114,113 @@ import TransactionView from "./Component/Financial/TransactionView";
 // import AddTransaction from "./Component/Financial/AddTransaction";
 import UpdateTransaction from "./Component/Financial/Update_Transaction";
 
-
-
-
 function App() {
   return (
     <Router>
       <div className="App">
         <Header />
-      
+
         <Routes>
           {/* <Route path="" */}
-          <Route path="/" element={  <Home/>}/>
+          <Route path="/" element={<Home />} />
           <Route path="/add" element={<Add_Supplier />} />
-          <Route path="/display" element={<Display/>}/> 
-          <Route path="/delete" element={<Delete/>}/>
-          <Route path="/update" element={<Update/>}/>
-          
+          <Route path="/display" element={<Display />} />
+          <Route path="/delete" element={<Delete />} />
 
           <Route path="/createjob" element={<Create_Job />} />
           <Route path="/viewjobs" element={<ViewJobs />} />
           <Route path="/details/:jobNumber" element={<JobDetails />} />
-
+          <Route path="/updatejobs/:jobNumber" element={<UpdateJobs />} />
 
           {/* <Route path="/update" element={<Update/>}/> */}
-         
-          
-      {/* <Route path="/customer" element={<Customerhome/>}/> */}
 
-                  {/* Dulanka ---service and record */}
-          <Route path="/addpkg" element={<Addpkg/>}/>
-          <Route path="/servicehome" element={<Servicehome/>}/>
-          <Route path="/PkageHome" element={<PkageHome/>}/>
-          <Route path="/viewpkg2" element={<Viewpkg2/>}/>
-          <Route path="/viewpkg" element={<Viewpkg/>}/>
-          <Route path="/Pkgedithome" element={<Pkgedithome/>}/>
-          <Route path="/editpkg/:id" element={<Editpkg/>}/>
-         
+          {/* <Route path="/customer" element={<Customerhome/>}/> */}
+
+          {/*----------------------------- Dulanka ---service and record -----------------------------*/}
+          <Route path="/addpkg" element={<Addpkg />} />
+          <Route path="/servicehome" element={<Servicehome />} />
+          <Route path="/PkageHome" element={<PkageHome />} />
+          <Route path="/viewpkg2" element={<Viewpkg2 />} />
+          <Route path="/viewpkg" element={<Viewpkg />} />
+          <Route path="/Pkgedithome" element={<Pkgedithome />} />
+          <Route path="/editpkg/:id" element={<Editpkg />} />
+          <Route path="/addrec" element={<Addrec />} />
+          <Route path="/rechome" element={<Rechome />} />
+          <Route path="/recview" element={<Recview />} />
+          <Route path="/editrec/:id" element={<Editrec />} />
 
           {/*---------Tavini-------------Booking------------------------------*/}
-          <Route path="/booking" element={<BookingPage/>}/>
-          <Route path="/bookCusLog" element={<BookingPageCustomerLogin/>}/>
-          <Route path="/bookManageLog" element={<BookingPageManagerLogin/>}/>
-          <Route path="/addBooking" element={<AddBooking/>}/>
-          <Route path="/bookRead" element={<BookRead/>}/>
-          <Route path="/serviceHistory" element={<ServiceHistory/>}/>
-
-
-          <Route path="/addHourSetting" element={<AddBusinessHours/>}/>
-
+          <Route path="/booking" element={<BookingPage />} />
+          <Route path="/bookCusLog" element={<BookingPageCustomerLogin />} />
+          <Route path="/bookManageLog" element={<BookingPageManagerLogin />} />
+          <Route path="/addBooking" element={<AddBooking />} />
+          <Route path="/bookRead" element={<BookRead />} />
+          <Route path="/serviceHistory" element={<ServiceHistory />} />
+          <Route path="/addHourSetting" element={<AddBusinessHours />} />
+          <Route path="/addHolidays" element={<AddHolidays />} />
+          <Route path="/viewHourSetting" element={<ViewHourSetting />} />
+          <Route
+            path="/viewHolidaysSetting"
+            element={<ViewHolidaysSetting />}
+          />
+          <Route path="/editBookRead" element={<EditBookRead />} />
+          <Route path="/editHourSetting" element={<EditHourSetting />} />
+          <Route path="/editHolidaySetting" element={<EditHolidaySetting />} />
 
           {/* <Route path="/test" element={<Test/>}/> */}
 
-
-          <Route path="/Chome" element={<Chome/>}/>
-          <Route path="/Register" element={<Register/>}/>
-          <Route path="/Review" element={<Review/>}/>
-          <Route path="/Profile" element={<Profile/>}/>
-          <Route path="/Customerlogin" element={<Customerlogin/>}/>
-          <Route path="/Cmanager" element={<Cmanager/>}/>
-          <Route path="/CustomerList" element={<CustomerList/>}/>
-          <Route path="/CustomerReview" element={<CustomerReview/>}/>
-          
-
-
+          <Route path="/Chome" element={<Chome />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/Review" element={<Review />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/Customerlogin" element={<Customerlogin />} />
+          <Route path="/Cmanager" element={<Cmanager />} />
+          <Route path="/CustomerList" element={<CustomerList />} />
+          <Route path="/CustomerReview" element={<CustomerReview />} />
 
           {/* ----------Sanjayan---------- */}
-          <Route path="/addpayroll" element={<AddPayroll/>}/>
-          <Route path="/addstaff" element={<AddStaff/>}/>
-          <Route path="/addleaverequest" element={<AddLeaveRequest/>}/>
-          <Route path="/addattendance" element={<AddAttendance/>}/>
-          <Route path="/addannouncement" element={<AddAnnouncement/>}/>
-          <Route path="/staffhome" element={<StaffHome/>}/>
-          <Route path="/staffdetails" element={<StaffDetails/>}/>
-          <Route path="/editstaff/:id" element={<EditStaff/>}/>
-          <Route path="/employeepayroll" element={<EmployeePayroll/>}/>
-          <Route path="/editpayroll/:id" element={<EditPayroll/>}/>
-          <Route path="/editattendance/:id" element={<EditAttendance/>}/>
-          <Route path="/employeeattendance" element={<EmployeeAttendance/>}/>
-          <Route path="/editleaverequest/:id" element={<EditLeaveRequest/>}/>
-          <Route path="/leaverequest" element={<LeaveRequest/>}/>
+          <Route path="/addpayroll" element={<AddPayroll />} />
+          <Route path="/addstaff" element={<AddStaff />} />
+          <Route path="/addleaverequest" element={<AddLeaveRequest />} />
+          <Route path="/addattendance" element={<AddAttendance />} />
+          <Route path="/addannouncement" element={<AddAnnouncement />} />
+          <Route path="/staffhome" element={<StaffHome />} />
+          <Route path="/staffdetails" element={<StaffDetails />} />
+          <Route path="/editstaff/:id" element={<EditStaff />} />
+          <Route path="/employeepayroll" element={<EmployeePayroll />} />
+          <Route path="/editpayroll/:id" element={<EditPayroll />} />
+          <Route path="/editattendance/:id" element={<EditAttendance />} />
+          <Route path="/employeeattendance" element={<EmployeeAttendance />} />
+          <Route path="/editleaverequest/:id" element={<EditLeaveRequest />} />
+          <Route path="/leaverequest" element={<LeaveRequest />} />
+          <Route path="/editannouncement/:id" element={<EditAnnouncement />} />
+          <Route
+            path="/employeeannouncement"
+            element={<EmployeeAnnouncement />}
+          />
 
-
-
-         
-
-          
-          <Route path="/editannouncement/:id" element={<EditAnnouncement/>}/>
-          <Route path="/employeeannouncement" element={<EmployeeAnnouncement/>}/>
-          
-          
-
-
-
-         
-
-          <Route path="/inventory" element={<Inventory_Menu/>}/>
-          <Route path="/manageitems" element={<ManageItems/>}/>
-          <Route path="/additems" element={<Additems/>}/>
-          <Route path="/updateitems/:id" element={<Updateitem/>}/>
-          <Route path="/issueditems" element={<IssuedItems/>}/>
-          <Route path="/issuedAdditems" element={<IssuedItemsAdditems/>}/>
-          <Route path="/issuedupdateitems/:id" element={<IssuedEditItems/>}/>
-          <Route path="/managedorders/" element={<ManageOrders/>}/>
-          <Route path="/Addorder/" element={<Addorderitems/>}/>
-          <Route path="/manageorderupdate/:id" element={<OrderEditItems/>}/>
-
-
-
+          <Route path="/inventory" element={<Inventory_Menu />} />
+          <Route path="/manageitems" element={<ManageItems />} />
+          <Route path="/additems" element={<Additems />} />
+          <Route path="/updateitems/:id" element={<Updateitem />} />
+          <Route path="/issueditems" element={<IssuedItems />} />
+          <Route path="/issuedAdditems" element={<IssuedItemsAdditems />} />
+          <Route path="/issuedupdateitems/:id" element={<IssuedEditItems />} />
+          <Route path="/managedorders/" element={<ManageOrders />} />
+          <Route path="/Addorder/" element={<Addorderitems />} />
+          <Route path="/manageorderupdate/:id" element={<OrderEditItems />} />
 
           {/* ----------Shajeeh---------- */}
-          <Route path="/Finance" element={<TransactionView/>}/>
+          <Route path="/Finance" element={<TransactionView />} />
           <Route path="/AddTransaction" element={<AddTransaction />} />
-          <Route path="/Update_Transaction/:id" element={<UpdateTransaction />}/>
-
-                    
-         
+          <Route
+            path="/Update_Transaction/:id"
+            element={<UpdateTransaction />}
+          />
         </Routes>
-        
-
       </div>
     </Router>
   );
 }
 
 export default App;
-

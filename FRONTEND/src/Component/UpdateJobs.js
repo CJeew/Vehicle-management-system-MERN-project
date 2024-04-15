@@ -1,8 +1,13 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
-function CreateJob() {
-    const [jobNumber, setjobNumber] = useState("");
+
+function UpdateJob() {
+
+    const {jobNumber} = useParams();
+
+    const [jobnumber, setJobNumber] = useState("");
     const [jobDate, setjobDate] = useState("");
     const [vehicleType, setvehicleType] = useState("");
     const [RegNo, setregistrationNo] = useState("");
@@ -20,74 +25,73 @@ function CreateJob() {
     const [details, setdetails] = useState("");
 
 
-    function submit(e) {
-        e.preventDefault();
 
-        const newJob = {
-            jobNumber,
-            jobDate,
-            vehicleType,
-            vehicleMake,
-            vehicleModel,
-            dateout,
-            timeout,
-            name,
-            contactNumber,
-            email,
-            RegNo,
-            mileage,
-            year,
-            details,
-            serviceType,
-            timeIn,
-        };
+    useEffect( () => {
+      axios.get(`http://localhost:8090/job/getDetails/${jobNumber}`).then((response) => {
 
-//Job date and date out validation
+       setJobNumber(response.data.details.jobnumber);
+       setjobDate(response.data.details.jobDate);
+       setvehicleType(response.data.details.vehicleType);
+       setregistrationNo(response.data.details.RegNo);
+       setvehiclemake(response.data.details.vehicleMake);
+       setvehicleModel(response.data.details.vehicleModel);
+       setmileage(response.data.details.mileage);
+       setyear(response.data.details.year);
+       settimeIn(response.data.details.timeIn);
+       setdateout(response.data.details.dateout);
+       settimeout(response.data.details.timeout);
+       setname(response.data.details.name);
+       setcontactNumber(response.data.details.contactNumber);
+       setemail(response.data.details.email);
+       setserviceType(response.data.details.serviceType);
+       setdetails(response.data.details.details);
+                
+      }).catch((err) => {
+          alert(err.message);
+        
+      });
+        
+    }, [jobNumber]);
 
-        const currentDate = new Date();
-        const selectedJobdDate = new Date(jobDate);
-        const selectedDateOut = new Date(dateout);
 
-        if (selectedJobdDate > currentDate){
-          alert("Please enter a valid date for job Date.");
-          return;
-        }
+    function updateJob(e){
+      e.preventDefault();
 
-        if((selectedDateOut > currentDate) || (selectedDateOut < selectedJobdDate)){
-          alert("please enter a valid date for date out.");
-          return;
-        }
+      const updatedJob = {
+        jobnumber,
+        jobDate,
+        vehicleType,
+        RegNo,
+        vehicleMake,
+        vehicleModel,
+        mileage,
+        timeIn,
+        year,
+        timeout,
+        dateout,
+        name,
+        contactNumber,
+        email,
+        serviceType,
+        details,
 
-  //Mileage validation
+      };
 
-        if (isNaN(mileage)){
-          alert("The value entered for mileage is invalid. Please enter a valid number.");
-          return;
-        }
-
-  //Phone number validation
-        if(!/^[\d]{10}$/.test(contactNumber)){
-          alert("Please enter a valid contact number.");
-          return;
-        }
-
-  //E-mail validation
-        const isValidEmail = /\S+@\S+\.|S+/.test(email);
-
-        if(!isValidEmail) {
-          alert("Please enter a valid email address.");
-          return
-        }
-
-        axios.post("http://localhost:8090/job/addJob", newJob)
-            .then(() => {
-                alert("Job Added");
-                window.location.reload(); 
-            })
-            .catch((err) => {
-                alert(err);
-            });
+      axios.put(`http://localhost:8090/job/updatejobs/${jobNumber}`, updatedJob)
+      .then(() => {
+        alert("Job updated successfully");
+        window.location.href = "/viewjobs";
+      })
+      .catch((err) => {
+        alert(err.response.data.message);
+      });
     }
+
+
+
+
+
+
     // Checkbox function
     function handleCheckboxChange(e) {
       const value = e.target.value;
@@ -115,12 +119,12 @@ function CreateJob() {
             <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
 
               <div className="flex justify-between items-center">
-                <h1 className="Heading1 text-center text-3xl flex-grow font-BakBak one font-bold">New job</h1>
+                <h1 className="Heading1 text-center text-3xl flex-grow font-BakBak one font-bold">Update job</h1>
 
                 <a href="/viewjobs">
                 <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                   hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
-                                  ease-in-out transform hover:scale-105">View Jobs</button>
+                                  ease-in-out transform hover:scale-105">Cancel </button>
                 </a>
 
               </div> <br />
@@ -132,17 +136,17 @@ function CreateJob() {
               <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
                   <div className="">  
                     <label className = "mr-11">Job Number :</label>
-                    <input type="text" onChange={(e) => setjobNumber(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base mt-2"/>
+                    <input type="text" value={jobnumber} onChange={(e) => setJobNumber(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base mt-2"/>
                   </div>
 
                   <div className="">
                     <label className="mr-11">Job Date :</label>
-                    <input type="date" onChange={(e) => setjobDate(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base"/>
+                    <input type="date" value={jobDate} onChange={(e) => setjobDate(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base"/>
                   </div>
 
                   <div className="">
                     <label className="mr-7">Vehicle Type :</label>
-                    <select id="vehicle" onChange={(e) => setvehicleType(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base mb-1">
+                    <select id="vehicle" value={vehicleType} onChange={(e) => setvehicleType(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base mb-1">
                         <option value="" />
                         <option value="car">Car</option>
                         <option value="Van">Van</option>
@@ -163,12 +167,12 @@ function CreateJob() {
                 <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
                   <div className=""> 
                     <label className="mr-4">Vehicle Reg. No :</label>
-                    <input type="text" onChange={(e) => setregistrationNo(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-2" />
+                    <input type="text" value={RegNo} onChange={(e) => setregistrationNo(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-2" />
                   </div> 
 
                   <div>
                   <label className="mr-2">Vehicle Make :</label>
-                    <select id="vehiclemake" onChange={(e) => setvehiclemake(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base">
+                    <select id="vehiclemake" value={vehicleMake} onChange={(e) => setvehiclemake(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base">
                         <option value="" /> 
                         <option value="Toyota">Toyota</option>
                         <option value="Honda">Honda</option>
@@ -189,7 +193,7 @@ function CreateJob() {
 
                   <div>
                     <label className="mr-4">Vehicle Model :</label>
-                    <input type="text" onChange={(e) => setvehicleModel(e.target.value)} className="rounded-md w-60 h-10 opacity-80"/>
+                    <input type="text" value={vehicleModel} onChange={(e) => setvehicleModel(e.target.value)} className="rounded-md w-60 h-10 opacity-80"/>
                   </div>  
                  </div> 
 
@@ -200,12 +204,12 @@ function CreateJob() {
                  <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
                   <div className=""> 
                     <label className="mr-14">Mileage :</label>
-                    <input type="text" onChange={(e) => setmileage(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-5 ml-5"/>
+                    <input type="text" value={mileage} onChange={(e) => setmileage(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-5 ml-5"/>
                   </div>
 
                   <div>
                     <label className="mr-11">Year :</label>
-                    <select id="year" onChange={(e) => setyear(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-3 ml-9">
+                    <select id="year" value={year} onChange={(e) => setyear(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-3 ml-9">
                       <option value="">   </option>
                       {years.map((year) => (
                         <option key={year} value={year}>
@@ -217,7 +221,7 @@ function CreateJob() {
 
                   <div>
                     <label className="mr-11">Time In :</label>
-                    <input type="time" onChange={(e) => settimeIn(e.target.value)} className="rounded-md w-60 h-10 opacity-80  mt-3 ml-6"/> 
+                    <input type="time" value={timeIn} onChange={(e) => settimeIn(e.target.value)} className="rounded-md w-60 h-10 opacity-80  mt-3 ml-6"/> 
                   </div>
                   </div>
                   {/* -------Line 03 ends------- */}
@@ -227,12 +231,12 @@ function CreateJob() {
                   <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4 mb-4">
                     <div>
                     <label className="mr-11">Date Out :</label>
-                    <input type="date" onChange={(e) => setdateout(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-3 ml-5 text-base"/> 
+                    <input type="date" value={dateout} onChange={(e) => setdateout(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-3 ml-5 text-base"/> 
                     </div>
 
                     <div>
                     <label className="mr-10">Time Out :</label>
-                    <input type="time" onChange={(e) => settimeout(e.target.value)} className="rounded-md w-60 h-10 opacity-80  mt-3"/> 
+                    <input type="time" value={timeout} onChange={(e) => settimeout(e.target.value)} className="rounded-md w-60 h-10 opacity-80  mt-3"/> 
                     </div>   
                   </div>
                   
@@ -245,17 +249,17 @@ function CreateJob() {
                   <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
                    <div className="">
                     <label className="mr-11">Name :</label>
-                    <input type="text" onChange={(e) => setname(e.target.value)} className="rounded-md w-60 h-10 opacity-80 ml-10"/>  
+                    <input type="text" value={name} onChange={(e) => setname(e.target.value)} className="rounded-md w-60 h-10 opacity-80 ml-10"/>  
                    </div>
              
                    <div>
                     <label className="mr-4">Contact No. :</label>
-                    <input type="tel" placeholder="  ex : 07xxxxxxxx" onChange={(e) => setcontactNumber(e.target.value)} className="rounded-md w-60 h-10 opacity-80"/>  
+                    <input type="tel" value={contactNumber} onChange={(e) => setcontactNumber(e.target.value)} className="rounded-md w-60 h-10 opacity-80"/>  
                    </div> 
 
                    <div>
                     <label className="mr-11">E-mail :</label>
-                    <input type="email" placeholder="  ex :abcd123@gmail.com" onChange={(e) => setemail(e.target.value)} className="rounded-md w-60 h-10 opacity-80 ml-10"/> 
+                    <input type="email" value={email} onChange={(e) => setemail(e.target.value)} className="rounded-md w-60 h-10 opacity-80 ml-10"/> 
                    </div>
                   </div>
                   {/* --------Line 05 ends------- */}
@@ -381,15 +385,15 @@ function CreateJob() {
                    {/* --------Line 07 starts------- */}
 
                   <div className="textarea mb-2">
-                   <textarea onChange={(e) => setdetails(e.target.value)} className="rounded-md w-full rows-10 py-2 px-6 opacity-80 text-base overflow-x-hidden max-w-full overflow-x-auto" />
+                   <textarea  value={details} onChange={(e) => setdetails(e.target.value)} className="rounded-md w-full rows-10 py-2 px-6 opacity-80 text-base overflow-x-hidden max-w-full overflow-x-auto" />
                   </div>
 
                     {/* --------Line 07 ends------- */}
                   
-                  <div className="button text-center mt-4" type="submit" value={"Add jobs"} onClick={submit}>
-                  <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                  <div className="button text-center mt-4" type="submit" value={"Add jobs"} >
+                  <button  onClick ={updateJob} className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                      hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
-                                     ease-in-out transform hover:scale-105">Save details</button>
+                                     ease-in-out transform hover:scale-105">Save Changes</button>
                   </div>  
 
 
@@ -404,4 +408,4 @@ function CreateJob() {
   );
 }
 
-export default CreateJob;
+export default UpdateJob;

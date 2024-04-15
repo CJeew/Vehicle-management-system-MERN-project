@@ -83,33 +83,36 @@ export default function StaffHome() {
     <div className="h-screen w-screen grid grid-cols-3 gap-2 justify-center items-center mt-[5rem]">
 
       {/* First Row */}
-      <div className="relative inline-flex group mr-2 col-span-3 sm:col-span-1 ml-[6rem]">
+      <div className="relative inline-flex group mr-2 col-span-3 sm:col-span-1 ml-[15rem]">
         <a
           href="/staffdetails"
           title="ManageEmployee"
-          className="relative inline-flex items-center justify-center px-12 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900  hover:scale-105 hover:bg-gradient-to-r from-red-700 to-blue"
+          className="block max-w-sm p-6 bg-black border border-black-200 rounded-lg shadow-md hover:bg-black-100 dark:bg-black-800 dark:border-black-700 dark:hover:bg-black-700 opacity-80 transition duration-300
+                    ease-in-out transform hover:scale-105 pl-5 pr-5 pt-8 pb-8 text-2xl font-bold tracking-tight text-white whitespace-nowrap"
           role="button"
         >
           Manage Employee
         </a>
       </div>
 
-      <div className="relative inline-flex group col-span-3 sm:col-span-1 ml-[6rem]">
+      <div className="relative inline-flex group col-span-3 sm:col-span-1 ml-[3rem]">
         <a
           href="/employeepayroll"
           title="Payroll"
-          className="relative inline-flex items-center justify-center px-12 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900  hover:scale-105 hover:bg-gradient-to-r from-red-700 to-blue"
+          className="ms-20 me-5 block max-w-sm p-6 bg-black border border-black-200 rounded-lg shadow-md hover:bg-black-100 dark:bg-black-800 dark:border-black-700 dark:hover:bg-black-700 opacity-80 transition duration-300
+          ease-in-out transform hover:scale-105 pl-5 pr-5 pt-8 pb-8 text-2xl font-bold tracking-tight text-white whitespace-nowrap"
           role="button"
         >
           Employee Payroll
         </a>
       </div>
 
-      <div className="relative inline-flex group col-span-3 sm:col-span-1 ml-[6rem]">
+      <div className="relative inline-flex group col-span-3 sm:col-span-1 mr-[15rem]">
         <a
           href="/addleaverequest"
           title="LeaveRequest"
-          className="relative inline-flex items-center justify-center px-12 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900  hover:scale-105 hover:bg-gradient-to-r from-red-700 to-blue"
+          className="block max-w-sm p-6 bg-black border border-black-200 rounded-lg shadow-md hover:bg-black-100 dark:bg-black-800 dark:border-black-700 dark:hover:bg-black-700 opacity-80 transition duration-300
+          ease-in-out transform hover:scale-105 pl-8 pr-8 pt-8 pb-8 text-2xl font-bold tracking-tight text-white whitespace-nowrap"
           role="button"
         >
           Leave Request
@@ -121,18 +124,20 @@ export default function StaffHome() {
         <a
           href="/employeeattendance"
           title="Attendance"
-          className="relative items-center justify-center px-8 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 whitespace-nowrap  hover:scale-105 hover:bg-gradient-to-r from-red-700 to-blue"
+          className="ms-20 me-5 block max-w-sm p-6 bg-black border border-black-200 rounded-lg shadow-md hover:bg-black-100 dark:bg-black-800 dark:border-black-700 dark:hover:bg-black-700 opacity-80 transition duration-300
+          ease-in-out transform hover:scale-105 pl-5 pr-5 pt-8 pb-8 text-2xl font-bold tracking-tight text-white whitespace-nowrap"
           role="button"
         >
           Employee Attendance
         </a>
       </div>
 
-      <div className="relative inline-flex group col-span-3 sm:col-span-1 ml-[21rem] mb-[20rem]">
+      <div className="relative inline-flex group col-span-3 sm:col-span-1 ml-[15rem] mb-[20rem]">
         <a
           href="/employeeannouncement"
           title="Announcement"
-          className="relative inline-flex items-center justify-center px-12 py-6 text-lg font-bold text-white transition-all duration-200 bg-blue-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900  hover:scale-105 hover:bg-gradient-to-r from-red-700 to-blue"
+          className="ms-20 me-5 block max-w-sm p-6 bg-black border border-black-200 rounded-lg shadow-md hover:bg-black-100 dark:bg-black-800 dark:border-black-700 dark:hover:bg-black-700 opacity-80 transition duration-300
+          ease-in-out transform hover:scale-105 pl-7 pr-7 pt-8 pb-8 text-2xl font-bold tracking-tight text-white whitespace-nowrap"
           role="button"
         >
           Announcement

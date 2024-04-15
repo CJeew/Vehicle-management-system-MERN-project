@@ -21,9 +21,12 @@ export default function EmployeeAnnouncement() {
 
   // Function to handle deletion of an announcement
   const onDeleteClick = async (userId) => {
+    const confirmed = window.confirm("Are you sure you want to delete this announcement entry?");
+    if (confirmed) {
     await axios.delete(`http://localhost:8090/employeeannouncement/delete/${userId}`);
     alert('Announcement Deleted Successfully');
     window.location.reload(); // Refresh page after successful deletion
+    }
   }
 
   // Function to handle viewing an announcement
@@ -59,10 +62,12 @@ export default function EmployeeAnnouncement() {
   );
 
   return (
-    <div class="mt-5">
+    <div class="mt-3">
+
+      <h2 class="text-white mb-2 text-center text-3xl font-bold text-white">Announcements</h2>
 
       {/* Search bar */}
-      <div className="relative">
+      <div className="relative ml-[8rem]">
         <input
           type="text"
           placeholder="Search here.."
@@ -91,11 +96,11 @@ export default function EmployeeAnnouncement() {
       </div>
 
       {/* Table to display announcement details */}
-      <div className="overflow-x-auto max-h-[25rem] overflow-y-scroll">
+      <div className="overflow-x-auto max-h-[25rem] overflow-y-scroll ml-[8rem] mr-[8rem] rounded-md overflow-hidden">
         <table className="min-w-full divide-y divide-gray-200">
           {/* Table header */}
           <thead>
-            <tr className="bg-blue-500 text-white sticky top-0">  {/* Added bg-blue-500 for blue background and text-white for white text and Added sticky and top-0 for sticky header*/}
+            <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-700 text-white sticky top-0">  {/* Added bg-blue-500 for blue background and text-white for white text and Added sticky and top-0 for sticky header*/}
               <th scope="col" className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">ID</th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">Date</th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">Title</th>
@@ -134,17 +139,17 @@ export default function EmployeeAnnouncement() {
 
       {/* Button to add a new announcement */}
       <div className="mt-4 flex justify-between">
-        <a href="/addannouncement" className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-3 mb-5">
+        <a href="/addannouncement" className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-[8rem] mb-5">
           Add
         </a>
-        <a href="/staffhome" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-3 mb-5">
+        <a href="/staffhome" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-[8rem] mb-5">
           Prev
         </a>
       </div>
 
       {/* Display selected announcement in a card */}
       {selectedAnnouncement && (
-        <div className="mt-4">
+        <div className="mt-4 ml-2 mr-2">
           <AnnouncementCard announcement={selectedAnnouncement} onClose={onCloseCard} />
         </div>
       )}

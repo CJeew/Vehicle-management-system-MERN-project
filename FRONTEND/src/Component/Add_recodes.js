@@ -66,7 +66,7 @@ function Add_recodes(){
           
           </select>
           <div className="flex items-center justify-center">
-            <button className= "btn-indigo bg-gradient-to-r from-red-400 to-red-500 px-2 py-2 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] mt-4"
+            <button className= " bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900py-3 px-2 px-2 py-2 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] mt-4"
             type="submit">
             Add Recorde
             </button>

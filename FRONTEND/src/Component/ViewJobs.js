@@ -23,6 +23,8 @@ export default function ViewJobs() {
 
       getJobs();
   }, []);
+
+//Function to update jobs
   
 
   
@@ -108,9 +110,10 @@ export default function ViewJobs() {
               <div>
 
               {/* update button */}
-              <button className="bg-gradient-to-r from-green-600 via-green-800 to-green-950 hover:from-green-950 hover:via-green-700 
-                                  hover:to-green-600 text-white font-bold py-2 px-5 rounded-lg mr-2 opacity-80 transition duration-300
-                                  ease-in-out transform hover:scale-105">Update</button>
+              <Link to={`/updatejobs/${job._id}`}>
+                <button className="bg-gradient-to-r from-green-600 via-green-800 to-green-950 hover:from-green-950 hover:via-green-700 hover:to-green-600 text-white font-bold py-2 px-5 rounded-lg 
+                                  mr-2 opacity-80 transition duration-300 ease-in-out transform hover:scale-105">Update</button>
+              </Link>
 
               {/* Delete button */}
               <button onClick={(e) => {deleteJob(job._id, job.jobNumber); e.preventDefault();}} className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-900 hover:via-red-700 
