@@ -11,14 +11,14 @@ export default function Recordshome() {
          Service Record.
         </p>
         <img src={imgSrc} alt="recodeimg" className="w-2/4 mx-auto mt-10 rounded-2xl" />
-        <div className="text-2xl grid grid-cols-2 mt-10 gap-6">
+        <div className="text-1xl grid grid-cols-2 mt-8 gap-6">
           <a href="addrec">
-            <button className="bg-gradient-to-r from-red-400 to-red-500 px-2 py-4 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full">
+            <button className=" py-3 px-2 bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900  text-white font-bold uppercase  hover:text-black rounded-[10px] w-full">
               Add Record
             </button>
           </a>
           <a href="recview">
-            <button className="bg-gradient-to-r from-red-400 to-red-500 px-2 py-4 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full">
+            <button className=" py-3 px-2 bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 text-white font-bold uppercase hover:text-black rounded-[10px] w-full">
               View records
             </button>
           </a>
