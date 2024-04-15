@@ -6,7 +6,8 @@ import "./Chome.js";
 
 export default function Customerlogin() {
   return (
-    <form className="bg-gray-100 p-6 ms-60 my-10 p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50">
+     <div className="flex justify-center items-center w-full">
+    <form className="bg-gray-100 mt-20 py-10 p-14 my-10 m-60 border-gray-300 rounded-lg bg-opacity-50">
     <div>
       <div class="text-black mt-3 text-center text-4xl font-bold">Customer Login</div>
       
@@ -37,5 +38,5 @@ export default function Customerlogin() {
      
  
         </div>
-        </form>
+        </form></div>
   );}
