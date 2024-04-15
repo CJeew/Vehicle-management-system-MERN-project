@@ -20,8 +20,8 @@ export default function ViewPackage() {
     }
     getPackages();
   }, []);
-
-  const handleCheckboxChange = (pkg) => {
+ 
+ const handleCheckboxChange = (pkg) => {
     const isSelected = selectedPackages.includes(pkg.pid);
     if (isSelected) {
       setSelectedPackages(selectedPackages.filter((id) => id !== pkg.pid));
@@ -46,12 +46,12 @@ export default function ViewPackage() {
       <div className="text-2xl flex justify-center items-center">
         <div className="gap-16 grid grid-cols-2 mt-8">
           <a href="viewpkg">
-            <button className="bg-gradient-to-r from-red-400 to-red-500 px-2 py-4 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full ">
+            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900  px-2 py-4 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full ">
               Interior
             </button>
           </a>
           <a href="viewpkg2">
-            <button className="bg-gradient-to-r from-red-400 to-red-500 opacity-70 px-2 py-4 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full">
+            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 px-2 py-4 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full">
               Exterior
             </button>
           </a>
@@ -80,7 +80,7 @@ export default function ViewPackage() {
             ))}
         </div>
       </div>
-      <div className="flex justify-center items-center mt-28 gap-4">
+      <div className="flex justify-center items-center m-16 gap-4 ">
         <button
           onClick={calculateTotalPrice}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"

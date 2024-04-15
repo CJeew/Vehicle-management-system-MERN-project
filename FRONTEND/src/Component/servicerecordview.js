@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import moment from 'moment';
 
 export default function ServiceRecordView() {
   const [records, setRecords] = useState([]);
@@ -21,8 +22,8 @@ export default function ServiceRecordView() {
   }, []);
 
   return (
-    <div className="mx-auto max-w-4xl">
-      <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white text-center">
+    <div className="mx-auto max-w-5xl">
+      <h2 className="ms-20 my-10 mt-20 text-3xl font-bold text-white text-center">
         Service Recode.
       </h2>
 
@@ -65,13 +66,13 @@ export default function ServiceRecordView() {
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {record.service}
               </td>
-              {/*<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{record.address}</td>*/}
+            
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {record.customer}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {record.date}
-              </td>
+              {new Date(record.date).toLocaleDateString()}
+                </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {record.category}
               </td>
@@ -81,17 +82,11 @@ export default function ServiceRecordView() {
                   <a
                     href={`/editrec/${record._id}`}
                     type="button"
-                    class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent roundedbg-transparent hover:bg-yellow-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                   >
                     Edit
                   </a>
-                  {/* Delete record button  */}
-                  <button
-                    // onClick={() => onDeleteClick(record._id)}
-                    class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                  >
-                    Delete
-                  </button>
+                 
                 </div>
               </td>
             </tr>
