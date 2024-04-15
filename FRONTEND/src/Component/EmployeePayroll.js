@@ -23,9 +23,12 @@ export default function EmployeePayroll() {
 
   // Function to handle deletion of a payroll
   const onDeleteClick = async (userId) => {
+    const confirmed = window.confirm("Are you sure you want to delete this payroll entry?");
+    if (confirmed) {
     await axios.delete(`http://localhost:8090/employeepayroll/delete/${userId}`);
     alert('Payroll Deleted Successfully');
     window.location.reload(); // Refresh page after successful deletion
+    }
   }
 
    // Function to filter payroll details based on search term

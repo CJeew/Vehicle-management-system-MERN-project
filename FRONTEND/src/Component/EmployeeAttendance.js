@@ -21,9 +21,12 @@ export default function EmployeeAttendance() {
 
   // Function to handle deletion of an attendance detail
   const onDeleteClick = async (userId) => {
+    const confirmed = window.confirm("Are you sure you want to delete this attendance entry?");
+    if (confirmed) {
     await axios.delete(`http://localhost:8090/employeeattendance/delete/${userId}`);
     alert('Attendance Deleted Successfully');
     window.location.reload(); // Refresh page after successful deletion
+    }
   }
 
   // Function to filter attendance details based on search term

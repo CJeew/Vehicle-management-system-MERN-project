@@ -54,4 +54,29 @@ router.route("/updatereview/:id").post(async(req,res)=>{
         res.status(500).send({status: "Error with updating data", error: err.message});
     })
  })
+
+ //delete
+
+ router.route("/delete/:id").delete(async(req, res)=>{
+    let revid = req.params.id;
+    await reviewAdd.findByIdAndDelete(revid)
+    .then(()=> {
+        res.status(200).send({status: "Review Deleted"});
+    }).catch((err)=>{
+        console.log(err.message);
+        res.status(500).send({stats: "Error with deleting review", error:err.message});
+    })
+ })
+
+ //fetch data of one booking
+ router.route("/get/:id").get(async(req,res)=>{
+    let revid = req.params.id;
+    const review = await reviewAdd.findById(revid)  //primary key - .findOne(email)
+    .then((review)=>{
+        res.status(200).send({status: "Review Fetched", review})
+    }).catch((err)=>{
+        console.log(err.message);
+        res.status(500).send({status: "Error with get review", error: err.message});
+    })
+ })
  module.exports = router;

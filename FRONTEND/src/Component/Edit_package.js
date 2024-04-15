@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 
 function Edit_package() {
   const { id } = useParams();
-  // add package form
-  const [pid, setPid] = useState("");
+  //  package form
+ 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [unitPrice, setUnitPrice] = useState(0);
@@ -16,7 +16,7 @@ function Edit_package() {
     e.preventDefault();
 
     const editPackage = {
-      pid,
+     
       name,
       description,
       unitprice: parseFloat(unitPrice), // Ensure unitPrice is correctly formatted as a number
@@ -32,12 +32,12 @@ function Edit_package() {
       .catch((err) => {
         alert(err.message); //error message
       });
-   }
-   useEffect(() => {
+  }
+  useEffect(() => {
     axios
       .get(`http://localhost:8090/svc-packages/get/${id}`)
       .then((res) => {
-        setPid(res.data.pid);
+      
         setName(res.data.name);
         setDescription(res.data.description);
         setUnitPrice(res.data.unitprice);
@@ -45,19 +45,17 @@ function Edit_package() {
       })
       .catch((err) => {
         alert(err.message); //error message
-      }); 
+      });
   }, []);
 
   return (
     <div className="  w-full flex justify-center items-center ">
       <div className="w-full max-w-96 mt-24 bg-white p-8 rounded-lg shadow-md bg-gray-200 bg-opacity-70">
         <h1 className="text-3xl mb-6 text-center font-bold text-gray-800">
-          Add Package
+          Edit Package
         </h1>
         <form onSubmit={submit}>
-          <div className="mb-4">
-            
-          </div>
+          <div className="mb-4"></div>
           <label className="block mb-2 text-sm font-bold text-gray-700">
             Name
           </label>
@@ -92,22 +90,25 @@ function Edit_package() {
             Category
           </label>
 
-          <select className="px-3 py-1 rounded-lg border border-black-400 w-full text-black" required value={category}
-
-
-            onChange={(e) => setCategory(e.target.value)}>
-            <option selected disabled value="">Select Category</option>
+          <select
+            className="px-3 py-1 rounded-lg border border-black-400 w-full text-black"
+            required
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option selected disabled value="">
+              Select Category
+            </option>
             <option value="Interior">Interior</option>
             <option value="Exterior">Exterior</option>
-          
           </select>
 
           <div className="flex justify-center">
             <button
-              className="btn-indigo bg-gradient-to-r from-red-400 to-red-500 px-2 py-2 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] mt-4"
+              className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900  px-2 py-2 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] mt-4"
               type="submit"
             >
-               update
+              update
             </button>
           </div>
         </form>

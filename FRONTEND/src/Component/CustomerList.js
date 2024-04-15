@@ -22,12 +22,11 @@ export default function RegisterRead() {
     }, []);
 
     // Function to handle deletion of a payroll
-  const onDeleteClick = async (Cusid) => {
-    await axios.delete(`http://localhost:8090/customer/delete/${Cusid}`);
-    alert('Profile Deleted Successfully');
-    window.location.reload(); // Refresh page after successful deletion
-  }
-
+    const onDeleteClick = async (cusid) => {
+        await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
+        alert('Profile Deleted Successfully');
+        window.location.reload(); // Refresh page after successful deletion
+      }
    
     
 
@@ -62,11 +61,11 @@ return (
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex items-center justify-start gap-2">
                                 {/* Edit booking button */}
-                                <a href={`/customer/${customer._id}`} type="button" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                <a href={`/customer/${customer._id}`} type="button" class="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                                     Edit
                                 </a>
                                 {/* Delete booking button  */}
-                                <button onClick={() => onDeleteClick(customer._id)} class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                <button onClick={() => onDeleteClick(customer._id)} class="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                                     Delete
                                 </button>
                             </div>

@@ -43,7 +43,7 @@ export default function Package_edithome() {
             .map((pkg) => (
               <div
                 className="flex flex-col justify-center items-center bg-black bg-opacity-75 text-white rounded-lg px-8 py-4"
-                key={pkg.pid}
+                key={pkg.name}
               >
                 <h2 className="text-xl font-bold mb-2">{pkg.name}</h2>
                 <p className="text-base text-gray-200">{pkg.description}</p>
@@ -73,7 +73,7 @@ export default function Package_edithome() {
         <h2 className="text-3xl mb-6 mt-16 flex justify-left mt-8 font-bold text-white">
           Exterior
         </h2>
-        <div className="grid grid-cols-2 gap-8 bg-gray-200 bg-opacity-70 rounded-lg p-14 mt-10 mx-5 w-full max-w-7xl">
+        <div className="grid grid-cols-2 gap-8 bg-gray-200 bg-opacity-70 rounded-lg p-14 m-10 mx-5 w-full max-w-7xl">
           {packages
             .filter((pkg) => pkg.category === "Exterior")
             .map((pkg) => (

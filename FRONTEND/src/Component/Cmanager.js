@@ -6,67 +6,46 @@ import "./Chome.js";
 import "./Customerlogin.js"
 import "./Profile.js"
 import "./CustomerList.js"
+import imgSrc from "./list.jpg";
+import imgSrc1 from "./rev1.png";
+import imgSrc2 from "./uuu.jpg";
+
 export default function Cmanager() {
   return (
-    <div class="flex h-screen w-full items-center justify-center  bg-cover bg-no-repeat">
-      <div class="rounded-xl bg-gray-800 bg-opacity-50 px-16 py-14 shadow-lg backdrop-blur-md max-sm:px-8">
-      <div class="text-white">
-          <div class="mb-8 flex flex-col items-center">
-            
-            <span class="text-gray-300">Customer details</span>
-          </div>
-          <form action="#">
-            <div class="mb-4 text-lg">
-              <input class="rounded-3xl border-none bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
-                                  hover:to-amber-700 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="text" name="name" placeholder="CustomerID" />
-            </div>
-    
-            
-            <div class="mt-8 flex justify-center text-lg text-black">
-                
-            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
-                                  hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
-                                  ease-in-out transform hover:scale-105"><a href="/Profile">Get Details</a></button>
-            
-            </div>
-          </form>
-        </div>
+    <div>
+      <div className="relative">
+        <h1 className="ms-20 mt-20 m text-6xl font-extrabold text-white">Click to Get the  List</h1>
+        <img src={imgSrc2} alt="Wipe Image" className="absolute top-4 right-10 mx-60 rounded-2xl" style={{ width: "400px", height: "500px" }}/>
       </div>
+      <br />
+      <small className="ms-20 text-xl opacity-90 mt-5 text-white">Review List button provides access to review details.  </small>
+      <br />
+      <small className="ms-20 text-xl opacity-90 mt-5 text-white">Customer List button displays customerinformation.  </small>
+      <br />
+      <small className="ms-20 text-xl opacity-90 mt-5 text-white">Both buttons streamline access to essential data, </small>
+      <br />
+      <small className="ms-20 text-xl opacity-90 mt-5 text-white">enhancing efficiency and facilitating informed decision-making.</small>
+      <br />
+      
+     
 
-      <div class="mx-5 rounded-xl bg-gray-800 bg-opacity-50 px-20 py-16 shadow-lg backdrop-blur-md max-sm:px-8">
-      <div class="text-white">
-          <div class="mb-8 flex flex-col items-center">
-            
-            <span class="text-gray-300">Customer List </span>
-          </div>
-          <form action="#">
-            
-            <div class="rounded-3xl border-none bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
-                                  hover:to-amber-700 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop--md">
-            <select class ="bg-red-500 bg-opacity-5 " > 
-            <option class="font-semibold text-slate-300">Car</option>
-            <option class="font-semibold text-slate-300">Motor Bike</option>
-            <option class="font-semibold text-slate-300">Three Wheeler</option>
-            <option class="font-semibold text-slate-300">Heavy Vehicle</option>
-            </select>
-            </div>
-            
-    
-            
-            <div class="mt-8 flex justify-center text-lg text-black">
+      <div className="flex ms-20 my-20">
+        <figure>
+          <img className="rounded-full w-40 h-40 ms-20" src={imgSrc} />
+          <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400 ms-20">
             <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
-                                  hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
-                                  ease-in-out transform hover:scale-105"><a href="/CustomerList">Get List</a></button>
-            </div>
-          </form>
-          
-        </div>
+                                  hover:to-amber-700 text-white font-bold py-4 px-6 rounded-lg mr-2 opacity-90 transition duration-300
+                                  ease-in-out transform hover:scale-105"><a href="/CustomerList">Customer List</a></button>
+          </figcaption>
+        </figure>
+        <figure>
+          <img className="rounded-full w-40 h-40 ms-20" src={imgSrc1} />
+          <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400 ms-20">
+            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                  hover:to-amber-700 text-white font-bold py-4 px-6 rounded-lg mr-2 opacity-90 transition duration-300
+                                  ease-in-out transform hover:scale-105"><a href="/CustomerReview">Review  List</a></button>
+          </figcaption>
+        </figure>
       </div>
-      <div class="absolute bottom-10 right-15">
-    <button class="position-relative bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
-                    hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
-                    ease-in-out transform hover:scale-100 top-50px">
-        <a href="/CustomerReview">Reviews</a>
-    </button>
-</div>
-    </div>);}
+    </div>
+    );}

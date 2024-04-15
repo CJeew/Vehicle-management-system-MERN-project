@@ -69,11 +69,12 @@ router.route("/updatecustomer/:id").post(async(req,res)=>{
 
  //delete
 
- router.route("/cdelete/:id").delete(async(req, res)=>{
+
+ router.route("/delete/:id").delete(async(req, res)=>{
     let cusid = req.params.id;
     await customer.findByIdAndDelete(cusid)
-    then(()=> {
-        res.status(200).send({status: "Profile deletered"});
+    .then(()=> {
+        res.status(200).send({status: "Profile deleted"});
     }).catch((err)=>{
         console.log(err.message);
         res.status(500).send({stats: "Error with deleting Profile", error:err.message});

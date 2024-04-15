@@ -21,9 +21,12 @@ export default function EmployeeAnnouncement() {
 
   // Function to handle deletion of an announcement
   const onDeleteClick = async (userId) => {
+    const confirmed = window.confirm("Are you sure you want to delete this announcement entry?");
+    if (confirmed) {
     await axios.delete(`http://localhost:8090/employeeannouncement/delete/${userId}`);
     alert('Announcement Deleted Successfully');
     window.location.reload(); // Refresh page after successful deletion
+    }
   }
 
   // Function to handle viewing an announcement
