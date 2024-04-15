@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Display() {
     const [suppliers, setSuppliers] = useState([]);
@@ -60,14 +61,9 @@ export default function Display() {
                                 >
                                     Delete
                                 </button>
-                                <button
-                                    
-                                    className="bg-gradient-to-r from-green-700 via-green-800 to-green-900 hover:from-green-900 
+                               <Link to ={"/update"}> <button className="bg-gradient-to-r from-green-700 via-green-800 to-green-900 hover:from-green-900 
                                     hover:via-green-800 hover:to-green-700 text-white float-right mx-auto font-bold py-1 px-3 rounded-lg mr-2 
-                                    opacity-90 transition duration-300 ease-in-out transform hover:scale-105"
-                                >
-                                    Edit
-                                </button>
+                                    opacity-90 transition duration-300 ease-in-out transform hover:scale-105"> Edit</button></Link>
                                 <a href="/display">
                                     <button className="bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 hover:from-blue-900 
                                     hover:via-blue-800 hover:to-blue-700 text-white float-right mx-auto font-bold py-1 px-3 rounded-lg mr-2 

@@ -7,6 +7,7 @@ import Add_Supplier from "./Component/Add_Supplier";
 import Delete from "./Component/Delete";
 // import Display from "./Components/Display";
 import Display from "./Component/Display";
+import Update from "./Component/Update";
 
 //Jobs
 import Create_Job from "./Component/job";
@@ -42,17 +43,11 @@ import AddBooking from "./Component/AddBooking";
 import BookRead from "./Component/BookRead";
 import ServiceHistory from "./Component/ServiceHistory";
 import AddBusinessHours from "./Component/AddBusinessHours";
-import ViewHourSetting from "./Component/ViewHourSetting";
-import ViewHolidaysSetting from "./Component/ViewHolidaysSetting";
-import AddHolidays from "./Component/AddHolidays";
-
-
 
 import Home from "./Component/home";
 
 
-//---------service--------------------------
-//-----------Packages-----------------------
+//service
 //import add package
 import Addpkg from "./Component/Add_package";
 //import servicehome
@@ -64,12 +59,10 @@ import Viewpkg from "./Component/View_package";
 import Viewpkg2 from "./Component/View_package2";
 //import Edit package
 import Pkgedithome from "./Component/Package_edithome";
+
 import Editpkg from "./Component/Edit_package";
-
-//----------Record-------------------------
-import Addrec from "./Component/Add_recodes";
-
-
+//import Delete package
+// import Deletepkg from "./Component/Delete_package"; 
 
 //staff
 import AddPayroll from "./Component/AddPayroll";
@@ -143,6 +136,8 @@ function App() {
           <Route path="/add" element={<Add_Supplier />} />
           <Route path="/display" element={<Display/>}/> 
           <Route path="/delete" element={<Delete/>}/>
+          <Route path="/update" element={<Update/>}/>
+          
 
           <Route path="/createjob" element={<Create_Job />} />
           <Route path="/viewjobs" element={<ViewJobs />} />
@@ -162,7 +157,6 @@ function App() {
           <Route path="/viewpkg" element={<Viewpkg/>}/>
           <Route path="/Pkgedithome" element={<Pkgedithome/>}/>
           <Route path="/editpkg/:id" element={<Editpkg/>}/>
-          <Route path="/addrec" element={<Addrec/>}/>
          
 
           {/*---------Tavini-------------Booking------------------------------*/}
@@ -172,12 +166,9 @@ function App() {
           <Route path="/addBooking" element={<AddBooking/>}/>
           <Route path="/bookRead" element={<BookRead/>}/>
           <Route path="/serviceHistory" element={<ServiceHistory/>}/>
-          <Route path="/addHourSetting" element={<AddBusinessHours/>}/>
-          <Route path="/addHolidays" element={<AddHolidays/>}/>
-          <Route path="/viewHourSetting" element={<ViewHourSetting/>}/>
-          <Route path="/viewHolidaysSetting" element={<ViewHolidaysSetting/>}/>
-          
 
+
+          <Route path="/addHourSetting" element={<AddBusinessHours/>}/>
 
 
           {/* <Route path="/test" element={<Test/>}/> */}
@@ -210,15 +201,21 @@ function App() {
           <Route path="/employeeattendance" element={<EmployeeAttendance/>}/>
           <Route path="/editleaverequest/:id" element={<EditLeaveRequest/>}/>
           <Route path="/leaverequest" element={<LeaveRequest/>}/>
-          <Route path="/editannouncement/:id" element={<EditAnnouncement/>}/>
-          <Route path="/employeeannouncement" element={<EmployeeAnnouncement/>}/>
 
 
 
          
 
           
+          <Route path="/editannouncement/:id" element={<EditAnnouncement/>}/>
+          <Route path="/employeeannouncement" element={<EmployeeAnnouncement/>}/>
           
+          
+
+
+
+         
+
           <Route path="/inventory" element={<Inventory_Menu/>}/>
           <Route path="/manageitems" element={<ManageItems/>}/>
           <Route path="/additems" element={<Additems/>}/>

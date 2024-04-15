@@ -14,7 +14,7 @@ const supplierSchema = new Schema({
     },
     contact_2 : {
         type : String,
-        required : true
+       
     },
     Email :{
         type:String,
