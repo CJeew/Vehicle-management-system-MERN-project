@@ -73,7 +73,7 @@ export default function Package_edithome() {
         <h2 className="text-3xl mb-6 mt-16 flex justify-left mt-8 font-bold text-white">
           Exterior
         </h2>
-        <div className="grid grid-cols-2 gap-8 bg-gray-200 bg-opacity-70 rounded-lg p-14 mt-10 mx-5 w-full max-w-7xl">
+        <div className="grid grid-cols-2 gap-8 bg-gray-200 bg-opacity-70 rounded-lg p-14 m-10 mx-5 w-full max-w-7xl">
           {packages
             .filter((pkg) => pkg.category === "Exterior")
             .map((pkg) => (
