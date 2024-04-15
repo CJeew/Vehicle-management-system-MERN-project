@@ -10,6 +10,24 @@ router.route("/addr").post((req, res) => {
   const date = req.body.date;
   console.log("test");
   const category = req.body.category;
+
+  // validate data
+  
+  //validate category is equal to interior or exterior
+  if (category !== "Interior" && category !== "Exterior") {
+    return res.status(400).json({ message: "category must be Interior or Exterior" });
+  }
+  // validate service and discription as string
+  if (typeof service !== "string" || typeof customer !== "string") {
+    return res.status(400).json({ message: "service and description must be strings" });
+  }
+  // Validate date to ensure it's not a future date
+  const currentDate = new Date();
+  const recordDate = new Date(date);
+
+  if (recordDate > currentDate) {
+    return res.status(400).json({ message: "Date cannot be a future date" });
+  }
   
 
   const newRecorde = new Recorde({

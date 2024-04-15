@@ -10,7 +10,16 @@ function Add_recodes(){
     const [category, setCategory] = useState("");
 
     function submit(e){
-        e.preventDefault(); //prevent default form submission behavior      
+        e.preventDefault(); //prevent default form submission behavior  
+        // Get today's date
+        const today = new Date();
+        const todayStr = today.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+
+        // Validate if the selected date is not in the future
+        if (date > todayStr) {
+            alert("Date cannot be a future date");
+            return;
+        }    
 
         const newRecorde = {
             service,
@@ -22,6 +31,7 @@ function Add_recodes(){
         .post("http://localhost:8090/svc-records/addr", newRecorde)
         .then(()=>{        
             alert("Recode Added");
+            window.location.href = "/recview";
         }        
         ).catch((err)=>{
             alert(err);
