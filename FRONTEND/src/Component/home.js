@@ -72,20 +72,20 @@ function Home() {
 
                 {/* Main service boxes */}
                 <div className="flex mr-5 mt-20 ">
-                    <div className="w-90 p-4 mr-5 rounded-lg bg-gray-700 opacity-60">
+                    <div className="w-1/2 p-4 mr-28 rounded-lg bg-gray-700 opacity-60 transition duration-200 ease-in-out transform hover:scale-105 hover:opacity-100">
                         <img src={image1} className="mx-auto block mt-1" />
                         <h1 className="text-3xl font-bold text-center mt-3 opacity-80">Routing <br/>Maintenance</h1>
-                        <p className="text-justify text-xl mt-10 opacity-80 ml-20 leading-8 ">With our routine maintenance <br/> package, you can keep your car in<br/> excellent condition. We provide<br/> complete air, oil, and fuel filter<br/> replacements, expert oil changes,<br/> careful tire rotations, and pressure<br/> checks.</p>
+                        <p className="text-left text-xl mt-10 ml-4 opacity-80 leading-8 mx-5">With our routine maintenance package, you can keep your car in excellent condition. We provide complete air, oil, and fuel filter replacements, expert oil changes, careful tire rotations, and pressure checks.</p>
                     </div>
-                    <div className="w-90 p-4 mr-5 rounded-lg bg-gray-700 opacity-60 ">
+                    <div className="w-1/2 p-4 mr-28 rounded-lg bg-gray-700 opacity-60 transition duration-200 ease-in-out transform hover:scale-105 hover:opacity-100">
                         <img src={image2} className="mx-auto block" />
-                        <h1 className="text-3xl font-bold text-center mt-3 opacity-60">Diagnostic & Repair <br/>Services</h1>
-                        <p className="text-justify text-xl mt-10 opacity-80 ml-20 leading-8 ">Our skilled technicians are experts<br/> in thorough brake inspections and <br/>repairs, accurate engine<br/> diagnostics, and effective<br/> troubleshooting of common<br/> electrical problems.</p>
+                        <h1 className="text-3xl font-bold text-center mt-3 opacity-80">Diagnostic & Repair <br/>Services</h1>
+                        <p className="text-left text-xl mt-10 opacity-80 leading-8 mx-5 ">Our skilled technicians are experts in thorough brake inspections and repairs, accurate engine diagnostics, and effective troubleshooting of common electrical problems.</p>
                     </div>
-                    <div className="w-90 p-4 mr-5 rounded-lg bg-gray-700 opacity-60">
+                    <div className="w-1/2 p-4 mr-28 rounded-lg bg-gray-700 opacity-60 transition duration-200 ease-in-out transform hover:scale-105 hover:opacity-100">
                         <img src={image3} alt="Service 3" className="mx-auto block " />
                         <h1 className="text-3xl font-bold text-center mt-3 opacity-80">Tire <br />Services</h1>
-                        <p className="text-justify text-xl mt-10 opacity-80 ml-20 leading-8 ">Ensure a smooth ride and optimal<br/> tire performance with our tire <br/>services. From top-quality tire sales<br/> to expert wheel balancing and<br/> alignment, we've got your wheels<br/> covered.</p>
+                        <p className="text-left text-xl mt-10 opacity-80  leading-8 mx-5 ">Ensure a smooth ride and optimal tire performance with our tire services. From top-quality tire sales to expert wheel balancing and alignment, we've got your wheels covered.</p>
                     </div>
                 </div>
             </div>
