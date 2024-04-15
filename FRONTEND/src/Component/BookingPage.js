@@ -47,6 +47,7 @@ export default function BookingPage() {
           </figcaption>
         </figure>
       </div>
+      <div className="mt-10">....</div>
     </div>
   );
 }
