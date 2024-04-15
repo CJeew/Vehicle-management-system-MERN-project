@@ -35,8 +35,9 @@ function Review() {
   <div>
     <form onSubmit={sendreview}>
     <div>
+    <h2 className="ms-20 my-10 mt-20 text-5xl font-extrabold text-white">Feedback Form</h2>
       <form className="max-w-md mx-auto mt-16 p-4 bg-gray-800 bg-opacity-50 shadow rounded">
-        <h2 className="text-white text-2xl font-bold mb-4">Feedback Form</h2>
+        {/* <h2 className="text-white text-2xl font-bold mb-4">Feedback Form</h2> */}
         <div className="mb-4 text-black" >
           <label for="email" className="text-white block mb-1 ">
             Email
