@@ -44,19 +44,19 @@ export default function View_package2() {
       <div className="text-2xl flex justify-center items-center">
         <div className="gap-16 grid grid-cols-2 mt-8">
           <a href="viewpkg">
-            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900  px-2 py-4 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full ">
+            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-700 opacity-55  px-2 py-4 text-white font-bold uppercase hover:text-black rounded-[10px] w-full ">
               Interior
             </button>
           </a>
           <a href="viewpkg2">
-            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900   px-2 py-4 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] w-full">
+            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-700  px-2 py-4 text-white font-bold uppercase  hover:text-black rounded-[10px] w-full">
               Exterior
             </button>
           </a>
         </div>
       </div>
       <div className="flex justify-center items-center w-full">
-        <div className="grid grid-cols-2 gap-8 bg-gray-200 bg-opacity-70 rounded-lg p-14 mt-16 mx-5 w-full max-w-7xl">
+        <div className="grid grid-cols-2 gap-8 bg-gray-200 bg-opacity-70 rounded-lg p-14 m-10 mx-5 w-full max-w-7xl">
           {packages
             .filter((pkg) => pkg.category === "Exterior")
             .map((pkg) => (
@@ -78,18 +78,21 @@ export default function View_package2() {
             ))}
         </div>
       </div>
-      <div className="flex justify-center items-center m-16 gap-4">
+      <div className="p-15 m-10 my-5 gap-4">
+      <div className="flex justify-center items-center gap-4 ">
+        
         <button
           onClick={calculateTotalPrice}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
         >
           Calculate Total Price
         </button>
 
-        <h2 className="text-2xl text-white">
+        <h2 className="text-2xl text-white ">
           Total Price: RS. {totalPrice.toFixed(2)}
         </h2>
       </div>
+    </div>
     </div>
   );
 }

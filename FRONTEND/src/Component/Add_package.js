@@ -12,6 +12,13 @@ function AddPackage() {
 
   function submit(e) {
     e.preventDefault();
+     // Redirect based on category
+     if (category === "Interior") {
+      window.location.href = "/viewpkg";
+    } else if (category === "Exterior") {
+      window.location.href = "/viewpkg2";
+    }
+
 
     const newPackage = {
       name,
@@ -24,7 +31,10 @@ function AddPackage() {
       .post("http://localhost:8090/svc-packages/add", newPackage)
       .then(() => {
         alert("Package Added");
-      })
+        // Redirect based on category
+
+    
+     })
       .catch((err) => {
         alert(err.message); //error message
       });
