@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-//import {useReactToPrint} from 'react-to-print';
+import {useReactToPrint} from 'react-to-print';
 
 export default function BookRead() {
     const [bookings, setBooking] = useState([]);
@@ -39,6 +39,13 @@ export default function BookRead() {
         bookings.vType.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+        //Function to generate reports
+        const handlePrint = useReactToPrint({
+            content:()=>componentRef.current,
+            DocumentTittle:"Booking List",
+            onafterprint:()=>alert ("Booking List generation successfull !!")
+          })
+
 
 
     const formatDate = (dateString) => {
@@ -65,7 +72,7 @@ return (
         <input type="text"placeholder="Search " value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="pl-10 pr-4 py-2 w-64 bg-gray-100 rounded-full focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 border border-transparent"/>
         </div>
     </div>
-    <table class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10" ref={componentRef}>
+    <table class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10 mt-20" ref={componentRef}>
             <thead>
             <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
                     <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Name</th>
@@ -109,6 +116,11 @@ return (
                 ))}
             </tbody>
         </table>
+        <div className="absolute right-8 mt-5">
+            <button onClick={handlePrint} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Generate Report</button>
+            <div className="mt-1 opacity-0">.</div>
+      </div>
+      
     </div>
 
 );
