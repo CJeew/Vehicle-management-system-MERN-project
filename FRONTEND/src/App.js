@@ -6,6 +6,7 @@ import Add_Supplier from "./Component/Add_Supplier";
 import Delete from "./Component/Delete";
 // import Display from "./Components/Display";
 import Display from "./Component/Display";
+import Update from "./Component/Update";
 
 //Jobs
 import Create_Job from "./Component/job";
@@ -60,6 +61,7 @@ import Viewpkg from "./Component/View_package";
 import Viewpkg2 from "./Component/View_package2";
 //import Edit package
 import Pkgedithome from "./Component/Package_edithome";
+
 import Editpkg from "./Component/Edit_package";
 
 //----------Record-------------------------
