@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import {useReactToPrint} from 'react-to-print';
 
 export default function BookRead() {
     const [bookings, setBooking] = useState([]);
+    const componentRef = useRef();
 
     useEffect(() => {
         function getBooking() {
@@ -10,6 +12,8 @@ export default function BookRead() {
                 .then((res) => {
                     console.log("Response from server:", res.data); 
                     setBooking(res.data);
+                    const reverseList = res.data.reverse();
+                    setBooking(reverseList);
                 })
                 .catch((err) => {
                     console.error("Error fetching data:", err);
@@ -20,7 +24,7 @@ export default function BookRead() {
         getBooking();
     }, []);
 
-    // Function to handle deletion of a payroll
+    // Function to handle deletion of a booking
   const onDeleteClick = async (bookId) => {
     await axios.delete(`http://localhost:8090/booking/delete/${bookId}`);
     alert('Booking Deleted Successfully');
@@ -40,9 +44,9 @@ return (
     <div>
     <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Booking List</h2>
     
-        <table  class="bg-blue-500 text-white sticky top-0 mx-5">
+    <table class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10" ref={componentRef}>
             <thead>
-                <tr className="bg-red-400 mt-5">
+            <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
                     <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Name</th>
                     {/*<th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Address</th>*/}
                     <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Telephone</th>
@@ -70,8 +74,8 @@ return (
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.serviceBox}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex items-center justify-start gap-2">
-                                {/* Edit booking button */}
-                                <a href={`/booking/${booking._id}`} type="button" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                {/*Edit booking button */}
+                                <a href={'/editBookRead/${bookings._id}'} type="button" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                                     Edit
                                 </a>
                                 {/* Delete booking button  */}

@@ -34,6 +34,13 @@ const managepartsSchema = new Schema({
         required: true
     },
 
+
+    reorderlevel: {
+        type: Number, 
+        required: true
+    },
+
+
     stocklimit:{
         type:String,
         required: true

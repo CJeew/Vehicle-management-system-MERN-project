@@ -21,9 +21,12 @@ export default function EmployeeAttendance() {
 
   // Function to handle deletion of an attendance detail
   const onDeleteClick = async (userId) => {
+    const confirmed = window.confirm("Are you sure you want to delete this attendance entry?");
+    if (confirmed) {
     await axios.delete(`http://localhost:8090/employeeattendance/delete/${userId}`);
     alert('Attendance Deleted Successfully');
     window.location.reload(); // Refresh page after successful deletion
+    }
   }
 
   // Function to filter attendance details based on search term
@@ -49,9 +52,12 @@ export default function EmployeeAttendance() {
 
   return (
 
-    <div class="mt-5">
+    <div class="mt-3">
+
+      <h2 class="text-white mb-2 text-center text-3xl font-bold text-white">Employee Attendance</h2>
+
       {/* Search bar */}
-      <div className="relative">
+      <div className="relative ml-[8rem]">
         <input
           type="text"
           placeholder="Search here.."
@@ -80,10 +86,10 @@ export default function EmployeeAttendance() {
       </div>
 
       {/* Table to display attendance details */}
-      <div class="overflow-x-auto max-h-[25rem] overflow-y-scroll">
+      <div class="overflow-x-auto max-h-[25rem] overflow-y-scroll ml-[8rem] mr-[8rem] rounded-md overflow-hidden">
         <table class="min-w-full divide-y divide-gray-200">
           <thead>
-            <tr class="bg-blue-500 text-white sticky top-0"> {/* Added bg-blue-500 for blue background and text-white for white text and Added sticky and top-0 for sticky header*/}
+            <tr class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-700 text-white sticky top-0"> {/* Added bg-blue-500 for blue background and text-white for white text and Added sticky and top-0 for sticky header*/}
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">ID</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">NIC</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Name</th>
@@ -120,7 +126,10 @@ export default function EmployeeAttendance() {
                       Edit
                     </a>
                     {/* Delete attendance button  */}
-                    <button onClick={() => onDeleteClick(employeeattendance._id)} class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+
+
+                    <button onClick={() => onDeleteClick(employeeattendance._id)} class="bg-transparent hover:bg-red-600 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+
                       Delete
                     </button>
                   </div>
@@ -132,10 +141,10 @@ export default function EmployeeAttendance() {
       </div>
       {/* Button to add a new attendance */}
       <div className="mt-4 flex justify-between">
-        <a href="/addattendance" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-3 mb-5">
+        <a href="/addattendance" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-[8rem] mb-5">
           Add
         </a>
-        <a href="/staffhome" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-3 mb-5">
+        <a href="/staffhome" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-[8rem] mb-5">
           Prev
         </a>
       </div>

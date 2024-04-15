@@ -56,6 +56,17 @@ export default function EditStaff() {
       });
   }
 
+  function handleDateChange(e) {
+    const selectedDate = new Date(e.target.value);
+    const currentDate = new Date();
+
+    if (selectedDate > currentDate) {
+      alert("Please select a date on or before today.");
+    } else {
+      setJoindate(e.target.value);
+    }
+  }
+
     
 
 return (
@@ -74,6 +85,7 @@ return (
             id="nic"
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={nic} //showing value
+            pattern="[0-9]{9}[vV]{1}|[0-9]{12}"
             onChange={(e)=>{    //if value is changed, onChange will be called
 
               setNic(e.target.value);
@@ -112,6 +124,7 @@ return (
                   id="email"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   value={email} //showing value
+                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                   onChange={(e)=>{
 
                     setEmail(e.target.value);
@@ -170,6 +183,7 @@ return (
             id="mobileno"
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={mobileno}
+            pattern="[0-9]{10}"
             onChange={(e)=>{
 
               setMobileno(e.target.value);
@@ -189,10 +203,7 @@ return (
             id="joindate"
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={joindate}
-            onChange={(e)=>{
-
-              setJoindate(e.target.value);
-            }}
+            onChange={handleDateChange}
           />
         </div>
       </div>

@@ -2,15 +2,22 @@ const mongoose =require('mongoose');
 
 const Schema = mongoose.Schema;
 
+// Function to format dates
+function formatDate(date) {
+    const formattedDate = new Date(date).toLocaleDateString("en-US");
+    return formattedDate;
+}
 
 const jobSchema = new Schema({
     jobNumber : {
         type : String,
-        required : true
+        required : true,
+        unique : true
     },
     jobDate : {
         type : Date,
-        required : true
+        required : true,
+        
     },
     vehicleType : {
         type : String, 
@@ -33,16 +40,19 @@ const jobSchema = new Schema({
         required : true
     },
     year: {
-        type : Number,
-        required : true
+        type : Number
     },
     timeIn : {
-        type : Date, 
+        type : String, 
         required : true
     },
-    out : {
+    dateout : {
         type : Date, 
-        required : true
+        required : true,
+    },
+    timeout : {
+        type : String, 
+       
     },
     name : {
         type : String, 
@@ -53,21 +63,26 @@ const jobSchema = new Schema({
         required : true
     },
     email : {
-        type :String, 
-        required : true
+        type :String
     },
     serviceType: {
-        type : String, 
+        type : [String], 
         required : true
     },
     details : {
-        type : String, 
-        required : true
+        type : String
     },
 })
 
 
-const job = mongoose.model("jobs",supplierSchema);
+jobSchema.methods.toJSON = function() {
+    const obj = this.toObject();
+    obj.jobDate = formatDate(obj.jobDate);
+    obj.dateout = formatDate(obj.dateout);
+    return obj;
+};
 
-module.exports = jobs;
+const job = mongoose.model("jobs",jobSchema);
+
+module.exports = job;
  

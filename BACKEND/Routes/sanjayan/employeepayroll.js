@@ -3,7 +3,7 @@ let Employeepayroll = require("../../Models/Employeepayroll");
 
 //http://localhost:8090/staff/add
 
-router.route("/addpayroll").post((req,res)=>{
+router.route("/addpayroll").post(async(req,res)=>{
 
     const nic = req.body.nic;
     const name = req.body.name;
@@ -26,11 +26,22 @@ router.route("/addpayroll").post((req,res)=>{
         salary
     })
 
-    newPayroll.save().then(()=>{
+    try {
+        const { nic, date } = req.body;
+
+        // Check if NIC and date already exist in the database
+        const existingPayroll = await Employeepayroll.findOne({ nic, date });
+        if (existingPayroll) {
+            return res.status(400).json({ message: "This NIC already exists with the same date" });
+        }
+
+    // Create new payroll entry if NIC and date are valid and not already in the database
+    await newPayroll.save().then(()=>{
         res.json("Payroll Added")
-    }).catch((err)=>{
+    })} catch(err){
         console.log(err);
-    })
+        res.status(500).json({ message: "Error adding payroll", error: err.message });
+    }
 })
 
 
