@@ -18,13 +18,13 @@ export default function Cmanager() {
         <img src={imgSrc2} alt="Wipe Image" className="absolute top-4 right-10 mx-60 rounded-2xl" style={{ width: "400px", height: "600px" }}/>
       </div>
       <br />
-      <small className="ms-20 text-2xl font-semibold text-gray-400 dark:text-gray-400">Review List button provides access to review details.  </small>
+      <small className="ms-20 text-xl opacity-90 mt-5 text-white">Review List button provides access to review details.  </small>
       <br />
-      <small className="ms-20 text-2xl font-semibold text-gray-400 dark:text-gray-400">Customer List button displays customerinformation.  </small>
+      <small className="ms-20 text-xl opacity-90 mt-5 text-white">Customer List button displays customerinformation.  </small>
       <br />
-      <small className="ms-20 text-2xl font-semibold text-gray-400 dark:text-gray-400">Both buttons streamline access to essential data, </small>
+      <small className="ms-20 text-xl opacity-90 mt-5 text-white">Both buttons streamline access to essential data, </small>
       <br />
-      <small className="ms-20 text-2xl font-semibold text-gray-400 dark:text-gray-400">enhancing efficiency and facilitating informed decision-making.</small>
+      <small className="ms-20 text-xl opacity-90 mt-5 text-white">enhancing efficiency and facilitating informed decision-making.</small>
       <br />
       
      
