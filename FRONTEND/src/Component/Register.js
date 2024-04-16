@@ -13,6 +13,7 @@ function Register() {
     const[cvnum, setcvnum] = useState("");   
     const[cvtype, setcvtype] = useState("");
     const[cpass, setcpass] = useState("");
+    const[cpass2, setcpass2] = useState("");
     
 
     function sendRegister(e){
@@ -25,6 +26,7 @@ function Register() {
             cphone,
             cmail,
             cpass,
+            cpass2,
             cvnum,
             cvtype
             
@@ -42,7 +44,12 @@ function Register() {
          if (!/^[\d]{10}$/.test(cphone)) {         //checking 10 digits
           alert("Please enter 10 digit valid phone number 07XXXXXXXX.");
           return;
-      }
+            }
+           //Validate password
+          if (cpass !== cpass2) {
+            alert("Passwords do not match!");
+            return;
+        }
     }
   return (
     <form onSubmit={sendRegister} className="w-half bg-gray-100 p-6 ms-60 my-10 mt230 p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50">
@@ -104,7 +111,7 @@ function Register() {
             Password
           </label>
           <div class="mt-1 rounded-md shadow-sm text-black">
-            <input 
+            <input required onChange={(e) => setcpass2(e.target.value)}
               id="password"
               name="password"
               type="password"

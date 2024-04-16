@@ -15,14 +15,18 @@ export default function ServiceHome() {
           </p>
        <div className="flex justify-center items-center gap-10">
         <a className="font-bold text-1xl" href="PkageHome">
-          <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900  px-8 py-5 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px]">
+          <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                     hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+                                     ease-in-out transform hover:scale-105">
             <i className="pi pi-spin pi-cog" style={{ fontSize: "2rem" }}></i>
             <br></br>
             Packages
           </button>
         </a>
         <a href="rechome">
-          <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900  px-8 py-5 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px]">
+          <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                     hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+                                     ease-in-out transform hover:scale-105">
             <i className="pi pi-wrench" style={{ fontSize: "2rem" }}></i>{" "}
             <i className="pi pi-server" style={{ fontSize: "2rem" }}></i>
             <br></br> Records

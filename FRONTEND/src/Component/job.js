@@ -72,7 +72,7 @@ function CreateJob() {
         }
 
   //E-mail validation
-        const isValidEmail = /\S+@\S+\.|S+/.test(email);
+        const isValidEmail = /\S+@\S+\.\S+/.test(email);
 
         if(!isValidEmail) {
           alert("Please enter a valid email address.");
