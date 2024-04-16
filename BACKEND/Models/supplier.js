@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 // schema (it's like an template)
 
 const supplierSchema = new Schema({
+
+
     name : {
         type : String,
         required : true
@@ -14,7 +16,8 @@ const supplierSchema = new Schema({
     },
     contact_2 : {
         type : String,
-       
+        required : true
+
     },
     Email :{
         type:String,

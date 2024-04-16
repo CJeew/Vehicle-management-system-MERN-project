@@ -131,6 +131,7 @@ function App() {
           <Route path="/add" element={<Add_Supplier />} />
           <Route path="/display" element={<Display />} />
           <Route path="/delete" element={<Delete />} />
+          <Route path="/update/:id" element={<Update />} />
 
           <Route path="/createjob" element={<Create_Job />} />
           <Route path="/viewjobs" element={<ViewJobs />} />
