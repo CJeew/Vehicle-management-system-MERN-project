@@ -113,6 +113,7 @@ export default function UpdateTransaction() {
             value={item.amount}
             onChange={inputChangeHandler}
             className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
+            pattern="[0-9]"
           />
         </div>
         <div className="flex flex-col">
