@@ -144,7 +144,7 @@ const generatePDF = useReactToPrint({
   </div>
   
   <div className="mt-3 flex justify-between">
-    <a href="/staffhome" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-8 mb-5">
+    <a href="/employeepayroll" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-8 mb-5">
       Prev
     </a>
   </div>
