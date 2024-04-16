@@ -90,6 +90,7 @@ router.route("/delete/:id").delete(async (req, res) => {
 
 router.route("/get/:id").get(async (req, res) => {
   let userId = req.params.id;
+  console.log(userId);
   const user = await supplier
     .findById(userId)
     .then((supplier) => {
