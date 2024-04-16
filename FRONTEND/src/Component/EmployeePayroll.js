@@ -98,10 +98,15 @@ const generatePDF = useReactToPrint({
         </div>
       </div>
 
-      
-      <button onClick={generatePDF} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mr-8">
-        Generate PDF
-      </button>
+        <div class="flex justify-between">
+          <a href="/stafffinancerelation" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mr-[1rem]">
+            view
+          </a>
+
+          <button onClick={generatePDF} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mr-8">
+            Generate PDF
+          </button>
+        </div>
     </div>
 
   {/* Table to display payroll details */}
