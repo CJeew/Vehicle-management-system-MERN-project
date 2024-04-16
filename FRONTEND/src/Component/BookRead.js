@@ -42,7 +42,7 @@ export default function BookRead() {
         //Function to generate reports
         const handlePrint = useReactToPrint({
             content:()=>componentRef.current,
-            DocumentTittle:"Booking List",
+            DocumentTitle:"Booking List",
             onafterprint:()=>alert ("Booking List generation successfull !!")
           })
 

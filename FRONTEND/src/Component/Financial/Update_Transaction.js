@@ -95,14 +95,18 @@ export default function UpdateTransaction() {
         </div>
         <div className="flex flex-col">
           <label htmlFor="paymentType" className="text-m font-medium leading-6 text-gray-900 mb-1">PaymentType</label>
-          <input
+          <select
             type="text"
             name="paymentType"
             id="paymentType"
             value={item.paymentType}
             onChange={inputChangeHandler}
             className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
-          />
+          >
+            <option value="cash">Cash</option>
+            <option value="cradit">Cradit Card</option>
+            <option value="debit">Debit Card</option>
+          </select> 
         </div>
         <div className="flex flex-col"> 
           <label htmlFor="amount" className="text-m font-medium leading-6 text-gray-900 mb-1">Amount</label>
@@ -117,25 +121,34 @@ export default function UpdateTransaction() {
         </div>
         <div className="flex flex-col">
           <label htmlFor="accounts" className="text-m font-medium leading-6 text-gray-900 mb-1">Accounts</label>
-          <input
+          <select
             type="text"
             name="accounts"
             id="accounts"
             value={item.accounts}
             onChange={inputChangeHandler}
             className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
-          />
+          >
+            <option value="income">Income</option>
+            <option value="expanses">Expanses</option>
+            <option value="tax">Tax</option>
+          </select>
         </div>
         <div className="flex flex-col">
           <label htmlFor="department" className="text-m font-medium leading-6 text-gray-900 mb-1">Department</label>
-          <input
-            type="text"
+          <select
+            //type="text"
             name="department"
             id="department"
             value={item.department}
             onChange={inputChangeHandler}
             className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
-          />
+          >
+            <option value="finance">Finance</option>
+            <option value="inventory">Inventory</option>
+            <option value="service">Service</option>
+            <option value="service">Booking</option>
+          </select>  
         </div>
        
      
