@@ -6,14 +6,14 @@ import { useParams } from "react-router-dom";
 export default function Update(){
  
 
-    const [name, setName] = useState(''); // State for NIC
-    const [contact, setContact] = useState(""); // State for Name
-    const [contact_2, setContact_2] = useState(""); // State for Designation
-    const [Email, setEmail] = useState(""); // State for Address
-    const [address, setAddress] = useState(""); // State for Email
-    const [Website, setWeb] = useState(""); // State for Mobile Number
-    const [Additional_note, setAdditional_notes] = useState(""); // State for Joined Date
-    const [Main_supplies, setMainSupplies] = useState(""); // State for Joined Date
+    const [name, setName] = useState(''); 
+    const [contact, setContact] = useState("");
+    const [contact_2, setContact_2] = useState(""); 
+    const [Email, setEmail] = useState("");
+    const [address, setAddress] = useState("");
+    const [Website, setWeb] = useState("");
+    const [Additional_note, setAdditional_notes] = useState("");
+    const [Main_supplies, setMainSupplies] = useState("");
     const { id } = useParams();
    console.log(id);
 
@@ -40,12 +40,12 @@ export default function Update(){
           window.location.href = "/display";
         })
         .catch((err) => {
-          alert(err.message); //error message
+          alert(err.message);
         });
     }
 
     useEffect(() => {
-      axios.get(`http://localhost:8090/supplier/get/${id}`)//error is here with the url
+      axios.get(`http://localhost:8090/supplier/get/${id}`)
         .then((res) => {
         
           setName(res.data.supplier.name);
@@ -60,7 +60,7 @@ export default function Update(){
         console.log(res.data.supplier.name);
         })
         .catch((err) => {
-          alert(err.message); //error message
+          alert(err.message);
         });
     }, []);
    
@@ -136,14 +136,6 @@ export default function Update(){
                             />
                         </div>
                     </div>
-                 
-                    
-                    {/* <div className="flex flex-wrap justify-between items-center space-x-2 py-2">
-
-                    <label>Country</label>
-                    <input type="text" onChange={(e) => setCountry(e.target.value)} />
-                    </div> */}
-                    {/* <input className="bg-red-800 radius-2rm " type="submit" value={"Add Supplier"} onClick={submit} />  */}
                    <div className="flex justify-center mt-16">
                    <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                      hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 

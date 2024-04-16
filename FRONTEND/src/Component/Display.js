@@ -22,6 +22,7 @@ export default function Display() {
             });
     };
 
+//delete function
     const deletesupplier = async (userId) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this supplier?");
         if (confirmDelete) {
@@ -63,7 +64,7 @@ export default function Display() {
                                 </button>
                                <Link to ={`/update/${supplier._id}`}> <button className="bg-gradient-to-r from-green-700 via-green-800 to-green-900 hover:from-green-900 
                                     hover:via-green-800 hover:to-green-700 text-white float-right mx-auto font-bold py-1 px-3 rounded-lg mr-2 
-                                    opacity-90 transition duration-300 ease-in-out transform hover:scale-105"> Edit</button></Link>
+                                    opacity-90 transition duration-300 ease-in-out transform hover:scale-105"> Update   </button></Link>
                                 <a href="/display">
                                     <button className="bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 hover:from-blue-900 
                                     hover:via-blue-800 hover:to-blue-700 text-white float-right mx-auto font-bold py-1 px-3 rounded-lg mr-2 
