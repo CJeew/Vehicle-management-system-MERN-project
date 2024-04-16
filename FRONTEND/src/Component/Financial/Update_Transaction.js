@@ -57,84 +57,84 @@ export default function UpdateTransaction() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <form onSubmit={updateItems} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
-      <center><h1> Update Transaction</h1></center>
-      <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
-      <div>
-          <label htmlFor="transactionCode" className="block text-sm font-medium leading-6 text-gray-900">transactionCode</label>
+    <form onSubmit={updateItems} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-6 mt-auto mx-auto w-2/5">
+      <center><h1 className="text-center text-2xl font-bold mb-6"> Update Transaction</h1></center>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <div className="flex flex-col">
+          <label htmlFor="transactionCode" className="text-m font-medium leading-6 text-gray-900 mb-1">transactionCode</label>
           <input
             type="text"
             name="transactionCode"
             id="transactionCode"
             value={item.transactionCode}
             onChange={inputChangeHandler}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
           />
         </div>
-        <div>
-          <label htmlFor="date" className="block text-sm font-medium leading-6 text-gray-900">Date</label>
+        <div className="flex flex-col">
+          <label htmlFor="date" className="text-m font-medium leading-6 text-gray-900 mb-1">Date</label>
           <input
             type="date"
             name="date"
             id="date"
             value={item.date}
             onChange={inputChangeHandler}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
           />
         </div>
-        <div>
-          <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900">Description</label>
+        <div className="flex flex-col">
+          <label htmlFor="description" className="text-m font-medium leading-6 text-gray-900 mb-1">Description</label>
           <input
             type="text"
             name="description"
             id="description"
             value={item.description}
             onChange={inputChangeHandler}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
           />
         </div>
-        <div>
-          <label htmlFor="paymentType" className="block text-sm font-medium leading-6 text-gray-900">PaymentType</label>
+        <div className="flex flex-col">
+          <label htmlFor="paymentType" className="text-m font-medium leading-6 text-gray-900 mb-1">PaymentType</label>
           <input
             type="text"
             name="paymentType"
             id="paymentType"
             value={item.paymentType}
             onChange={inputChangeHandler}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
           />
         </div>
-        <div>
-          <label htmlFor="amount" className="block text-sm font-medium leading-6 text-gray-900">Amount</label>
+        <div className="flex flex-col"> 
+          <label htmlFor="amount" className="text-m font-medium leading-6 text-gray-900 mb-1">Amount</label>
           <input
             type="text"
             name="amount"
             id="amount"
             value={item.amount}
             onChange={inputChangeHandler}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
           />
         </div>
-        <div>
-          <label htmlFor="accounts" className="block text-sm font-medium leading-6 text-gray-900">Accounts</label>
+        <div className="flex flex-col">
+          <label htmlFor="accounts" className="text-m font-medium leading-6 text-gray-900 mb-1">Accounts</label>
           <input
             type="text"
             name="accounts"
             id="accounts"
             value={item.accounts}
             onChange={inputChangeHandler}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
           />
         </div>
-        <div>
-          <label htmlFor="department" className="block text-sm font-medium leading-6 text-gray-900">Department</label>
+        <div className="flex flex-col">
+          <label htmlFor="department" className="text-m font-medium leading-6 text-gray-900 mb-1">Department</label>
           <input
             type="text"
             name="department"
             id="department"
             value={item.department}
             onChange={inputChangeHandler}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
           />
         </div>
        
