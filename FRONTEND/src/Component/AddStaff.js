@@ -11,6 +11,7 @@ export default function AddStaff() {
     const [email, setEmail] = useState("");
     const [mobileno, setMobileno] = useState("");
     const [joindate, setJoindate] = useState("");
+    //const [nicError, setNicError] = useState("");
 
   
     // function validateEmail(value) {
@@ -55,6 +56,21 @@ export default function AddStaff() {
       }
     }
 
+    // //NIC format error message
+    // function handleNicChange(e) {
+    //   const value = e.target.value;
+    //   const nicPattern = /^[0-9]{9}[vV]{1}$|^[0-9]{12}$/;
+  
+    //   if (!nicPattern.test(value)) {
+    //     setNicError(
+    //       "NIC should contain 9 numeric digits and 1 V letter or should contain 12 numeric digits"
+    //     );
+    //   } else {
+    //     setNicError("");
+    //     setNic(value);
+    //   }
+    // }
+
 return (
   <form onSubmit={sendData}>
      <div class="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5 mx-auto w-2/3">
@@ -69,14 +85,20 @@ return (
             type="text"
             name="nic"
             id="nic"
+            // className={`block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${
+            //   nicError ? "border-red-500" : ""
+            // }`}
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             pattern="[0-9]{9}[vV]{1}|[0-9]{12}"
             onChange={(e)=>{
 
               setNic(e.target.value);
-              
             }}
           required/>
+          
+          {/* {nicError && (
+                <p className="text-red-500 text-sm mt-1">{nicError}</p>
+              )} */}
          
         </div>
       </div>
