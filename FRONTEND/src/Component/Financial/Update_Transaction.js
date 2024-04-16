@@ -4,12 +4,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 export default function UpdateTransaction() {
   const initialItemState = {
+    transactionCode:"",
     date: "",
     description: "",
     paymentType: "",
     amount: "",
     accounts:"",
-    department:"", 
+    department:"" 
    
   };
 
@@ -23,7 +24,7 @@ export default function UpdateTransaction() {
       try {
         const response = await axios.get(`http://localhost:8090/finance/get/${id}`);
         console.log('API Response:', response.data); // Log the response data
-        const data = response.data.issueditems || initialItemState; // Access Transaction object
+        const data = response.data.Finance|| initialItemState; // Access Transaction object from backend model
         console.log('Fetched Transaction:', data); // Log the fetched Transaction
         setItem(data);
         setLoading(false);
@@ -59,6 +60,17 @@ export default function UpdateTransaction() {
     <form onSubmit={updateItems} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
       <center><h1> Update Transaction</h1></center>
       <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
+      <div>
+          <label htmlFor="transactionCode" className="block text-sm font-medium leading-6 text-gray-900">transactionCode</label>
+          <input
+            type="text"
+            name="transactionCode"
+            id="transactionCode"
+            value={item.transactionCode}
+            onChange={inputChangeHandler}
+            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          />
+        </div>
         <div>
           <label htmlFor="date" className="block text-sm font-medium leading-6 text-gray-900">Date</label>
           <input

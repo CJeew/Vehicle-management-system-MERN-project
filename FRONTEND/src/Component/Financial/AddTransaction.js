@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 export default function AddTransaction() {
+  const [transactionCode,setTCode] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [paymentType, setPaymentType] = useState("");
@@ -17,6 +18,7 @@ export default function AddTransaction() {
     e.preventDefault();
 
     const newAdditems = {
+        transactionCode,
         date,
         description,
         paymentType,
@@ -43,6 +45,17 @@ export default function AddTransaction() {
       <center><h1>Add Transcation</h1></center>
 
       <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
+      <div>
+          <label htmlFor="transactionCode" className="block text-sm font-medium leading-6 text-gray-900">Transaction Code</label>
+          <input
+            type="text"
+            name="transactionCode"
+            id="transactionCode"
+            value={transactionCode}
+            onChange={(e) => setTCode(e.target.value)}
+            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          />
+        </div>
         <div>
           <label htmlFor="date" className="block text-sm font-medium leading-6 text-gray-900">Date</label>
           <input
@@ -88,7 +101,7 @@ export default function AddTransaction() {
           />
         </div>
         <div>
-          <label htmlFor="accounts" className="block text-sm font-medium leading-6 text-gray-900">Accounts</label>
+          <label htmlFor="accounts" className="block text-sm font-medium leading-6 text-gray-900">Category</label>
           <input
             type="text"
             name="accounts"
