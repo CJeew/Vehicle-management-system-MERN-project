@@ -40,7 +40,7 @@ export default function AddTransaction() {
   }
 
   return (
-    <form onSubmit={sendData} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
+    <form onSubmit={sendData} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-5 mx-auto">
      
       <center><h1>Add Transcation</h1></center>
 
