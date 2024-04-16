@@ -23,9 +23,12 @@ export default function EmployeePayroll() {
 
   // Function to handle deletion of a payroll
   const onDeleteClick = async (userId) => {
+    const confirmed = window.confirm("Are you sure you want to delete this payroll entry?");
+    if (confirmed) {
     await axios.delete(`http://localhost:8090/employeepayroll/delete/${userId}`);
     alert('Payroll Deleted Successfully');
     window.location.reload(); // Refresh page after successful deletion
+    }
   }
 
    // Function to filter payroll details based on search term
@@ -61,10 +64,12 @@ const generatePDF = useReactToPrint({
 
   return (
 
-    <div class="mt-5">
+    <div class="mt-3">
+
+      <h2 class="text-white mb-2 text-center text-3xl font-bold text-white">Employee Payroll</h2>
 
       {/* Search bar */}
-      <div class="flex justify-between">
+      <div class="flex justify-between ml-8">
       <div className="relative">
         <input
           type="text"
@@ -94,16 +99,16 @@ const generatePDF = useReactToPrint({
       </div>
 
       
-      <button onClick={generatePDF} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mr-[1rem]">
+      <button onClick={generatePDF} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mr-8">
         Generate PDF
       </button>
     </div>
 
   {/* Table to display payroll details */}
-  <div class="overflow-x-auto max-h-[25rem] overflow-y-scroll">
+  <div class="overflow-x-auto max-h-[25rem] overflow-y-scroll ml-8 mr-8 rounded-md overflow-hidden">
     <table class="min-w-full divide-y divide-gray-200" ref={componentRef}>
       <thead>
-        <tr class="bg-blue-500 text-white sticky top-0"> {/* Added bg-blue-500 for blue background and text-white for white text and Added sticky and top-0 for sticky header*/}
+        <tr class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-700 text-white sticky top-0"> {/* Added bg-blue-500 for blue background and text-white for white text and Added sticky and top-0 for sticky header*/}
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">ID</th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">NIC</th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Name</th>
@@ -160,10 +165,10 @@ const generatePDF = useReactToPrint({
   </div>
   {/* Button to add a new payroll member */}
   <div className="mt-3 flex justify-between">
-    <a href="/addpayroll" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-3 mb-5">
+    <a href="/addpayroll" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-8 mb-5">
       Add
     </a>
-    <a href="/staffhome" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-3 mb-5">
+    <a href="/staffhome" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-8 mb-5">
       Prev
     </a>
   </div>

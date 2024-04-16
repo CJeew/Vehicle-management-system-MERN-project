@@ -64,10 +64,10 @@ router.route("/editannouncement/:id").put(async(req,res) => {
     const update = await Employeeannouncement.findByIdAndUpdate(id, updateAnnouncement)  //updateAnnouncement means upadate panna vendiya data oda object
     .then(() => {
 
-        res.status(200).send({status: "Announcement updated"})
+        res.status(200).send({message: "Announcement updated"})
     }).catch((err) => {
         console.log(err);
-        res.status(500).send({status: "Error with updating announcement", error: err.message});
+        res.status(500).send({message: "Error with updating announcement", error: err.message});
     }) 
 })
 

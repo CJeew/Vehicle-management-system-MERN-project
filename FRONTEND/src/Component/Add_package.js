@@ -12,6 +12,13 @@ function AddPackage() {
 
   function submit(e) {
     e.preventDefault();
+     // Redirect based on category
+     if (category === "Interior") {
+      window.location.href = "/viewpkg";
+    } else if (category === "Exterior") {
+      window.location.href = "/viewpkg2";
+    }
+
 
     const newPackage = {
       name,
@@ -24,7 +31,10 @@ function AddPackage() {
       .post("http://localhost:8090/svc-packages/add", newPackage)
       .then(() => {
         alert("Package Added");
-      })
+        // Redirect based on category
+
+    
+     })
       .catch((err) => {
         alert(err.message); //error message
       });
@@ -80,7 +90,9 @@ function AddPackage() {
 
           <div className="flex justify-center   ">
             <button
-              className="btn-indigo bg-gradient-to-r from-red-400 to-red-500 px-2 py-2 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] mt-4"
+              className=" bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+              hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+              ease-in-out transform hover:scale-105 px-2 px-2 py-2 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] mt-4"
               type="submit"
             >
               Add Package

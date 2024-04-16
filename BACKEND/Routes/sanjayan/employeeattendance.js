@@ -3,7 +3,7 @@ let Employeeattendance = require("../../Models/Employeeattendance");
 
 //http://localhost:8090/staff/add
 
-router.route("/addattendance").post((req,res)=>{
+router.route("/addattendance").post(async(req,res)=>{
 
     const nic = req.body.nic;
     const name = req.body.name;
@@ -18,11 +18,22 @@ router.route("/addattendance").post((req,res)=>{
         attendance
     })
 
-    newAttendance.save().then(()=>{
+    try {
+        const { nic, date } = req.body;
+
+        // Check if NIC and date already exist in the database
+        const existingAttendance = await Employeeattendance.findOne({ nic, date });
+        if (existingAttendance) {
+            return res.status(400).json({ message: "This NIC already exists with the same date" });
+        }
+
+    // Create new attendance entry if NIC and date are valid and not already in the database
+    await newAttendance.save().then(()=>{
         res.json("Attendance Added")
-    }).catch((err)=>{
+    })} catch(err){
         console.log(err);
-    })
+        res.status(500).json({ message: "Error adding attendance", error: err.message });
+    }
 })
 
 //http://Localhost:8090/staff/

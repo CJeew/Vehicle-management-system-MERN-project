@@ -20,7 +20,7 @@ export default function AddStaff() {
   
 
     function sendData(e){
-        e.preventDefault();
+        e.preventDefault();  //prevent the default behavior of form submission (eg: automatically refresh the page) if allowed, we can't get any message from backend
         //alert("Inserted");
     
         const newStaff = {
@@ -42,6 +42,17 @@ export default function AddStaff() {
             alert(err.response.data.message)
         })
 
+    }
+
+    function handleDateChange(e) {
+      const selectedDate = new Date(e.target.value);
+      const currentDate = new Date();
+  
+      if (selectedDate > currentDate) {
+        alert("Please select a date on or before today.");
+      } else {
+        setJoindate(e.target.value);
+      }
     }
 
 return (
@@ -176,10 +187,7 @@ return (
             name="joindate"
             id="joindate"
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            onChange={(e)=>{
-
-              setJoindate(e.target.value);
-            }}
+            onChange={handleDateChange}
             required/>
         </div>
       </div>
