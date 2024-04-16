@@ -2,7 +2,7 @@ const router = require("express").Router();
 let Finance = require("../../Models/Finance");
 
 //CRUD (CREATE) code segment
-router.route("/add").post((req,res)=>{
+router.route("/add").post(async(req,res)=>{
 
     const transactionCode = req.body.transactionCode;
     const date = req.body.date;
@@ -11,6 +11,11 @@ router.route("/add").post((req,res)=>{
     const amount = Number(req.body.amount);
     const accounts = req.body.accounts;
     const department = req.body.department;
+
+    const existingtransaction = await Finance.findOne({ transactionCode });
+    if (existingtransaction) {
+        return res.status(400).json({ message: 'The Transaction already exists with this Transaction Code' });
+    }
 
     const newFinance = new Finance({
         transactionCode,
