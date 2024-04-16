@@ -57,7 +57,7 @@ export default function ViewJobs() {
         <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
 
         <div className="flex justify-between items-center">
-            <h1 className="Heading1 text-center text-3xl flex-grow font-BakBak one font-bold">All Jobs</h1>
+            <h1 className="Heading1 text-center text-4xl flex-grow font-BakBak one font-bold">All Jobs</h1>
         </div>
 
         {/* Heading container */}

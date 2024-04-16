@@ -51,7 +51,7 @@ const deleteJob = async (jobId) => {
     <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
 
     <div className="flex justify-between items-center">
-          <h1 className="Heading1 text-center text-3xl flex-grow font-BakBak one font-bold">Job Details</h1>
+          <h1 className="Heading1 text-center text-4xl flex-grow font-BakBak one font-bold">Job Details</h1>
     </div>
 
         <div className="mt-4 text-lg">
@@ -121,7 +121,7 @@ const deleteJob = async (jobId) => {
           </div>
 
           <div>
-          <p><strong>Service Type:</strong> {jobDetails.serviceType}</p>
+          <p><strong>Service Type:</strong> {jobDetails.serviceType + " , "}</p>
           </div>
         </div>
 
