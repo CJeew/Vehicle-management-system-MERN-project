@@ -15,6 +15,22 @@ function Review() {
       function sendreview(e){
           e.preventDefault();
           //alert of inserted
+          // Check if email is entered
+          if (!cmail) {
+          alert("Please enter your email.");
+          return;
+           }
+
+          // Check if a rating is selected
+           if (!rating) {
+           alert("Please select a rating.");
+          return;
+           }
+           // Check if a message is fill
+           if (!message) {
+           alert("Please give your peedback.");
+          return;
+           }
 
           const newReview = {
               cmail,
@@ -35,10 +51,11 @@ function Review() {
   <div>
     <form onSubmit={sendreview}>
     <div>
-      <form className="max-w-md mx-auto mt-16 p-4 bg-gray-800 bg-opacity-50 shadow rounded">
-        <h2 className="text-white text-2xl font-bold mb-4">Feedback Form</h2>
+    <h2 className="ms-20 my-10 mt-20 text-5xl font-extrabold text-white">Feedback Form</h2>
+      <form className=".w-auto bg-gray-100 p-6 ms-60 my-10 p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50">
+        {/* <h2 className="text-white text-2xl font-bold mb-4">Feedback Form</h2> */}
         <div className="mb-4 text-black" >
-          <label for="email" className="text-white block mb-1 ">
+          <label for="email" className="block text-sm font-medium text-black my-4">
             Email
           </label>
           <input required onChange={(e) => setCmail(e.target.value)}
@@ -50,16 +67,16 @@ function Review() {
         </div>
         
         <div classNames="mb-4">
-          <label className="text-white block mb-1">Rating</label>
-          <div className="flex items-center space-x-2">
+          <label className="block text-sm font-medium text-black my-4">Rating</label>
+          <div className="text-white flex items-center space-x-2">
             <input required onChange={(e) => setrating(e.target.value)}
               type="radio"
               name="rating"
               id="rating1"
               value="1"
-              className=" text-white focus:outline-none focus:ring-2 focus:ring-red"
+              className=" focus:outline-none focus:ring-2 focus:ring-red"
             ></input>
-            <label for="rating1" text-white>1 </label>
+            <label for="rating1" className="block text-sm font-medium text-black my-4">1 </label>
             <input required onChange={(e) => setrating(e.target.value)}
               type="radio"
               name="rating"
@@ -67,7 +84,7 @@ function Review() {
               value="2"
               className="focus:outline-none focus:ring-2 focus:ring-red"
             ></input>
-            <label for="rating2">2</label>
+            <label for="rating2" className="block text-sm font-medium text-black my-4">2</label>
             <input required onChange={(e) => setrating(e.target.value)}
               type="radio"
               name="rating"
@@ -75,7 +92,7 @@ function Review() {
               value="3"
               className="focus:outline-none focus:ring-2 focus:ring-blue-500"
             ></input>
-            <label for="rating3">3</label>
+            <label for="rating3" className="block text-sm font-medium text-black my-4">3</label>
             <input required onChange={(e) => setrating(e.target.value)}
               type="radio"
               name="rating"
@@ -83,7 +100,7 @@ function Review() {
               value="4"
               class="focus:outline-none focus:ring-2 focus:ring-blue-500"
             ></input>
-            <label for="rating4">4</label>
+            <label for="rating4" className="block text-sm font-medium text-black my-4">4</label>
             <input required onChange={(e) => setrating(e.target.value)}
               type="radio"
               name="rating"
@@ -91,11 +108,11 @@ function Review() {
               value="5"
               class="text-white focus:outline-none focus:ring-2 focus:ring-red-500"
             ></input>
-            <label for="rating5">5</label>
+            <label for="rating5" className="block text-sm font-medium text-black my-4">5</label>
           </div>
         </div>
         <div class="mb-4">
-          <label for="message" class="text-white block mb-1">
+          <label for="message" class="block text-sm font-medium text-black my-4">
             Message
           </label>
           <input required onChange={(e) => setmessage(e.target.value)}
@@ -104,10 +121,10 @@ function Review() {
          
           </input>
         </div>
-
+        <div class="mt-5 mb-5 flex justify-center">
         <button type="submit" class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                   hover:to-amber-700 text-white font-bold py-3 px-10 rounded-lg mr-2 opacity-90 transition duration-300
-                                  ease-in-out transform hover:scale-105" value={"Add Review"} onClick={sendreview}>Submit</button>
+                                  ease-in-out transform hover:scale-105" value={"Add Review"} onClick={sendreview}>Submit</button></div>
       </form>
     </div></form></div>
   );

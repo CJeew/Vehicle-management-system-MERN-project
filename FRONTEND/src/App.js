@@ -6,6 +6,7 @@ import Add_Supplier from "./Component/Add_Supplier";
 import Delete from "./Component/Delete";
 // import Display from "./Components/Display";
 import Display from "./Component/Display";
+import Update from "./Component/Update";
 
 //Jobs
 import Create_Job from "./Component/job";
@@ -60,6 +61,7 @@ import Viewpkg from "./Component/View_package";
 import Viewpkg2 from "./Component/View_package2";
 //import Edit package
 import Pkgedithome from "./Component/Package_edithome";
+
 import Editpkg from "./Component/Edit_package";
 
 //----------Record-------------------------
@@ -102,6 +104,11 @@ import ManageOrders from "./Component/Inventory/manageorders";
 
 import Addorderitems from "./Component/Inventory/addorders";
 import OrderEditItems from "./Component/Inventory/manageorderupdate";
+// import Alert from './Component/Inventory/alert';
+import Dashboard from "./Component/Inventory/Dashboard";
+
+
+
 
 //Financial
 
@@ -124,6 +131,7 @@ function App() {
           <Route path="/add" element={<Add_Supplier />} />
           <Route path="/display" element={<Display />} />
           <Route path="/delete" element={<Delete />} />
+          <Route path="/update/:id" element={<Update />} />
 
           <Route path="/createjob" element={<Create_Job />} />
           <Route path="/viewjobs" element={<ViewJobs />} />
@@ -197,16 +205,23 @@ function App() {
             element={<EmployeeAnnouncement />}
           />
 
-          <Route path="/inventory" element={<Inventory_Menu />} />
-          <Route path="/manageitems" element={<ManageItems />} />
-          <Route path="/additems" element={<Additems />} />
-          <Route path="/updateitems/:id" element={<Updateitem />} />
-          <Route path="/issueditems" element={<IssuedItems />} />
-          <Route path="/issuedAdditems" element={<IssuedItemsAdditems />} />
-          <Route path="/issuedupdateitems/:id" element={<IssuedEditItems />} />
-          <Route path="/managedorders/" element={<ManageOrders />} />
-          <Route path="/Addorder/" element={<Addorderitems />} />
-          <Route path="/manageorderupdate/:id" element={<OrderEditItems />} />
+          <Route path="/inventory" element={<Inventory_Menu/>}/>
+          <Route path="/manageitems" element={<ManageItems/>}/>
+          <Route path="/additems" element={<Additems/>}/>
+          <Route path="/updateitems/:id" element={<Updateitem/>}/>
+          <Route path="/issueditems" element={<IssuedItems/>}/>
+          <Route path="/issuedAdditems" element={<IssuedItemsAdditems/>}/>
+          <Route path="/issuedupdateitems/:id" element={<IssuedEditItems/>}/>
+          <Route path="/managedorders/" element={<ManageOrders/>}/>
+          <Route path="/Addorder/" element={<Addorderitems/>}/>
+          <Route path="/manageorderupdate/:id" element={<OrderEditItems/>}/>
+          {/* <Route path="/alert" element={<Alert/>}/> */}
+          <Route path="/dashboardoverview" element={<Dashboard/>}/>
+
+          
+
+
+
 
           {/* ----------Shajeeh---------- */}
           <Route path="/Finance" element={<TransactionView />} />

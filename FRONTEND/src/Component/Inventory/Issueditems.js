@@ -46,6 +46,9 @@ export default function IssuedItems() {
 
   return (
     <div className="h-screen w-screen bg-gray flex justify-center items-center flex-wrap relative">
+      <div className="absolute top-2 left-8">
+        <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Issued Items</h2>
+        </div>
        <div className="absolute top-2 right-8">
    {/* Search bar */}
 <div className="relative">
@@ -87,29 +90,29 @@ export default function IssuedItems() {
           Generate Report
         </button>
       </div>
-      <div ref={ComponentsRef} className="relative inline-flex group mr-4 fire-container">
-        <table className="min-w-full divide-y divide-gray-200">
+      <div  class="flex justify-center items-center h-screen">
+        <table  ref={ComponentsRef} class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10">
           <thead>
-            <tr className="bg-red-900 text-white">
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">No</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Item Code</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Item Name</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Price</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Quantity</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Issued Code</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Action</th>
+            <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">No</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Item Code</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Item Name</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Price</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Quantity</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Issued Code</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Action</th>
             
             </tr>
           </thead>
           <tbody>
             {filteredissueditems.map((item, index) => (
               <tr key={index} className="bg-white border-b border-gray-200 hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.itemcode}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.itemname}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.price}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.quantity}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.issuedcode}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{index + 1}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.itemcode}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.itemname}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.price}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.quantity}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.issuedcode}</td>
                
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div className="flex items-center justify-end gap-2">

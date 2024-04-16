@@ -25,7 +25,7 @@ export default function IssuedEditItems() {
       try {
         const response = await axios.get(`http://localhost:8090/issueditems/get/${id}`);
         console.log('API Response:', response.data); // Log the response data
-        const data = response.data.issueditems || initialItemState; // Access manageparts object
+        const data = response.data.issueditems || initialItemState; // Access manageparts object (models in backend)
         console.log('Fetched Item:', data); // Log the fetched item
         setItem(data);
         setLoading(false);

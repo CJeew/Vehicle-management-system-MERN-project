@@ -16,6 +16,16 @@ router.route("/add").post((req, res) => {
   if (isNaN(unitprice)) {
     return res.status(400).json({ message: "unitprice must be a number" });
   }
+
+  //validate category is equal to interior or exterior
+  if (category !== "Interior" && category !== "Exterior") {
+    return res.status(400).json({ message: "category must be Interior or Exterior" });
+  }
+  // validate name and discription as string
+  if (typeof name !== "string" || typeof description !== "string") {
+    return res.status(400).json({ message: "name and description must be strings" });
+  }
+  
   console.log("test3");
   const newPackage = new Package({
     

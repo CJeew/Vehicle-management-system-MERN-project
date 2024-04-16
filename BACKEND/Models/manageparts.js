@@ -19,10 +19,7 @@ const managepartsSchema = new Schema({
         required: true
     },
 
-    description:{
-        type:String,
-        required: true
-    },
+  
 
     price:{
         type:String,
