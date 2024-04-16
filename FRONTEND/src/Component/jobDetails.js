@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 
@@ -147,9 +148,11 @@ const deleteJob = async (jobId) => {
                                   ease-in-out transform hover:scale-105">New Jobs</button>
                 </a>
           {/* update button */}
+          <Link to ={`/updatejobs/${jobDetails._id}`}>
           <button className="bg-gradient-to-r from-green-600 via-green-800 to-green-950 hover:from-green-950 hover:via-green-700 
                                   hover:to-green-600 text-white font-bold py-2 px-5 rounded-lg mr-2 opacity-80 transition duration-300
                                   ease-in-out transform hover:scale-105">Update</button>
+          </Link>
 
            {/* Delete button */}
            <button onClick={(e) => {deleteJob(jobDetails._id, jobDetails.jobNumber); e.preventDefault();}} className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-900 hover:via-red-700 

@@ -110,7 +110,7 @@ export default function ViewJobs() {
               <div>
 
               {/* update button */}
-              <Link to={`/updatejobs/${job._id}`}>
+              <Link to ={`/updatejobs/${job._id}`}>
                 <button className="bg-gradient-to-r from-green-600 via-green-800 to-green-950 hover:from-green-950 hover:via-green-700 hover:to-green-600 text-white font-bold py-2 px-5 rounded-lg 
                                   mr-2 opacity-80 transition duration-300 ease-in-out transform hover:scale-105">Update</button>
               </Link>
