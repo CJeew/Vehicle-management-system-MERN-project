@@ -19,6 +19,10 @@ const customerSchema = new Schema({
         type : String,
         required : true
     },
+    cpass2: {
+        type : String,
+        required : true
+    },
 
     cmail : {
         type : String,

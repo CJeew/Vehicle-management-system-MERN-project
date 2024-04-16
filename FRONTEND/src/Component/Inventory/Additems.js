@@ -7,7 +7,7 @@ export default function Additems() {
   const [itemcode, setItemcode] = useState("");
   const [itemname, setItemname] = useState("");
   const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
+  
   const [price, setPrice] = useState("");
   const [suppliername, setSuppliername] = useState("");
   const [ reorderlevel,setReorderLevel] = useState("");
@@ -24,7 +24,7 @@ export default function Additems() {
       itemcode,
       itemname,
       category,
-      description,
+      
       price,
       suppliername,
       reorderlevel,
@@ -83,17 +83,7 @@ export default function Additems() {
             className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
-        <div>
-          <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900">Description</label>
-          <input
-            type="text"
-            name="description"
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
-        </div>
+ 
         <div>
           <label htmlFor="price" className="block text-sm font-medium leading-6 text-gray-900">Price</label>
           <input

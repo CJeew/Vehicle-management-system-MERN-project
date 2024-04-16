@@ -218,6 +218,7 @@ function AddBooking(){
                                   ease-in-out transform hover:scale-105" value={"Add Booking"} onClick={sendBook}>Book Now</button>
                 </div>
             </form>
+            <div>.....</div>
         </div>
     </div>
     );

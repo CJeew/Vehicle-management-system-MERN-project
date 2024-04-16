@@ -3,8 +3,13 @@ const Schema = mongoose.Schema;
 
 const financeSchema = new Schema({
 
+    transactionCode :{
+        type : String,
+        required : true
+    },
+
     date : { 
-        type : Date,
+        type : String,
         required : true
     },
     

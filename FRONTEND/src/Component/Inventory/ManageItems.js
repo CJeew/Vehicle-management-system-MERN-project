@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
 import { Link , useNavigate} from 'react-router-dom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+// import { BsFillArchiveFill } from 'react-icons/bs';
+// import Alert from './Alert';
 import {useReactToPrint} from "react-to-print"
 
 export default function ManageItems() {
@@ -46,13 +48,33 @@ export default function ManageItems() {
      const filteredmanageitems = items.filter((manageitems) =>
      manageitems.itemcode.toLowerCase().includes(searchTerm.toLowerCase()) ||
      manageitems.itemname.toLowerCase().includes(searchTerm.toLowerCase())||
-     manageitems.category.toLowerCase().includes(searchTerm.toLowerCase())||
-     manageitems.description.toLowerCase().includes(searchTerm.toLowerCase())
+     manageitems.category.toLowerCase().includes(searchTerm.toLowerCase())
+    //  manageitems.description.toLowerCase().includes(searchTerm.toLowerCase())
    );
  
 
   return (
     <div className="h-screen w-screen bg-gray flex justify-center items-center flex-wrap relative">
+       <div className="absolute top-2 left-8">
+        <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Managed Items</h2>
+        </div>
+     
+{/* <div className="absolute top-2 left-1/2 transform -translate-x-1/2">
+<a href="/alert" title="" role="button">
+  <div className='card bg-red-500 p-4 rounded-lg'>
+    {/* Added padding and rounded corners */}
+    {/* <div className='card-inner flex justify-between items-center'>
+      <h3 className="text-white text-lg font-semibold">PRODUCTS</h3>
+      <BsFillArchiveFill className='card_icon text-white' />
+    </div>
+    <h1 className="text-white text-4xl font-bold">Alert</h1>
+  </div>
+</a>
+
+</div> */} 
+
+
+
        <div className="absolute top-2 right-8">
    {/* Search bar */}
 <div className="relative">
@@ -97,39 +119,39 @@ export default function ManageItems() {
       </div>
 
       
-      <div ref={ComponentsRef}  class="overflow-x-auto max-h-[25 rem] overflow-y-scroll">
-        <table className="min-w-full divide-y divide-gray-200">
+      <div   class="overflow-x-auto max-h-[25 rem] overflow-y-scroll">
+      <table ref={ComponentsRef} class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10">
           <thead>
-            <tr className="bg-red-900 text-white">
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">No</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Item Code</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Item Name</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Category</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Description</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Price</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Supplier Name</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Reorder Level</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Stock Limit</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Remark</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Status</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Action</th>
+          <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">No</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Item Code</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Item Name</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Category</th>
+              {/* <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Description</th> */}
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Price</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Supplier</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Reorder Level</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Stock Limit</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Remark</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Status</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Action</th>
             </tr>
           </thead>
           <tbody>
             {filteredmanageitems.map((item, index) => (
               <tr key={index} className={`bg-white border-b border-gray-200 hover:bg-gray-50 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.itemcode}</td>
-                <td className={`px-6 py-4 whitespace-nowrap text-sm ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>{item.itemname}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.category}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.description}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.price}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.suppliername}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.reorderlevel}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.stocklimit}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.remark}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.isactive}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>{index + 1}</td>
+                <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>{item.itemcode}</td>
+                <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>{item.itemname}</td>
+                <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>{item.category}</td>
+                {/* <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>{item.description}</td> */}
+                <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>{item.price}</td>
+                <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>{item.suppliername}</td>
+                <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>{item.reorderlevel}</td>
+                <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>{item.stocklimit}</td>
+                <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>{item.remark}</td>
+                <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>{item.isactive}</td>
+                <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>
                   <div className="flex items-center justify-end gap-2">
                   <Link to={`/updateitems/${item._id}`} className="text-blue-500 mr-2"><FaEdit className="inline-block text-xl align-middle" /></Link>
 <button onClick={() => onDeleteClick(item._id)}><FaTrash className="text-red-500 inline-block text-xl align-middle" /></button>
@@ -149,9 +171,9 @@ export default function ManageItems() {
       {alerts.length > 0 && (
         <div className="absolute bottom-8 right-8 bg-red-500 text-white font-bold py-2 px-4 rounded">
           {alerts.length === 1 ? (
-            `1 item (${alerts[0].itemname}) needs reorder`
+            `1 item (${alerts[0].itemcode}) needs reorder`
           ) : (
-            `${alerts.length} items (${alerts.map(alert => alert.itemname).join(', ')}) need reorder`
+            `${alerts.length} items (${alerts.map(alert => alert.itemcode).join(', ')}) need reorder`
           )}
         </div>
       )}
