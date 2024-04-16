@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef  } from 'react';
 import axios from "axios";
 import { useReactToPrint } from 'react-to-print';
 
-export default function EmployeePayroll() {
+export default function Staff_Finance_Relation() {
   const [employeepayroll, setPayroll] = useState([]); // State for storing payroll details
   const [searchTerm, setSearchTerm] = useState(""); // State for storing search term
   const [sortOrder, setSortOrder] = useState("asc"); // State for sorting order, default is ascending
@@ -20,16 +20,6 @@ export default function EmployeePayroll() {
     }
     getPayroll();
   }, [])
-
-  // Function to handle deletion of a payroll
-  const onDeleteClick = async (userId) => {
-    const confirmed = window.confirm("Are you sure you want to delete this payroll entry?");
-    if (confirmed) {
-    await axios.delete(`http://localhost:8090/employeepayroll/delete/${userId}`);
-    alert('Payroll Deleted Successfully');
-    window.location.reload(); // Refresh page after successful deletion
-    }
-  }
 
    // Function to filter payroll details based on search term
    const filteredPayroll = employeepayroll.filter((payroll) =>
@@ -98,15 +88,10 @@ const generatePDF = useReactToPrint({
         </div>
       </div>
 
-        <div class="flex justify-between">
-          <a href="/stafffinancerelation" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mr-[1rem]">
-            view
-          </a>
-
-          <button onClick={generatePDF} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mr-8">
-            Generate PDF
-          </button>
-        </div>
+      
+      <button onClick={generatePDF} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mr-8">
+        Generate PDF
+      </button>
     </div>
 
   {/* Table to display payroll details */}
@@ -135,7 +120,7 @@ const generatePDF = useReactToPrint({
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Bonus</th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Penalty Amt</th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Salary</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Action</th>
+          
         </tr>
       </thead>
       <tbody>
@@ -151,29 +136,15 @@ const generatePDF = useReactToPrint({
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{employeepayroll.bonus}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{employeepayroll.penaltyamt}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{employeepayroll.salary}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              <div class="flex items-center justify-start gap-2">
-                {/* Edit payroll button */}
-                <a href={`/editpayroll/${employeepayroll._id}`} type="button" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                      Edit
-                </a>
-                {/* Delete payroll button  */}
-                <button onClick={() => onDeleteClick(employeepayroll._id)} class="bg-transparent hover:bg-red-600 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                      Delete
-                </button>
-              </div>
-            </td>
+            
           </tr>
         ))}
       </tbody>
     </table>
   </div>
-  {/* Button to add a new payroll member */}
+  
   <div className="mt-3 flex justify-between">
-    <a href="/addpayroll" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-8 mb-5">
-      Add
-    </a>
-    <a href="/staffhome" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-8 mb-5">
+    <a href="/employeepayroll" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-8 mb-5">
       Prev
     </a>
   </div>

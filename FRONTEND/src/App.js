@@ -90,6 +90,7 @@ import EditLeaveRequest from "./Component/EditLeaveRequest";
 import LeaveRequest from "./Component/LeaveRequest";
 import EditAnnouncement from "./Component/EditAnnouncement";
 import EmployeeAnnouncement from "./Component/EmployeeAnnouncement";
+import Staff_Finance_Relation from "./Component/Staff_Finance_Relation";
 
 // inventory
 import Inventory_Menu from "./Component/Inventory/Inventory_Menu";
@@ -119,6 +120,7 @@ import TransactionView from "./Component/Financial/TransactionView";
 // import AddTransaction from "./Component/Financial/AddTransaction";
 import UpdateTransaction from "./Component/Financial/Update_Transaction";
 
+
 function App() {
   return (
     <Router>
@@ -131,6 +133,7 @@ function App() {
           <Route path="/add" element={<Add_Supplier />} />
           <Route path="/display" element={<Display />} />
           <Route path="/delete" element={<Delete />} />
+          <Route path="/update/:id" element={<Update />} />
 
           <Route path="/createjob" element={<Create_Job />} />
           <Route path="/viewjobs" element={<ViewJobs />} />
@@ -199,10 +202,8 @@ function App() {
           <Route path="/editleaverequest/:id" element={<EditLeaveRequest />} />
           <Route path="/leaverequest" element={<LeaveRequest />} />
           <Route path="/editannouncement/:id" element={<EditAnnouncement />} />
-          <Route
-            path="/employeeannouncement"
-            element={<EmployeeAnnouncement />}
-          />
+          <Route path="/employeeannouncement" element={<EmployeeAnnouncement />} />
+          <Route path="/stafffinancerelation" element={<Staff_Finance_Relation />} />
 
           <Route path="/inventory" element={<Inventory_Menu/>}/>
           <Route path="/manageitems" element={<ManageItems/>}/>
