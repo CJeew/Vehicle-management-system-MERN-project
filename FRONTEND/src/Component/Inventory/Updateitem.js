@@ -7,7 +7,7 @@ export default function EditItems() {
     itemcode: "",
     itemname: "",
     category: "",
-    description: "",
+    // description: "",
     price: "",
     suppliername: "",
     reorderlevel:"",
@@ -95,7 +95,7 @@ export default function EditItems() {
             className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900">Description</label>
           <input
             type="text"
@@ -105,7 +105,7 @@ export default function EditItems() {
             onChange={inputChangeHandler}
             className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
-        </div>
+        </div> */}
         <div>
           <label htmlFor="price" className="block text-sm font-medium leading-6 text-gray-900">Price</label>
           <input

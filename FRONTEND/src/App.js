@@ -111,6 +111,9 @@ import ManageOrders from "./Component/Inventory/manageorders";
 
 import Addorderitems from "./Component/Inventory/addorders";
 import OrderEditItems from "./Component/Inventory/manageorderupdate";
+// import Alert from './Component/Inventory/alert';
+import Dashboard from "./Component/Inventory/Dashboard";
+
 
 
 
@@ -227,6 +230,10 @@ function App() {
           <Route path="/managedorders/" element={<ManageOrders/>}/>
           <Route path="/Addorder/" element={<Addorderitems/>}/>
           <Route path="/manageorderupdate/:id" element={<OrderEditItems/>}/>
+          {/* <Route path="/alert" element={<Alert/>}/> */}
+          <Route path="/dashboardoverview" element={<Dashboard/>}/>
+
+          
 
 
 

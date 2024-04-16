@@ -68,6 +68,12 @@ app.use("/issueditems", issueditemsRouter);
 const manageordersRouter=require("./Routes/akeel/manageorders.js");
 app.use("/manageorders", manageordersRouter);
 
+const dashboardOverviewRouter = require('./Routes/akeel/dashboardoverview.js'); // Import the new route
+app.use('/dashboard', dashboardOverviewRouter); // Use the new route
+
+
+
+
 // SHAJEEH
 const finacneRouter = require("./Routes/shajeeh/finances.js");
 app.use("/finance",finacneRouter);

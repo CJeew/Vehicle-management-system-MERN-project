@@ -6,7 +6,7 @@ router.route("/add").post((req, res) => {
     const itemcode = req.body.itemcode;
     const itemname = req.body.itemname;
     const category = req.body.category;
-    const description = req.body.description;
+   
     const suppliername = req.body.suppliername;
     const price = req.body.price;
     const reorderlevel = req.body.reorderlevel;
@@ -18,7 +18,7 @@ router.route("/add").post((req, res) => {
          itemcode,
          itemname,
          category,
-         description,
+        
          suppliername,
          price,
          reorderlevel,
@@ -53,7 +53,7 @@ router.route("/").get((req, res) => {
 //CRUD (update page) code segment
 router.route("/update/:id").put(async (req, res) => {
     let userId = req.params.id; //code for get the individual id from the url
-    const { itemcode, itemname, category,description,suppliername,price,reorderlevel,stocklimit,remark,isactive } = req .body;
+    const { itemcode, itemname, category,suppliername,price,reorderlevel,stocklimit,remark,isactive } = req .body;
   
     //object for supplier update
     const updatemanageparts = {
@@ -61,7 +61,7 @@ router.route("/update/:id").put(async (req, res) => {
         itemcode,
         itemname,
         category,
-        description,
+        
         suppliername,
         price,
         reorderlevel,
