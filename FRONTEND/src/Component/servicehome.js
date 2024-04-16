@@ -2,27 +2,39 @@ import React from "react";
 import "./Home.css";
 
 import axios from "axios";
-export default function servicehome() {
+
+
+export default function ServiceHome() {
   return (
-    <div className="grid grid-rows-2 col-1">
-    <div className="text-2xl mt-100 flex justify-center space-x-6 py-48 mb-16">
-      <h1 className=" font-bold text-1xl text-white">Welcomr to Ryom auto.<br></br>Welcome to the Service Management Dashboard, your one-stop solution <br></br>for all vehicle service needs. Our intuitive platform <br></br>ensures a seamless experience for managing and tracking vehicle services </h1>
-      <a className="font-bold text-1xl" href="PkageHome">
-        <button className="bg-gradient-to-r from-red-400 to-red-500 px-8 py-5 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px]">
-          <i className="pi pi-spin pi-cog" style={{ fontSize: "4rem" }}></i>
-          <br></br>
-          packages
-        </button>
-      </a>
-      <a href="addrec">
-        <button className="bg-gradient-to-r from-red-400 to-red-500 px-8 py-5 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px]">
-          <i className="pi pi-wrench" style={{ fontSize: "4rem" }}></i>
-          {" "}
-          <i className="pi pi-server" style={{ fontSize: "4rem" }}></i>
-          <br></br> Recodes
-        </button>
-      </a>
-    </div>
+    <div className="flex justify-center items-center w-full mt-10">
+      <div className="grid grid-rows-1 p-10 bg-gray-200 bg-opacity-70 rounded-lg mx-5 max-w-4xl ">
+        <div className="mt-10 space-x-6 p-10 bg-black bg-opacity-75 rounded-lg">
+          <p className="font-bold text-2xl text-white mb-10 text-center">
+            Ryom Autocare Service<br></br>
+            <br></br>"Welcome to your ultimate solution for all vehicle service requirements. Our user-friendly platform guarantees a smooth and hassle-free experience in organizing and monitoring your vehicle servicing needs.
+          </p>
+       <div className="flex justify-center items-center gap-10">
+        <a className="font-bold text-1xl" href="PkageHome">
+          <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                     hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+                                     ease-in-out transform hover:scale-105">
+            <i className="pi pi-spin pi-cog" style={{ fontSize: "2rem" }}></i>
+            <br></br>
+            Packages
+          </button>
+        </a>
+        <a href="rechome">
+          <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                     hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+                                     ease-in-out transform hover:scale-105">
+            <i className="pi pi-wrench" style={{ fontSize: "2rem" }}></i>{" "}
+            <i className="pi pi-server" style={{ fontSize: "2rem" }}></i>
+            <br></br> Records
+          </button>
+        </a>
+        </div>
+        </div>
+      </div>
     </div>
   );
 }

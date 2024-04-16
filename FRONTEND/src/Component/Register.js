@@ -13,6 +13,7 @@ function Register() {
     const[cvnum, setcvnum] = useState("");   
     const[cvtype, setcvtype] = useState("");
     const[cpass, setcpass] = useState("");
+    const[cpass2, setcpass2] = useState("");
     
 
     function sendRegister(e){
@@ -25,6 +26,7 @@ function Register() {
             cphone,
             cmail,
             cpass,
+            cpass2,
             cvnum,
             cvtype
             
@@ -37,82 +39,95 @@ function Register() {
         }).catch((err)=>{
             alert(err);
         });
+
+         // Validate phone number
+         if (!/^[\d]{10}$/.test(cphone)) {         //checking 10 digits
+          alert("Please enter 10 digit valid phone number 07XXXXXXXX.");
+          return;
+            }
+           //Validate password
+          if (cpass !== cpass2) {
+            alert("Passwords do not match!");
+            return;
+        }
     }
   return (
-    <form onSubmit={sendRegister}>
-    <div class="mx-14 mt-10 border-2 border-blue-400 rounded-lg">
+    <form onSubmit={sendRegister} className="w-half bg-gray-100 p-6 ms-60 my-10 mt230 p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50">
+    <div>
    
-      <div class="text-white mt-3 text-center text-4xl font-bold">
-        Customer Registration
-      </div>
+      <div class="text-black mt-3 text-center text-4xl font-bold">Customer Registration</div>
       <div class="p-8">
         <div class="flex gap-4">
           <input required onChange={(e) => setcname(e.target.value)}
             type="Name"
             name="name"
-            class="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
-            placeholder="Full Name *"
-          />
-          <input required onChange={(e) => setcphone(e.target.value)}
-            type="Phone"
-            name="Phone"
-            class="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
-            placeholder="Phone *"
-          />
-          <input required onChange={(e) => setcnic(e.target.value)}
-            type="NIC"
-            name="NIC"
-            class="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
-            placeholder="NIC*"
-          />
+            class="mt-1 block w-1/2 rounded-md border border-black bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+            placeholder="Full Name *"/>
+
           <input required onChange={(e) => setcmail(e.target.value)}
             type="email"
             name="email"
-            class="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
-            placeholder="Email *"
-          />
+            class="mt-1 block w-1/2 rounded-md border border-black bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+            placeholder="Email *"/>
+            
         </div>
         <div class="flex gap-4">
+        <input required onChange={(e) => setcphone(e.target.value)}
+            type="Phone"
+            name="Phone"
+            class="mt-1 block w-1/2 rounded-md border border-black bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+            placeholder="Phone *"/>
+
+        <input required onChange={(e) => setcnic(e.target.value)}
+            type="NIC"
+            name="NIC"
+            class="mt-1 block w-1/2 rounded-md border border-black bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+            placeholder="NIC *"/>
+
+
           <input required onChange={(e) => setcvnum(e.target.value)}
             type="NUM"
             name="NUM"
-            class="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+            class="mt-1 block w-1/2 rounded-md border border-black bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
             placeholder="Vehicle Number *"
           />
           <select required onChange={(e) => setcvtype(e.target.value)}
             name="select"
             id="select"
-            class="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 font-semibold text-gray-500 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm">
-            <option class="font-semibold text-slate-300">Car</option>
-            <option class="font-semibold text-slate-300">Motor Bike</option>
-            <option class="font-semibold text-slate-300">Three Wheeler</option>
-            <option class="font-semibold text-slate-300">Heavy Vehicle</option>
+            class="mt-1 block w-1/2 rounded-md border border-black bg-white px-3 py-4 font-semibold text-gray-500 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm">
+            <option value="">Select Vehicle Type</option> {/* Add an empty option for default selection */}
+                                        <option value="Car">Car</option>
+                                        <option value="Van">Van</option>
+                                        <option value="Cab">Cab</option>
+                                        <option value="Jeep">Jeep</option>
+                                        <option value="Motorbike">Motor Bike</option>
+                                        <option value="Minilorry">Mini Lorry</option>
           </select>
         </div>
         <div class="mt-6">
           <label
             for="password"
-            class="block text-sm font-medium leading-5 text-gray-300">
+            class="block text-sm font-medium leading-5 text-black">
             Password
           </label>
           <div class="mt-1 rounded-md shadow-sm text-black">
-            <input 
+            <input required onChange={(e) => setcpass2(e.target.value)}
               id="password"
               name="password"
               type="password"
               
-              class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"></input>
+              class="appearance-none block w-full px-3 py-2 border border-black rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"></input>
           </div>
         </div>
 
         <div class="mt-6">
           <label
             for="password_confirmation"
-            class="block text-sm font-medium leading-5 text-gray-300"
+            class="block text-sm font-medium leading-5 text-black"
           >
             Confirm Password
           </label>
-          <div class="mt-1 rounded-md shadow-sm text-black">
+          <div class="mt-1 rounded-md shadow-sm text-black border-black">
             <input required onChange={(e) => setcpass(e.target.value)}
               id="password_confirmation"
               name="password_confirmation"

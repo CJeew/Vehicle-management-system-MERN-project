@@ -24,14 +24,14 @@ export default function ViewHolidaysSetting() {
         const date = new Date(dateString);
         return date.toLocaleDateString('en-UK', {
             year: 'numeric',
-            month: 'numeric',
+            month: 'long',
             day: 'numeric'
         });
     };
 
     return(
         <div>
-            <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Holidays</h2>
+            <h2 className="ms-20 my-10 mt-20 text-5xl font-extrabold text-white">Holidays</h2>
             <div class="flex">      
 
         <table  class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10">

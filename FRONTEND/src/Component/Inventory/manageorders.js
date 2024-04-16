@@ -48,8 +48,14 @@ export default function ManageOrders() {
 
 
   return (
+   
     <div className="h-screen w-screen bg-gray flex justify-center items-center flex-wrap relative">
-      <div className="absolute top-2 right-8">
+      
+        <div className="absolute top-2 left-8">
+        <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Managed Orders</h2>
+        </div>
+     
+       <div className="absolute top-2 right-8">
    {/* Search bar */}
 <div className="relative">
   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -90,31 +96,33 @@ export default function ManageOrders() {
           Generate Report Order
         </button>
       </div>
-      <div ref={ComponentsRef} className="relative inline-flex group mr-4 fire-container">
-        <table className="min-w-full divide-y divide-gray-200">
+      
+      <div  class="flex justify-center items-center h-screen">
+        
+      <table  ref={ComponentsRef}  class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10">
           <thead>
-            <tr className="bg-red-900 text-white">
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">No</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Item Code</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Item Name</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Supplier Name</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Need Quantity</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Order Code</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Action</th>
+          <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">No</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Item Code</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Item Name</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Supplier</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Need Quantity</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Order Code</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Action</th>
             
             </tr>
           </thead>
           <tbody>
             {filteredmanageorder.map((item, index) => (
               <tr key={index} className="bg-white border-b border-gray-200 hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.itemcode}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.itemname}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.suppliername}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.needquantity}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.ordercode}</td>
+                <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{index + 1}</td>
+                <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.itemcode}</td>
+                <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.itemname}</td>
+                <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.suppliername}</td>
+                <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.needquantity}</td>
+                <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.ordercode}</td>
                
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   <div className="flex items-center justify-end gap-2">
                   <Link to={`/manageorderupdate/${item._id}`} className="text-blue-500 mr-2"><FaEdit className="inline-block text-xl align-middle" /></Link>
 <button onClick={() => onDeleteClick(item._id)}><FaTrash className="text-red-500 inline-block text-xl align-middle" /></button>

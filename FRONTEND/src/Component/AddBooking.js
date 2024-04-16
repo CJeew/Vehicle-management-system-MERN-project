@@ -29,6 +29,7 @@ function AddBooking(){
             serviceBox
         };
 
+        //Validation to check the input date is a future date
         const currentDate = new Date;                //get the current date
         const selectedDate  = new Date(dDate);       // Parse the selected date
 
@@ -52,19 +53,18 @@ function AddBooking(){
         });
 
         }
-            //checkbox function
-            function handleCheckboxChange(e){
-            const value = e.target.value;
-            const checked = e.target.checked;
+         //checkbox function
+        function handleCheckboxChange(e){
+        const value = e.target.value;
+        const checked = e.target.checked;
                 
-            //update service type state based on checkbox value
-            if(checked){
-                setService(prevState =>[...prevState,value]);   //Add to Array
-            }else{
-                setService(prevState => prevState.filter(item => item !== value));   //Remove from Array
-            }
-            
+        //update service type state based on checkbox value
+        if(checked){
+            setService(prevState =>[...prevState,value]);   //Add to Array
+        }else{
+            setService(prevState => prevState.filter(item => item !== value));   //Remove from Array
         }
+    }
     return(
     <div>
       <div className="relative">
@@ -104,8 +104,8 @@ function AddBooking(){
                                         <option value="Van">Van</option>
                                         <option value="Cab">Cab</option>
                                         <option value="Jeep">Jeep</option>
-                                        <option value="Motorbike">Motor Bike</option>
-                                        <option value="Minilorry">Mini Lorry</option>
+                                        <option value="Motor Bike">Motor Bike</option>
+                                        <option value="Mini Lorry">Mini Lorry</option>
                                     </select>
                                 </td>
                             </tr>
@@ -218,6 +218,7 @@ function AddBooking(){
                                   ease-in-out transform hover:scale-105" value={"Add Booking"} onClick={sendBook}>Book Now</button>
                 </div>
             </form>
+            <div>.....</div>
         </div>
     </div>
     );
