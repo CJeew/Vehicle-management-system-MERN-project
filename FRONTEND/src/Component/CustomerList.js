@@ -33,7 +33,6 @@ export default function RegisterRead() {
       const filteredlist = customer.filter((customer) =>
       customer.cmail.toLowerCase().includes(searchTerm.toLowerCase()) ||
       customer.cname.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      customer.cvnum.toLowerCase().includes(searchTerm.toLowerCase()) ||
       customer.cvtype.toLowerCase().includes(searchTerm.toLowerCase())
     );
     
