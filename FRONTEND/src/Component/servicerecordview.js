@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import moment from 'moment';
+import {useReactToPrint} from 'react-to-print';
 
 export default function ServiceRecordView() {
   const [records, setRecords] = useState([]);
+
+  const componentRef = useRef();
 
   useEffect(() => {
     function getService() {
@@ -21,13 +24,22 @@ export default function ServiceRecordView() {
     getService();
   }, []);
 
+  //function to generate report
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    DocumentTittle: "service report",
+    onafterprint: () => alert("user report successfully ")
+  })
+    
+  
+
   return (
     <div className="mx-auto max-w-5xl">
       <h2 className="ms-20 my-10 mt-20 text-3xl font-bold text-white text-center">
         Service Recode.
       </h2>
 
-      <table class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10 w-full">
+      <table class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10 w-full" ref={componentRef}>
         <thead>
           <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
             <th
@@ -93,6 +105,10 @@ export default function ServiceRecordView() {
           ))}
         </tbody>
       </table>
+      <div className="absolute right-8 mt-5">
+            <button onClick={handlePrint} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Generate Report</button>
+            <div className="mt-1 opacity-0">.</div>
+      </div>
     </div>
   );
 }
