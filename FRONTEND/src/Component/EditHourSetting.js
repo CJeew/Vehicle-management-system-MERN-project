@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import {useReactToPrint} from 'react-to-print';
-
+import { Link } from "react-router-dom";
 
 export default function ViewHourSetting() {
     const [businessHours, setSetting] = useState([]);
@@ -52,9 +52,9 @@ export default function ViewHourSetting() {
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <div class="flex items-center justify-start gap-2">
                                 {/*Edit hours button */}
-                                <a href={`/updateSetting/${hourSetting._id}`} type="button" class="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    Edit
-                                </a>
+                                <Link to ={`/updateSetting/${hourSetting._id}`} ><button className="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                    Edit</button>
+                                </Link>
                                 {/* Delete hour button  */}
                                 <button onClick={() => onDeleteClick(hourSetting._id)} class="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                                     Delete

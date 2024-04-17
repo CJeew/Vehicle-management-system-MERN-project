@@ -35,7 +35,7 @@ router.route("/").get((req,res)=>{
 
 //update
 
-router.route("/updateSetting/:id").post(async(req,res)=>{
+router.route("/updateSetting/:id").put(async(req,res)=>{
     let settingId = req.params.id;
     const{day, timeFrom, timeTo} = req.body; 
 
@@ -50,8 +50,24 @@ router.route("/updateSetting/:id").post(async(req,res)=>{
     }).catch((err)=>{
         console.log(err);
         res.status(500).send({status: "Error with updating business hours", error: err.message});
+    });
+ });
+
+
+//fetch data related to the id
+router.route("/get/:id").get(async(req,res)=>{
+    let settingId = req.params.id;
+    console.log(settingId);
+
+    const hour = await hourSetting.findById(settingId)
+    .then((hour)=>{
+        res.status(200).send({status: "Hour Fetched", hour});
     })
- })
+    .catch((err)=>{
+        console.log(err);
+        res.status(500).send({status: "Can't fin the requested hour", errot: err.message});
+    });
+})
 
 //delete
 
