@@ -53,10 +53,10 @@ return (
         </div>
     </div>
    <div class="flex justify-center items-center h-screen">
-        <table  class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10 "ref={componentRef}>
+        <table  class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-0 mx-10 mt-48"ref={componentRef}>
             <thead>
                 <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Name</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">Name</th>
                     
                     <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Telephone</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Email</th>

@@ -76,7 +76,7 @@ function CreateJob() {
 
         if(!isValidEmail) {
           alert("Please enter a valid email address.");
-          return
+          return;
         }
 
         axios.post("http://localhost:8090/job/addJob", newJob)
@@ -115,7 +115,7 @@ function CreateJob() {
             <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
 
               <div className="flex justify-between items-center">
-                <h1 className="Heading1 text-center text-3xl flex-grow font-BakBak one font-bold">New job</h1>
+                <h1 className="Heading1 text-center text-4xl flex-grow font-BakBak one font-bold">New job</h1>
 
                 <a href="/viewjobs">
                 <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
@@ -132,17 +132,17 @@ function CreateJob() {
               <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
                   <div className="">  
                     <label className = "mr-11">Job Number :</label>
-                    <input type="text" onChange={(e) => setjobNumber(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base mt-2"/>
+                    <input type="text" onChange={(e) => setjobNumber(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base mt-2" required/>
                   </div>
 
                   <div className="">
                     <label className="mr-11">Job Date :</label>
-                    <input type="date" onChange={(e) => setjobDate(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base"/>
+                    <input type="date" onChange={(e) => setjobDate(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base" required/>
                   </div>
 
                   <div className="">
                     <label className="mr-7">Vehicle Type :</label>
-                    <select id="vehicle" onChange={(e) => setvehicleType(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base mb-1">
+                    <select id="vehicle" onChange={(e) => setvehicleType(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base mb-1" required>
                         <option value="" />
                         <option value="car">Car</option>
                         <option value="Van">Van</option>
@@ -163,12 +163,12 @@ function CreateJob() {
                 <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
                   <div className=""> 
                     <label className="mr-4">Vehicle Reg. No :</label>
-                    <input type="text" onChange={(e) => setregistrationNo(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-2" />
+                    <input type="text" onChange={(e) => setregistrationNo(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-2" required/>
                   </div> 
 
                   <div>
                   <label className="mr-2">Vehicle Make :</label>
-                    <select id="vehiclemake" onChange={(e) => setvehiclemake(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base">
+                    <select id="vehiclemake" onChange={(e) => setvehiclemake(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base" required>
                         <option value="" /> 
                         <option value="Toyota">Toyota</option>
                         <option value="Honda">Honda</option>
@@ -189,7 +189,7 @@ function CreateJob() {
 
                   <div>
                     <label className="mr-4">Vehicle Model :</label>
-                    <input type="text" onChange={(e) => setvehicleModel(e.target.value)} className="rounded-md w-60 h-10 opacity-80"/>
+                    <input type="text" onChange={(e) => setvehicleModel(e.target.value)} className="rounded-md w-60 h-10 opacity-80" required/>
                   </div>  
                  </div> 
 
@@ -200,12 +200,12 @@ function CreateJob() {
                  <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
                   <div className=""> 
                     <label className="mr-14">Mileage :</label>
-                    <input type="text" onChange={(e) => setmileage(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-5 ml-5"/>
+                    <input type="text" onChange={(e) => setmileage(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-5 ml-5" required/>
                   </div>
 
                   <div>
                     <label className="mr-11">Year :</label>
-                    <select id="year" onChange={(e) => setyear(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-3 ml-9">
+                    <select id="year" onChange={(e) => setyear(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-3 ml-9" required>
                       <option value="">   </option>
                       {years.map((year) => (
                         <option key={year} value={year}>
@@ -217,7 +217,7 @@ function CreateJob() {
 
                   <div>
                     <label className="mr-11">Time In :</label>
-                    <input type="time" onChange={(e) => settimeIn(e.target.value)} className="rounded-md w-60 h-10 opacity-80  mt-3 ml-6"/> 
+                    <input type="time" onChange={(e) => settimeIn(e.target.value)} className="rounded-md w-60 h-10 opacity-80  mt-3 ml-6" required/> 
                   </div>
                   </div>
                   {/* -------Line 03 ends------- */}
@@ -245,12 +245,12 @@ function CreateJob() {
                   <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
                    <div className="">
                     <label className="mr-11">Name :</label>
-                    <input type="text" onChange={(e) => setname(e.target.value)} className="rounded-md w-60 h-10 opacity-80 ml-10"/>  
+                    <input type="text" onChange={(e) => setname(e.target.value)} className="rounded-md w-60 h-10 opacity-80 ml-10" required/>  
                    </div>
              
                    <div>
                     <label className="mr-4">Contact No. :</label>
-                    <input type="tel" placeholder="  ex : 07xxxxxxxx" onChange={(e) => setcontactNumber(e.target.value)} className="rounded-md w-60 h-10 opacity-80"/>  
+                    <input type="tel" placeholder="  ex : 07xxxxxxxx" onChange={(e) => setcontactNumber(e.target.value)} className="rounded-md w-60 h-10 opacity-80" required/>  
                    </div> 
 
                    <div>

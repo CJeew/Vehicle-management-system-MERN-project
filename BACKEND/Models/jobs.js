@@ -40,7 +40,8 @@ const jobSchema = new Schema({
         required : true
     },
     year: {
-        type : Number
+        type : Number,
+        required : true
     },
     timeIn : {
         type : String, 
@@ -48,7 +49,7 @@ const jobSchema = new Schema({
     },
     dateout : {
         type : Date, 
-        required : true,
+       
     },
     timeout : {
         type : String, 
@@ -64,6 +65,7 @@ const jobSchema = new Schema({
     },
     email : {
         type :String
+        
     },
     serviceType: {
         type : [String], 

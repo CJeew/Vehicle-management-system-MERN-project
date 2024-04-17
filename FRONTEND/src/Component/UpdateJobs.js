@@ -3,9 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 
-function UpdateJob() {
-
-    const {jobNumber} = useParams();
+export default function UpdateJob() {
 
     const [jobnumber, setJobNumber] = useState("");
     const [jobDate, setjobDate] = useState("");
@@ -24,37 +22,10 @@ function UpdateJob() {
     const [serviceType, setserviceType] = useState("");
     const [details, setdetails] = useState("");
 
+    const {id} = useParams();
 
-
-    useEffect( () => {
-      axios.get(`http://localhost:8090/job/getDetails/${jobNumber}`).then((response) => {
-
-       setJobNumber(response.data.details.jobnumber);
-       setjobDate(response.data.details.jobDate);
-       setvehicleType(response.data.details.vehicleType);
-       setregistrationNo(response.data.details.RegNo);
-       setvehiclemake(response.data.details.vehicleMake);
-       setvehicleModel(response.data.details.vehicleModel);
-       setmileage(response.data.details.mileage);
-       setyear(response.data.details.year);
-       settimeIn(response.data.details.timeIn);
-       setdateout(response.data.details.dateout);
-       settimeout(response.data.details.timeout);
-       setname(response.data.details.name);
-       setcontactNumber(response.data.details.contactNumber);
-       setemail(response.data.details.email);
-       setserviceType(response.data.details.serviceType);
-       setdetails(response.data.details.details);
-                
-      }).catch((err) => {
-          alert(err.message);
-        
-      });
-        
-    }, [jobNumber]);
-
-
-    function updateJob(e){
+    
+    function updateJob(e) {
       e.preventDefault();
 
       const updatedJob = {
@@ -77,15 +48,45 @@ function UpdateJob() {
 
       };
 
-      axios.put(`http://localhost:8090/job/updatejobs/${jobNumber}`, updatedJob)
+      axios.put(`http://localhost:8090/job/updatejobs/${id}`, updatedJob)
       .then(() => {
         alert("Job updated successfully");
         window.location.href = "/viewjobs";
       })
       .catch((err) => {
-        alert(err.response.data.message);
+        alert(err.message);
       });
     }
+
+
+    useEffect( () => {
+      axios.get(`http://localhost:8090/job/get/${id}`)
+      .then((response) => {
+
+       setJobNumber(response.data.job.jobnumber);
+       setjobDate(response.data.job.jobDate);
+       setvehicleType(response.data.job.vehicleType);
+       setregistrationNo(response.data.job.RegNo);
+       setvehiclemake(response.data.job.vehicleMake);
+       setvehicleModel(response.data.job.vehicleModel);
+       setmileage(response.data.job.mileage);
+       setyear(response.data.job.year);
+       settimeIn(response.data.job.timeIn);
+       setdateout(response.data.job.dateout);
+       settimeout(response.data.job.timeout);
+       setname(response.data.job.name);
+       setcontactNumber(response.data.job.contactNumber);
+       setemail(response.data.job.email);
+       setserviceType(response.data.job.serviceType);
+       setdetails(response.data.job.details);
+
+                
+      }).catch((err) => {
+          alert(err.message);
+        
+      });
+        
+    }, []);
 
 
 
@@ -129,7 +130,7 @@ function UpdateJob() {
 
               </div> <br />
 
-                <form className="form1 text-lg text-gray-950 ">
+                <form onSubmit={updateJob} className="form1 text-lg text-gray-950 ">
                   
               {/*------ Line 01 starts------ */}
 
@@ -408,4 +409,4 @@ function UpdateJob() {
   );
 }
 
-export default UpdateJob;
+
