@@ -95,7 +95,8 @@ export default function Additems() {
 return (
 <form onSubmit={sendData} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-auto w-1/4">
      
-      <center><h1 >Add Item</h1></center>
+<h1 className="text-center font-bold text-black">Add Item</h1>
+
 
       <div className="mt-4">
         <div>
