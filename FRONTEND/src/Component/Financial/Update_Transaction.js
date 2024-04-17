@@ -103,9 +103,9 @@ export default function UpdateTransaction() {
             onChange={inputChangeHandler}
             className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
           >
-            <option value="cash">Cash</option>
-            <option value="cradit">Cradit Card</option>
-            <option value="debit">Debit Card</option>
+            <option value="Cash">Cash</option>
+            <option value="Cradit">Cradit Card</option>
+            <option value="Debit">Debit Card</option>
           </select> 
         </div>
         <div className="flex flex-col"> 
@@ -129,9 +129,9 @@ export default function UpdateTransaction() {
             onChange={inputChangeHandler}
             className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
           >
-            <option value="income">Income</option>
-            <option value="expanses">Expanses</option>
-            <option value="tax">Tax</option>
+            <option value="Income">Income</option>
+            <option value="Expanses">Expanses</option>
+            <option value="Tax">Tax</option>
           </select>
         </div>
         <div className="flex flex-col">
@@ -144,10 +144,10 @@ export default function UpdateTransaction() {
             onChange={inputChangeHandler}
             className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
           >
-            <option value="finance">Finance</option>
-            <option value="inventory">Inventory</option>
-            <option value="service">Service</option>
-            <option value="service">Booking</option>
+            <option value="Finance">Finance</option>
+            <option value="Inventory">Inventory</option>
+            <option value="Service">Service</option>
+            <option value="Booking">Booking</option>
           </select>  
         </div>
        

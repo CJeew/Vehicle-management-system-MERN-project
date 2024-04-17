@@ -80,18 +80,14 @@ export default function AddTransaction() {
         </div>
         <div className="flex flex-col">
           <label htmlFor="paymentType" className="text-m font-medium leading-6 text-gray-900 mb-1">PaymentType</label>
-          <select
-           // type="text"
+          <input
+            type="text"
             name="paymentType"
             id="paymentType"
             value={paymentType}
             onChange={(e) => setPaymentType(e.target.value)}
             className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
-          >
-          <option value="cash">Cash</option>
-          <option value="cradit">Cradit Card</option>
-          <option value="debit">Debit Card</option>
-          </select>  
+          />
         </div>
         <div className="flex flex-col">
           <label htmlFor="amount" className="text-m font-medium leading-6 text-gray-900 mb-1">Amount</label>
@@ -106,34 +102,25 @@ export default function AddTransaction() {
         </div>
         <div className="flex flex-col">
           <label htmlFor="accounts" className="text-m font-medium leading-6 text-gray-900 mb-1">Category</label>
-          <select
+          <input
             type="text"
             name="accounts"
             id="accounts"
             value={accounts}
             onChange={(e) => setAccounts(e.target.value)}
             className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
-          >
-          <option value="income">Income</option>
-          <option value="expanses">Expanses</option>
-          <option value="tax">Tax</option>
-          </select>
+          />
         </div>
         <div className="flex flex-col">
           <label htmlFor="department" className="text-m font-medium leading-6 text-gray-900 mb-1">Department</label>
-          <select
-            //type="text"
+          <input
+            type="text"
             name="department"
             id="department"
             value={department}
             onChange={(e) => setDepartment(e.target.value)}
             className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
-          >
-            <option value="finance">Finance</option>
-            <option value="inventory">Inventory</option>
-            <option value="service">Service</option>
-            <option value="service">Booking</option>
-          </select>
+          />
         </div>
       </div>
       <div className="mt-6 flex items-center justify-end gap-x-6">
