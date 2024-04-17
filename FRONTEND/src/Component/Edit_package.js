@@ -105,7 +105,9 @@ function Edit_package() {
 
           <div className="flex justify-center">
             <button
-              className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900  px-2 py-2 text-white font-bold uppercase hover:bg-red-600 hover:text-black rounded-[10px] mt-4"
+              className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+              hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+              ease-in-out transform hover:scale-105 hover:text-black rounded-[10px] mt-4"
               type="submit"
             >
               update

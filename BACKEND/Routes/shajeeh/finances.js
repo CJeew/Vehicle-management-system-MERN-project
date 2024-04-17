@@ -2,8 +2,9 @@ const router = require("express").Router();
 let Finance = require("../../Models/Finance");
 
 //CRUD (CREATE) code segment
-router.route("/add").post((req,res)=>{
+router.route("/add").post(async(req,res)=>{
 
+    const transactionCode = req.body.transactionCode;
     const date = req.body.date;
     const description = req.body.description;
     const paymentType = req.body.paymentType;
@@ -11,8 +12,13 @@ router.route("/add").post((req,res)=>{
     const accounts = req.body.accounts;
     const department = req.body.department;
 
-    const newFinance = new Finance({
+    const existingtransaction = await Finance.findOne({ transactionCode });
+    if (existingtransaction) {
+        return res.status(400).json({ message: 'The Transaction already exists with this Transaction Code' });
+    }
 
+    const newFinance = new Finance({
+        transactionCode,
         date,
         description,
         paymentType,
@@ -46,9 +52,10 @@ router.route("/").get((req,res)=>{
 // CRUD (UPDATE) code segment
 router.route("/update/:id").put(async(req,res)=>{
     let transactionId = req.params.id;
-    const {date , description, paymentType, amount,accounts,department} = req.body;
+    const {transactionCode, date , description, paymentType, amount,accounts,department} = req.body;
 
     const updateFinance = {
+        transactionCode,
         date,
         description,
         paymentType,

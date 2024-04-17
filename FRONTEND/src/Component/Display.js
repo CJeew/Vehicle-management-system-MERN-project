@@ -22,6 +22,7 @@ export default function Display() {
             });
     };
 
+//delete function
     const deletesupplier = async (userId) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this supplier?");
         if (confirmDelete) {
@@ -49,7 +50,7 @@ export default function Display() {
                             <div className="h-14 rounded-lg p-4 bg-slate-800" style={{ borderBottomRightRadius: '0rem', borderBottomLeftRadius: '0rem' }}>
                                 <p className="text-3xl mb-8 text-red-700 font-bold ml-8">{supplier.name}</p>
                             </div>
-                            <div className="bg-gray-200 rounded-lg p-4" style={{ borderTopRightRadius: '0rem', borderTopLeftRadius: '0rem' }}>
+                            <div className="bg-gray-200 opacity-90 rounded-lg p-4" style={{ borderTopRightRadius: '0rem', borderTopLeftRadius: '0rem' }}>
                                 <p className="text-base mb-5 text-lg font-bold">{supplier.Main_supplies}</p>
                                 <p className="text-base text-lg mb-1">Phone: {supplier.contact} / {supplier.contact_2}</p>
                                 <p className="text-base text-lg mb-5">Address: {supplier.address}</p>
@@ -61,9 +62,9 @@ export default function Display() {
                                 >
                                     Delete
                                 </button>
-                               <Link to ={"/update"}> <button className="bg-gradient-to-r from-green-700 via-green-800 to-green-900 hover:from-green-900 
+                               <Link to ={`/update/${supplier._id}`}> <button className="bg-gradient-to-r from-green-700 via-green-800 to-green-900 hover:from-green-900 
                                     hover:via-green-800 hover:to-green-700 text-white float-right mx-auto font-bold py-1 px-3 rounded-lg mr-2 
-                                    opacity-90 transition duration-300 ease-in-out transform hover:scale-105"> Edit</button></Link>
+                                    opacity-90 transition duration-300 ease-in-out transform hover:scale-105"> Update   </button></Link>
                                 <a href="/display">
                                     <button className="bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 hover:from-blue-900 
                                     hover:via-blue-800 hover:to-blue-700 text-white float-right mx-auto font-bold py-1 px-3 rounded-lg mr-2 

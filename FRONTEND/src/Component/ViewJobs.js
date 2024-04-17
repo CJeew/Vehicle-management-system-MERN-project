@@ -57,7 +57,7 @@ export default function ViewJobs() {
         <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
 
         <div className="flex justify-between items-center">
-            <h1 className="Heading1 text-center text-3xl flex-grow font-BakBak one font-bold">All Jobs</h1>
+            <h1 className="Heading1 text-center text-4xl flex-grow font-BakBak one font-bold">All Jobs</h1>
         </div>
 
         {/* Heading container */}
@@ -110,7 +110,7 @@ export default function ViewJobs() {
               <div>
 
               {/* update button */}
-              <Link to={`/updatejobs/${job._id}`}>
+              <Link to ={`/updatejobs/${job._id}`}>
                 <button className="bg-gradient-to-r from-green-600 via-green-800 to-green-950 hover:from-green-950 hover:via-green-700 hover:to-green-600 text-white font-bold py-2 px-5 rounded-lg 
                                   mr-2 opacity-80 transition duration-300 ease-in-out transform hover:scale-105">Update</button>
               </Link>

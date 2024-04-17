@@ -44,14 +44,16 @@ export default function ViewPackage() {
   return (
     <div>
       <div className="text-2xl flex justify-center items-center">
-        <div className="gap-16 grid grid-cols-2 mt-8">
+        <div className="gap-16 grid grid-cols-2 mt-8 ">
           <a href="viewpkg">
-            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-700  px-2 py-4 text-white font-bold uppercase hover:text-black rounded-[10px] w-full ">
+            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                     hover:to-amber-700 text-white font-bold px-2 py-4 font-bold uppercase hover:text-black  rounded-[10px] w-full ">
               Interior
             </button>
           </a>
           <a href="viewpkg2">
-            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-700 opacity-55 px-2 py-4 text-white font-bold uppercase hover:text-black rounded-[10px] w-full">
+            <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                     hover:to-amber-700 text-white font-bold hover:from-amber-700 opacity-55 px-2 py-4 font-bold uppercase hover:text-black rounded-[10px] w-full">
               Exterior
             </button>
           </a>
