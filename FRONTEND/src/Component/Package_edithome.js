@@ -32,7 +32,9 @@ export default function Package_edithome() {
       });
   }
   return (
+    
     <div>
+       {/* Interior Packages Section */}
       <h2 className="text-3xl mb-6 flex justify-center mt-8 font-bold text-white">
         Interior
       </h2>
@@ -69,7 +71,7 @@ export default function Package_edithome() {
               </div>
             ))}
         </div>
-
+  {/* Exterior Packages Section */}
         <h2 className="text-3xl mb-6 mt-16 flex justify-left mt-8 font-bold text-white">
           Exterior
         </h2>
@@ -87,6 +89,7 @@ export default function Package_edithome() {
                   RS. {pkg.unitprice.toFixed(2)}
                 </h4>
                 <div className="flex justify-center items-center gap-4">
+                   {/* Edit Package Button */}
                   <a href={`/editpkg/${pkg._id}`}>
                     <button className="bg-green-700 text-white font-bold py-2 px-4 rounded mt-4">
                       <i
@@ -95,6 +98,7 @@ export default function Package_edithome() {
                       ></i>
                     </button>
                   </a>
+                   {/* Delete Package Button */}
                   <button className="bg-red-700 text-white font-bold py-2 px-4 rounded mt-4" onClick={() => DeletePackage(pkg._id)}>  
                     <i
                       className="pi pi-trash"
