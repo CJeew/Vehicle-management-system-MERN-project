@@ -8,7 +8,7 @@ export default function ServiceHome() {
         <div className="mt-10 space-x-6 p-10 bg-black bg-opacity-75 rounded-lg">
           <p className="font-bold text-2xl text-white mb-10 text-center">
             Ryome Autocare Service<br></br>
-            <br></br>"Welcome to your ultimate solution for all vehicle service
+            <br></br>Welcome to your ultimate solution for all vehicle service
             requirements. Our user-friendly platform guarantees a smooth and
             hassle-free experience in organizing and monitoring your vehicle
             servicing needs.
