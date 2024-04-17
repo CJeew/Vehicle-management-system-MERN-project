@@ -24,7 +24,7 @@ router.route("/add").post(async(req,res)=>{
         paymentType,
         amount,
         accounts,
-        department
+        department,
 
     });
 
