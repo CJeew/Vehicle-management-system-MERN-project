@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function ViewHourSetting() {
     const [businessHours, setSetting] = useState([]);
-    const componentRef = useRef();
+    //const componentRef = useRef();
 
     useEffect(() => {
         function getSetting() {
