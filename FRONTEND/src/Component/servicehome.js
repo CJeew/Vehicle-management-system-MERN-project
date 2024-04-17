@@ -7,7 +7,7 @@ export default function ServiceHome() {
       <div className="grid grid-rows-1 p-10 bg-gray-200 bg-opacity-70 rounded-lg mx-5 max-w-4xl ">
         <div className="mt-10 space-x-6 p-10 bg-black bg-opacity-75 rounded-lg">
           <p className="font-bold text-2xl text-white mb-10 text-center">
-            Ryom Autocare Service<br></br>
+            Ryome Autocare Service<br></br>
             <br></br>"Welcome to your ultimate solution for all vehicle service
             requirements. Our user-friendly platform guarantees a smooth and
             hassle-free experience in organizing and monitoring your vehicle
