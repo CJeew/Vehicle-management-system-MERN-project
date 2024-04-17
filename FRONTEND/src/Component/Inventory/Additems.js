@@ -40,7 +40,7 @@ export default function Additems() {
        
       })
       .catch((err) => {
-        alert(err);
+        alert(err.response.data.message);
       });
   }
 
@@ -93,6 +93,7 @@ export default function Additems() {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            pattern="[0-9]"
           />
         </div>
         <div>
@@ -115,6 +116,7 @@ export default function Additems() {
             value={reorderlevel}
             onChange={(e) => setReorderLevel(e.target.value)}
             className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            pattern="[0-9]"
           />
         </div>
         <div>
@@ -126,6 +128,7 @@ export default function Additems() {
             value={stocklimit}
             onChange={(e) => setStocklimit(e.target.value)}
             className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            pattern="[0-9]"
           />
         </div>
         <div>

@@ -36,7 +36,7 @@ function Register() {
             alert("Profile Added");
             window.location.reload();
         }).catch((err)=>{
-            alert(err);
+            alert(err.response.data.message);
         });
 
           // Check if a email is fill

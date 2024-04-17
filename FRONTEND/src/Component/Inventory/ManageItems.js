@@ -171,9 +171,9 @@ export default function ManageItems() {
       {alerts.length > 0 && (
         <div className="absolute bottom-8 right-8 bg-red-500 text-white font-bold py-2 px-4 rounded">
           {alerts.length === 1 ? (
-            `1 item (${alerts[0].itemcode}) needs reorder`
+            `1 item (${alerts[0].itemname}) needs reorder`
           ) : (
-            `${alerts.length} items (${alerts.map(alert => alert.itemcode).join(', ')}) need reorder`
+            `${alerts.length} items (${alerts.map(alert => alert.itemname).join(', ')}) need reorder`
           )}
         </div>
       )}

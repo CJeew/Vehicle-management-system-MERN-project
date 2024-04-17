@@ -4,7 +4,7 @@ let customer = require("../../Models/customer");
 
 //create - working
 
-router.route("/Register").post((req,res)=>{
+router.route("/Register").post(async(req,res)=>{
 
     const cname = req.body.cname;
     const cnic = req.body.cnic;
@@ -14,7 +14,10 @@ router.route("/Register").post((req,res)=>{
     const cmail = req.body.cmail;
     const cvnum = req.body.cvnum;
     const cvtype = req.body.cvtype;
-
+    const exisitingEmail = await customer.findOne({cmail});
+    if(exisitingEmail){
+        return res.status(404).json({message : 'The Email alrady exsist'});
+    }
     const newCustomer = new customer({
         cname,
         cnic,
