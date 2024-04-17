@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 
@@ -51,7 +52,7 @@ const deleteJob = async (jobId) => {
     <div className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5">
 
     <div className="flex justify-between items-center">
-          <h1 className="Heading1 text-center text-3xl flex-grow font-BakBak one font-bold">Job Details</h1>
+          <h1 className="Heading1 text-center text-4xl flex-grow font-BakBak one font-bold">Job Details</h1>
     </div>
 
         <div className="mt-4 text-lg">
@@ -121,7 +122,7 @@ const deleteJob = async (jobId) => {
           </div>
 
           <div>
-          <p><strong>Service Type:</strong> {jobDetails.serviceType}</p>
+          <p><strong>Service Type:</strong> {jobDetails.serviceType + " , "}</p>
           </div>
         </div>
 
@@ -147,9 +148,11 @@ const deleteJob = async (jobId) => {
                                   ease-in-out transform hover:scale-105">New Jobs</button>
                 </a>
           {/* update button */}
+          <Link to ={`/updatejobs/${jobDetails._id}`}>
           <button className="bg-gradient-to-r from-green-600 via-green-800 to-green-950 hover:from-green-950 hover:via-green-700 
                                   hover:to-green-600 text-white font-bold py-2 px-5 rounded-lg mr-2 opacity-80 transition duration-300
                                   ease-in-out transform hover:scale-105">Update</button>
+          </Link>
 
            {/* Delete button */}
            <button onClick={(e) => {deleteJob(jobDetails._id, jobDetails.jobNumber); e.preventDefault();}} className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-900 hover:via-red-700 

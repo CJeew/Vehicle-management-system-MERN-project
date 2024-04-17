@@ -28,7 +28,7 @@ function Add_Supplier() {
       address,
     };
     
-
+//Email validation
     const isValidEmail = /\S+@\S+\.|S+/.test(Email);
 
     if(!isValidEmail) {
@@ -36,7 +36,7 @@ function Add_Supplier() {
       return;
     }
   
-
+//contact validation
     const isvalidcontact = /^[\d]{10}$/.test(contact);
 
     if(!isvalidcontact){
@@ -44,7 +44,7 @@ function Add_Supplier() {
       return;
     }
     
-    
+//contact 2 validation
     const isvalidcontact_2 = /^[\d]{10}$/.test(contact_2);
 
     if(!isvalidcontact_2){

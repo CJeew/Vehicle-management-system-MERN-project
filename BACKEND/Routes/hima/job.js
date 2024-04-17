@@ -56,6 +56,7 @@ router.route("/addJob").post((req, res) => {
     });
 });
 
+
 //Fetching data from the database
 router.route("/viewjobs").get((req, res) => {
   jobModel
@@ -92,42 +93,6 @@ router.get('/details/:jobNumber', async (req, res) => {
 });
 
 
-//Filter option
-// router.route("/viewjobs").get((req, res) => {
-//   const { jobNumber, jobDate, timeIn, name} = req.query;
-//   const query = {};
-
-//   if(jobNumber){
-//     query.jobNumber = jobNumber;
-//   }
-
-//   if(name){
-//     query.name = name;
-//   }
-
-//   if(jobDate && timeIn){
-//     const dateTimeIn = new Date('${jobDate}T${timeIn}'); 
-//     query.dateTimeIn = dateTimeIn;
-
-//   }else if(jobDate){
-//     query.jobDate = new Date(jobDate);
-
-//   }else if(timeIn){
-//     query.timeIn = new Date(timeIn);
-
-//   }
-
-//   jobModel
-//     .find(query)
-//     .then((jobs) => {
-//       res.json(jobs);
-//     })
-
-//     .catch((err) => {
-//       console.log(err);
-//     })
-// });
-
 
 //Delete Job function
 router.route("/delete/:_id").delete(async (req, res) => {
@@ -144,9 +109,9 @@ router.route("/delete/:_id").delete(async (req, res) => {
 
 
 //Update job function
-router.route("/updatejobs/:jobNumber").put(async(req,res) => {
+router.route("/updatejobs/:id").put(async (req,res) => {
 
-  let jobNumber = req.params.jobNumber;
+  let jobNumber = req.params.id;
   const {
     jobnumber,
     jobDate,
@@ -184,74 +149,33 @@ router.route("/updatejobs/:jobNumber").put(async(req,res) => {
     details,
   }
 
-  await jobModel.findByIdAndUpdate(jobNumber, updateJob)  
-  .then(() => {
-      res.status(200).send({status: "Successfully updated the job"})
+ const update = await jobModel
+ .findByIdAndUpdate(jobNumber, updateJob)
+ .then(() => {
+      res.status(200).send({ status : "Job Updated successfully"});
+  })
+ .catch((err) => {
+    console.log(err);
+    res.status(500).send({ status : "Job cannot be updated" });
+  });
+});
 
-  }).catch((err) => {
+
+//Fetch data related to the id
+router.route("/get/:id").get(async (req, res) => {
+  let jobNumber = req.params.id;
+  console.log(jobNumber);
+  const job = await jobModel
+    .findById(jobNumber)
+    .then((job) => {
+      res.status(200).send({ status: "Job fetched", job });
+    })
+    .catch((err) => {
       console.log(err);
-      res.status(500).send({status: "Cannot update", error: err.message});
-  }) 
-})
+      res.status(500).send({ status: "Can't find the requested job", error: err.message });
+    });
+});
 
-
-
-
-
-
-
-
-//CRUD (update page) code segment
-// router.route("/update/:id").put(async (req, res) => {
-//   let userId = req.params.id; //code for get the individual id from the url
-//   const { name, contact, address, country } = req.body;
-
-  //object for supplier update
-//   const updateSupplier = {
-//     name,
-//     contact,
-//     address,
-//     country,
-//   };
-//   const update = await supplier
-//     .findByIdAndUpdate(userId, updateSupplier)
-//     .then(() => {
-//       res.status(200).send({ status: "user updated" });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).send({ staus: "supplier added can't be done" });
-//     });
-// });
-//CRUD (delete page) code segment
-
-// router.route("/delete/:id").delete(async (req, res) => {
-//   let userId = req.params.id;
-//   await supplier
-//     .findByIdAndDelete(userId)
-//     .then(() => {
-//       res.status(200).send({ status: "user deleted" });
-//     })
-//     .catch((err) => {
-//       console.log(err.message);
-//       res
-//         .status(500)
-//         .send({ status: "supplier can't be deletes", error: err.message });
-//     });
-// });
-
-// router.route("/get/:id").get(async (req, res) => {
-//   let userId = req.params.id;
-//   const user = await supplier
-//     .findById(userId)
-//     .then((supplier) => {
-//       res.status(200).send({ status: "user fetched", supplier });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).send({ status: "Can't find user", error: err.message });
-//     });
-// });
 
 
 

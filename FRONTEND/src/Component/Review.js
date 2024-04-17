@@ -28,7 +28,7 @@ function Review() {
            }
            // Check if a message is fill
            if (!message) {
-           alert("Please give your peedback.");
+           alert("Please give your feedback.");
           return;
            }
 

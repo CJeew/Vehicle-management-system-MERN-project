@@ -18,8 +18,7 @@ function Register() {
 
     function sendRegister(e){
         e.preventDefault();
-        //alert of inserted
-
+        
         const newCustomer = {
             cname,
             cnic,
@@ -37,19 +36,57 @@ function Register() {
             alert("Profile Added");
             window.location.reload();
         }).catch((err)=>{
-            alert(err);
+            alert(err.response.data.message);
         });
+
+          // Check if a email is fill
+          if (!cmail) {
+            alert("Please insert your Email.");
+           return;
+            }
 
          // Validate phone number
          if (!/^[\d]{10}$/.test(cphone)) {         //checking 10 digits
           alert("Please enter 10 digit valid phone number 07XXXXXXXX.");
           return;
             }
-           //Validate password
+
+          //Validate password
           if (cpass !== cpass2) {
             alert("Passwords do not match!");
             return;
-        }
+          }
+          
+          // Check if a name is fill
+          if (!cname) {
+            alert("Please insert your name.");
+           return;
+            }
+
+          // Check if a Vehicle number is fill
+          if (!cvnum) {
+            alert("Please insert your vehicle number.");
+           return;
+            }
+
+          // Check if a Vehicle type is fill
+          if (!cvtype) {
+            alert("Please insert your vehicle number.");
+           return;
+            }
+
+          // Check if a phone number is fill
+          if (!cphone) {
+            alert("Please insert your phone number.");
+           return;
+            }
+
+          // Check if a NIC number is fill
+          if (!cnic) {
+            alert("Please insert your NIC number.");
+           return;
+            }
+            
     }
   return (
     <form onSubmit={sendRegister} className="w-half bg-gray-100 p-6 ms-60 my-10 mt230 p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50">
