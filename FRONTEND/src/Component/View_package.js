@@ -59,6 +59,7 @@ export default function ViewPackage() {
           </a>
         </div>
       </div>
+      {/* Interior Packages */}
       <div className="flex justify-center items-center w-full">
         <div className="grid grid-cols-2 gap-8 bg-gray-200 bg-opacity-70 rounded-lg p-14 m-10 mx-5 max-w-7xl">
           {packages
@@ -68,6 +69,7 @@ export default function ViewPackage() {
                 className="flex flex-col justify-center items-center bg-black bg-opacity-75 text-white rounded-lg px-8 py-4"
                 key={pkg.pid}
               >
+                {/* add Checkbox */}
                 <input
                   type="checkbox"
                   checked={selectedPackages.includes(pkg.pid)}
@@ -82,6 +84,7 @@ export default function ViewPackage() {
             ))}
         </div>
       </div>
+      {/* calculate total price */}
       <div className="p-15 m-10 my-5 ">
       <div className="flex justify-center items-center gap-4 ">
       
