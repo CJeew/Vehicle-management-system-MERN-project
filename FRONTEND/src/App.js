@@ -172,7 +172,7 @@ function App() {
           <Route path="/editBookRead" element={<EditBookRead />} />
           <Route path="/editHourSetting" element={<EditHourSetting />} />
           <Route path="/editHolidaySetting" element={<EditHolidaySetting />} />
-          <Route path="/updateSetting" element={<UpdateHours/>}/>
+          <Route path="/updateSetting/:id" element={<UpdateHours/>}/>
 
           {/* <Route path="/test" element={<Test/>}/> */}
 

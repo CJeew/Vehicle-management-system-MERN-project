@@ -8,7 +8,7 @@ export default function UpdateHours(){
     const[timeTo, setTimeTo] = useState("");
 
     const{id} = useParams();
-    console.log(day);
+    console.log(id);
 
     function updateHour(e){
         e.preventDefault();
@@ -19,10 +19,10 @@ export default function UpdateHours(){
             timeTo
         };
 
-        axios.put(`http://localhost:8090/businessHours/updateSetting/${id}`, updatedHour)
+        axios.put(`http://localhost:8090/hourSetting/updateSetting/${id}`, updatedHour)
         .then(()=>{
             alert("Business Hour Updated Successfully");
-            window.location.href = "/viewHourSetting";
+            window.location.href = "/editHourSetting";
         })
         .catch((err)=>{
             alert(err.messgage);
@@ -30,11 +30,12 @@ export default function UpdateHours(){
     }
 
     useEffect(()=>{
-        axios.get(`http://localhost:8090/booking/get/${id}`)
+        axios.get(`http://localhost:8090/hourSetting/get/${id}`)
         .then((response)=>{
-            setDay(response.data.hourSetting.day);
-            setTimeFrom(response.data.hourSetting.timeFrom);
-            setTimeTo(response.data.hourSetting.timeTo);
+            console.log(response);
+            setDay(response.data.hour.day);
+            setTimeFrom(response.data.hour.timeFrom);
+            setTimeTo(response.data.hour.timeTo);
             
         }).catch((err)=>{
             alert(err.message);
@@ -54,7 +55,7 @@ return(
                 <div className="grid grid-cols-1 gap-4">
                     <div class="justify-center form-group flex mx-10">
                         <label for="day" class="block text-sm font-medium text-black my-4 mt-10">Day of The Week : </label>
-                        <select id="vehicle-type" onChange={(e) => setDay(e.target.value)} name="vehicle-type" class="mr-5 ml-5 h-10 mt-7 p-2 block border-gray-300 rounded-md text-black">
+                        <select id="vehicle-type" onChange={(e) => setDay(e.target.value)} value={day} name="vehicle-type" class="mr-5 ml-5 h-10 mt-7 p-2 block border-gray-300 rounded-md text-black">
                                 <option value="">Select a Day</option> {/* Add an empty option for default selection */}
                                 <option value="Monday">Monday</option>
                                 <option value="Tuesday">Tuesday</option>
@@ -69,10 +70,10 @@ return(
                     <div class="form-group flex mx-10">
 
                         <label for="timeFrom" class="block text-sm font-medium text-black my-4 mt-5">Opening Time : </label>
-                        <input type="time" id="timeFrom" onChange={(e) => setTimeFrom(e.target.value)} name="timeFrom" class="mr-5 ml-5 h-10 mt-2 p-2 block border-gray-300 rounded-md text-black" required></input>
+                        <input type="time" id="timeFrom" onChange={(e) => setTimeFrom(e.target.value)} value={timeFrom} name="timeFrom" class="mr-5 ml-5 h-10 mt-2 p-2 block border-gray-300 rounded-md text-black" required></input>
 
                         <label for="timeTo" class="block text-sm font-medium text-black my-4 mt-5">Closing Time : </label>
-                        <input type="time" id="timeTo" onChange={(e) => setTimeTo(e.target.value)} name="timeFrom" class="mr-5 ml-5 h-10 mt-2 p-2 block border-gray-300 rounded-md text-black" required ></input>
+                        <input type="time" id="timeTo" onChange={(e) => setTimeTo(e.target.value)} value={timeTo} name="timeFrom" class="mr-5 ml-5 h-10 mt-2 p-2 block border-gray-300 rounded-md text-black" required ></input>
                     </div>
                 </div>
                 <div class="mt-2 mb-2 flex justify-center">

@@ -36,7 +36,8 @@ router.route("/").get((req,res)=>{
 //update
 
 router.route("/updateSetting/:id").put(async(req,res)=>{
-    let settingId = req.params.id;
+    const {id}= req.params;
+    console.log(id)
     const{day, timeFrom, timeTo} = req.body; 
 
     const updateSetting = {
@@ -44,7 +45,9 @@ router.route("/updateSetting/:id").put(async(req,res)=>{
         timeFrom,
         timeTo
     }
-    const updateHours = await hourSetting.findByIdUpdate(settingId, updateSetting)  //await - waiting until the before update finish to execute next update
+    console.log(updateSetting)
+
+    const updateHours = await hourSetting.findByIdAndUpdate(id,updateSetting)  //await - waiting until the before update finish to execute next update
     .then(()=>{  
         res.status(200).send({status: "Business Hours Setting Updated"})
     }).catch((err)=>{
@@ -60,6 +63,7 @@ router.route("/get/:id").get(async(req,res)=>{
     console.log(settingId);
 
     const hour = await hourSetting.findById(settingId)
+   
     .then((hour)=>{
         res.status(200).send({status: "Hour Fetched", hour});
     })
