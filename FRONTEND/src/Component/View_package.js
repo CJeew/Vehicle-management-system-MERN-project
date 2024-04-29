@@ -72,8 +72,8 @@ export default function ViewPackage() {
                 {/* add Checkbox */}
                 <input
                   type="checkbox"
-                  checked={selectedPackages.includes(pkg.pid)}
                   onChange={() => handleCheckboxChange(pkg)}
+                  checked={selectedPackages.includes(pkg.pid)}
                 />
                 <label className="text-xl font-bold mb-2">{pkg.name}</label>
                 <p className="text-base text-gray-200">{pkg.description}</p>

@@ -85,14 +85,21 @@ router.route("/editstaff/:id").put(async(req,res) => {
     }
 
     //------------------
-    const update = await Staffdetails.findByIdAndUpdate(id, updateStaff)  //updateStaff means update panna vendiya data oda object
-    .then(() => {
+    try {
+        // Check if the new NIC already exists for another staff member
+        const existingStaff = await Staffdetails.findOne({ nic, _id: { $ne: id } }); // Exclude the current staff member being edited
+        if (existingStaff) {
+            return res.status(400).send({ message: 'Another staff member already exists with this NIC' });
+        }
 
+    // Update the staff member
+    const update = await Staffdetails.findByIdAndUpdate(id, updateStaff)  //updateStaff means update panna vendiya data oda object
+    
         res.status(200).send({status: "User updated"})
-    }).catch((err) => {
+    } catch(err) {
         console.log(err);
         res.status(500).send({status: "Error with updating data", error: err.message});
-    }) 
+    } 
 })
 
 

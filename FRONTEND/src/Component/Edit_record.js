@@ -14,7 +14,7 @@ function Edit_record() {
   function submit(e) {
     e.preventDefault();
 
-    const editRecord = { 
+    const editRecord = {
       service,
       customer,
       date,
@@ -39,7 +39,7 @@ function Edit_record() {
         const { service, customer, date, category } = res.data;
         setService(service);
         setCustomer(customer);
-        setDate(new Date(date).toISOString().split('T')[0]); // Convert to date format
+        setDate(new Date(date).toISOString().split("T")[0]); // Convert to date format
         setCategory(category);
       })
       .catch((err) => {
@@ -61,7 +61,17 @@ function Edit_record() {
             value={service}
             type="text"
             className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-            onChange={(e) => setService(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              // Check if the value contains only letters and spaces
+              if (/^[a-zA-Z\s]*$/.test(value)) {
+                setService(value);
+              } else {
+                // Display error message or handle invalid input here
+                // For now, let's just prevent updating state
+                alert("Please enter only letters and spaces for Service");
+              }
+            }}
             required
           />
           <label className="block mb-2 text-sm font-bold text-gray-700">
@@ -71,7 +81,17 @@ function Edit_record() {
             value={customer}
             type="text"
             className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-            onChange={(e) => setCustomer(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              // Check if the value contains only letters and spaces
+              if (/^[a-zA-Z\s]*$/.test(value)) {
+                setCustomer(value);
+              } else {
+                // Display error message or handle invalid input here
+                // For now, let's just prevent updating state
+                alert("Please enter only letters and spaces for Customer");
+              }
+            }}
             required
           />
           <label className="block mb-2 text-sm font-bold text-gray-700">

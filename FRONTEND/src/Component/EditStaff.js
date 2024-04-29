@@ -67,6 +67,17 @@ export default function EditStaff() {
     }
   }
 
+  // function handleNameChange(e) {
+  //   const enteredName = e.target.value;
+  //   // Regex pattern to allow only alphabetic characters
+  //   const onlyLetters = /^[A-Za-z]+$/;
+
+  //   if (onlyLetters.test(enteredName) || enteredName === "") {
+  //     // If the input contains only letters or is empty, update the name state
+  //     setName(enteredName);
+  //   }
+  // }
+
     
 
 return (
@@ -86,9 +97,13 @@ return (
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={nic} //showing value
             pattern="[0-9]{9}[vV]{1}|[0-9]{12}"
-            onChange={(e)=>{    //if value is changed, onChange will be called
-
-              setNic(e.target.value);
+            onChange={(e) => {
+              const inputValue = e.target.value;
+              const regex = /^[0-9 ]+$/; // Regular expression to allow letters, numbers, and spaces
+          
+              if (regex.test(inputValue) || e.nativeEvent.inputType === "deleteContentBackward") {
+                setNic(inputValue);
+              }
             }}
           />
         </div>
@@ -105,9 +120,13 @@ return (
             id="name"
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={name} //showing value
-            onChange={(e)=>{
-
-              setName(e.target.value);
+            onChange={(e) => {
+              const inputValue = e.target.value;
+              const regex = /^[A-Za-z ]+$/; // Regular expression to allow letters, numbers, and spaces
+          
+              if (regex.test(inputValue) || e.nativeEvent.inputType === "deleteContentBackward") {
+                setName(inputValue);
+              }
             }}
           />
         </div>
@@ -144,9 +163,13 @@ return (
                   id="address"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   value={address}
-                  onChange={(e)=>{
-
-                    setAddress(e.target.value);
+                  onChange={(e) => {
+                    const inputValue = e.target.value;
+                    const regex = /^[A-Za-z0-9 ]+$/; // Regular expression to allow letters, numbers, and spaces
+                
+                    if (regex.test(inputValue) || e.nativeEvent.inputType === "deleteContentBackward") {
+                      setAddress(inputValue);
+                    }
                   }}
                 />
               </div>
@@ -164,9 +187,13 @@ return (
             id="designation"
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={designation}
-            onChange={(e)=>{
-
-              setDesignation(e.target.value);
+            onChange={(e) => {
+              const inputValue = e.target.value;
+              const regex = /^[A-Za-z ]+$/; // Regular expression to allow letters, numbers, and spaces
+          
+              if (regex.test(inputValue) || e.nativeEvent.inputType === "deleteContentBackward") {
+                setDesignation(inputValue);
+              }
             }}
           />
         </div>
@@ -184,9 +211,13 @@ return (
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={mobileno}
             pattern="[0-9]{10}"
-            onChange={(e)=>{
-
-              setMobileno(e.target.value);
+            onChange={(e) => {
+              const inputValue = e.target.value;
+              const regex = /^[0-9 ]+$/; // Regular expression to allow letters, numbers, and spaces
+          
+              if (regex.test(inputValue) || e.nativeEvent.inputType === "deleteContentBackward") {
+                setMobileno(inputValue);
+              }
             }}
           />
         </div>
