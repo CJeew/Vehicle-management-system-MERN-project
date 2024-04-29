@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import "./BookingPage.css";
 import axios from "axios";
+
+const alphabeticOnly = (e) => {
+    const input = e.target;
+    input.value = input.value.replace(/[^a-zA-Z]/gi, "");
+};
+
+
+
+
 function AddBooking(){
     const[fname, setFname] = useState("");
     const[lname, setLname] = useState("");
@@ -29,6 +38,19 @@ function AddBooking(){
             serviceBox
         };
 
+               
+
+        //validate name fields
+        if (/\d/.test(fname) || /\d/.test(lname) || /[^a-zA-Z]/.test(fname) || /[^a-zA-Z]/.test(lname)){
+            alert("Name fields cannot contain integers or special characteristics(Ex: !@#$%");
+            return;
+        }
+
+        if (!/^[a-zA-Z0-9]+$/.test(vNum)) {
+            alert("Vehicle Number cannot have special characters.");
+            return;
+        }
+
         //Validation to check the input date is a future date
         const currentDate = new Date;                //get the current date
         const selectedDate  = new Date(dDate);       // Parse the selected date
@@ -38,12 +60,12 @@ function AddBooking(){
             return;
         }
 
-        // Validate phone number
-        if (!/^[\d]{10}$/.test(phoneNum)) {         //checking 10 digits
+        // Validate phone number - cannot add special characters
+        if (!/^[\d]{10}$/.test(phoneNum) ) {         //checking 10 digits
             alert("Please enter 10 digit valid phone number 07XXXXXXXX.");
             return;
         }
-
+       
         axios.post("http://localhost:8090/booking/addBooking", newBooking)
         .then(()=>{
             alert("Booking Added");
@@ -64,6 +86,8 @@ function AddBooking(){
         }else{
             setService(prevState => prevState.filter(item => item !== value));   //Remove from Array
         }
+        
+        
     }
     return(
     <div>
@@ -76,15 +100,21 @@ function AddBooking(){
                         <table class="w-full">
                             <tr>
                                 <td><label for="firstname" class="block text-sm font-medium text-black my-4">First Name</label></td>
-                                <td><input type="text" id="firstname" name="firstname" class="mt-1 p-2 block border-gray-300 rounded-md text-black" required onChange={(e) => setFname(e.target.value)}></input></td>
+                                <td><input type="text" id="firstname" name="firstname" class="mt-1 p-2 block border-gray-300 rounded-md text-black" required onChange={(e) => {alphabeticOnly(e); setFname(e.target.value);}}></input></td>
                                 <td> <label for="lastname" class="block text-sm font-medium text-black my-4">Last Name</label></td>
-                                <td> <input type="text" id="lastname" name="lastname" class="mt-1 p-2 block border-gray-300 rounded-md text-black"  required onChange={(e) => setLname(e.target.value)}></input></td>
+                                <td> <input type="text" id="lastname" name="lastname" class="mt-1 p-2 block border-gray-300 rounded-md text-black"  required onChange={(e) => {alphabeticOnly(e); setLname(e.target.value);}}></input></td>
                             </tr> 
                             <tr>   
                                 <td><label for="address" class="block text-sm font-medium text-black my-4">Address</label></td>
                                 <td><input type="textarea" id="address" name="address" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: Kottawa" required onChange={(e) => setAddress(e.target.value)}></input></td>
                                 <td><label for="phone" class="block text-sm font-medium text-black my-4">Phone Number</label></td>
-                                <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: 07XXXXXXXX" required onChange={(e) => setPhoneNum(e.target.value)}></input></td>
+                                
+                                <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: 07XXXXXXXX" required 
+                                onKeyPress={(e) => {const validCharacters = /^[0-9\b]+$/;
+                                        if (!validCharacters.test(e.key)) {
+                                        e.preventDefault();
+                                }
+              }}></input></td>
                             </tr>
                             <tr>
                                 <td><label for="email" class="block text-sm font-medium text-black my-4">Email</label></td>
@@ -96,7 +126,7 @@ function AddBooking(){
 
                             <tr>
                                 <td><label for="vehicle-number" class="block text-sm font-medium text-black me-5 my-4" >Vehicle Number</label></td>
-                                <td><input type="text" id="vehicle-number" name="vehicle-number" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: AB-XXXX"  required onChange={(e) => setVNum(e.target.value)}></input></td>
+                                <td><input type="text" id="vehicle-number" name="vehicle-number" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: ABXXXX"  required onChange={(e) => setVNum(e.target.value)}></input></td>
                                 <td><label for="vehicle-type" class="block text-sm font-medium text-black me-5 my-4">Vehicle Type</label></td> 
                                 <td><select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" onChange={(e) => setvType(e.target.value)}>
                                         <option value="">Select Vehicle Type</option> {/* Add an empty option for default selection */}
