@@ -11,12 +11,23 @@ function Edit_package() {
   const [description, setDescription] = useState("");
   const [unitPrice, setUnitPrice] = useState(0);
   const [category, setCategory] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [descriptionError, setDescriptionError] = useState("");
 
   function submit(e) {
     e.preventDefault();
 
+    if (!name.match(/^[a-zA-Z\s]*$/)) {
+      setNameError("Name should contain only letters and spaces");
+      return;
+    }
+
+    if (!description.match(/^[a-zA-Z0-9\s]*$/)) {
+      setDescriptionError("Description should contain only letters, numbers, and spaces");
+      return;
+    }
+
     const editPackage = {
-     
       name,
       description,
       unitprice: parseFloat(unitPrice), // Ensure unitPrice is correctly formatted as a number
@@ -63,9 +74,13 @@ function Edit_package() {
             value={name}
             type="text"
             className="px-3 py-1 rounded-lg border border-black-400 w-full text-black"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              setName(e.target.value);
+              setNameError("");
+            }}
             required
           />
+          {nameError && <p className="text-red-500">{nameError}</p>}
           <label className="block mb-2 text-sm font-bold text-gray-700">
             Description
           </label>
@@ -73,9 +88,13 @@ function Edit_package() {
             value={description}
             type="text"
             className="px-3 py-3 rounded-lg border border-black-400 w-full text-black"
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => {
+              setDescription(e.target.value);
+              setDescriptionError("");
+            }}
             required
           />
+          {descriptionError && <p className="text-red-500">{descriptionError}</p>}
           <label className="block mb-2 text-sm font-bold text-gray-700">
             Unit Price
           </label>

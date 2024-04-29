@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+// Define variables
 export default function View_package2() {
   const [packages, setPackages] = useState([]);
   const [selectedPackages, setSelectedPackages] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+   // Fetch packages from the server 
   useEffect(() => {
     function getPackages() {
       axios
@@ -20,6 +22,7 @@ export default function View_package2() {
     getPackages();
   }, []);
 
+  // Function to handle checkbox change
   const handleCheckboxChange = (pkg) => {
     const isSelected = selectedPackages.includes(pkg.pid);
     if (isSelected) {
@@ -29,6 +32,7 @@ export default function View_package2() {
     }
   };
 
+  // Function to calculate total price
   const calculateTotalPrice = () => {
     let total = 0;
     selectedPackages.forEach((pkgId) => {
@@ -57,6 +61,7 @@ export default function View_package2() {
           </a>
         </div>
       </div>
+      {/* Exterior Packages */}
       <div className="flex justify-center items-center w-full">
         <div className="grid grid-cols-2 gap-8 bg-gray-200 bg-opacity-70 rounded-lg p-14 m-10 mx-5 w-full max-w-7xl">
           {packages
@@ -66,6 +71,7 @@ export default function View_package2() {
                 className="flex flex-col justify-center items-center bg-black bg-opacity-75 text-white rounded-lg px-8 py-4 "
                 key={pkg.pid}
               >
+                {/*checkbox*/}
                 <input
                   type="checkbox"
                   checked={selectedPackages.includes(pkg.pid)}
@@ -80,6 +86,7 @@ export default function View_package2() {
             ))}
         </div>
       </div>
+      {/* calculating total price */}
       <div className="p-15 m-10 my-5 gap-4">
       <div className="flex justify-center items-center gap-4 ">
         

@@ -2,7 +2,7 @@ const router = require("express").Router();
 const manageparts = require("../../Models/manageparts.js");
 
 
-router.route("/add").post((req, res) => {
+router.route("/add").post(async(req, res) => {
     const itemcode = req.body.itemcode;
     const itemname = req.body.itemname;
     const category = req.body.category;
@@ -13,6 +13,12 @@ router.route("/add").post((req, res) => {
     const stocklimit = req.body.stocklimit;
     const remark = req.body.remark;
     const isactive = req.body.isactive;
+
+
+    const existingitemcode=await manageparts.findOne({itemcode});
+    if (existingitemcode){
+      return res.status(400).json({message:"the item already exists with this itemcode"});
+    }
 
     const newManageparts = new manageparts({
          itemcode,
@@ -122,5 +128,7 @@ router.route("/delete/:id").delete(async (req, res) => {
         res.status(500).json({ error: "Failed to check reorder levels" });
     }
 });
+
+
 
 module.exports = router;

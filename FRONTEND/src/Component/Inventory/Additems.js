@@ -14,11 +14,59 @@ export default function Additems() {
   const [stocklimit, setStocklimit] = useState("");
   const [remark, setRemark] = useState("");
   const [isactive, setIsactive] = useState("");
+  const [errors, setErrors] = useState({});
+
 
   const navigate = useNavigate()
 
+
+  function validateForm() {
+    const errors = {};
+
+
+   // Item Code validation
+   if (!itemcode.trim()) {
+    errors.itemcode = "Item Code is required";
+  } else if (!/^[a-zA-Z0-9]+$/.test(itemcode)) {
+    errors.itemcode = "Item Code can only contain letters and numbers";
+  }
+
+    // Item Name validation
+    if (!itemname.trim()) {
+      errors.itemname = "Item Name is required";
+    }
+ 
+        // Price validation
+        if (!price.trim()) {
+          errors.price = "Price is required";
+        } else if (!/^\d+(\.\d{1,2})?$/.test(price)) {
+          errors.price = "Invalid price format. Use numbers with up to two decimal places";
+        }
+    
+       // Stock Limit validation
+       if (!stocklimit.trim()) {
+        errors.stocklimit = "Stock Limit is required";
+      } else if (!/^\d+$/.test(stocklimit)) {
+        errors.stocklimit = "Stock Limit must be a positive integer";
+      }
+  
+      // Add more validation rules for other fields if needed
+  
+      return errors;
+    }
+  
+
+  // function sendData(e) {
+  //   e.preventDefault();
+
   function sendData(e) {
     e.preventDefault();
+    const errors = validateForm();
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return;
+    }
+
 
     const newAdditems = {
       itemcode,
@@ -40,14 +88,15 @@ export default function Additems() {
        
       })
       .catch((err) => {
-        alert(err);
+        alert(err.response.data.message);
       });
   }
 
-  return (
+return (
 <form onSubmit={sendData} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-auto w-1/4">
      
-      <center><h1>Add Item</h1></center>
+<h1 className="text-center font-bold text-black">Add Item</h1>
+
 
       <div className="mt-4">
         <div>
@@ -60,6 +109,8 @@ export default function Additems() {
             onChange={(e) => setItemcode(e.target.value)}
             className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
+            {errors.itemcode && <span className="text-red-500">{errors.itemcode}</span>}
+
         </div>
         <div>
           <label htmlFor="itemname" className="block text-sm font-medium leading-6 text-gray-900">Item Name</label>
@@ -71,6 +122,8 @@ export default function Additems() {
             onChange={(e) => setItemname(e.target.value)}
             className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
+           {errors.itemname && <span className="text-red-500">{errors.itemname}</span>}
+
         </div>
         <div>
           <label htmlFor="category" className="block text-sm font-medium leading-6 text-gray-900">Category</label>
@@ -93,7 +146,10 @@ export default function Additems() {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            
           />
+            {errors.price && <span className="text-red-500">{errors.price}</span>}
+
         </div>
         <div>
           <label htmlFor="suppliername" className="block text-sm font-medium leading-6 text-gray-900">Supplier Name</label>
@@ -115,6 +171,7 @@ export default function Additems() {
             value={reorderlevel}
             onChange={(e) => setReorderLevel(e.target.value)}
             className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            pattern="[0-9]"
           />
         </div>
         <div>
@@ -126,7 +183,10 @@ export default function Additems() {
             value={stocklimit}
             onChange={(e) => setStocklimit(e.target.value)}
             className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            
           />
+           {errors.stocklimit && <span className="text-red-500">{errors.stocklimit}</span>}
+
         </div>
         <div>
           <label htmlFor="remark" className="block text-sm font-medium leading-6 text-gray-900">Remark</label>

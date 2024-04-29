@@ -60,7 +60,8 @@ export default function EditItems() {
 
   return (
     <form onSubmit={updateItems} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-auto w-1/4">
-      <center><h1>Edit Item</h1></center>
+      <h1 className="text-center font-bold text-black">Update Item</h1>
+
       <div className="mt-4">
         <div>
           <label htmlFor="itemcode" className="block text-sm font-medium leading-6 text-gray-900">Item Code</label>

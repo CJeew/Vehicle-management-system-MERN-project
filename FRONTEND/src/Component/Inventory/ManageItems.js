@@ -48,8 +48,8 @@ export default function ManageItems() {
      const filteredmanageitems = items.filter((manageitems) =>
      manageitems.itemcode.toLowerCase().includes(searchTerm.toLowerCase()) ||
      manageitems.itemname.toLowerCase().includes(searchTerm.toLowerCase())||
-     manageitems.category.toLowerCase().includes(searchTerm.toLowerCase())
-    //  manageitems.description.toLowerCase().includes(searchTerm.toLowerCase())
+     manageitems.category.toLowerCase().includes(searchTerm.toLowerCase())||
+     manageitems.suppliername.toLowerCase().includes(searchTerm.toLowerCase())
    );
  
 
@@ -119,7 +119,7 @@ export default function ManageItems() {
       </div>
 
       
-      <div   class="overflow-x-auto max-h-[25 rem] overflow-y-scroll">
+      <div   class="overflow-x-auto mt-20 max-h-[25 rem] overflow-y-scroll">
       <table ref={ComponentsRef} class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10">
           <thead>
           <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
@@ -171,9 +171,9 @@ export default function ManageItems() {
       {alerts.length > 0 && (
         <div className="absolute bottom-8 right-8 bg-red-500 text-white font-bold py-2 px-4 rounded">
           {alerts.length === 1 ? (
-            `1 item (${alerts[0].itemcode}) needs reorder`
+            `1 item (${alerts[0].itemname}) needs reorder`
           ) : (
-            `${alerts.length} items (${alerts.map(alert => alert.itemcode).join(', ')}) need reorder`
+            `${alerts.length} items (${alerts.map(alert => alert.itemname).join(', ')}) need reorder`
           )}
         </div>
       )}
