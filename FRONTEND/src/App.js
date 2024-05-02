@@ -23,6 +23,7 @@ import Customerlogin from "./Component/Customerlogin";
 import Cmanager from "./Component/Cmanager";
 import CustomerList from "./Component/CustomerList";
 import CustomerReview from "./Component/CustomerReview";
+import Updatecustomer from "./Component/Updatecustomer";
 
 //import Register from "./Component/Register";
 
@@ -184,6 +185,7 @@ function App() {
           <Route path="/Cmanager" element={<Cmanager />} />
           <Route path="/CustomerList" element={<CustomerList />} />
           <Route path="/CustomerReview" element={<CustomerReview />} />
+          <Route path="/Updatecustomer/:id" element={<Updatecustomer />} />
 
           {/* ----------Sanjayan---------- */}
           <Route path="/addpayroll" element={<AddPayroll />} />
