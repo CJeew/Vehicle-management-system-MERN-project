@@ -51,6 +51,24 @@ router.route("/updateHoliday/:id").post(async(req,res)=>{
     })
  })
 
+//fetch data related to the id
+router.route("/get/:id").get(async(req,res)=>{
+    let holidayId = req.params.id;
+    console.log(holidayId);
+
+    const holiday = await holidaySetting.findById(holidayId)
+
+    .then((holiday)=>{
+        res.status(200).send({status: "Holiday Fetched", holiday});
+    })
+    .catch((err)=>{
+        console.log(err);
+        res.status(500).send({status: "Can't find the requested holiday", error: err.message});
+    });
+})
+
+
+
 //delete
 
 router.route("/deleteHoliday/:id").delete(async(req, res)=>{
