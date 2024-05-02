@@ -47,7 +47,7 @@ import EditBookRead from "./Component/EditBookRead";
 import EditHourSetting from "./Component/EditHourSetting";
 import EditHolidaySetting from "./Component/EditHolidaySetting";
 import UpdateHours from "./Component/UpdateHours";
-import UpdateHoliday from ".Component/UpdateHoliday";
+import UpdateHoliday from "./Component/UpdateHoliday";
 
 import Home from "./Component/home";
 
