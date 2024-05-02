@@ -69,7 +69,7 @@ router.route("/get/:id").get(async(req,res)=>{
     })
     .catch((err)=>{
         console.log(err);
-        res.status(500).send({status: "Can't fin the requested hour", errot: err.message});
+        res.status(500).send({status: "Can't find the requested hour", error: err.message});
     });
 })
 

@@ -46,10 +46,10 @@ function AddBooking(){
             return;
         }
 
-        if (!/^[a-zA-Z0-9]+$/.test(vNum)) {
+        if (!/^[a-zA-Z]+$/.test(vNum)) {
             alert("Vehicle Number cannot have special characters.");
             return;
-        }
+        } 
 
         //Validation to check the input date is a future date
         const currentDate = new Date;                //get the current date
