@@ -42,6 +42,23 @@ function CreateJob() {
             timeIn,
         };
 
+//Validation to prevent entering special characters
+if (!/^(J\d*)?$/.test(jobNumber)) {
+  alert("Please enter a valid Job Number starting with 'J' followed by numbers.");
+  return;
+}
+
+
+if (/[^a-zA-Z0-9\s]/.test(vehicleModel)) {
+  alert("Please remove special characters from the Job Number.");
+  return;
+}
+
+if (/[^a-zA-Z0-9\s]/.test(name)) {
+  alert("Please remove special characters from the Job Number.");
+  return;
+}
+
 //Job date and date out validation
 
         const currentDate = new Date();
@@ -132,7 +149,41 @@ function CreateJob() {
               <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
                   <div className="">  
                     <label className = "mr-11">Job Number :</label>
-                    <input type="text" onChange={(e) => setjobNumber(e.target.value)} className="rounded-md w-60 h-10 opacity-80 text-base mt-2" required/>
+                    <input
+                        type="text"
+                        placeholder=" ex : J12345"
+                        value={jobNumber}
+
+                        //Job number validation
+                        onKeyDown={(e) => {
+                          const key = e.key;
+                          const isBackspace = key === 'Backspace';
+                          const isDigit = /\d/.test(key);
+                          const isJ = key === 'J';
+                          const length = e.target.value.length;
+                  
+                          // Determine if key press is valid
+                          const isValid =
+                            isBackspace ||
+                            (length === 0 && isJ) || // First character must be 'J'
+                            (length > 0 && length < 6 && isDigit); // Remaining must be digits with total length < 6
+                  
+                          if (!isValid) {
+                            e.preventDefault(); // Prevent invalid input
+                          }
+                        }}
+                        onChange={(e) => {
+                          const newValue = e.target.value;
+                  
+                          // Ensure full pattern is correct to allow for backspace
+                          if (/^J\d{0,5}$/.test(newValue)) { // Valid pattern is J followed by up to 5 digits
+                            setjobNumber(newValue); // Only set valid values
+                          }
+                        }}
+                        maxLength={6} // Ensure length doesn't exceed pattern constraint
+                        className="rounded-md w-60 h-10 opacity-80 text-base mt-2"
+                        required
+                      />
                   </div>
 
                   <div className="">
