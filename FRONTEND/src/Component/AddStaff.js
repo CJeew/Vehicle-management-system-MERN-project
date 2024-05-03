@@ -11,7 +11,9 @@ export default function AddStaff() {
     const [email, setEmail] = useState("");
     const [mobileno, setMobileno] = useState("");
     const [joindate, setJoindate] = useState("");
-    //const [nicError, setNicError] = useState("");
+    const [nicError, setNicError] = useState("");
+    const [nameError, setNameError] = useState("");
+    const [designationError, setDesignationError] = useState("");
 
   
     // function validateEmail(value) {
@@ -48,6 +50,11 @@ export default function AddStaff() {
     function handleDateChange(e) {
       const selectedDate = new Date(e.target.value);
       const currentDate = new Date();
+
+      // Set hours, minutes, seconds, and milliseconds to 0 for both dates
+      currentDate.setHours(0, 0, 0, 0);
+      selectedDate.setHours(0, 0, 0, 0);
+  
   
       if (selectedDate > currentDate) {
         alert("Please select a date on or before today.");
@@ -56,20 +63,61 @@ export default function AddStaff() {
       }
     }
 
-    // //NIC format error message
-    // function handleNicChange(e) {
-    //   const value = e.target.value;
-    //   const nicPattern = /^[0-9]{9}[vV]{1}$|^[0-9]{12}$/;
+    //NIC format error message
+    function handleNicChange(e) {
+      const value = e.target.value;
+      const nicPattern = /^[0-9]{9}[vV]{1}$|^[0-9]{12}$/;
   
-    //   if (!nicPattern.test(value)) {
-    //     setNicError(
-    //       "NIC should contain 9 numeric digits and 1 V letter or should contain 12 numeric digits"
-    //     );
-    //   } else {
-    //     setNicError("");
-    //     setNic(value);
+      if (!nicPattern.test(value)) {
+        setNicError(
+          "NIC should contain 9 numeric digits and 1 V letter or should contain 12 numeric digits"
+        );
+      } else {
+        setNicError("");
+        setNic(value);
+      }
+    }
+
+    //Name format error message
+    function handleNameChange(e) {
+      const value = e.target.value;
+      const namePattern = /^[A-Za-z\s]+$/;
+  
+      if (!namePattern.test(value)) {
+        setNameError(
+          "Name should contain only letters"
+        );
+      } else {
+        setNameError("");
+        setName(value);
+      }
+    }
+
+    //Designation format error message
+    function handleDesignationChange(e) {
+      const value = e.target.value;
+      const designationPattern = /^[A-Za-z\s]+$/;
+  
+      if (!designationPattern.test(value)) {
+        setDesignationError(
+          "Designation should contain only letters"
+        );
+      } else {
+        setDesignationError("");
+        setDesignation(value);
+      }
+    }
+
+    // function handleNameChange(e) {
+    //   const value = e.target.value;
+    //   // Regular expression to match only alphabetic characters and spaces
+    //   const namePattern = /^[A-Za-z\s]+$/;
+  
+    //   if (namePattern.test(value)) {
+    //     setName(value);
     //   }
     // }
+  
 
 return (
   <form onSubmit={sendData}>
@@ -85,20 +133,17 @@ return (
             type="text"
             name="nic"
             id="nic"
-            // className={`block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${
-            //   nicError ? "border-red-500" : ""
-            // }`}
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            pattern="[0-9]{9}[vV]{1}|[0-9]{12}"
-            onChange={(e)=>{
-
-              setNic(e.target.value);
-            }}
+            className={`block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${
+              nicError ? "border-red-500" : ""
+            }`}
+            //class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            //pattern="[0-9]{9}[vV]{1}|[0-9]{12}"
+            onChange={handleNicChange}
           required/>
           
-          {/* {nicError && (
+           {nicError && (
                 <p className="text-red-500 text-sm mt-1">{nicError}</p>
-              )} */}
+              )}
          
         </div>
       </div>
@@ -112,12 +157,17 @@ return (
             type="text"
             name="name"
             id="name"
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            onChange={(e)=>{
-
-              setName(e.target.value);
-            }}
+            className={`block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${
+              nameError ? "border-red-500" : ""
+            }`}
+            //class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            //pattern="[A-Za-z]"
+            onChange={handleNameChange}
             required/>
+
+            {nameError && (
+                <p className="text-red-500 text-sm mt-1">{nameError}</p>
+              )}
         </div>
       </div>
 
@@ -170,12 +220,16 @@ return (
             type="text"
             name="designation"
             id="designation"
+            className={`block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${
+              designationError ? "border-red-500" : ""
+            }`}
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            onChange={(e)=>{
-
-              setDesignation(e.target.value);
-            }}
+            onChange={handleDesignationChange}
             required/>
+
+            {designationError && (
+                <p className="text-red-500 text-sm mt-1">{designationError}</p>
+              )}
         </div>
       </div>
 
@@ -185,7 +239,7 @@ return (
         </label>
         <div class="mt-2">
           <input
-            type="tel"
+            type="number"
             name="mobileno"
             id="mobileno"
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

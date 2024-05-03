@@ -17,7 +17,7 @@ export default function ServiceHome() {
             <a className="font-bold text-1xl" href="PkageHome">
               <button
                 className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
-                                     hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+                                     hover:to-amber-700 text-white font-bold py-5 px-6 rounded-lg mr-2 opacity-90 transition duration-300 
                                      ease-in-out transform hover:scale-105"
               >
                 {/* add button with icon*/}
@@ -32,7 +32,7 @@ export default function ServiceHome() {
             <a href="rechome">
               <button
                 className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
-                                     hover:to-amber-700 text-white font-bold py-4 px-5 rounded-lg mr-2 opacity-90 transition duration-300 
+                                     hover:to-amber-700 text-white font-bold py-5 px-6 rounded-lg mr-2 opacity-90 transition duration-300 
                                      ease-in-out transform hover:scale-105"
               >
                 <i className="pi pi-wrench" style={{ fontSize: "2rem" }}></i>{" "}

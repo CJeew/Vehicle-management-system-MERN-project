@@ -23,6 +23,7 @@ import Customerlogin from "./Component/Customerlogin";
 import Cmanager from "./Component/Cmanager";
 import CustomerList from "./Component/CustomerList";
 import CustomerReview from "./Component/CustomerReview";
+import Updatecustomer from "./Component/Updatecustomer";
 
 //import Register from "./Component/Register";
 
@@ -46,6 +47,7 @@ import EditBookRead from "./Component/EditBookRead";
 import EditHourSetting from "./Component/EditHourSetting";
 import EditHolidaySetting from "./Component/EditHolidaySetting";
 import UpdateHours from "./Component/UpdateHours";
+import UpdateHoliday from "./Component/UpdateHoliday";
 
 import Home from "./Component/home";
 
@@ -70,6 +72,7 @@ import Addrec from "./Component/Add_recodes";
 import Rechome from "./Component/Recordshome";
 import Recview from "./Component/servicerecordview";
 import Editrec from "./Component/Edit_record";
+import Printrec from "./Component/Service_Recodeviewprint";
 
 //staff
 import AddPayroll from "./Component/AddPayroll";
@@ -157,6 +160,7 @@ function App() {
           <Route path="/rechome" element={<Rechome />} />
           <Route path="/recview" element={<Recview />} />
           <Route path="/editrec/:id" element={<Editrec />} />
+          <Route path="/printrec" element={<Printrec />} />
 
           {/*---------Tavini-------------Booking------------------------------*/}
           <Route path="/booking" element={<BookingPage />} />
@@ -173,6 +177,7 @@ function App() {
           <Route path="/editHourSetting" element={<EditHourSetting />} />
           <Route path="/editHolidaySetting" element={<EditHolidaySetting />} />
           <Route path="/updateSetting/:id" element={<UpdateHours/>}/>
+          <Route path="/updateHoliday/:id" element={<UpdateHoliday/>}/>
 
           {/* <Route path="/test" element={<Test/>}/> */}
 
@@ -184,6 +189,7 @@ function App() {
           <Route path="/Cmanager" element={<Cmanager />} />
           <Route path="/CustomerList" element={<CustomerList />} />
           <Route path="/CustomerReview" element={<CustomerReview />} />
+          <Route path="/Updatecustomer/:id" element={<Updatecustomer />} />
 
           {/* ----------Sanjayan---------- */}
           <Route path="/addpayroll" element={<AddPayroll />} />
