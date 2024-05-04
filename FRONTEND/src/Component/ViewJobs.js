@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function ViewJobs() {
   const [allJobs, setallJobs] = useState([]);
   const [searchJob, setSearchJob] = useState(''); 
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -51,7 +53,7 @@ const filteredJobs = allJobs.filter((job) => {
       try{
         await axios.delete(`http://localhost:8090/job/delete/${jobId}`);
         alert('Job Deleted Successfully');
-        window.location.reload(); 
+        navigate('/viewjobs');
 
       } catch(error){
         console.error('Error deleting job',error);
