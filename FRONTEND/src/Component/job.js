@@ -43,11 +43,6 @@ function CreateJob() {
         };
 
 //Validation to prevent entering special characters
-if (!/^(J\d*)?$/.test(jobNumber)) {
-  alert("Please enter a valid Job Number starting with 'J' followed by numbers.");
-  return;
-}
-
 
 if (/[^a-zA-Z0-9\s]/.test(vehicleModel)) {
   alert("Please remove special characters from the Job Number.");

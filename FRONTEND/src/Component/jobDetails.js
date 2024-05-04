@@ -248,12 +248,7 @@ const generatePDFReport = () => {
  
         </div>
         <div className="flex justify-end items-end space-x-4">
-          {/* Generate Report button */}
-            <button
-              onClick={generatePDFReport}
-              className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
-              hover:to-amber-700 text-white font-bold py-2 px-5 rounded-lg mr-2 opacity-90 transition duration-300
-              ease-in-out transform hover:scale-105"> Generate Report</button>
+         
               
           {/* update button */}
           <Link to ={`/updatejobs/${jobDetails._id}`}>
@@ -267,6 +262,21 @@ const generatePDFReport = () => {
                   className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-900 hover:via-red-700 
                                   hover:to-red-600 text-white font-bold py-2 px-5 rounded-lg mr-2 opacity-80 transition duration-300
                                   ease-in-out transform hover:scale-105">Delete</button>
+
+            {/* Generate Report button */}
+             <button onClick={generatePDFReport}
+                className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                                  hover:to-amber-700 text-white font-bold py-2 px-5 rounded-lg mr-2 opacity-90 transition duration-300
+                                  ease-in-out transform hover:scale-105"> Generate Report</button>
+
+            {/* Button to track job status */}
+            <Link to ={`/trackjobs/${jobDetails._id}`}>
+            <button className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-900 hover:from-blue-950 hover:via-blue-700 
+                                  hover:to-blue-600 text-white font-bold py-2 px-5 rounded-lg mr-2 opacity-80 transition duration-300
+                                  ease-in-out transform hover:scale-105">Track Status</button>
+          </Link>
+
+                                  
         </div>
       </div>
     </div>
