@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const holidaySetting = require("../../Models/holiday");
 
-
-
 //create
 
 router.route("/addHolidays").post((req,res)=>{

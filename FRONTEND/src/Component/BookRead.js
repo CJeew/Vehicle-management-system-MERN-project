@@ -112,6 +112,7 @@ export default function BookRead() {
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.vNum}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.vType}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(booking.dDate)}</td>
+                                {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.dDate}</td> */}
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.tTime}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.serviceBox}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
