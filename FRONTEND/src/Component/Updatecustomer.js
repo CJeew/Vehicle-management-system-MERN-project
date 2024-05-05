@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-import "./Home.css";
-import "./CustomerList.js";
-import "./Chome.js";
-
-export default function Updatecustomer() {
+export default function Updatecustomers() {
   const [cname, setcname] = useState("");
   const [cnic, setcnic] = useState("");
   const [cphone, setcphone] = useState("");
@@ -15,73 +11,12 @@ export default function Updatecustomer() {
   const [cvtype, setcvtype] = useState("");
   const [cpass, setcpass] = useState("");
   const [cpass2, setcpass2] = useState("");
-  const { cusid } = useParams();
-  console.log(cusid);
+  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8090/customer/get/${cusid}`)
-      .then((res) => {
-        console.log(res);
-        setcname(res.data.customer.cname);
-        setcnic(res.data.customer.cnic);
-        setcphone(res.data.customer.cphone);
-        setcmail(res.data.customer.cmail);
-        setcvnum(res.data.customer.cvnum);
-        setcvtype(res.data.customer.cvtype);
-        setcpass(res.data.customer.cpass);
-        setcpass2(res.data.customer.cpass2);
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
-  }, []);
-
-  function submit(e) {
+  function updatecustomer(e) {
     e.preventDefault();
-
-    // Validation logic
-    if (!cmail) {
-      alert("Please insert your Email.");
-      return;
-    }
-
-    if (!/^[\d]{10}$/.test(cphone)) {
-      alert("Please enter a 10 digit valid phone number 07XXXXXXXX.");
-      return;
-    }
-
-    if (cpass !== cpass2) {
-      alert("Passwords do not match!");
-      return;
-    }
-
-    if (!cname) {
-      alert("Please insert your name.");
-      return;
-    }
-
-    if (!cvnum) {
-      alert("Please insert your vehicle number.");
-      return;
-    }
-
-    if (!cvtype) {
-      alert("Please select your vehicle type.");
-      return;
-    }
-
-    if (!cphone) {
-      alert("Please insert your phone number.");
-      return;
-    }
-
-    if (!cnic) {
-      alert("Please insert your NIC number.");
-      return;
-    }
-
-    const submitData = {
+    const Updatedcustomer = {
       cname,
       cnic,
       cphone,
@@ -93,24 +28,47 @@ export default function Updatecustomer() {
     };
 
     axios
-      .put(`http://localhost:8090/customer/Updatecustomer/${cusid}`, submitData)
+      .put(`http://localhost:8090/customer/update/${id}`, Updatedcustomer)
       .then(() => {
         alert("Details updated");
-        window.location.href = "/recview";
+        window.location.href = "/CustomerList";
       })
       .catch((err) => {
         alert(err.message);
       });
   }
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8090/customer/get/${id}`)
+      .then((res) => {
+        setcname(res.data.list.cname);
+        setcnic(res.data.list.cnic);
+        setcphone(res.data.list.cphone);
+        setcmail(res.data.list.cmail);
+        setcvnum(res.data.list.cvnum);
+        setcvtype(res.data.list.cvtype);
+        setcpass(res.data.list.cpass);
+        setcpass2(res.data.list.cpass2);
+        setLoading(false);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }, [id]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <form
-      onSubmit={submit}
+      onSubmit={updatecustomer}
       className="w-half bg-gray-100 p-6 ms-60 my-10 mt230 p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50"
     >
       <div>
         <div class="text-black mt-3 text-center text-4xl font-bold">
-          Customer Registration
+          Customer update
         </div>
         <div class="p-8">
           <div class="flex gap-4">
@@ -223,7 +181,7 @@ export default function Updatecustomer() {
           <div></div>
         </div>
         <div class="text-center">
-          <button
+          <button onClick={updatecustomer}
             type="submit"
             class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                   hover:to-amber-700 text-white font-bold py-3 px-10 rounded-lg mr-2 opacity-90 transition duration-300
