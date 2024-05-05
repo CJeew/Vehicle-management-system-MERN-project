@@ -161,7 +161,8 @@ export default function RegisterRead() {
                   <div class="flex items-center justify-start gap-2">
                     {/* Edit booking button */}
                     <Link
-                      to={`/Updatecustomer/${customer.cusid}`}
+                      to={`/Updatecustomer/${customer._id}`}
+                      
                       type="button"
                       class="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                     >

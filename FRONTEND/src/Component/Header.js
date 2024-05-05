@@ -7,7 +7,7 @@ import "./Chome.js";
 import "./Chome.css";
 import "./Register.js";
 import "./Review.js";
-import "./Profile.js";
+
 
 function Header() {
   return (
