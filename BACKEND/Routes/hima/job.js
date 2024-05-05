@@ -2,6 +2,8 @@ const router = require("express").Router();
 
 let jobModel = require("../../Models/jobs");
 
+const mongoose = require('mongoose');
+
 //Fetch data from the frontend
 
 router.route("/addJob").post((req, res) => {
@@ -175,6 +177,33 @@ router.route("/get/:id").get(async (req, res) => {
       res.status(500).send({ status: "Can't find the requested job", error: err.message });
     });
 });
+
+
+//Fetch service type data
+router.get("/trackjobs/:jobNumber", async (req, res) => {
+  try {
+    const jobNumber = req.params.jobNumber;
+
+    // Validate if the jobNumber is a valid ObjectId
+    if (!mongoose.isValidObjectId(jobNumber)) { // ObjectId validation
+      return res.status(400).send("Invalid Job Number"); // Return error if invalid
+    }
+
+    const job = await jobModel.findById(jobNumber, "serviceType"); // Fetch only serviceType
+    if (!job) {
+      return res.status(404).send("Job not found");
+    }
+
+    res.send(job.serviceType); // Return serviceType data
+    
+  } catch (error) {
+    console.error("Error fetching job data:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+
+
 
 
 

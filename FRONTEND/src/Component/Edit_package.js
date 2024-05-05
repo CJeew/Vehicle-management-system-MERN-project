@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 
 function Edit_package() {
   const { id } = useParams();
-  //  package form
- 
+  
+  // package form
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [unitPrice, setUnitPrice] = useState(0);
@@ -14,17 +14,45 @@ function Edit_package() {
   const [nameError, setNameError] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8090/svc-packages/get/${id}`)
+      .then((res) => {
+        setName(res.data.name);
+        setDescription(res.data.description);
+        setUnitPrice(res.data.unitprice);
+        setCategory(res.data.category);
+      })
+      .catch((err) => {
+        alert(err.message); //error message
+      });
+  }, []);
+
+  function handleNameChange(e) {
+    const value = e.target.value;
+    if (/^[a-zA-Z\s]*$/.test(value)) {
+      setName(value);
+      setNameError("");
+    } else {
+      setNameError("Name should contain only letters and spaces");
+    }
+  }
+
+  function handleDescriptionChange(e) {
+    const value = e.target.value;
+    if (/^[a-zA-Z\s]*$/.test(value)) {
+      setDescription(value);
+      setDescriptionError("");
+    } else {
+      setDescriptionError("Description should contain only letters and spaces");
+    }
+  }
+
   function submit(e) {
     e.preventDefault();
 
-    if (!name.match(/^[a-zA-Z\s]*$/)) {
-      setNameError("Name should contain only letters and spaces");
-      return;
-    }
-
-    if (!description.match(/^[a-zA-Z0-9\s]*$/)) {
-      setDescriptionError("Description should contain only letters, numbers, and spaces");
-      return;
+    if (nameError || descriptionError) {
+      return; // Don't submit if there are errors
     }
 
     const editPackage = {
@@ -44,20 +72,6 @@ function Edit_package() {
         alert(err.message); //error message
       });
   }
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8090/svc-packages/get/${id}`)
-      .then((res) => {
-      
-        setName(res.data.name);
-        setDescription(res.data.description);
-        setUnitPrice(res.data.unitprice);
-        setCategory(res.data.category);
-      })
-      .catch((err) => {
-        alert(err.message); //error message
-      });
-  }, []);
 
   return (
     <div className="  w-full flex justify-center items-center ">
@@ -74,10 +88,7 @@ function Edit_package() {
             value={name}
             type="text"
             className="px-3 py-1 rounded-lg border border-black-400 w-full text-black"
-            onChange={(e) => {
-              setName(e.target.value);
-              setNameError("");
-            }}
+            onChange={handleNameChange}
             required
           />
           {nameError && <p className="text-red-500">{nameError}</p>}
@@ -88,10 +99,7 @@ function Edit_package() {
             value={description}
             type="text"
             className="px-3 py-3 rounded-lg border border-black-400 w-full text-black"
-            onChange={(e) => {
-              setDescription(e.target.value);
-              setDescriptionError("");
-            }}
+            onChange={handleDescriptionChange}
             required
           />
           {descriptionError && <p className="text-red-500">{descriptionError}</p>}

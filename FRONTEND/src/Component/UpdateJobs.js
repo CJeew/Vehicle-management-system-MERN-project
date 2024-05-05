@@ -48,6 +48,24 @@ export default function UpdateJob() {
 
       };
 
+    //Validation to prevent enteering special characters
+      if (/[^a-zA-Z0-9\s]/.test(jobnumber)) {
+        alert("Please remove special characters from the Job Number.");
+        return;
+      }
+
+      if (/[^a-zA-Z0-9\s]/.test(vehicleModel)) {
+        alert("Please remove special characters from the Job Number.");
+        return;
+      }
+
+      if (/[^a-zA-Z0-9\s]/.test(name)) {
+        alert("Please remove special characters from the Job Number.");
+        return;
+      }
+
+      
+
       axios.put(`http://localhost:8090/job/updatejobs/${id}`, updatedJob)
       .then(() => {
         alert("Job updated successfully");
@@ -87,6 +105,7 @@ export default function UpdateJob() {
       });
         
     }, []);
+
 
 
 

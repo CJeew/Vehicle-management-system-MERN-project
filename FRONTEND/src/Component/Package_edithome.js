@@ -21,6 +21,10 @@ export default function Package_edithome() {
     getPackages();
   }, []);
   function DeletePackage(id) {
+    const confirm = window.confirm("Are you sure you want to delete this package?");
+    if (!confirm) {
+      return;
+    }
     axios
       .delete(`http://localhost:8090/svc-packages/delete/${id}`)
       .then((res) => {

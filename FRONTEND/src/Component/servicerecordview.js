@@ -36,12 +36,7 @@ export default function ServiceRecordView() {
     setFilteredRecords(filtered);
   }, [searchQuery, records]);
 
-  //function to generate report
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-    DocumentTittle: "service report",
-    onafterprint: () => alert("user report successfully ")
-  });
+  
 
   return (
     <div className="mx-auto max-w-5xl">
@@ -111,11 +106,13 @@ export default function ServiceRecordView() {
         </tbody>
       </table>
       <div className="absolute right-8 mt-5">
-        <button onClick={handlePrint} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+        <a href="printrec">
+        <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
           Generate Report
         </button>
         <div className="mt-1 opacity-0">.</div>
-      </div>
+        </a>
+        </div>
     </div>
   );
 }

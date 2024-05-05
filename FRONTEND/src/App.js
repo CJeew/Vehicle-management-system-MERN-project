@@ -13,6 +13,7 @@ import Create_Job from "./Component/job";
 import ViewJobs from "./Component/ViewJobs";
 import JobDetails from "./Component/jobDetails";
 import UpdateJobs from "./Component/UpdateJobs";
+import TrackJobs from "./Component/TrackJobs";
 
 //Customer
 import Chome from "./Component/Chome";
@@ -44,6 +45,7 @@ import EditBookRead from "./Component/EditBookRead";
 import EditHourSetting from "./Component/EditHourSetting";
 import EditHolidaySetting from "./Component/EditHolidaySetting";
 import UpdateHours from "./Component/UpdateHours";
+import UpdateHoliday from "./Component/UpdateHoliday";
 
 import Home from "./Component/home";
 
@@ -68,6 +70,7 @@ import Addrec from "./Component/Add_recodes";
 import Rechome from "./Component/Recordshome";
 import Recview from "./Component/servicerecordview";
 import Editrec from "./Component/Edit_record";
+import Printrec from "./Component/Service_Recodeviewprint";
 
 //staff
 import AddPayroll from "./Component/AddPayroll";
@@ -138,6 +141,7 @@ function App() {
           <Route path="/viewjobs" element={<ViewJobs />} />
           <Route path="/details/:jobNumber" element={<JobDetails />} />
           <Route path="/updatejobs/:id" element={<UpdateJobs />} />
+          <Route path="/trackjobs/:jobNumber" element={<TrackJobs />} />
 
           {/* <Route path="/update" element={<Update/>}/> */}
 
@@ -155,6 +159,7 @@ function App() {
           <Route path="/rechome" element={<Rechome />} />
           <Route path="/recview" element={<Recview />} />
           <Route path="/editrec/:id" element={<Editrec />} />
+          <Route path="/printrec" element={<Printrec />} />
 
           {/*---------Tavini-------------Booking------------------------------*/}
           <Route path="/booking" element={<BookingPage />} />
@@ -171,6 +176,7 @@ function App() {
           <Route path="/editHourSetting" element={<EditHourSetting />} />
           <Route path="/editHolidaySetting" element={<EditHolidaySetting />} />
           <Route path="/updateSetting/:id" element={<UpdateHours/>}/>
+          <Route path="/updateHoliday/:id" element={<UpdateHoliday/>}/>
 
           {/* <Route path="/test" element={<Test/>}/> */}
 
