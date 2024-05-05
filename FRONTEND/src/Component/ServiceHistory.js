@@ -36,13 +36,13 @@ export default function BookRead() {
 
         }, []);
 
-    const filterPastBookings = (bookings) => {
-        const currentDate = new Date();
-        return bookings.filter((booking) => {
-            const bookingDate = new Date(booking.dDate);
-            return bookingDate < currentDate;
-        });
-    };
+        const filterPastBookings = (bookings) => {
+            const currentDate = new Date();
+            return bookings.filter((booking) => {
+                const bookingDate = new Date(booking.dDate);
+                return bookingDate < currentDate;
+            });
+        };
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
