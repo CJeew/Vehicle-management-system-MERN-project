@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import "./Cmanager.js";
-import {useReactToPrint} from 'react-to-print';
-
+import { useReactToPrint } from "react-to-print";
 
 export default function ReviewRead() {
   const [reviewAdd, setlist] = useState([]);
@@ -26,25 +24,24 @@ export default function ReviewRead() {
     getlist();
   }, []);
 
-  // Function to handle deletion of a payroll
+  // Function to handle deletion of a review
   const onDeleteClick = async (revid) => {
     await axios.delete(`http://localhost:8090/reviewAdd/delete/${revid}`);
     alert("Review Deleted Successfully");
     window.location.reload(); // Refresh page after successful deletion
   };
-  //Function to filter bookings
-  const filteredreview = reviewAdd.filter(
-    (reviewAdd) =>
-      reviewAdd.rating.toLowerCase().includes(searchTerm.toLowerCase())
-    //reviewAdd.cmail.toLowerCase().includes(searchTerm.toLowerCase())
+
+  // Function to filter reviews based on rating
+  const filteredReview = reviewAdd.filter((reviewAdd) =>
+    reviewAdd.rating.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  //Function to generate reports
+  // Function to generate report
   const handlePrint = useReactToPrint({
-    content:()=>componentRef.current,
-    DocumentTitle:"Review List",
-    onafterprint:()=>alert ("Review List generation successfull !!")
-  })
+    content: () => componentRef.current,
+    DocumentTitle: "Review List",
+    onafterprint: () => alert("Review List generation successful !!"),
+  });
 
   return (
     <div>
@@ -70,10 +67,14 @@ export default function ReviewRead() {
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>
-            
-            <div className="absolute right-20 mt-0">
-            <button onClick={handlePrint} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Generate Report</button></div>
-            
+          </div>
+          <div className="absolute right-8 mt-12">
+            <button
+              onClick={handlePrint}
+              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+            >
+              Generate Report
+            </button>
           </div>
           <input
             type="text"
@@ -85,54 +86,54 @@ export default function ReviewRead() {
         </div>
       </div>
 
-      <div class="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-screen">
         <table
-          class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mx-10 absolute bottom-20 left-25"
+          className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mx-10 absolute bottom-20 left-25"
           ref={componentRef}
         >
           <thead>
-            <tr class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-15">
+            <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-15">
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
               >
                 E-Mail
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
               >
-                Rating{" "}
+                Rating
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
               >
                 Message
               </th>
             </tr>
           </thead>
           <tbody>
-            {filteredreview.map((reviewAdd) => (
+            {filteredReview.map((reviewAdd) => (
               <tr
                 key={reviewAdd.id}
-                class="bg-white border-b border-gray-200 hover:bg-gray-50"
+                className="bg-white border-b border-gray-200 hover:bg-gray-50"
               >
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {reviewAdd.cmail}{" "}
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {reviewAdd.cmail}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {reviewAdd.rating}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {reviewAdd.message}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   <div>
-                    {/* Delete review button  */}
+                    {/* Delete review button */}
                     <button
                       onClick={() => onDeleteClick(reviewAdd._id)}
-                      class="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                      className="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                     >
                       Delete
                     </button>
