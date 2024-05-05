@@ -48,9 +48,9 @@ router.route("/").get(async(req,res)=>{
 
 //update
 
-router.route("/updateBook/:id").post(async(req,res)=>{
-    let bookId = req.params.id;
-    const{fname, lname, address, phoneNum, eMail, vNum, vType, dDate, tTime, serviceBox} = req.body; 
+router.route("/updateBooking/:id").put(async (req, res) => {
+    const { id } = req.params;
+    const { fname, lname, address, phoneNum, eMail, vNum, vType, dDate, tTime, serviceBox } = req.body;
 
     const updateBooking = {
         fname,
@@ -63,15 +63,36 @@ router.route("/updateBook/:id").post(async(req,res)=>{
         dDate,
         tTime,
         serviceBox
-    }
-    const update = await booking.findByIdUpdate(bookId, updateBooking)  //await - waiting until the before update finish to execute next update
-    .then(()=>{  
-        res.status(200).send({status: "Booking Updated"})
-    }).catch((err)=>{
+    };
+
+    try {
+        const update = await booking.findByIdAndUpdate(id, updateBooking);
+        if (!update) {
+            return res.status(404).send({ status: "Booking not found" });
+        }
+        res.status(200).send({ status: "Booking Updated" });
+    } catch (err) {
         console.log(err);
-        res.status(500).send({status: "Error with updating data", error: err.message});
-    })
- })
+        res.status(500).send({ status: "Error with updating data", error: err.message });
+    }
+});
+
+//fetch
+
+router.route("/get/:id").get(async (req, res) => {
+    const bookId = req.params.id;
+    try {
+        const book = await booking.findById(bookId);
+        if (!book) {
+            return res.status(404).send({ status: "Booking not found" });
+        }
+        res.status(200).send({ status: "Booking Fetched", book });
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get booking", error: err.message });
+    }
+});
+
 
  //delete
 
@@ -86,16 +107,5 @@ router.route("/updateBook/:id").post(async(req,res)=>{
     })
  })
 
- //fetch data of one booking
- router.route("/get/:id").get(async(req,res)=>{
-    let bookId = req.params.id;
-    const book = await booking.findById(bookId)  //primary key - .findOne(email)
-    .then((book)=>{
-        res.status(200).send({status: "Booking Fetched", book})
-    }).catch((err)=>{
-        console.log(err.message);
-        res.status(500).send({status: "Error with get booking", error: err.message});
-    })
- })
-
+ 
 module.exports = router;

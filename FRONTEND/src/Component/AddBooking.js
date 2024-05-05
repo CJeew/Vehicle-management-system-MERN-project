@@ -46,10 +46,10 @@ function AddBooking(){
             return;
         }
 
-        if (!/^[a-zA-Z]+$/.test(vNum)) {
-            alert("Vehicle Number cannot have special characters.");
-            return;
-        } 
+        // if (!/^[a-zA-Z]+$/.test(vNum)) {
+        //     alert("Vehicle Number cannot have special characters.");
+        //     return;
+        // } 
 
         //Validation to check the input date is a future date
         const currentDate = new Date;                //get the current date
@@ -69,7 +69,7 @@ function AddBooking(){
         axios.post("http://localhost:8090/booking/addBooking", newBooking)
         .then(()=>{
             alert("Booking Added");
-            window.location.reload();
+            window.location.href = "/bookCusLog";
         }).catch((err)=>{
             alert(err);
         });
@@ -109,12 +109,7 @@ function AddBooking(){
                                 <td><input type="textarea" id="address" name="address" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: Kottawa" required onChange={(e) => setAddress(e.target.value)}></input></td>
                                 <td><label for="phone" class="block text-sm font-medium text-black my-4">Phone Number</label></td>
                                 
-                                <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: 07XXXXXXXX" required 
-                                onKeyPress={(e) => {const validCharacters = /^[0-9\b]+$/;
-                                        if (!validCharacters.test(e.key)) {
-                                        e.preventDefault();
-                                }
-              }}></input></td>
+                                <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: 07XXXXXXXX" required onChange={(e) => setPhoneNum(e.target.value)}></input></td>
                             </tr>
                             <tr>
                                 <td><label for="email" class="block text-sm font-medium text-black my-4">Email</label></td>
@@ -128,7 +123,7 @@ function AddBooking(){
                                 <td><label for="vehicle-number" class="block text-sm font-medium text-black me-5 my-4" >Vehicle Number</label></td>
                                 <td><input type="text" id="vehicle-number" name="vehicle-number" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: ABXXXX"  required onChange={(e) => setVNum(e.target.value)}></input></td>
                                 <td><label for="vehicle-type" class="block text-sm font-medium text-black me-5 my-4">Vehicle Type</label></td> 
-                                <td><select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" onChange={(e) => setvType(e.target.value)}>
+                                <td><select id="vehicle-type" name="vehicle-type" class="mt-1 p-2 block border-gray-300 rounded-md text-black" required onChange={(e) => setvType(e.target.value)}>
                                         <option value="">Select Vehicle Type</option> {/* Add an empty option for default selection */}
                                         <option value="Car">Car</option>
                                         <option value="Van">Van</option>
