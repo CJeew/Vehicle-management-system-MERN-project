@@ -13,6 +13,7 @@ import Create_Job from "./Component/job";
 import ViewJobs from "./Component/ViewJobs";
 import JobDetails from "./Component/jobDetails";
 import UpdateJobs from "./Component/UpdateJobs";
+import TrackJobs from "./Component/TrackJobs";
 
 //Customer
 import Chome from "./Component/Chome";
@@ -143,6 +144,7 @@ function App() {
           <Route path="/viewjobs" element={<ViewJobs />} />
           <Route path="/details/:jobNumber" element={<JobDetails />} />
           <Route path="/updatejobs/:id" element={<UpdateJobs />} />
+          <Route path="/trackjobs/:jobNumber" element={<TrackJobs />} />
 
           {/* <Route path="/update" element={<Update/>}/> */}
 
