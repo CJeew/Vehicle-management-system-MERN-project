@@ -34,15 +34,20 @@ router.route("/").get(async(req,res)=>{
 
 //update
 
-router.route("/updateHoliday/:id").post(async(req,res)=>{
-    let holidayId = req.params.id;
+router.route("/updateHoliday/:id").put(async(req,res)=>{
+    const {id} = req.params;
+    console.log(id)
+    // let holidayId = req.params.id;
+
     const{busyDate, event} = req.body; 
 
     const updateHolidaySetting = {
         busyDate, 
         event
     }
-    const updateHolidays = await holidaySetting.findByIdUpdate(holidayId, updateHolidaySetting)  //await - waiting until the before update finish to execute next update
+    console.log(updateHolidaySetting)
+
+    const updateHolidays = await holidaySetting.findByIdUpdate(id, updateHolidaySetting)  //await - waiting until the before update finish to execute next update
     .then(()=>{  
         res.status(200).send({status: "Holidays Setting Updated"})
     }).catch((err)=>{
