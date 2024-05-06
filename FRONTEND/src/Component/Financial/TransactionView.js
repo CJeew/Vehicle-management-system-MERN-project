@@ -9,7 +9,11 @@ import { MdDelete } from "react-icons/md";
 export default function TransactionView() {
   const [items, setItems] = useState([]); 
   const [searchTerm, setSearchTerm] = useState(""); 
-
+  const [incomeTotal, setIncomeTotal] = useState(0);
+  const [taxTotal, setTaxTotal] = useState(0);
+  const [expensesTotal, setExpensesTotal] = useState(0);
+  const [total, setTotal] = useState(0);
+  
   useEffect(() => {
     function getItems() {
       axios.get("http://localhost:8090/finance/").then((res) => {
@@ -21,6 +25,40 @@ export default function TransactionView() {
     }
     getItems();
   }, [])
+
+  useEffect(() => {
+    // Calculate total amounts for each category
+    const income = items.reduce((acc, curr) => {
+      if (curr.accounts === 'Income') {
+        return acc + curr.amount;
+      } else {
+        return acc;
+      }
+    }, 0);
+    setIncomeTotal(income);
+
+    const tax = items.reduce((acc, curr) => {
+      if (curr.accounts === 'Tax') {
+        return acc + curr.amount;
+      } else {
+        return acc;
+      }
+    }, 0);
+    setTaxTotal(tax);
+
+    const expenses = items.reduce((acc, curr) => {
+      if (curr.accounts === 'Expanses') {
+        return acc + curr.amount;
+      } else {
+        return acc;
+      }
+    }, 0);
+    setExpensesTotal(expenses);
+
+    // Calculate total based on the formula Total = Income - (Expenses + Tax)
+    const totalAmount = income - (expenses + tax);
+    setTotal(totalAmount);
+  }, [items]);
 
   const onDeleteClick = async (itemId) => {
     await axios.delete(`http://localhost:8090/finance/delete/${itemId}`);
@@ -35,13 +73,13 @@ export default function TransactionView() {
     onafterprint:()=>alert ("user report successfully ")
   })
 
-    // Function to filter announcements based on search term
-    const filteredTranscation = items.filter((Finance) =>
-    Finance.transactionCode.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    Finance.date.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    Finance.accounts.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    Finance.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    Finance.department.toLowerCase().includes(searchTerm.toLowerCase())
+    // Function to filter transactions based on search term
+    const filteredTransactions = items.filter((finance) =>
+    finance.transactionCode.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    finance.date.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    finance.accounts.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    finance.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    finance.department.toLowerCase().includes(searchTerm.toLowerCase())
    
   );  
 
@@ -49,8 +87,21 @@ export default function TransactionView() {
     
     <div className="h-screen w-screen bg-gray flex justify-center items-center flex-wrap relative">
      <div className='absolute top-2 left-22'>
-     <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Transcation List</h2>
+     <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Transaction List</h2>
       </div>
+      <div className="bg-gradient-to-r from-indigo-800 via-indigo-900 to-indigo-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-40 ml-1 mr-16">
+        <p className="text-white text-2xl">Total Income: Rs.{incomeTotal}</p>
+      </div>
+      <div className="bg-gradient-to-r from-indigo-800 via-indigo-900 to-indigo-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-40 ml-1 mr-16">
+        <p className="text-white text-2xl">Total Expenses: Rs.{expensesTotal}</p>
+      </div>
+      <div className="bg-gradient-to-r from-indigo-800 via-indigo-900 to-indigo-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-40 ml-1 mr-16">
+        <p className="text-white text-2xl">Total Tax: Rs.{taxTotal}</p>
+      </div>
+      <div className="bg-gradient-to-r from-red-800 via-red-900 to-red-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-40 ml-1 mr-16">
+        <p className="text-white text-2xl">Total: Rs.{total}</p>
+      </div>
+
       <div className="absolute top-2 right-8">
         {/* Search bar */}
         <div className="relative">
@@ -88,6 +139,7 @@ export default function TransactionView() {
           + Add Transaction
         </a>
       </div>
+      
       <div className="absolute top-16 right-8">
         <button onClick={handlePrint} className="bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:from-yellow-700 
                 hover:via-yellow-600 hover:to-yellow-500 text-white ml-40 mt-70 font-bold py-3 px-5 rounded-lg mr-28 
@@ -111,7 +163,7 @@ export default function TransactionView() {
             </tr>
           </thead>
           <tbody>
-            {filteredTranscation.map((item, index) => (
+            {filteredTransactions.map((item, index) => (
               <tr key={index} className="bg-white border-b border-gray-200 hover:bg-gray-50">
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.transactionCode}</td>
