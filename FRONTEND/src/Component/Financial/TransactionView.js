@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
 import { Link , useNavigate} from 'react-router-dom';
 import {useReactToPrint} from "react-to-print"
-
+import { GrDocumentPdf } from "react-icons/gr";
+import { FaRegEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 export default function TransactionView() {
   const [items, setItems] = useState([]); 
@@ -80,13 +82,17 @@ export default function TransactionView() {
       </div>
       <div className="absolute top-8 left-8">
       
-        <a href="/AddTransaction" className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mr-[1rem]">
-          Add Transaction
+        <a href="/AddTransaction" className="bg-gradient-to-r from-green-700 via-green-800 to-green-900 hover:from-green-900 
+                hover:via-green-800 hover:to-green-700 text-white ml-20 mt-10 mx-auto font-bold py-3 px-5 rounded-lg mr-2 
+                opacity-90 transition duration-300 ease-in-out transform hover:scale-105">
+          + Add Transaction
         </a>
       </div>
       <div className="absolute top-16 right-8">
-        <button onClick={handlePrint} className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mr-[1rem]">
-          Generate Report
+        <button onClick={handlePrint} className="bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:from-yellow-700 
+                hover:via-yellow-600 hover:to-yellow-500 text-white ml-40 mt-70 font-bold py-3 px-5 rounded-lg mr-28 
+                opacity-90 transition duration-300 ease-in-out transform hover:scale-105">
+          <GrDocumentPdf className='w-5 h-5' />
         </button>
       </div>
       <div ref={ComponentsRef} className="relative inline-flex group mr-4 fire-container">
@@ -117,11 +123,15 @@ export default function TransactionView() {
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.department}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div className="flex items-center justify-end gap-2">
-                    <a href={`/Update_Transaction/${item._id}`} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                      Edit
+                    <a href={`/Update_Transaction/${item._id}`} className="bg-gradient-to-r from-green-700 via-green-800 to-green-900 hover:from-green-900 
+                                    hover:via-green-800 hover:to-green-700 text-white float-right mx-auto font-bold py-1 px-3 rounded-lg mr-2 
+                                    opacity-90 transition duration-300 ease-in-out transform hover:scale-105">
+                      <FaRegEdit className='w-5 h-5' />
                     </a>
-                    <button onClick={() => onDeleteClick(item._id)} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                      Delete
+                    <button onClick={() => onDeleteClick(item._id)} className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-900 hover:via-red-800 
+                                    hover:to-red-700 text-white float-right mx-auto font-bold py-1 px-3 rounded-lg mr-2 opacity-90 
+                                    transition duration-300 ease-in-out transform hover:scale-105">
+                      <MdDelete className='w-5 h-5'/>
                     </button>
                   </div>
                 </td>

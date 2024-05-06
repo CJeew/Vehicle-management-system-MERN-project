@@ -50,10 +50,10 @@ export default function Chome() {
                                   hover:to-amber-700 text-white font-bold py-4 px-6 rounded-lg mr-2 opacity-90 transition duration-300
                                   ease-in-out transform hover:scale-105"
             >
-              <a href="/Profile">Profile</a>
+              <a href="/ProfileList">Profile</a>
             </button>
           </figcaption>
-        </figure>
+        </figure> 
         <figure>
           <img className="rounded-full w-40 h-40 ms-20" src={imgSrc1} />
           <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400 ms-20">
@@ -68,40 +68,6 @@ export default function Chome() {
         </figure>
       </div>
     </div>
-    // <div class="h-screen w-screen bg-gray flex justify-center items-center">
-    //   <div class="relative inline-flex  group">
-    //     <div class="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-
-    //   </div>
-    //   <dev>
-    //     <a></a>{" "}
-    //   </dev>
-    //   <div class="mx-10 relative inline-flex  group">
-    //     <div class="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-    //     <a
-    //       href="/Profile"
-    //       title="Profile"
-    //       class="relative inline-flex items-center justify-center px-12 py-6 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-    //       role="button"
-    //     >
-    //       Profile
-    //     </a>
-    //   </div>  <dev></dev>
-    //   <dev>
-    //     <a></a>{" "}
-    //   </dev>
-
-    //   <div class="relative inline-flex  group">
-    //     <div class="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-    //     <a
-    //       href="/Review"
-    //       title="Review"
-    //       class="relative inline-flex items-center justify-center px-12 py-6 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-    //       role="button"
-    //     >
-    //       Review
-    //     </a>
-    //   </div>
-    // </div>
+    
   );
 }

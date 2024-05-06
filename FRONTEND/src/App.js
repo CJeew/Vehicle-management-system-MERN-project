@@ -19,19 +19,16 @@ import TrackJobs from "./Component/TrackJobs";
 import Chome from "./Component/Chome";
 import Register from "./Component/Register";
 import Review from "./Component/Review";
-import Profile from "./Component/Profile";
 import Customerlogin from "./Component/Customerlogin";
 import Cmanager from "./Component/Cmanager";
 import CustomerList from "./Component/CustomerList";
 import CustomerReview from "./Component/CustomerReview";
 import Updatecustomer from "./Component/Updatecustomer";
+//import UpdateProfile from "./Component/UpdateProfile";
+import ProfileList from "./Component/ProfileList";
+import UpdateCustomersSecond from './Component/UpdateCustomersSecond';
 
-//import Register from "./Component/Register";
 
-// import Login from "./Component/Login";
-// import Update from "./Components/Update";
-// import Test from "./Components/Test";
-//import Supplier_home from "./Component/Supplier_home";
 
 //Booking------------------------------------------------------------------------------------------
 import BookingPage from "./Component/BookingPage"; // import Booking Page
@@ -49,6 +46,7 @@ import EditHourSetting from "./Component/EditHourSetting";
 import EditHolidaySetting from "./Component/EditHolidaySetting";
 import UpdateHours from "./Component/UpdateHours";
 import UpdateHoliday from "./Component/UpdateHoliday";
+import UpdateBooking from "./Component/UpdateBooking";
 
 import Home from "./Component/home";
 
@@ -180,18 +178,23 @@ function App() {
           <Route path="/editHolidaySetting" element={<EditHolidaySetting />} />
           <Route path="/updateSetting/:id" element={<UpdateHours/>}/>
           <Route path="/updateHoliday/:id" element={<UpdateHoliday/>}/>
+          <Route path="/updateBooking/:id" element={<UpdateBooking/>}/>
+
 
           {/* <Route path="/test" element={<Test/>}/> */}
 
+          {/* --------------Chiyaan------------------------------------ */}
           <Route path="/Chome" element={<Chome />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Review" element={<Review />} />
-          <Route path="/Profile" element={<Profile />} />
           <Route path="/Customerlogin" element={<Customerlogin />} />
           <Route path="/Cmanager" element={<Cmanager />} />
           <Route path="/CustomerList" element={<CustomerList />} />
           <Route path="/CustomerReview" element={<CustomerReview />} />
           <Route path="/Updatecustomer/:id" element={<Updatecustomer />} />
+          <Route path="/ProfileList" element={<ProfileList/>}/>
+          <Route path="/UpdateCustomersSecond" element={<UpdateCustomersSecond/>}/>
+         
 
           {/* ----------Sanjayan---------- */}
           <Route path="/addpayroll" element={<AddPayroll />} />

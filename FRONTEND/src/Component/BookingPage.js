@@ -7,6 +7,7 @@ import imgSrc from "./customer.png";
 import imgSrc1 from "./manager.png";
 import imgSrc2 from "./wipe.jpg";
 
+
 export default function BookingPage() {
   return ( 
     <div>
