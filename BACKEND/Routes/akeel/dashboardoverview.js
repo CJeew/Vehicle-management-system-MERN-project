@@ -11,6 +11,7 @@ router.get('/overview', async (req, res) => {
       const totalParts = await ManageParts.countDocuments();
       const totalIssuedItems = await IssuedItems.countDocuments();
       const totalOrders = await ManageOrders.countDocuments();
+      
       // const totatvalues = await ManageParts.calculateDocuments();
       
       // Calculate other metrics as needed
