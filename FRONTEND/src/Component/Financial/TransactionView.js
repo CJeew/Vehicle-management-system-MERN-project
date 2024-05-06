@@ -5,7 +5,7 @@ import {useReactToPrint} from "react-to-print"
 import { GrDocumentPdf } from "react-icons/gr";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-
+//import imgSrc from "../"
 export default function TransactionView() {
   const [items, setItems] = useState([]); 
   const [searchTerm, setSearchTerm] = useState(""); 
@@ -86,21 +86,6 @@ export default function TransactionView() {
   return (
     
     <div className="h-screen w-screen bg-gray flex justify-center items-center flex-wrap relative">
-     <div className='absolute top-2 left-22'>
-     <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Transaction List</h2>
-      </div>
-      <div className="bg-gradient-to-r from-indigo-800 via-indigo-900 to-indigo-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-40 ml-1 mr-16">
-        <p className="text-white text-2xl">Total Income: Rs.{incomeTotal}</p>
-      </div>
-      <div className="bg-gradient-to-r from-indigo-800 via-indigo-900 to-indigo-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-40 ml-1 mr-16">
-        <p className="text-white text-2xl">Total Expenses: Rs.{expensesTotal}</p>
-      </div>
-      <div className="bg-gradient-to-r from-indigo-800 via-indigo-900 to-indigo-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-40 ml-1 mr-16">
-        <p className="text-white text-2xl">Total Tax: Rs.{taxTotal}</p>
-      </div>
-      <div className="bg-gradient-to-r from-red-800 via-red-900 to-red-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-40 ml-1 mr-16">
-        <p className="text-white text-2xl">Total: Rs.{total}</p>
-      </div>
 
       <div className="absolute top-2 right-8">
         {/* Search bar */}
@@ -147,8 +132,36 @@ export default function TransactionView() {
           <GrDocumentPdf className='w-5 h-5' />
         </button>
       </div>
-      <div ref={ComponentsRef} className="relative inline-flex group mr-4 fire-container">
-      <table  class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10">
+      <div ref={ComponentsRef} className="mt-20 max-h-[25 rem]">
+  
+        <div className='print:block hidden font-bold top-10 mx-10 justify-end'>
+          <p class="mr-4">Ryome Motor Cars</p>
+          <p class="mr-4">NO:Colombo 07</p>
+          <p class="mr-4">Tel: 075 294 1767</p>
+          <p class="mr-4">Fax: 027 011 0123</p>
+        </div>
+        <div className='flex justify-center items-center'>
+          <h2 className="ms-20 text-6xl font-extrabold text-white print:hidden">Transaction List</h2>
+         </div>
+         <div className='flex justify-center items-center'>
+          <h2 className="ms-20 text-6xl font-extrabold text-black print:block hidden">Transaction List</h2>
+         </div>
+        <div className="print:hidden">
+         <div className="bg-gradient-to-r from-indigo-800 via-indigo-900 to-indigo-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-10 ml-1 mr-8">
+          <p className="text-white text-2xl">Total Income: Rs.{incomeTotal}</p>
+         </div>
+         <div className="bg-gradient-to-r from-indigo-800 via-indigo-900 to-indigo-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-10 ml-1 mr-8">
+           <p className="text-white text-2xl">Total Expenses: Rs.{expensesTotal}</p>
+         </div>
+         <div className="bg-gradient-to-r from-indigo-800 via-indigo-900 to-indigo-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-10 ml-1 mr-8">
+           <p className="text-white text-2xl">Total Tax: Rs.{taxTotal}</p>
+         </div>
+         <div className="bg-gradient-to-r from-red-800 via-red-900 to-red-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-10 my-10 ml-1 mr-8">
+          <p className="text-white text-2xl">Total: Rs.{total}</p>
+         </div>
+        </div>
+
+      <table  class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mt-10 mx-auto">
           <thead>
           <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
               <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">NO</th>
@@ -159,7 +172,7 @@ export default function TransactionView() {
               <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">AMOUNT</th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">CATEGORY</th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">DEPARTMENT</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">ACTION</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider print:hidden">ACTION</th>
             </tr>
           </thead>
           <tbody>
@@ -177,12 +190,12 @@ export default function TransactionView() {
                   <div className="flex items-center justify-end gap-2">
                     <a href={`/Update_Transaction/${item._id}`} className="bg-gradient-to-r from-green-700 via-green-800 to-green-900 hover:from-green-900 
                                     hover:via-green-800 hover:to-green-700 text-white float-right mx-auto font-bold py-1 px-3 rounded-lg mr-2 
-                                    opacity-90 transition duration-300 ease-in-out transform hover:scale-105">
+                                    opacity-90 transition duration-300 ease-in-out transform hover:scale-105 print:hidden">
                       <FaRegEdit className='w-5 h-5' />
                     </a>
                     <button onClick={() => onDeleteClick(item._id)} className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-900 hover:via-red-800 
                                     hover:to-red-700 text-white float-right mx-auto font-bold py-1 px-3 rounded-lg mr-2 opacity-90 
-                                    transition duration-300 ease-in-out transform hover:scale-105">
+                                    transition duration-300 ease-in-out transform hover:scale-105 print:hidden">
                       <MdDelete className='w-5 h-5'/>
                     </button>
                   </div>
@@ -191,6 +204,17 @@ export default function TransactionView() {
             ))}
           </tbody>
         </table>
+        <br/>
+        <br/>
+        <div className='form-footer relative mt-[10 rem]'>
+          <br/>
+          <br/>
+
+          <div className='absloute bottom-0 w-full flex justify-between px-10'>
+            <div className='font-bold text-left'>.................................<br/>Date</div>
+            <div className='font-bold text-Right'>.................................<br/>Singnature</div>
+          </div>
+        </div>
       </div>
     </div>
   );
