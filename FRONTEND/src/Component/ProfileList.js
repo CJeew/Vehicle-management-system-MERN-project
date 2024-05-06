@@ -57,9 +57,12 @@ export default function ProfileList() {
 
   return (
     <div>
-      <h2 className="ms-20 my-15 mt-20 text-6xl font-extrabold text-white">
-        Registered Customer List
-      </h2>
+      <div>
+      {/* Other content */}
+      <Link to={{ pathname: "/Updatecustomers", search: "?from=ProfileList" }}>
+        Update Customer
+      </Link>
+    </div>
       <div className="absolute top-2 right-8">
         {/* Search bar */}
         <div className="relative mt-48">
@@ -119,7 +122,7 @@ export default function ProfileList() {
                     {/* Edit booking button */}
                     <Link
                      onClick={() => onEditClick(customer._id)}
-                      to={`/UpdatecustomersSecond/${customer._id}`}
+                      to={`/Updatecustomer/${customer._id}`}
                       type="button"
                       
                       className="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"

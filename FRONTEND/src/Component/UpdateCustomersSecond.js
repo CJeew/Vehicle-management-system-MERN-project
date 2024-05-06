@@ -14,10 +14,10 @@ export default function UpdateCustomersSecond() {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
 
-  function updateCustomer(e) {
+  function updateCustomer2(e) {
     e.preventDefault();
 
-    const updatedCustomer = {
+    const updatedCustomer2 = {
       cname,
       cnic,
       cphone,
@@ -29,7 +29,7 @@ export default function UpdateCustomersSecond() {
     };
 
     axios
-      .put(`http://localhost:8090/customer/update/${id}`, updatedCustomer)
+      .put(`http://localhost:8090/customer/update/${id}`, updatedCustomer2)
       .then(() => {
         alert("Details updated");
         window.location.href = "/ProfileList";
@@ -42,35 +42,31 @@ export default function UpdateCustomersSecond() {
   useEffect(() => {
     axios.get(`http://localhost:8090/customer/get/${id}`)
       .then((res) => {
-        console.log(res);
-        // const { cname, cnic, cphone, cmail, cvnum, cvtype, cpass, cpass2 } =
-        //   res.data.list;
-        setcname(res.data.list.cname);
-        setcnic(res.data.list.cnic);
-        setcphone(res.data.list.cphone);
-        setcmail(res.data.list.cmail);
-        setcvnum(res.data.list.cvnum);
-        setcvtype(res.data.list.cvtype);
-        setcpass(res.data.list.cpass);
-        setcpass2(res.data.list.cpass2);
-        setLoading(res.data.list.false);
-
+        const data = res.data.list;
+        setcname(data.cname);
+        setcnic(data.cnic);
+        setcphone(data.cphone);
+        setcmail(data.cmail);
+        setcvnum(data.cvnum);
+        setcvtype(data.cvtype);
+        setcpass(data.cpass);
+        setcpass2(data.cpass2);
+        setLoading(false); // Set loading to false when data is fetched
       }).catch((err) => {
         alert(err.message);
       });
-  }, []);
-  
+  }, [id]);
 
-//   if (loading) {
-//     return <div>Loading...</div>;
-//   }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
-        <form
-        onSubmit={updateCustomer}
+      <form
+        onSubmit={updateCustomer2}
         className="w-half bg-gray-100 p-6 ms-60 my-10 mt230 p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50"
-        >
+      >
         <div>
             <div className="text-black mt-3 text-center text-4xl font-bold">
             Customer Update
@@ -187,7 +183,7 @@ export default function UpdateCustomersSecond() {
             </div>
             <div className="text-center">
             <button
-                onClick={updateCustomer}
+                onClick={updateCustomer2}
                 type="submit"
                 className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                     hover:to-amber-700 text-white font-bold py-3 px-10 rounded-lg mr-2 opacity-90 transition duration-300
