@@ -12,7 +12,7 @@ router.route("/addBooking").post((req,res)=>{
     const eMail = req.body.eMail;
     const vNum = req.body.vNum;
     const vType = req.body.vType;
-    const dDate = Date(req.body.dDate);
+    const dDate = req.body.dDate;
     const tTime = req.body.tTime;
     const serviceBox = req.body.serviceBox;
 

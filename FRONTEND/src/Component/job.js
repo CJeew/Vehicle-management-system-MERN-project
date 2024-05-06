@@ -42,18 +42,6 @@ function CreateJob() {
             timeIn,
         };
 
-//Validation to prevent entering special characters
-
-if (/[^a-zA-Z0-9\s]/.test(vehicleModel)) {
-  alert("Please remove special characters from the Job Number.");
-  return;
-}
-
-if (/[^a-zA-Z0-9\s]/.test(name)) {
-  alert("Please remove special characters from the Job Number.");
-  return;
-}
-
 //Job date and date out validation
 
         const currentDate = new Date();
@@ -70,27 +58,8 @@ if (/[^a-zA-Z0-9\s]/.test(name)) {
           return;
         }
 
-  //Mileage validation
 
-        if (isNaN(mileage)){
-          alert("The value entered for mileage is invalid. Please enter a valid number.");
-          return;
-        }
-
-  //Phone number validation
-        if(!/^[\d]{10}$/.test(contactNumber)){
-          alert("Please enter a valid contact number.");
-          return;
-        }
-
-  //E-mail validation
-        const isValidEmail = /\S+@\S+\.\S+/.test(email);
-
-        if(!isValidEmail) {
-          alert("Please enter a valid email address.");
-          return;
-        }
-
+// Function to create a new job
         axios.post("http://localhost:8090/job/addJob", newJob)
             .then(() => {
                 alert("Job Added");
@@ -100,7 +69,8 @@ if (/[^a-zA-Z0-9\s]/.test(name)) {
                 alert(err);
             });
     }
-    // Checkbox function
+
+ // Checkbox function
     function handleCheckboxChange(e) {
       const value = e.target.value;
       const checked = e.target.checked;
@@ -209,7 +179,31 @@ if (/[^a-zA-Z0-9\s]/.test(name)) {
                 <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
                   <div className=""> 
                     <label className="mr-4">Vehicle Reg. No :</label>
-                    <input type="text" onChange={(e) => setregistrationNo(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-2" required/>
+                    <input type="text"
+                            value={RegNo}
+                            onKeyDown={(e) => {
+                              const key = e.key;
+                              const isBackspace = key === 'Backspace';
+                              const isHyphen = key === '-';
+                              const isLetter = /^[a-zA-Z]$/.test(key);
+                              const isDigit = /^[0-9]$/.test(key);
+
+                              // Allow backspace, hyphen, letters, and digits
+                              const isValid = isBackspace || isHyphen || isLetter || isDigit;
+
+                              if (!isValid) {
+                                e.preventDefault(); // Prevent invalid keystrokes
+                              }
+                            }}
+                            onChange={(e) => {
+                              const RegNo = e.target.value;
+
+                              // Allow only letters, digits, and hyphens in the state
+                              if (/^[a-zA-Z0-9-]*$/.test(RegNo)) {
+                                setregistrationNo(RegNo); 
+                              }
+                            }}
+                            className="rounded-md w-60 h-10 opacity-80 text-base mt-2" required/>
                   </div> 
 
                   <div>
@@ -235,7 +229,32 @@ if (/[^a-zA-Z0-9\s]/.test(name)) {
 
                   <div>
                     <label className="mr-4">Vehicle Model :</label>
-                    <input type="text" onChange={(e) => setvehicleModel(e.target.value)} className="rounded-md w-60 h-10 opacity-80" required/>
+                    <input type="text"
+                            value={vehicleModel}
+                            onKeyDown={(e) => {
+                              const key = e.key;
+                              const isBackspace = key === 'Backspace';
+                              const isHyphen = key === '-';
+                              const isLetter = /^[a-zA-Z]$/.test(key);
+                              const isDigit = /^[0-9]$/.test(key);
+
+                              // Allow backspace, hyphen, letters, and digits
+                              const isValid = isBackspace || isHyphen || isLetter || isDigit;
+
+                              if (!isValid) {
+                                e.preventDefault(); // Prevent invalid keystrokes
+                              }
+                            }}
+                            onChange={(e) => {
+                              const vehicleModel = e.target.value;
+
+                              // Allow only letters, digits, and hyphens in the state
+                              if (/^[a-zA-Z0-9-]*$/.test(vehicleModel)) {
+                                setvehicleModel(vehicleModel); 
+                              }
+                            }}
+                            className="rounded-md w-60 h-10 opacity-80 text-base mt-2" required/>
+
                   </div>  
                  </div> 
 
@@ -246,7 +265,29 @@ if (/[^a-zA-Z0-9\s]/.test(name)) {
                  <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
                   <div className=""> 
                     <label className="mr-14">Mileage :</label>
-                    <input type="text" onChange={(e) => setmileage(e.target.value)} className="rounded-md w-60 h-10 opacity-80 mt-5 ml-5" required/>
+                    <input type="text"
+                            value={mileage}
+                            onKeyDown={(e) => {
+                              const key = e.key;
+                              const isBackspace = key === 'Backspace';
+                              const isDigit = /^[0-9]$/.test(key);
+
+                              // Allow backspace and digits (0-9)
+                              const isValid = isBackspace || isDigit;
+
+                              if (!isValid) {
+                                e.preventDefault(); 
+                              }
+                            }}
+                            onChange={(e) => {
+                              const mileage = e.target.value;
+
+                              // Ensure the value contains only digits
+                              if (/^[0-9]*$/.test(mileage)) { // Allow only numbers
+                                setmileage(mileage); 
+                              }
+                            }}
+                            className="rounded-md w-60 h-10 opacity-80 text-base mt-2 ml-5" required />
                   </div>
 
                   <div>
@@ -291,17 +332,91 @@ if (/[^a-zA-Z0-9\s]/.test(name)) {
                   <div className="space-y-2 flex justify-between grid grid-cols-3 gap-4">
                    <div className="">
                     <label className="mr-11">Name :</label>
-                    <input type="text" onChange={(e) => setname(e.target.value)} className="rounded-md w-60 h-10 opacity-80 ml-10" required/>  
+                    <input type="text"
+                          value={name}
+                          onKeyDown={(e) => {
+                            const key = e.key;
+                            const isBackspace = key === 'Backspace';
+                            const isLetter = /^[a-zA-Z]$/.test(key);
+
+                            // Allow backspace and letters
+                            const isValid = isBackspace || isLetter;
+
+                            if (!isValid) {
+                              e.preventDefault(); // Prevent invalid keystrokes
+                            }
+                          }}
+                          onChange={(e) => {
+                            const cname = e.target.value;
+
+                            // Ensure the value contains only letters
+                            if (/^[a-zA-Z]*$/.test(cname)) {
+                              setname(cname); 
+                            }
+                          }}
+                          className="rounded-md w-60 h-10 opacity-80 text-base mt-2 ml-11" required />
+  
                    </div>
              
                    <div>
                     <label className="mr-4">Contact No. :</label>
-                    <input type="tel" placeholder="  ex : 07xxxxxxxx" onChange={(e) => setcontactNumber(e.target.value)} className="rounded-md w-60 h-10 opacity-80" required/>  
+                    <input type="text"
+                            placeholder=" ex : 0711234567"
+                            value={contactNumber}
+                            onKeyDown={(e) => {
+                              const key = e.key;
+                              const isBackspace = key === 'Backspace';
+                              const isDigit = /^[0-9]$/.test(key);
+
+                              // Allow backspace and digits (0-9)
+                              const isValid = isBackspace || isDigit;
+
+                              if (!isValid) {
+                                e.preventDefault(); // Prevent invalid keystrokes
+                              }
+                            }}
+                            onChange={(e) => {
+                              const contactNumber = e.target.value;
+
+                              // Ensure the value contains only digits
+                              if (/^[0-9]*$/.test(contactNumber)) { // Allow only numbers
+                                setcontactNumber(contactNumber); 
+                              }
+                            }}
+                            minLength={10}
+                            maxLength={10}
+                            className="rounded-md w-60 h-10 opacity-80 text-base mt-2"
+                            required
+                          />
+  
                    </div> 
 
                    <div>
                     <label className="mr-11">E-mail :</label>
-                    <input type="email" placeholder="  ex :abcd123@gmail.com" onChange={(e) => setemail(e.target.value)} className="rounded-md w-60 h-10 opacity-80 ml-10"/> 
+                    <input type="text"
+                            placeholder=" ex : sample123@gmail.com"
+                            value={email}
+                            onKeyDown={(e) => {
+                              const key = e.key;
+                              const isBackspace = key === 'Backspace';
+                              const isEmailCharacter = /^[a-zA-Z0-9._+@-]$/.test(key);
+                              
+                              if (!isBackspace && !isEmailCharacter) {
+                                e.preventDefault(); 
+                              }
+                            }}
+                            onChange={(e) => {
+                              const newValue = e.target.value;
+                      
+                              // Allow intermediate steps for typing
+                              const validInput = /^[a-zA-Z0-9._%+-@]*$/.test(newValue);
+                              
+                              if (validInput) {
+                                setemail(newValue); 
+                              }
+                            }}
+                            className="rounded-md w-60 h-10 opacity-80 text-base mt-2" required />
+
                    </div>
                   </div>
                   {/* --------Line 05 ends------- */}

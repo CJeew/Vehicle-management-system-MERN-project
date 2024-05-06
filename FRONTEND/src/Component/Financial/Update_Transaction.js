@@ -159,8 +159,9 @@ export default function UpdateTransaction() {
         </button>
         <button
           type="submit"
-          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
+          className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+          hover:to-amber-700 text-white font-bold py-2 px-2 rounded-lg mr-2 opacity-90 transition duration-300 
+          ease-in-out transform hover:scale-105">
           Update
         </button>
       </div>
