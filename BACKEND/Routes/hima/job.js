@@ -43,6 +43,11 @@ router.route("/addJob").post((req, res) => {
     email,    
     serviceType,
     details,
+
+    serviceStatus: serviceType.reduce((acc, type) => {
+      acc[type] = false; // Default initialization, all tasks start as not completed
+      return acc;
+    }, {}),
     
   });
 
@@ -166,7 +171,7 @@ router.route("/updatejobs/:id").put(async (req,res) => {
 //Fetch data related to the id
 router.route("/get/:id").get(async (req, res) => {
   let jobNumber = req.params.id;
-  console.log(jobNumber);
+  console.log();
   const job = await jobModel
     .findById(jobNumber)
     .then((job) => {
@@ -184,18 +189,18 @@ router.get("/trackjobs/:jobNumber", async (req, res) => {
   try {
     const jobNumber = req.params.jobNumber;
 
-    // Validate if the jobNumber is a valid ObjectId
-    if (!mongoose.isValidObjectId(jobNumber)) { // ObjectId validation
-      return res.status(400).send("Invalid Job Number"); // Return error if invalid
-    }
+    const job = await jobModel.findOne({ jobNumber }); // Use findOne to fetch by unique job number
 
-    const job = await jobModel.findById(jobNumber, "serviceType"); // Fetch only serviceType
     if (!job) {
       return res.status(404).send("Job not found");
     }
 
-    res.send(job.serviceType); // Return serviceType data
-    
+    // Return the serviceType and possibly other relevant data (like serviceStatus)
+    res.send({
+      serviceType: job.serviceType,
+      serviceStatus: job.serviceStatus || {}, // Include serviceStatus if implemented
+    });
+
   } catch (error) {
     console.error("Error fetching job data:", error);
     res.status(500).send("Internal Server Error");

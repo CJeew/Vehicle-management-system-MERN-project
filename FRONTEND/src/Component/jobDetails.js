@@ -270,7 +270,7 @@ const generatePDFReport = () => {
                                   ease-in-out transform hover:scale-105"> Generate Report</button>
 
             {/* Button to track job status */}
-            <Link to ={`/trackjobs/${jobDetails._id}`}>
+            <Link to ={`/trackjobs/${jobDetails.jobNumber}`}>
             <button className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-900 hover:from-blue-950 hover:via-blue-700 
                                   hover:to-blue-600 text-white font-bold py-2 px-5 rounded-lg mr-2 opacity-80 transition duration-300
                                   ease-in-out transform hover:scale-105">Track Status</button>
