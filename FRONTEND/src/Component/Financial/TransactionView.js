@@ -88,7 +88,7 @@ export default function TransactionView() {
       </div>
       <div className="absolute top-16 right-8">
         <button onClick={handlePrint} className="bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:from-yellow-700 
-                hover:via-yellow-600 hover:to-yellow-500 text-white ml-20 mt-10 mx-auto font-bold py-3 px-5 rounded-lg mr-2 
+                hover:via-yellow-600 hover:to-yellow-500 text-white ml-20 mt-70 mx-auto font-bold py-3 px-5 rounded-lg mr-2 
                 opacity-90 transition duration-300 ease-in-out transform hover:scale-105">
           Generate Report
         </button>
