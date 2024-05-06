@@ -12,6 +12,8 @@ export default function AddStaff() {
     const [mobileno, setMobileno] = useState("");
     const [joindate, setJoindate] = useState("");
     //const [nicError, setNicError] = useState("");
+    //const [nameError, setNameError] = useState("");
+    //const [designationError, setDesignationError] = useState("");
 
   
     // function validateEmail(value) {
@@ -48,6 +50,11 @@ export default function AddStaff() {
     function handleDateChange(e) {
       const selectedDate = new Date(e.target.value);
       const currentDate = new Date();
+
+      // Set hours, minutes, seconds, and milliseconds to 0 for both dates
+      currentDate.setHours(0, 0, 0, 0);
+      selectedDate.setHours(0, 0, 0, 0);
+  
   
       if (selectedDate > currentDate) {
         alert("Please select a date on or before today.");
@@ -71,6 +78,86 @@ export default function AddStaff() {
     //   }
     // }
 
+    //Name format error message
+    // function handleNameChange(e) {
+    //   const value = e.target.value;
+    //   const namePattern = /^[A-Za-z\s]+$/;
+  
+    //   if (!namePattern.test(value)) {
+    //     setNameError(
+    //       "Name should contain only letters"
+    //     );
+    //   } else {
+    //     setNameError("");
+    //     setName(value);
+    //   }
+    // }
+
+    //Designation format error message
+    // function handleDesignationChange(e) {
+    //   const value = e.target.value;
+    //   const designationPattern = /^[A-Za-z\s]+$/;
+  
+    //   if (!designationPattern.test(value)) {
+    //     setDesignationError(
+    //       "Designation should contain only letters"
+    //     );
+    //   } else {
+    //     setDesignationError("");
+    //     setDesignation(value);
+    //   }
+    // }
+
+    // function handleNameChange(e) {
+    //   const value = e.target.value;
+    //   // Regular expression to match only alphabetic characters and spaces
+    //   const namePattern = /^[A-Za-z\s]+$/;
+  
+    //   if (namePattern.test(value)) {
+    //     setName(value);
+    //   }
+    // }
+
+    // Name format error message
+function handleNameChange(e) {
+  const value = e.target.value;
+  const namePattern = /^[A-Za-z\s]+$/;
+
+  if (!namePattern.test(value)) {
+    // Prevent further input by freezing the input field
+    e.target.value = e.target.value.replace(/[^A-Za-z\s]/g, '');
+  } else {
+    setName(value);
+  }
+}
+
+// Designation format error message
+function handleDesignationChange(e) {
+  const value = e.target.value;
+  const designationPattern = /^[A-Za-z\s]+$/;
+
+  if (!designationPattern.test(value)) {
+    // Prevent further input by freezing the input field
+    e.target.value = e.target.value.replace(/[^A-Za-z\s]/g, '');
+  } else {
+    setDesignation(value);
+  }
+}
+
+// NIC format error message
+function handleNicChange(e) {
+  const value = e.target.value;
+  const nicPattern = /^[0-9]{0,9}[vV]{0,1}$|^[0-9]{0,12}$/;
+
+  if (!nicPattern.test(value)) {
+    // Prevent further input by freezing the input field
+    e.target.value = e.target.value.slice(0, -1);
+  } else {
+    setNic(value.toUpperCase()); // Convert V/v to uppercase for consistency
+  }
+}
+  
+
 return (
   <form onSubmit={sendData}>
      <div class="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-5 mx-auto w-2/3">
@@ -85,20 +172,10 @@ return (
             type="text"
             name="nic"
             id="nic"
-            // className={`block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${
-            //   nicError ? "border-red-500" : ""
-            // }`}
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             pattern="[0-9]{9}[vV]{1}|[0-9]{12}"
-            onChange={(e)=>{
-
-              setNic(e.target.value);
-            }}
-          required/>
-          
-          {/* {nicError && (
-                <p className="text-red-500 text-sm mt-1">{nicError}</p>
-              )} */}
+            onChange={handleNicChange}
+              required/>
          
         </div>
       </div>
@@ -112,12 +189,10 @@ return (
             type="text"
             name="name"
             id="name"
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            onChange={(e)=>{
-
-              setName(e.target.value);
-            }}
-            required/>
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            //pattern="[A-Za-z]"
+            onChange={handleNameChange}
+              required/>
         </div>
       </div>
 
@@ -170,11 +245,8 @@ return (
             type="text"
             name="designation"
             id="designation"
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            onChange={(e)=>{
-
-              setDesignation(e.target.value);
-            }}
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            onChange={handleDesignationChange}
             required/>
         </div>
       </div>
@@ -185,7 +257,7 @@ return (
         </label>
         <div class="mt-2">
           <input
-            type="tel"
+            type="number"
             name="mobileno"
             id="mobileno"
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

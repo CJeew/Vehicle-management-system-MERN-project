@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const holidaySetting = require("../../Models/holiday");
 
-
-
 //create
 
 router.route("/addHolidays").post((req,res)=>{
@@ -34,15 +32,20 @@ router.route("/").get(async(req,res)=>{
 
 //update
 
-router.route("/updateHoliday/:id").post(async(req,res)=>{
-    let holidayId = req.params.id;
+router.route("/updateHoliday/:id").put(async(req,res)=>{
+    const {id} = req.params;
+    console.log(id)
+    // let holidayId = req.params.id;
+
     const{busyDate, event} = req.body; 
 
     const updateHolidaySetting = {
         busyDate, 
         event
     }
-    const updateHolidays = await holidaySetting.findByIdUpdate(holidayId, updateHolidaySetting)  //await - waiting until the before update finish to execute next update
+    console.log(updateHolidaySetting)
+
+    const updateHolidays = await holidaySetting.findByIdUpdate(id, updateHolidaySetting)  //await - waiting until the before update finish to execute next update
     .then(()=>{  
         res.status(200).send({status: "Holidays Setting Updated"})
     }).catch((err)=>{
@@ -50,6 +53,24 @@ router.route("/updateHoliday/:id").post(async(req,res)=>{
         res.status(500).send({status: "Error with updating holidays", error: err.message});
     })
  })
+
+//fetch data related to the id
+router.route("/get/:id").get(async(req,res)=>{
+    let holidayId = req.params.id;
+    console.log(holidayId);
+
+    const holiday = await holidaySetting.findById(holidayId)
+
+    .then((holiday)=>{
+        res.status(200).send({status: "Holiday Fetched", holiday});
+    })
+    .catch((err)=>{
+        console.log(err);
+        res.status(500).send({status: "Can't find the requested holiday", error: err.message});
+    });
+})
+
+
 
 //delete
 

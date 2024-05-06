@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import {useReactToPrint} from 'react-to-print';
 import { Link } from "react-router-dom";
 
 export default function ViewHourSetting() {
     const [businessHours, setSetting] = useState([]);
-    const componentRef = useRef();
+    //const componentRef = useRef();
 
     useEffect(() => {
         function getSetting() {

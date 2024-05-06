@@ -49,6 +49,32 @@ export default function AddPayroll(){
       }
     }
 
+    // NIC format error message
+function handleNicChange(e) {
+  const value = e.target.value;
+  const nicPattern = /^[0-9]{0,9}[vV]{0,1}$|^[0-9]{0,12}$/;
+
+  if (!nicPattern.test(value)) {
+    // Prevent further input by freezing the input field
+    e.target.value = e.target.value.slice(0, -1);
+  } else {
+    setNic(value.toUpperCase()); // Convert V/v to uppercase for consistency
+  }
+}
+
+ // Name format error message
+ function handleNameChange(e) {
+  const value = e.target.value;
+  const namePattern = /^[A-Za-z\s]+$/;
+
+  if (!namePattern.test(value)) {
+    // Prevent further input by freezing the input field
+    e.target.value = e.target.value.replace(/[^A-Za-z\s]/g, '');
+  } else {
+    setName(value);
+  }
+}
+
     return(
 
         <form onSubmit={sendData}>
@@ -66,10 +92,7 @@ export default function AddPayroll(){
                   id="nic"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   pattern="[0-9]{9}[vV]{1}|[0-9]{12}"
-                  onChange={(e)=>{
-
-                    setNic(e.target.value);
-                  }}
+                  onChange={handleNicChange}
                   required/>
               </div>
             </div>
@@ -84,10 +107,7 @@ export default function AddPayroll(){
                   name="name"
                   id="name"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  onChange={(e)=>{
-
-                    setName(e.target.value);
-                  }}
+                  onChange={handleNameChange}
                   required/>
               </div>
             </div>
