@@ -48,7 +48,7 @@ return(
       <div className="relative">
             <h1 className="ms-20 my-15 mt-20 text-5xl font-extrabold text-white">Business Hours Setting - Update</h1>
             
-           <form onSubmit={updateHour} className="w-half bg-gray-100 p-6 ms-60 my-10  p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50">
+            <form onSubmit={updateHour} className="w-half bg-gray-100 p-6 ms-60 my-10  p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50">
             <div className="flex justify-between items-center"> 
                
                 </div>
@@ -77,7 +77,7 @@ return(
                     </div>
                 </div>
                 <div class="mt-2 mb-2 flex justify-center">
-                    <button onClick={updateHour}type="submit" class="bg-gradient-to-r from-yellow-700 via-y ellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
+                    <button onClick={updateHour} type="submit" class="bg-gradient-to-r from-yellow-700 via-y ellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                   hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
                                   ease-in-out transform hover:scale-105" >Update</button>
                 </div>

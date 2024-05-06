@@ -22,18 +22,18 @@ export default function ViewPackage() {
   }, []);
  
  const handleCheckboxChange = (pkg) => {
-    const isSelected = selectedPackages.includes(pkg.pid);
+    const isSelected = selectedPackages.includes(pkg._id);
     if (isSelected) {
-      setSelectedPackages(selectedPackages.filter((id) => id !== pkg.pid));
+      setSelectedPackages(selectedPackages.filter((id) => id !== pkg._id));
     } else {
-      setSelectedPackages([...selectedPackages, pkg.pid]);
+      setSelectedPackages([...selectedPackages, pkg._id]);
     }
   };
 
   const calculateTotalPrice = () => {
     let total = 0;
     selectedPackages.forEach((pkgId) => {
-      const pkg = packages.find((p) => p.pid === pkgId);
+      const pkg = packages.find((p) => p._id === pkgId);
       if (pkg) {
         total += pkg.unitprice;
       }
@@ -73,7 +73,7 @@ export default function ViewPackage() {
                 <input
                   type="checkbox"
                   onChange={() => handleCheckboxChange(pkg)}
-                  checked={selectedPackages.includes(pkg.pid)}
+                  checked={selectedPackages.includes(pkg._id)}
                 />
                 <label className="text-xl font-bold mb-2">{pkg.name}</label>
                 <p className="text-base text-gray-200">{pkg.description}</p>

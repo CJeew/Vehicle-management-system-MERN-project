@@ -13,23 +13,22 @@ import Create_Job from "./Component/job";
 import ViewJobs from "./Component/ViewJobs";
 import JobDetails from "./Component/jobDetails";
 import UpdateJobs from "./Component/UpdateJobs";
+import TrackJobs from "./Component/TrackJobs";
 
 //Customer
 import Chome from "./Component/Chome";
 import Register from "./Component/Register";
 import Review from "./Component/Review";
-import Profile from "./Component/Profile";
 import Customerlogin from "./Component/Customerlogin";
 import Cmanager from "./Component/Cmanager";
 import CustomerList from "./Component/CustomerList";
 import CustomerReview from "./Component/CustomerReview";
+import Updatecustomer from "./Component/Updatecustomer";
+//import UpdateProfile from "./Component/UpdateProfile";
+import ProfileList from "./Component/ProfileList";
+import UpdateCustomersSecond from './Component/UpdateCustomersSecond';
 
-//import Register from "./Component/Register";
 
-// import Login from "./Component/Login";
-// import Update from "./Components/Update";
-// import Test from "./Components/Test";
-//import Supplier_home from "./Component/Supplier_home";
 
 //Booking------------------------------------------------------------------------------------------
 import BookingPage from "./Component/BookingPage"; // import Booking Page
@@ -46,6 +45,8 @@ import EditBookRead from "./Component/EditBookRead";
 import EditHourSetting from "./Component/EditHourSetting";
 import EditHolidaySetting from "./Component/EditHolidaySetting";
 import UpdateHours from "./Component/UpdateHours";
+import UpdateHoliday from "./Component/UpdateHoliday";
+import UpdateBooking from "./Component/UpdateBooking";
 
 import Home from "./Component/home";
 
@@ -70,6 +71,7 @@ import Addrec from "./Component/Add_recodes";
 import Rechome from "./Component/Recordshome";
 import Recview from "./Component/servicerecordview";
 import Editrec from "./Component/Edit_record";
+import Printrec from "./Component/Service_Recodeviewprint";
 
 //staff
 import AddPayroll from "./Component/AddPayroll";
@@ -140,6 +142,7 @@ function App() {
           <Route path="/viewjobs" element={<ViewJobs />} />
           <Route path="/details/:jobNumber" element={<JobDetails />} />
           <Route path="/updatejobs/:id" element={<UpdateJobs />} />
+          <Route path="/trackjobs/:jobNumber" element={<TrackJobs />} />
 
           {/* <Route path="/update" element={<Update/>}/> */}
 
@@ -157,6 +160,7 @@ function App() {
           <Route path="/rechome" element={<Rechome />} />
           <Route path="/recview" element={<Recview />} />
           <Route path="/editrec/:id" element={<Editrec />} />
+          <Route path="/printrec" element={<Printrec />} />
 
           {/*---------Tavini-------------Booking------------------------------*/}
           <Route path="/booking" element={<BookingPage />} />
@@ -173,17 +177,24 @@ function App() {
           <Route path="/editHourSetting" element={<EditHourSetting />} />
           <Route path="/editHolidaySetting" element={<EditHolidaySetting />} />
           <Route path="/updateSetting/:id" element={<UpdateHours/>}/>
+          <Route path="/updateHoliday/:id" element={<UpdateHoliday/>}/>
+          <Route path="/updateBooking/:id" element={<UpdateBooking/>}/>
+
 
           {/* <Route path="/test" element={<Test/>}/> */}
 
+          {/* --------------Chiyaan------------------------------------ */}
           <Route path="/Chome" element={<Chome />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Review" element={<Review />} />
-          <Route path="/Profile" element={<Profile />} />
           <Route path="/Customerlogin" element={<Customerlogin />} />
           <Route path="/Cmanager" element={<Cmanager />} />
           <Route path="/CustomerList" element={<CustomerList />} />
           <Route path="/CustomerReview" element={<CustomerReview />} />
+          <Route path="/Updatecustomer/:id" element={<Updatecustomer />} />
+          <Route path="/ProfileList" element={<ProfileList/>}/>
+          <Route path="/UpdateCustomersSecond" element={<UpdateCustomersSecond/>}/>
+         
 
           {/* ----------Sanjayan---------- */}
           <Route path="/addpayroll" element={<AddPayroll />} />
