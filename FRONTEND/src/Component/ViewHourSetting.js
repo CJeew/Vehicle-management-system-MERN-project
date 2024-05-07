@@ -3,6 +3,7 @@ import axios from "axios";
 
 export default function ViewHourSetting() {
     const [businessHours, setSetting] = useState([]);
+    const [currentTime, setCurrentTime] = useState(new Date());
 
     useEffect(() => {
         function getSetting() {
@@ -17,33 +18,42 @@ export default function ViewHourSetting() {
                 });
         }
 
+        const timerID = setInterval(() => setCurrentTime(new Date()), 1000); // Update current time every second
+
         getSetting();
+
+        return () => clearInterval(timerID); // Cleanup timer on component unmount
     }, []);
 
     return(
         <div>
-            <h2 className="ms-20 my-10 mt-20 text-5xl font-extrabold text-white">Business Hours</h2>
-            <div class="flex">
-            
-            <table  class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 ms-20">
-                <thead>
-                    <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Day</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Opening Time</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Closing Time</th>                   
-                    </tr>
-                </thead>
-            <tbody>
-                {businessHours.map((hourSetting) => (
-                    <tr key={hourSetting.id} class="bg-white border-b border-gray-200 hover:bg-gray-50">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{hourSetting.day}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{hourSetting.timeFrom}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{hourSetting.timeTo}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-    </div>
-</div>
+            <div className="relative">
+                <h2 className="ms-20 my-10 mt-20 text-5xl font-extrabold text-white">Business Hours</h2>
+                <div className="absolute top-32 right-0 mx-90 rounded-2xl" style={{ width: "800px", height: "400px" }}>
+                    <p className="text-white text-9xl font-quantico">{currentTime.toLocaleTimeString()}</p>
+                    {/* Updated digital clock styling */}
+                </div>
+            </div>
+            <div className="flex">
+                <table className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 ms-20">
+                    <thead>
+                        <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Day</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Opening Time</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Closing Time</th>                   
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {businessHours.map((hourSetting) => (
+                            <tr key={hourSetting.id} className="bg-white border-b border-gray-200 hover:bg-gray-50">
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{hourSetting.day}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{hourSetting.timeFrom}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{hourSetting.timeTo}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     );
 }

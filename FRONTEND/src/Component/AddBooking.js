@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import "./BookingPage.css";
 import axios from "axios";
 
-const alphabeticOnly = (e) => {
-    const input = e.target;
-    input.value = input.value.replace(/[^a-zA-Z]/gi, "");
-};
-
 function AddBooking() {
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
@@ -42,7 +37,7 @@ function AddBooking() {
         }
 
         // Validate phone number - cannot add special characters
-        if (!/^[\d]{10}$/.test(phoneNum)) { // Checking 10 digits
+        if (!/^[\d]{10}$/.test(phoneNum) ||  /[a-zA-Z]/.test(phoneNum) ) { // Checking 10 digits
             alert("Please enter a 10-digit valid phone number (07XXXXXXXX).");
             return;
         }
@@ -63,10 +58,16 @@ function AddBooking() {
             }).catch((err) => {
                 alert(err);
             });
-    }
+        }
 
-    // Checkbox function
-    function handleCheckboxChange(e) {
+        //Letters only validation for name
+        const alphabeticOnly = (e) => {
+        const input = e.target;
+        input.value = input.value.replace(/[^a-zA-Z]/gi, "");
+        };
+
+        // Checkbox function
+        function handleCheckboxChange(e) {
         const value = e.target.value;
         const checked = e.target.checked;
 
@@ -97,7 +98,15 @@ function AddBooking() {
                                     <td><label for="address" class="block text-sm font-medium text-black my-4">Address</label></td>
                                     <td><input type="textarea" id="address" name="address" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: Kottawa" required onChange={(e) => setAddress(e.target.value)}></input></td>
                                     <td><label for="phone" class="block text-sm font-medium text-black my-4">Phone Number</label></td>
-                                    <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: 07XXXXXXXX" required onChange={(e) => setPhoneNum(e.target.value)}></input></td>
+                                    <td><input type="tel" id="phone" name="phone" class="mt-1 p-2 block border-gray-300 rounded-md text-black" placeholder="ex: 07XXXXXXXX" required 
+                                        onKeyPress={(e) => {
+                                        // Allow only numbers and backspace/delete key
+                                        const validCharacters = /^[0-9\b]+$/;
+                                        if (!validCharacters.test(e.key)) {
+                                            e.preventDefault();
+                                        }
+
+                                        }} onChange={(e) => setPhoneNum(e.target.value)}></input></td>
                                 </tr>
                                 <tr>
                                     <td><label for="email" class="block text-sm font-medium text-black my-4">Email</label></td>
