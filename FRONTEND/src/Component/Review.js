@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 import "./Home.css";
 import "./Review.js";
@@ -9,6 +10,8 @@ function Review() {
   const [cmail, setCmail] = useState("");
   const [rating, setrating] = useState("");
   const [message, setmessage] = useState("");
+  const navigate = useNavigate()
+
 
   function sendreview(e) {
     e.preventDefault();
@@ -44,7 +47,7 @@ function Review() {
       .post("http://localhost:8090/reviewAdd/Review", newReview)
       .then(() => {
         alert("Review Added");
-        window.location.reload();
+        navigate("/Chome"); 
       })
       .catch((err) => {
         alert(err);
@@ -89,7 +92,8 @@ function Review() {
                 onChange={(e) => setCmail(e.target.value)}
                 type="email"
                 id="email"
-                className=" text-black w-full py-2 px-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="_@gmail.com"
+                className="text-black w-full py-2 px-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
               ></input>
             </div>
 
@@ -186,6 +190,7 @@ function Review() {
                 required
                 onChange={(e) => setmessage(e.target.value)}
                 id="message"
+                placeholder="Message"
                 type="text"
                 class="text-black text-black w-full py-2 px-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
               ></input>

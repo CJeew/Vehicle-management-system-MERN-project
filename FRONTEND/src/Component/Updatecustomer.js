@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 
-export default function Updatecustomers() {
+export default function Updatecustomers({ source }) {
   const [cname, setcname] = useState("");
   const [cnic, setcnic] = useState("");
   const [cphone, setcphone] = useState("");
@@ -13,6 +14,7 @@ export default function Updatecustomers() {
   const [cpass2, setcpass2] = useState("");
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  const navigate = useNavigate()
 
   function updatecustomer(e) {
     e.preventDefault();
@@ -31,7 +33,12 @@ export default function Updatecustomers() {
       .put(`http://localhost:8090/customer/update/${id}`, Updatedcustomer)
       .then(() => {
         alert("Details updated");
-        window.location.href = "/CustomerList";
+        if (source === "ProfileList") {
+          navigate("/ProfileList");
+        } 
+        else if (source === "CustomerList") {
+          navigate("/CustomerList");
+        }
       })
       .catch((err) => {
         alert(err.message);
@@ -181,7 +188,7 @@ export default function Updatecustomers() {
           <div></div>
         </div>
         <div class="text-center">
-          <button onClick={updatecustomer}
+          <button
             type="submit"
             class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                   hover:to-amber-700 text-white font-bold py-3 px-10 rounded-lg mr-2 opacity-90 transition duration-300

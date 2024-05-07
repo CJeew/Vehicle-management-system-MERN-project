@@ -51,7 +51,7 @@ router.route("/").get((req, res) => {
     });
 });
 
-//update
+//update for update customer
 
 router.route("/update/:id").put(async (req, res) => {
   const {id}= req.params;
@@ -66,7 +66,7 @@ router.route("/update/:id").put(async (req, res) => {
     cpass,
     cpass2,
     cvnum,
-    cvtype
+    cvtype,
   };
   try {
     const updatedCustomer = await customer.findByIdAndUpdate(id, Updatecustomer);
@@ -108,6 +108,31 @@ router.route("/get/:id").get(async(req,res)=>{
       console.log(err);
       res.status(500).send({status: "Can't fin the requested hour", errot: err.message});
   });
+  //update for update customer2
+
+router.route("/update2/:id").put(async (req, res) => {
+  const {id}= req.params;
+    console.log(id)
+  const { cname, cnic, cphone, cmail, cpass, cpass2, cvnum, cvtype } = req.body;
+
+  const UpdateCustomersSecond = {
+    cname,
+    cnic,
+    cphone,
+    cmail,
+    cpass,
+    cpass2,
+    cvnum,
+    cvtype
+  };
+  try {
+    const UpdatedCustomersSecond = await customer.findByIdAndUpdate(id, UpdateCustomersSecond);
+    res.status(200).send({ status: "Details Updated" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ status: "Error with updating data", error: err.message });
+  }
+});
 })
 
 
