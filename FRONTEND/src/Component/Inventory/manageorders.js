@@ -24,11 +24,25 @@ export default function ManageOrders() {
     getItems();
   }, []);
 
+  // const onDeleteClick = async (itemId) => {
+  //   await axios.delete(`http://localhost:8090/manageorders/delete/${itemId}`);
+  //   alert('Item Deleted Successfully');
+  //   window.location.reload();
+  // };
+
+
   const onDeleteClick = async (itemId) => {
-    await axios.delete(`http://localhost:8090/manageorders/delete/${itemId}`);
-    alert('Item Deleted Successfully');
-    window.location.reload();
-  };
+    const confirmDelete = window.confirm('Are you sure you want to delete this item?');
+    if (confirmDelete) {
+      await axios.delete(`http://localhost:8090/issueditems/delete/${itemId}`);
+      alert('Item Deleted Successfully');
+      // Reload the page or update state as needed
+      window.location.reload();
+    }
+  }
+  
+  
+
 
   const sendOrderEmail = async (itemId) => {
     try {

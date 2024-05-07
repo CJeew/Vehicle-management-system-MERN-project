@@ -106,20 +106,20 @@ const Dashboard = () => {
             <h2 className="text-lg font-bold mb-20">Total Issued Items</h2>
             <p className="text-xl">{dashboardData.totalIssuedItems}</p>
           </div>
-          <div className="bg-gray-800 bg-opacity-75 p-4 rounded-md text-white">
+          <div className="bg-gray-800 bg-opacity-80 p-4 rounded-md text-white">
             <h2 className="text-lg font-bold mb-20">Total Orders</h2>
             <p className="text-xl">{dashboardData.totalOrders}</p>
           </div>
-          <div className="bg-red-800 bg-opacity-75 p-4 rounded-md text-white">
+          <div className="bg-gray-800 bg-opacity-75 p-4 rounded-md text-white">
             <h2 className="text-lg font-bold mb-20">Total Value of Inventory</h2>
             <p className="text-xl">{totalValue}</p>
           </div>
-          <div className="bg-red-800 bg-opacity-75 p-4 rounded-md text-white">
+          <div className="bg-gray-800 bg-opacity-75 p-4 rounded-md text-white">
             <h2 className="text-lg font-bold mb-20">Total Issued Value</h2>
             <p className="text-xl">{issuedTotalValue}</p>
           </div>
-          <div className="bg-red-800 bg-opacity-75 p-4 rounded-md text-white">
-          <h2 className="text-xl font-bold mb-20">Total Order Value</h2>
+          <div className="bg-gray-800 bg-opacity-75 p-4 rounded-md text-white">
+          <h2 className="text-xl font-bold mb-20">Total Order Value Count</h2>
 
             <p className="text-xl">{orderTotalValue}</p>
           </div>

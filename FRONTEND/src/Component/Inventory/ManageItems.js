@@ -49,6 +49,18 @@ export default function ManageItems() {
     alert('Item Deleted Successfully');
     window.location.reload();
   }
+
+
+  // const onDeleteClick = async (itemId) => {
+  //   const confirmDelete = window.confirm('Are you sure you want to delete this item?');
+  //   if (confirmDelete) {
+  //     await axios.delete(`http://localhost:8090/issueditems/delete/${itemId}`);
+  //     alert('Item Deleted Successfully');
+  //     // Reload the page or update state as needed
+  //     window.location.reload();
+  //   }
+  // }
+  
   
   const ComponentsRef = useRef();
   const handlePrint = useReactToPrint({
