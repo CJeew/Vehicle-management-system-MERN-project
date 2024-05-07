@@ -37,65 +37,75 @@ export default function   IssuedItemsAdditems() {
   }
 
   return (
-    <form onSubmit={sendData} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-auto w-1/4">
+    <form onSubmit={sendData} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-6 mt-auto mx-auto w-2/3">
      
-      <center><h1>Issued Add Item</h1></center>
+      <center><h1 className="text-center font-bold text-black" >Issued Add Item</h1></center>
 
-      <div className="mt-4">
-        <div>
+      <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div className="sm:col-span-3">
           <label htmlFor="itemcode" className="block text-sm font-medium leading-6 text-gray-900">Item Code</label>
+          <div className="mt-2">
           <input
             type="text"
             name="itemcode"
             id="itemcode"
             value={itemcode}
             onChange={(e) => setItemcode(e.target.value)}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
+            </div>
         </div>
-        <div>
+        <div className="sm:col-span-3">
           <label htmlFor="itemname" className="block text-sm font-medium leading-6 text-gray-900">Item Name</label>
+          <div className="mt-2">
           <input
             type="text"
             name="itemname"
             id="itemname"
             value={itemname}
             onChange={(e) => setItemname(e.target.value)}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-        <div>
+        </div>
+        <div className="sm:col-span-3">
           <label htmlFor="price" className="block text-sm font-medium leading-6 text-gray-900">Price</label>
+          <div className="mt-2">
           <input
             type="text"
             name="category"
             id="category"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
+          </div>
         </div>
-        <div>
+        <div className="sm:col-span-3" >
           <label htmlFor="quantity" className="block text-sm font-medium leading-6 text-gray-900">Quantity</label>
+          <div className="mt-2">
           <input
             type="number"
             name="description"
             id="description"
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
+          </div>
         </div>
-        <div>
+        <div className="sm:col-span-3">
           <label htmlFor="issuedcode" className="block text-sm font-medium leading-6 text-gray-900">Issued Code</label>
+          <div className="mt-2">
           <input
             type="text"
             name="issuedcode"
             id="issuedcode"
             value={issuedcode}
             onChange={(e) => setIssuedcode(e.target.value)}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
+           </div>
         </div>
       
      

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
+import imgSrc from "./images/logo.png";
+import { FaPrint } from "react-icons/fa6";
 import { Link , useNavigate} from 'react-router-dom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 // import { BsFillArchiveFill } from 'react-icons/bs';
@@ -10,13 +12,25 @@ export default function ManageItems() {
   const [items, setItems] = useState([]); 
   const [alerts, setAlerts] = useState([]); // State to store reorder level alerts
   const [searchTerm, setSearchTerm] = useState("");
+  const [totalValue, setTotalValue] = useState(0);
 
   useEffect(() => {
+
+  
+
+
     // Function to fetch items and reorder level alerts
     const getItemsAndAlerts = async () => {
       try {
         const response = await axios.get("http://localhost:8090/manageparts/");
         setItems(response.data);
+
+
+
+        const total = response.data.reduce((acc, curr) => {
+          return acc + (parseInt(curr.price) * parseInt(curr.stocklimit));
+        }, 0);
+        setTotalValue(total);
 
         // Filter items to find reorder level alerts
         const alertItems = response.data.filter(item => parseInt(item.stocklimit) < parseInt(item.reorderlevel));
@@ -36,13 +50,12 @@ export default function ManageItems() {
     window.location.reload();
   }
   
-  const ComponentsRef= useRef();
-
+  const ComponentsRef = useRef();
   const handlePrint = useReactToPrint({
-    content:()=>ComponentsRef.current,
-    DocumentTittle:"order report",
-    onafterprint:()=>alert ("user report successfully ")
-  })
+    content: () => ComponentsRef.current,
+    DocumentTittle: "order report",
+    onafterprint: () => alert("user report successfully ")
+  });
 
      // Function to filter announcements based on search term
      const filteredmanageitems = items.filter((manageitems) =>
@@ -54,7 +67,9 @@ export default function ManageItems() {
  
 
   return (
-    <div className="h-screen w-screen bg-gray flex justify-center items-center flex-wrap relative">
+    
+<div className="h-screen w-screen bg-gray flex justify-center items-center flex-wrap relative" style={{backgroundImage: 'url("inventory_menu.jpeg")'}}>
+
        <div className="absolute top-2 left-8">
         <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Managed Items</h2>
         </div>
@@ -113,28 +128,44 @@ export default function ManageItems() {
         </a>
       </div>
       <div className="absolute top-16 right-8">
-        <button onClick={handlePrint} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
-          Generate Report
+        <button onClick={handlePrint} className="bg-yellow-500 hover:bg-yellow-600 mr-44 mt-24 text-white font-bold py-2 px-4 rounded">
+        <FaPrint/>
         </button>
       </div>
 
       
-      <div   class="overflow-x-auto mt-20 max-h-[25 rem] overflow-y-scroll">
-      <table ref={ComponentsRef} class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10">
+      <div ref={ComponentsRef}   class=" mt-20 max-h-[25 rem] ">
+      <div >
+  <img src={imgSrc} alt="Logo" className="print:block hidden h-20 w-43 ml-10 mt-3 mr-20 align-top align-left" />
+</div>
+<br/>
+
+<div class="print:block hidden   font-bold top-10 mx-10 justify-end">
+  <p class="mr-4">Ryome Motor Cares</p>
+  <p class="mr-4">NO:Colombo07</p>
+  <p class="mr-4">Tel:0752941767</p>
+  <p class="mr-4">Fax:0270110123</p>
+</div>
+
+<div class="text-center print:block hidden  text-2xl font-bold">
+  Inventory Items details
+</div>
+<br/>
+      <table  class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mt-20 top-10 mx-10">
           <thead>
           <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
-              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">No</th>
+              <th scope="col" class=" px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">No</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Item Code</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Item Name</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Category</th>
-              {/* <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Description</th> */}
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Price</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Supplier</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Reorder Level</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Stock Limit</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Remark</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Status</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Action</th>
+              <th scope="col" class=" px-6 py-3 text-left text-xs font-bold text-white tracking-wider print:hidden">Action</th>
+
             </tr>
           </thead>
           <tbody>
@@ -151,7 +182,7 @@ export default function ManageItems() {
                 <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>{item.stocklimit}</td>
                 <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>{item.remark}</td>
                 <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>{item.isactive}</td>
-                <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>
+                <td className={` print:hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${alerts.some(alert => alert._id === item._id) ? 'bg-red-200' : ''}`}>
                   <div className="flex items-center justify-end gap-2">
                   <Link to={`/updateitems/${item._id}`} className="text-blue-500 mr-2"><FaEdit className="inline-block text-xl align-middle" /></Link>
 <button onClick={() => onDeleteClick(item._id)}><FaTrash className="text-red-500 inline-block text-xl align-middle" /></button>
@@ -167,7 +198,23 @@ export default function ManageItems() {
             ))}
           </tbody>
         </table>
+        <br/>
+        <br/>
+        
+        <div class="form-footer relative mt-[10rem] ">
+          <br/>
+          <br/>
+
+  
+  <div class="absolute bottom-0 w-full flex justify-between px-10">
+  
+    <div class="font-bold text-left">...........................<br/>date</div>
+    <div class="font-bold text-right">...........................<br/>Singnature</div>
+  </div>
+</div>
+
       </div>
+      
       {alerts.length > 0 && (
         <div className="absolute bottom-8 right-8 bg-red-500 text-white font-bold py-2 px-4 rounded">
           {alerts.length === 1 ? (
@@ -177,6 +224,7 @@ export default function ManageItems() {
           )}
         </div>
       )}
+
     </div>
   );
 };

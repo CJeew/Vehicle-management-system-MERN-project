@@ -66,18 +66,6 @@ export default function EditStaff() {
       setJoindate(e.target.value);
     }
   }
-
-  // function handleNameChange(e) {
-  //   const enteredName = e.target.value;
-  //   // Regex pattern to allow only alphabetic characters
-  //   const onlyLetters = /^[A-Za-z]+$/;
-
-  //   if (onlyLetters.test(enteredName) || enteredName === "") {
-  //     // If the input contains only letters or is empty, update the name state
-  //     setName(enteredName);
-  //   }
-  // }
-
     
 
 return (
@@ -99,7 +87,7 @@ return (
             pattern="[0-9]{9}[vV]{1}|[0-9]{12}"
             onChange={(e) => {
               const inputValue = e.target.value;
-              const regex = /^[0-9 ]+$/; // Regular expression to allow letters, numbers, and spaces
+              const regex = /^[0-9Vv]+$/; // Regular expression to allow letters, numbers, and spaces
           
               if (regex.test(inputValue) || e.nativeEvent.inputType === "deleteContentBackward") {
                 setNic(inputValue);
