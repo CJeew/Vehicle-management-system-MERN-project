@@ -141,7 +141,7 @@ export default function ManageItems() {
       </div>
       <div className="absolute top-16 right-8">
         <button onClick={handlePrint} className="bg-yellow-500 hover:bg-yellow-600 mr-44 mt-24 text-white font-bold py-2 px-4 rounded">
-        <FaPrint/>
+        <FaPrint className='w-5 h-5' />
         </button>
       </div>
 

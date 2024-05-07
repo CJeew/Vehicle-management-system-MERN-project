@@ -24,22 +24,22 @@ export default function ManageOrders() {
     getItems();
   }, []);
 
-  // const onDeleteClick = async (itemId) => {
-  //   await axios.delete(`http://localhost:8090/manageorders/delete/${itemId}`);
-  //   alert('Item Deleted Successfully');
-  //   window.location.reload();
-  // };
-
-
   const onDeleteClick = async (itemId) => {
-    const confirmDelete = window.confirm('Are you sure you want to delete this item?');
-    if (confirmDelete) {
-      await axios.delete(`http://localhost:8090/issueditems/delete/${itemId}`);
-      alert('Item Deleted Successfully');
-      // Reload the page or update state as needed
-      window.location.reload();
-    }
-  }
+    await axios.delete(`http://localhost:8090/manageorders/delete/${itemId}`);
+    alert('Item Deleted Successfully');
+    window.location.reload();
+  };
+
+
+  // const onDeleteClick = async (itemId) => {
+  //   const confirmDelete = window.confirm('Are you sure you want to delete this item?');
+  //   if (confirmDelete) {
+  //     await axios.delete(`http://localhost:8090/issueditems/delete/${itemId}`);
+  //     alert('Item Deleted Successfully');
+  //     // Reload the page or update state as needed
+  //     window.location.reload();
+  //   }
+  // }
   
   
 
@@ -51,7 +51,7 @@ export default function ManageOrders() {
         console.error("Order not found");
         return;
       }
-
+  
       // Construct email body with order details
       let emailBody = `Order Details for Order ID: ${itemId}\n`;
       emailBody += `Item Code: ${order.itemcode}\n`;
@@ -59,37 +59,33 @@ export default function ManageOrders() {
       emailBody += `Supplier: ${order.suppliername}\n`;
       emailBody += `Need Quantity: ${order.needquantity}\n`;
       emailBody += `Order Code: ${order.ordercode}\n`;
-
+  
       // Send email
       await axios.post("http://localhost:8090/email/send-email/", {
         to: "noormohommaduakeel@gmail.com", // Replace with recipient's email address
         subject: "Order Details",
         body: emailBody
       });
-
+  
       alert('Order details sent via email for Order ID: ' + itemId);
-
-      // Update buttonClicked state and store in local storage
+  
+      // Update buttonClicked state
       setButtonClicked(prevState => ({
         ...prevState,
         [itemId]: true
       }));
-
-      localStorage.setItem('buttonClicked', JSON.stringify(buttonClicked));
+  
+      // Update local storage after setting buttonClicked
+      localStorage.setItem('buttonClicked', JSON.stringify({
+        ...buttonClicked,
+        [itemId]: true
+      }));
     } catch (error) {
       console.error("Error sending email:", error);
       alert('Failed to send order details via email.');
     }
   };
-
-  useEffect(() => {
-    // Retrieve stored information about sent orders
-    const storedButtonClicked = JSON.parse(localStorage.getItem('buttonClicked'));
-    if (storedButtonClicked) {
-      setButtonClicked(storedButtonClicked);
-    }
-  }, []);
-
+  
   // Function to filter items based on search term
   const filteredItems = items.filter((item) =>
     item.itemcode.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -148,8 +144,8 @@ export default function ManageOrders() {
       </div>
 
       <div className="absolute top-16 right-8">
-        <button onClick={handlePrint} className="bg-yellow-500 hover:bg-yellow-600 mr-44 mt-24 text-white font-bold py-2 px-4 rounded">
-          <FaPrint />
+        <button onClick={handlePrint} className="bg-yellow-500 hover:bg-yellow-600 mr-48 mt-24 text-white font-bold py-2 px-4 rounded">
+          <FaPrint className='w-5 h-5'  />
         </button>
       </div>
 
@@ -172,7 +168,7 @@ export default function ManageOrders() {
   Inventory Items details
 </div>
 <br/>
-      <table class="bg-gradient-to-r align-middle from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mt-5 top-10 mx-10">
+      <table class="bg-gradient-to-r align-middle from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mt-20 top-10 mx-10">
         <thead>
           <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
             <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">No</th>
@@ -202,13 +198,17 @@ export default function ManageOrders() {
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 print:hidden">
-                <button
-                  onClick={() => sendOrderEmail(item._id)}
-                  disabled={buttonClicked[item._id]} // Disable button if order already sent
-                  className={`bg-${buttonClicked[item._id] ? 'red' : 'blue'}-500 hover:bg-${buttonClicked[item._id] ? 'red' : 'blue'}-700 text-white font-bold py-2 px-4 rounded`}
-                >
-                  {buttonClicked[item._id] ? "Complete" : "Send Order"}
-                </button>
+          <button
+  onClick={() => sendOrderEmail(item._id)}
+  disabled={buttonClicked[item._id]} // Disable button if order already sent
+  className={`bg-${buttonClicked[item._id] ? 'red' : 'blue'}-500 hover:bg-${buttonClicked[item._id] ? 'red' : 'blue'}-700 text-white font-bold py-2 px-4 rounded`}
+>
+  {buttonClicked[item._id] ? "Complete" : "Send Order"}
+</button>
+
+
+
+
               </td>
             </tr>
           ))}

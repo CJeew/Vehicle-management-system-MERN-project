@@ -101,7 +101,7 @@ export default function IssuedItems() {
       </div>
       <div className="absolute top-16 right-8">
         <button onClick={handlePrint} className="bg-yellow-500 hover:bg-yellow-600 mr-80 mt-20 text-white font-bold py-2 px-4 rounded">
-        <FaPrint/>
+        <FaPrint className='w-5 h-5' />
         </button>
       </div>
       <div ref={ComponentsRef}   class=" mt-20 max-h-[25 rem] ">
