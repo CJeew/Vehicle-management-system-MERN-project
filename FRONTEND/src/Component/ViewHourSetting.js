@@ -29,9 +29,10 @@ export default function ViewHourSetting() {
         <div>
             <div className="relative">
                 <h2 className="ms-20 my-10 mt-20 text-5xl font-extrabold text-white">Business Hours</h2>
-                <div className="absolute top-32 right-0 mx-90 rounded-2xl" style={{ width: "800px", height: "400px" }}>
+                
+                <div className="absolute top-32 right-0 mx-90 rounded-2xl bg-black border border-black-200 rounded-lg shadow-md hover:bg-black-100 dark:bg-black-800 dark:border-black-700 dark:hover:bg-black-700 opacity-80 transition duration-300
+                                  ease-in-out transform hover:scale-105" style={{ width: "800px", height: "400px" }}>
                     <p className="text-white text-9xl font-quantico">{currentTime.toLocaleTimeString()}</p>
-                    {/* Updated digital clock styling */}
                 </div>
             </div>
             <div className="flex">
