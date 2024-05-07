@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./Chome.js";
 
 export default function ProfileList() {
   const [customer, setlist] = useState([]);
   const componentRef = useRef();
   const [searchTerm, setSearchTerm] = useState("");
-  const [password, setPassword] = useState(""); // Added state for password input
+  const [showHi, setShowHi] = useState(false); // State for showing animated text
 
   useEffect(() => {
     function getprofile() {
@@ -26,7 +27,9 @@ export default function ProfileList() {
 
   // Function to handle deletion of a customer
   const onDeleteClick = async (cusid) => {
-    const enteredPassword = prompt("Please enter the password to confirm deletion:");
+    const enteredPassword = prompt(
+      "Please enter the password to confirm deletion:"
+    );
     if (enteredPassword === "abc123" || enteredPassword === "xyz123") {
       await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
       alert("Profile Deleted Successfully");
@@ -36,33 +39,36 @@ export default function ProfileList() {
     }
   };
 
-  // Function to handle editing of a customer
-  const onEditClick = (cusid) => {
-    const enteredPassword = prompt("Please enter the password to confirm editing:");
+  // Function to handle editing a customer profile
+  const onEditClick = async (customerId) => {
+    const enteredPassword = prompt(
+      "Please enter the password to confirm editing:"
+    );
     if (enteredPassword === "abc123" || enteredPassword === "xyz123") {
-      // Redirect to the edit page
-      // You can implement your logic here
-      console.log("Redirecting to edit page for customer:", cusid);
-      // You can use history.push or Link component from react-router-dom to navigate to the edit page
+      // Navigate to the edit page
+      window.location.href = `/Updatecustomer/${customerId}`;
     } else {
       alert("Incorrect password, editing cancelled.");
     }
   };
 
-  // Function to filter bookings
-  const filteredlist = customer.filter(
-    (customer) =>
-      customer.cnic.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredList = customer.filter((customer) =>
+    customer.cnic.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  // Function to toggle showing "hi" text
+  const toggleHi = () => {
+    setShowHi(!showHi);
+  };
 
   return (
     <div>
       <div>
-      {/* Other content */}
-      <Link to={{ pathname: "/Updatecustomers", search: "?from=ProfileList" }}>
-        Update Customer
-      </Link>
-    </div>
+        <h2 className="ms-20 my-15 mt-20 text-6xl font-extrabold text-white">
+          Profile List
+        </h2>
+      </div>
+
       <div className="absolute top-2 right-8">
         {/* Search bar */}
         <div className="relative mt-48">
@@ -83,7 +89,7 @@ export default function ProfileList() {
               />
             </svg>
           </div>
-          
+
           <input
             type="text"
             placeholder="Search "
@@ -93,44 +99,48 @@ export default function ProfileList() {
           />
         </div>
       </div>
-      <div className="flex justify-center items-center h-screen">
+      
+
+      <div className="flex  items-center h-screen">
         <table
-          className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-0 mx-10 mt-48"
+          className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-0 mx-20 mt-48 w-1/3"
           ref={componentRef}
         >
           <thead>
             <tr>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                className="px-6 py-4 text-left text-xs font-bold text-white  tracking-wider"
               >
                 NIC Number
               </th>
             </tr>
           </thead>
           <tbody>
-            {filteredlist.map((customer) => (
+            {filteredList.map((customer) => (
               <tr
                 key={customer.id}
                 className="bg-white border-b border-gray-200 hover:bg-gray-50"
               >
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {customer.cnic}
+                  {
+                    searchTerm.toLowerCase() === customer.cnic.toLowerCase()
+                      ? customer.cnic // If search term matches exactly, show full NIC number
+                      : `${"•".repeat(
+                          customer.cnic.length - 2
+                        )}${customer.cnic.slice(-2)}` // Mask with dots
+                  }
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <div className="flex items-center justify-start gap-2">
-                    {/* Edit booking button */}
-                    <Link
-                     onClick={() => onEditClick(customer._id)}
-                      to={`/Updatecustomer/${customer._id}`}
-                      type="button"
-                      
+                  <div className="flex ml-48 gap-2">
+                    {/* Edit profile button */}
+                    <button
+                      onClick={() => onEditClick(customer._id)}
                       className="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                     
                     >
                       Edit
-                    </Link>
-                    {/* Delete booking button  */}
+                    </button>
+                    {/* Delete profile button  */}
                     <button
                       onClick={() => onDeleteClick(customer._id)}
                       className="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
@@ -143,6 +153,16 @@ export default function ProfileList() {
             ))}
           </tbody>
         </table>
+        {/* Animated text box */}
+      <div className="absolute top-55 right-32">
+        <div
+          className={`bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white py-2 px-4 rounded-md animate-bounce`}
+          onClick={toggleHi}
+        >
+         <h4><b>Please provide your National Identity Card (NIC) number in the search box </b> </h4>
+        <h4><b>and enter the password to proceed with editting your profile or deleting your account !</b> </h4>
+        </div>
+      </div>
       </div>
     </div>
   );

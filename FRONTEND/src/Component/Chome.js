@@ -5,7 +5,7 @@ import "./Chome.css";
 import "./Chome.js";
 import imgSrc from "./789.png";
 import imgSrc1 from "./741.jpg";
-import imgSrc2 from "./uuu.jpg";
+import imgSrc2 from "./ocus2.jpg";
 
 export default function Chome() {
   return (
