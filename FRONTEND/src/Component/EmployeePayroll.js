@@ -6,7 +6,7 @@ export default function EmployeePayroll() {
   const [employeepayroll, setPayroll] = useState([]); // State for storing payroll details
   const [searchTerm, setSearchTerm] = useState(""); // State for storing search term
   const [sortOrder, setSortOrder] = useState("asc"); // State for sorting order, default is ascending
-  const componentRef = useRef();  //Add a reference for accessing the component to be printed
+  //const componentRef = useRef();  //Add a reference for accessing the component to be printed
 
   // Fetch payroll details from the server on component mount
   useEffect(() => {
@@ -53,14 +53,14 @@ export default function EmployeePayroll() {
   setSortOrder(sortOrder === "asc" ? "desc" : "asc"); // Toggle sorting order
 };
 
-//Generate PDF
-const generatePDF = useReactToPrint({
-  content: () => componentRef.current,
-  documentTitle: "Employee Payroll",
-  onAfterPrint: () => alert("Data Saved in PDF"),
-  onPrintError: () => alert("Error in Printing"),
+// //Generate PDF
+// const generatePDF = useReactToPrint({
+//   content: () => componentRef.current,
+//   documentTitle: "Employee Payroll",
+//   onAfterPrint: () => alert("Data Saved in PDF"),
+//   onPrintError: () => alert("Error in Printing"),
 
-});
+// });
 
   return (
 
@@ -99,19 +99,19 @@ const generatePDF = useReactToPrint({
       </div>
 
         <div class="flex justify-between">
-          <a href="/stafffinancerelation" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mr-[1rem]">
+          <a href="/stafffinancerelation" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mr-[2rem]">
             view
           </a>
 
-          <button onClick={generatePDF} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mr-8">
+          {/* <button onClick={generatePDF} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 mr-8">
             Generate PDF
-          </button>
+          </button> */}
         </div>
     </div>
 
   {/* Table to display payroll details */}
   <div class="overflow-x-auto max-h-[25rem] overflow-y-scroll ml-8 mr-8 rounded-md overflow-hidden">
-    <table class="min-w-full divide-y divide-gray-200" ref={componentRef}>
+    <table class="min-w-full divide-y divide-gray-200">
       <thead>
         <tr class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-700 text-white sticky top-0"> {/* Added bg-blue-500 for blue background and text-white for white text and Added sticky and top-0 for sticky header*/}
           <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">ID</th>
