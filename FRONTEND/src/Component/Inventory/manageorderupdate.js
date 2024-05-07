@@ -58,64 +58,69 @@ export default function OrderEditItems() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <form onSubmit={updateItems} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-auto w-1/4">
-    <center><h1 className="font-bold">Order Update Item</h1></center>
-
-      <div className="mt-4">
-        <div>
+    <form onSubmit={updateItems} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-6 mt-auto mx-auto w-2/3">
+    <center><h1 className="text-center font-bold text-black">Order Update Item</h1></center>
+    <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+    <div className="sm:col-span-3">
           <label htmlFor="itemcode" className="block text-sm font-medium leading-6 text-gray-900">Item Code</label>
+          <div className="mt-2">
           <input
             type="text"
             name="itemcode"
             id="itemcode"
             value={item.itemcode}
             onChange={inputChangeHandler}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-        </div>
-        <div>
+        </div></div>
+        <div className="sm:col-span-3">
           <label htmlFor="itemname" className="block text-sm font-medium leading-6 text-gray-900">Item Name</label>
+          <div className="mt-2">
           <input
             type="text"
             name="itemname"
             id="itemname"
             value={item.itemname}
             onChange={inputChangeHandler}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-        </div>
-        <div>
+        </div>  </div>
+        <div className="sm:col-span-3">
           <label htmlFor="suppliername" className="block text-sm font-medium leading-6 text-gray-900">Supplier Name</label>
+          <div className="mt-2">
           <input
             type="text"
             name="suppliername"
             id="suppliername"
             value={item.suppliername}
             onChange={inputChangeHandler}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-        </div>
-        <div>
+        </div>  </div>
+        <div className="sm:col-span-3">
           <label htmlFor="needquantity" className="block text-sm font-medium leading-6 text-gray-900">Need Quantity</label>
+          <div className="mt-2">
           <input
             type="text"
             name="needquantity"
             id="needquantity"
             value={item.needquantity}
             onChange={inputChangeHandler}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
+          </div>
         </div>
-        <div>
+        <div className="sm:col-span-3">
           <label htmlFor="ordercode" className="block text-sm font-medium leading-6 text-gray-900">Order code</label>
+          <div className="mt-2">
           <input
             type="text"
             name="ordercode"
             id="ordercode"
             value={item.ordercode}
             onChange={inputChangeHandler}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
+            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          /></div>
         </div>
        
      

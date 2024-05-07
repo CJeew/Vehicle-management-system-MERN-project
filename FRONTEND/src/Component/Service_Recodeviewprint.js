@@ -101,10 +101,10 @@ export default function ServiceRecordView() {
         </tbody>
       </table>
       </div>
-      <div className="absolute right-8 mt-5">
+      <div className="absolute bottom-2 right-8 mt-5">
         <button
           onClick={handlePrint}
-          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded "
         >
           Download Report
         </button>

@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 export default function AddTransaction() {
+  const [item, setItem] = useState("");
   const [transactionCode,setTCode] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
@@ -42,7 +43,7 @@ export default function AddTransaction() {
     if(!description.trim()){
       newErrors.description = "Description is required"
     }
-    if(!paymentType){
+    if(!paymentType || item.paymentType === "Select Payment Type"){
       newErrors.paymentType = "Select payment type"  
     }
     if(!amount.trim()){ 
@@ -52,10 +53,10 @@ export default function AddTransaction() {
     } else if (parseFloat(amount) <= 0) {
       newErrors.amount = "Amount must be a positive number";
     }
-    if (!accounts) {
+    if (!accounts || item.accounts === "Select Category") {
       newErrors.accounts = "Select category";
     }
-    if (!department) {
+    if (!department || item.department ==="Select Department") {
       newErrors.department = "Select department";
     }
 
@@ -103,7 +104,7 @@ function handleDateChange(e) {
             id="transactionCode"
             value={transactionCode}
             onChange={(e) => setTCode(e.target.value)}
-            className=" block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
+            className={`block rounded-md border ${errors.transactionCode ? 'border-red-500' : 'border-gray-300'} shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3`}
           />
           {errors.transactionCode && (
             <p className="text-red-500 text-sm">{errors.transactionCode}</p>
@@ -117,7 +118,7 @@ function handleDateChange(e) {
             id="date"
             value={date}
             onChange={handleDateChange}
-            className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
+            className={`block rounded-md border ${errors.date ? 'border-red-500' : 'border-gray-300'} shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3`}
           />
             {errors.date && (
             <p className="text-red-500 text-sm">{errors.date}</p>
@@ -132,7 +133,7 @@ function handleDateChange(e) {
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
+            className={`block rounded-md border ${errors.description ? 'border-red-500' : 'border-gray-300'} shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3`}
           />
             {errors.description && (
             <p className="text-red-500 text-sm">{errors.description}</p>
@@ -147,7 +148,7 @@ function handleDateChange(e) {
             id="paymentType"
             value={paymentType}
             onChange={(e) => setPaymentType(e.target.value)}
-            className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
+            className={`block rounded-md border ${errors.paymentType ? 'border-red-500' : 'border-gray-300'} shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3`}
           >
           <option value="Select PaymentType">Select payment type</option>  
           <option value="Cash">Cash</option>
@@ -167,7 +168,7 @@ function handleDateChange(e) {
             id="amount"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3 appearance-none"
+            className={`block rounded-md border ${errors.amount ? 'border-red-500' : 'border-gray-300'} shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3`}
           />
             {errors.amount && (
             <p className="text-red-500 text-sm">{errors.amount}</p>
@@ -181,7 +182,7 @@ function handleDateChange(e) {
             id="accounts"
             value={accounts}
             onChange={(e) => setAccounts(e.target.value)}
-            className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
+            className={`block rounded-md border ${errors.accounts ? 'border-red-500' : 'border-gray-300'} shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3`}
           >
             <option value="Select category">Select category</option>
             <option value="Income">Income</option>
@@ -200,7 +201,7 @@ function handleDateChange(e) {
             id="department"
             value={department}
             onChange={(e) => setDepartment(e.target.value)}
-            className="block rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3"
+            className={`block rounded-md border ${errors.department ? 'border-red-500' : 'border-gray-300'} shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3`}
           >
             <option value="Select department">Select department</option>
             <option value="Finance">Finance</option>
