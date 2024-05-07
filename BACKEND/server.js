@@ -74,7 +74,9 @@ app.use("/manageorders", manageordersRouter);
 const dashboardOverviewRouter = require('./Routes/akeel/dashboardoverview.js'); // Import the new route
 app.use('/dashboard', dashboardOverviewRouter); // Use the new route
 
-
+const emailRouter = require('./Routes/akeel/email.js');
+// app.use(express.json());
+app.use('/email',emailRouter);
 
 
 // SHAJEEH
