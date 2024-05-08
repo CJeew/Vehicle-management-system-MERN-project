@@ -90,6 +90,7 @@ export default function BookRead() {
                         <p className="mr-4">Pannipitiya,</p>
                         <p className="mr-4">Kottawa</p>
                         <p className="mr-4">0773216654 / 0112780599</p>
+                        <hr/>
                     <br/>
                 </div>
             </div>
@@ -139,11 +140,14 @@ export default function BookRead() {
             {/* Footer for PDF */}
             <div className="print:block hidden">
                     <div className="absolute bottom-0 w-full  flex px-10 mb-10"><br/><br/>
-                        <div className="font-bold text-left space-x-64">
-                            ...........................<br />Date
+                    <div className="font-bold text-left space-x-4">
+                            ..................................<br />Date
                         </div>
                         <div className="font-bold ml-96">
-                            ...........................<br />Signature
+                            ..................................<br />Issued By
+                        </div>
+                        <div className="font-bold ml-96">
+                            .....................................<br />Manager's Signature
                         </div>
                     </div>
                 </div>
