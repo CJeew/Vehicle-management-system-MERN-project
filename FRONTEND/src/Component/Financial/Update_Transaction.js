@@ -110,6 +110,7 @@ export default function UpdateTransaction() {
       }
     }
   };
+  const today = new Date().toISOString().split('T')[0];
 
   if (loading) return <div>Loading...</div>;
   return (
@@ -143,6 +144,7 @@ export default function UpdateTransaction() {
             id="date"
             value={item.date}
             onChange={handleDateChange}
+            max={today}
             className={`block rounded-md border ${errors.date ? 'border-red-500' : 'border-gray-300'} shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3`}
           />
           {errors.date && <p className="text-red-500 text-sm mt-1">{errors.date}</p>}

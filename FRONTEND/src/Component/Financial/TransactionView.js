@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
+import imgSrc from "./logo.png";
 import { Link , useNavigate} from 'react-router-dom';
 import {useReactToPrint} from "react-to-print"
 import { GrDocumentPdf } from "react-icons/gr";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-//import imgSrc from "../"
+
 export default function TransactionView() {
   const [items, setItems] = useState([]); 
   const [searchTerm, setSearchTerm] = useState(""); 
@@ -133,7 +134,11 @@ export default function TransactionView() {
         </button>
       </div>
       <div ref={ComponentsRef} className="mt-20 max-h-[25 rem]">
-  
+        <div >
+        <img src={imgSrc} alt="Logo" className="print:block hidden h-20 w-43 ml-10 mt-3 mr-20 align-top align-left" />    
+        </div>  
+        <br/>   
+
         <div className='print:block hidden font-bold top-10 mx-10 justify-end'>
           <p class="mr-4">Ryome Motor Cars</p>
           <p class="mr-4">NO:Colombo 07</p>
@@ -148,16 +153,16 @@ export default function TransactionView() {
          </div>
         <div className="print:hidden">
          <div className="bg-gradient-to-r from-indigo-800 via-indigo-900 to-indigo-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-10 ml-1 mr-8">
-          <p className="text-white text-2xl">Total Income: Rs.{incomeTotal}</p>
+          <p className="text-white text-2xl">Total Income: Rs.{incomeTotal.toLocaleString()}</p>
          </div>
          <div className="bg-gradient-to-r from-indigo-800 via-indigo-900 to-indigo-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-10 ml-1 mr-8">
-           <p className="text-white text-2xl">Total Expenses: Rs.{expensesTotal}</p>
+           <p className="text-white text-2xl">Total Expenses: Rs.{expensesTotal.toLocaleString()}</p>
          </div>
          <div className="bg-gradient-to-r from-indigo-800 via-indigo-900 to-indigo-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-10 ml-1 mr-8">
-           <p className="text-white text-2xl">Total Tax: Rs.{taxTotal}</p>
+           <p className="text-white text-2xl">Total Tax: Rs.{taxTotal.toLocaleString()}</p>
          </div>
          <div className="bg-gradient-to-r from-red-800 via-red-900 to-red-900 bg-opacity-75 p-4 float-right font-bold py-3 px-5 rounded-lg mt-10 my-10 ml-1 mr-8">
-          <p className="text-white text-2xl">Total: Rs.{total}</p>
+         <p className="text-white text-2xl">Total: Rs.{total.toLocaleString()}</p>
          </div>
         </div>
 
@@ -183,7 +188,7 @@ export default function TransactionView() {
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.date}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.description}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.paymentType}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.amount}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Rs.{item.amount.toLocaleString()}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.accounts}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.department}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
