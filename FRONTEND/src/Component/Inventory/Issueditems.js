@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
+import imgSrc from "./images/logo.png";
+import { FaPrint } from "react-icons/fa6";
 import { Link , useNavigate} from 'react-router-dom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import {useReactToPrint} from "react-to-print"
@@ -25,6 +27,18 @@ export default function IssuedItems() {
     alert('Item Deleted Successfully');
     window.location.reload();
   }
+
+
+  // const onDeleteClick = async (itemId) => {
+  //   const confirmDelete = window.confirm('Are you sure you want to delete this item?');
+  //   if (confirmDelete) {
+  //     await axios.delete(`http://localhost:8090/issueditems/delete/${itemId}`);
+  //     alert('Item Deleted Successfully');
+  //     // Reload the page or update state as needed
+  //     window.location.reload();
+  //   }
+  // }
+  
 
   const ComponentsRef= useRef();
   const handlePrint = useReactToPrint({
@@ -86,12 +100,30 @@ export default function IssuedItems() {
         </a>
       </div>
       <div className="absolute top-16 right-8">
-        <button onClick={handlePrint} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
-          Generate Report
+        <button onClick={handlePrint} className="bg-yellow-500 hover:bg-yellow-600 mr-80 mt-20 text-white font-bold py-2 px-4 rounded">
+        <FaPrint className='w-5 h-5' />
         </button>
       </div>
-      <div  class="flex justify-center items-center h-screen">
-        <table  ref={ComponentsRef} class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10">
+      <div ref={ComponentsRef}   class=" mt-20 max-h-[25 rem] ">
+      <div >
+  <img src={imgSrc} alt="Logo" className="print:block hidden h-20 w-43 ml-10 mt-3 mr-20 align-top align-left" />
+</div>
+<br/>
+
+<div class="print:block hidden   font-bold top-10 mx-10 justify-end">
+  <p class="mr-4">Ryome Motor Cares</p>
+  <p class="mr-4">NO:Colombo07</p>
+  <p class="mr-4">Tel:0752941767</p>
+  <p class="mr-4">Fax:0270110123</p>
+</div>
+
+<div class="text-center print:block hidden  text-2xl font-bold">
+  Inventory Items details
+</div>
+<br/>
+
+     
+      <table  class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mt-20 top-10 mx-10 w-100">
           <thead>
             <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">No</th>
@@ -100,7 +132,7 @@ export default function IssuedItems() {
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Price</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Quantity</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Issued Code</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Action</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider print:hidden">Action</th>
             
             </tr>
           </thead>
@@ -114,7 +146,7 @@ export default function IssuedItems() {
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.quantity}</td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.issuedcode}</td>
                
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <td className=" print:hidden px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div className="flex items-center justify-end gap-2">
                   <Link to={`/issuedUpdateitems/${item._id}`} className="text-blue-500 mr-2"><FaEdit className="inline-block text-xl align-middle" /></Link>
 <button onClick={() => onDeleteClick(item._id)}><FaTrash className="text-red-500 inline-block text-xl align-middle" /></button>
@@ -131,7 +163,26 @@ export default function IssuedItems() {
             ))}
           </tbody>
         </table>
+
+        <br/>
+        <br/>
+        
+        <div class="form-footer relative mt-[10rem] ">
+          <br/>
+          <br/>
+
+  
+  <div class="absolute bottom-0 w-full flex justify-between px-10">
+  
+    <div class="font-bold text-left">...........................<br/>date</div>
+    <div class="font-bold text-right">...........................<br/>Singnature</div>
+  </div>
+</div>
+
+      
       </div>
+      
+
     </div>
   );
 };

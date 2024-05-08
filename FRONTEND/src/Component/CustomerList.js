@@ -42,14 +42,12 @@ export default function RegisterRead() {
     DocumentTitle: "Customer List",
     onafterprint: () => alert("Customer List generation successful !!"),
   });
-
-  // Function to filter customers
-  const filteredlist = customer.filter(
-    (customer) =>
-      customer.cmail.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      customer.cname.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      customer.cvtype.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredList = customer.filter((customer) =>
+    customer.cnic.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    customer.cmail.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    customer.cvtype.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  
 
   return (
     <div>
@@ -158,7 +156,7 @@ export default function RegisterRead() {
             </tr>
           </thead>
           <tbody>
-            {filteredlist.map((customer) => (
+            {filteredList.map((customer) => (
               <tr
                 key={customer.id}
                 class="bg-white border-b border-gray-200 hover:bg-gray-50"
