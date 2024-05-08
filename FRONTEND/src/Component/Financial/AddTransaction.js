@@ -74,6 +74,7 @@ export default function AddTransaction() {
       });
   }
 }
+//Date validation
 function handleDateChange(e) {
   const selectedDate = new Date(e.target.value);
   const currentDate = new Date();
