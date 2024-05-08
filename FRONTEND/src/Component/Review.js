@@ -90,7 +90,7 @@ function Review() {
                 required
                 onChange={(e) => {
                   const { value } = e.target;
-                  const filteredValue = value.replace(/[^a-zA-Z0-9@]/g, ""); // Allow only letters, numbers, and '@'
+                  const filteredValue = value.replace(/[^a-zA-Z0-9@.]/g, ""); // Allow only letters, numbers, and '@'
                   setCmail(filteredValue);
                 }}
                 type="text"

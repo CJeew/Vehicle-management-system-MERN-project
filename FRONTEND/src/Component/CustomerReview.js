@@ -35,13 +35,10 @@ export default function ReviewRead() {
 
     // If user confirms deletion
     if (shouldDelete) {
-      await axios.delete(`http://localhost:8090/customer/delete/${revid}`);
-      alert("Profile Deleted Successfully");
+      await axios.delete(`http://localhost:8090/reviewAdd/delete/${revid}`);
+      alert("Review Deleted Successfully");
       window.location.reload(); // Refresh page after successful deletion
     }
-    await axios.delete(`http://localhost:8090/reviewAdd/delete/${revid}`);
-    alert("Review Deleted Successfully");
-    window.location.reload(); // Refresh page after successful deletion
   };
 
   // Function to filter reviews based on rating

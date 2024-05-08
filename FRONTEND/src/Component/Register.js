@@ -88,7 +88,7 @@ function Register() {
       .post("http://localhost:8090/customer/Register", newCustomer)
       .then(() => {
         alert("Profile Added");
-        navigate("/home"); // Redirect to Chome page
+        navigate("/Chome"); // Redirect to Chome page
       })
       .catch((err) => {
         alert(err.response.data.message);
@@ -151,7 +151,7 @@ function Register() {
               required
               onChange={(e) => {
                 const { value } = e.target;
-                const filteredValue = value.replace(/[^a-zA-Z0-9@]/g, ""); // Allow only letters, numbers, and '@'
+                const filteredValue = value.replace(/[^a-zA-Z0-9@.]/g, ""); // Allow only letters, numbers, and '@'
                 setcmail(filteredValue);
               }}
               type="text"
