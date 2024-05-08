@@ -81,6 +81,7 @@ function handleNicChange(e) {
           <div class="mt-2">
             <input
               type="text"
+              placeholder="199525698V or 199552569889"
               name="nic"
               id="nic"
               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -98,6 +99,7 @@ function handleNicChange(e) {
           <div class="mt-2">
             <input
               type="text"
+              placeholder="Tim Jacks"
               name="name"
               id="name"
               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -128,6 +130,7 @@ function handleNicChange(e) {
           <div class="mt-2">
             <input
               type="number"
+              placeholder="25"
               name="attendance"
               id="attendance"
               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

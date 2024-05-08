@@ -64,6 +64,8 @@ export default function AddStaff() {
     }
   }
 
+  const today = new Date().toISOString().split('T')[0];
+
   // Name format error message
   function handleNameChange(e) {
     const value = e.target.value;
@@ -195,6 +197,7 @@ function handleAddressChange(e) {
                 type="text"
                 name="nic"
                 id="nic"
+                placeholder="199525698V or 199552569889"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 pattern="[0-9]{9}[vV]{1}|[0-9]{12}"
                 onChange={handleNicChange}
@@ -212,6 +215,7 @@ function handleAddressChange(e) {
                 type="text"
                 name="name"
                 id="name"
+                placeholder="Tim Jacks"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 //pattern="[A-Za-z]"
                 onChange={handleNameChange}
@@ -228,6 +232,7 @@ function handleAddressChange(e) {
                 type="email"
                 name="email"
                 id="email"
+                placeholder="example@gmail.com"
                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                 onChange={handleEmailChange}
@@ -244,6 +249,7 @@ function handleAddressChange(e) {
               <input
                 type="text"
                 name="address"
+                placeholder="118 Colombo SriLanka"
                 id="address"
                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 onChange={handleAddressChange}
@@ -259,6 +265,7 @@ function handleAddressChange(e) {
             <div class="mt-2">
               <input
                 type="text"
+                placeholder="Mechanic"
                 name="designation"
                 id="designation"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -274,6 +281,7 @@ function handleAddressChange(e) {
             <div class="mt-2">
               <input
                 type="number"
+                placeholder="011-xxx-xxxx"
                 name="mobileno"
                 id="mobileno"
                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -296,6 +304,7 @@ function handleAddressChange(e) {
                 id="joindate"
                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 onChange={handleDateChange}
+                max={today}
                 required />
             </div>
           </div>

@@ -75,7 +75,7 @@ export default function ServiceRecordView() {
 <div class="text-center print:block hidden  text-2xl font-bold mg-5 font-bold text-4xl">
   <h1>Service Records</h1>
 </div>
-99
+
       <table className="bg-white w-full mt-15 print:absolute " >
         <thead>
           <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white">
