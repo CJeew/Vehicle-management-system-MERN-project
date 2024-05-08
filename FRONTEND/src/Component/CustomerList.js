@@ -33,6 +33,16 @@ export default function RegisterRead() {
     await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
     alert("Profile Deleted Successfully");
     window.location.reload(); // Refresh page after successful deletion
+
+     // Show confirmation dialog
+  const shouldDelete = window.confirm("Are you sure you want to delete this profile?");
+  
+  // If user confirms deletion
+  if (shouldDelete) {
+    await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
+    alert("Profile Deleted Successfully");
+    window.location.reload(); // Refresh page after successful deletion
+  }
   };
 
   // Function to generate reports
