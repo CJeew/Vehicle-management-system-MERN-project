@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { Link, useNavigate } from 'react-router-dom';
 
-export default function Updatecustomers({ source }) {
+export default function UpdateCustomersSecond({ source }) {
   const [cname, setcname] = useState("");
   const [cnic, setcnic] = useState("");
   const [cphone, setcphone] = useState("");
@@ -14,11 +13,10 @@ export default function Updatecustomers({ source }) {
   const [cpass2, setcpass2] = useState("");
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  const navigate = useNavigate()
 
   function updatecustomer(e) {
     e.preventDefault();
-    const Updatedcustomer = {
+    const UpdateCustomersSecond = {
       cname,
       cnic,
       cphone,
@@ -30,14 +28,14 @@ export default function Updatecustomers({ source }) {
     };
 
     axios
-      .put(`http://localhost:8090/customer/update/${id}`, Updatedcustomer)
+      .put(`http://localhost:8090/customer/update2/${id}`, UpdateCustomersSecond)
       .then(() => {
         alert("Details updated");
         if (source === "ProfileList") {
-          navigate("/ProfileList");
+          window.location.href = "/ProfileList";
         } 
         else if (source === "CustomerList") {
-          navigate("/CustomerList");
+          window.location.href = "/CustomerList";
         }
       })
       .catch((err) => {

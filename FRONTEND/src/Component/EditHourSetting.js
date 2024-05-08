@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import {useReactToPrint} from 'react-to-print';
 import { Link } from "react-router-dom";
 
 export default function ViewHourSetting() {
@@ -25,11 +24,14 @@ export default function ViewHourSetting() {
 
     // Function to handle deletion of a hour
     const onDeleteClick = async (settingId) => {
-        await axios.delete(`http://localhost:8090/hourSetting/deleteSetting/${settingId}`);
-        alert('Business Hours Deleted Successfully');
-        window.location.reload(); // Refresh page after successful deletion
-  };
-
+        const confirmed = window.confirm('Are you sure you want to delete this business hour setting?');
+        if (confirmed) {
+            await axios.delete(`http://localhost:8090/hourSetting/deleteSetting/${settingId}`);
+            alert('Business Hours Deleted Successfully');
+            window.location.reload(); // Refresh page after successful deletion
+        }
+    };
+    
   return(
     <div>
         <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Business Hours</h2>

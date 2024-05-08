@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import moment from "moment";
+import imgSrc from "../Images/logo.png";
+
 import { useReactToPrint } from "react-to-print";
 
 export default function ServiceRecordView() {
@@ -48,7 +50,7 @@ export default function ServiceRecordView() {
     <div className="mx-auto max-w-5xl">
       <h2 className="my-10 text-5xl font-bold text-center text-gray-300">Service Records</h2>
 
-      <div className="mx-10 mb-10 max-w-3xl">
+      <div className="mx-10  max-w-3xl">
         <input
           type="text"
           placeholder="Search"
@@ -57,14 +59,24 @@ export default function ServiceRecordView() {
           className="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 block w-full"
         />
       </div>
-      <div ref={componentRef}>
-      <div className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900">
-        <h2 className="py-5 text-3xl font-bold text-white text-center">
-          Service Records
-        </h2>
-      </div>
+      <div ref={componentRef} >
+      <div >
+      <img src={imgSrc} alt="Logo.png" className="print:block hidden h-20 w-43 ml-10 mt-3 mr-20 align-top align-left" />
 
-      <table className="bg-white w-full print:absolute" ref={componentRef}>
+      </div>
+      <br></br>
+      <div class=" font-bold top-10 mx-10 justify-end">
+  <p class="mr-4">Ryome Motor Cares</p>
+  <p class="mr-4">NO:Colombo07</p>
+  <p class="mr-4">Tel:0752941767</p>
+  <p class="mr-4">Fax:0270110123</p>
+</div>
+<br></br>
+<div class="text-center print:block hidden  text-2xl font-bold mg-5 font-bold text-4xl">
+  <h1>Service Records</h1>
+</div>
+99
+      <table className="bg-white w-full mt-15 print:absolute " >
         <thead>
           <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white">
             <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
@@ -100,11 +112,24 @@ export default function ServiceRecordView() {
           ))}
         </tbody>
       </table>
+      <br></br>
+      <div class="form-footer relative mt-[1rem] ">
+         
+
+  
+  <div class="fixed w-full flex justify-between px-10 mt-[40rem]">
+  
+    <div class="font-bold text-left">...........................<br/>date</div>
+    <div class="font-bold text-right">...........................<br/>Singnature</div>
+  </div>
+</div>
+
       </div>
-      <div className="absolute right-8 mt-5">
+      
+      <div className=" right-0 ml-[70rem] ">
         <button
           onClick={handlePrint}
-          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded mb-[5rem] "
         >
           Download Report
         </button>

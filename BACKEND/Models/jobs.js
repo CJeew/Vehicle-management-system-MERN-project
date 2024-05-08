@@ -74,6 +74,10 @@ const jobSchema = new Schema({
     details : {
         type : String
     },
+    // serviceStatus: {
+    //     type: [String],
+         
+    //   }
 })
 
 

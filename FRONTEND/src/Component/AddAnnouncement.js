@@ -32,6 +32,10 @@ function handleDateChange(e) {
   const selectedDate = new Date(e.target.value);
   const currentDate = new Date();
 
+   // Set hours, minutes, seconds, and milliseconds to 0 for both dates
+   currentDate.setHours(0, 0, 0, 0);
+   selectedDate.setHours(0, 0, 0, 0);
+
   if (selectedDate > currentDate) {
     alert("Please select a date on or before today.");
   } else {

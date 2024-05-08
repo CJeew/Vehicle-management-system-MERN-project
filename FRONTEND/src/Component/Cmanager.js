@@ -4,7 +4,7 @@ import "./Home.css";
 import "./Chome.css";
 import "./Chome.js";
 import "./Customerlogin.js";
-import "./Profile.js";
+
 import "./CustomerList.js";
 import imgSrc from "./list.jpg";
 import imgSrc1 from "./rev1.png";

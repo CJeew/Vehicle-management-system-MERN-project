@@ -9,13 +9,78 @@ export default function Addorderitems() {
   const [suppliername, setSuppliername] = useState("");
   const [needquantity, setNeedquantity] = useState("");
   const [ordercode, setOrdercode] = useState("");
+  const [errors, setErrors] = useState({});
  
 
 
   const navigate = useNavigate()
 
+  function handleItemnameChange(event) {
+    // Allow only letters and spaces
+    if (!/^[A-Za-z\s]*$/.test(event.target.value)) {
+        setItemname(event.target.value.replace(/[^A-Za-z\s]/gi, ''));
+    } else {
+        setItemname(event.target.value);
+    }
+
+
+}
+
+function handlesuppliernameChange(event) {
+  // Allow only letters and spaces
+  if (!/^[A-Za-z\s]*$/.test(event.target.value)) {
+      setSuppliername(event.target.value.replace(/[^A-Za-z\s]/gi, ''));
+  } else {
+      setSuppliername(event.target.value);
+  }
+
+  
+}
+
+  function validateForm() {
+    const errors = {};
+
+
+
+   // Item Code validation
+   if (!itemcode.trim()) {
+    errors.itemcode = "Item Code is required";
+  } else if(!/^[F0-9]+$/i.test(itemcode)){
+    errors.itemcode = "Item Code can only F,f letters and numbers";
+  }
+
+
+
+
+  // Order Code validation
+  if (!ordercode.trim()) {
+    errors.ordercode = "Order Code is required";
+  } else if(!/^[O0-9]+$/i.test(ordercode)){
+    errors.ordercode = "Order Code can only O,o letters and numbers";
+  }
+
+
+
+
+
+
+
+
+
+    return errors;
+  }
+
+
+  // function sendData(e) {
+  //   e.preventDefault();
+
   function sendData(e) {
     e.preventDefault();
+    const errors = validateForm();
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return;
+    }
 
     const newAddorderitems = {
       itemcode,
@@ -39,65 +104,79 @@ export default function Addorderitems() {
   }
 
   return (
-    <form onSubmit={sendData} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-4 mt-3 mx-auto w-1/4">
+    <form onSubmit={sendData} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-6 mt-auto mx-auto w-2/5">
      
-      <center><h1>Add Order</h1></center>
+      <center><h1 className="text-center font-bold text-black">Add Order</h1></center>
 
-      <div className="mt-4">
-        <div>
+      <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+      <div className="sm:col-span-3"> 
           <label htmlFor="itemcode" className="block text-sm font-medium leading-6 text-gray-900">Item Code</label>
+          <div className="mt-2">
           <input
             type="text"
             name="itemcode"
             id="itemcode"
             value={itemcode}
             onChange={(e) => setItemcode(e.target.value)}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="shadow appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+
           />
+         
+           </div>
+           {errors.itemcode && <span className="text-red-500">{errors.itemcode}</span>}
         </div>
-        <div>
+        <div className="sm:col-span-3"> 
           <label htmlFor="itemname" className="block text-sm font-medium leading-6 text-gray-900">Item Name</label>
+          <div className="mt-2">
           <input
             type="text"
             name="itemname"
             id="itemname"
             value={itemname}
-            onChange={(e) => setItemname(e.target.value)}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
+            onChange={handleItemnameChange} 
+            className="shadow appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          /></div>
+          {errors.itemname && <span className="text-red-500">{errors.itemname}</span>}
         </div>
-        <div>
+        <div className="sm:col-span-3"> 
           <label htmlFor="suppliername" className="block text-sm font-medium leading-6 text-gray-900">Supplier Name</label>
+          <div className="mt-2">
           <input
             type="text"
             name="suppliername"
             id="suppliername"
             value={suppliername}
-            onChange={(e) => setSuppliername(e.target.value)}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            onChange={handlesuppliernameChange}
+            className="shadow appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
+          </div>
         </div>
-        <div>
+        <div className="sm:col-span-3"> 
           <label htmlFor="needquantity" className="block text-sm font-medium leading-6 text-gray-900">Need Quantity</label>
+          <div className="mt-2">
           <input
             type="number"
             name="needquantity"
             id="needquantity"
             value={needquantity}
             onChange={(e) => setNeedquantity(e.target.value)}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="shadow appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-        <div>
+        </div>
+        <div className="sm:col-span-3"> 
           <label htmlFor="ordercode" className="block text-sm font-medium leading-6 text-gray-900">Order Code</label>
+          <div className="mt-2">
           <input
             type="text"
             name="ordercode"
             id="ordercode"
             value={ordercode}
             onChange={(e) => setOrdercode(e.target.value)}
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="shadow appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
+          </div>
+          {errors.ordercode && <span className="text-red-500">{errors.ordercode}</span>}
         </div>
        
      

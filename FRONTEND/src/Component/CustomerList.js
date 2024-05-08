@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./Cmanager.js";
 import { Link } from "react-router-dom";
-import {useReactToPrint} from 'react-to-print';
+import { useReactToPrint } from "react-to-print";
+import imgSrc from "./logo.png";
+import { FaPrint } from "react-icons/fa6";
 
 export default function RegisterRead() {
   const [customer, setlist] = useState([]);
@@ -26,25 +28,32 @@ export default function RegisterRead() {
     getlist();
   }, []);
 
-  // Function to handle deletion of a payroll
+  // Function to handle deletion of a customer
   const onDeleteClick = async (cusid) => {
-    await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
-    alert("Profile Deleted Successfully");
-    window.location.reload(); // Refresh page after successful deletion
+    // Show confirmation dialog
+    const shouldDelete = window.confirm(
+      "Are you sure you want to delete this profile?"
+    );
+
+    // If user confirms deletion
+    if (shouldDelete) {
+      await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
+      alert("Profile Deleted Successfully");
+      window.location.reload(); // Refresh page after successful deletion
+    }
   };
 
-  //Function to generate reports
+  // Function to generate reports
   const handlePrint = useReactToPrint({
-    content:()=>componentRef.current,
-    DocumentTitle:"customer List",
-    onafterprint:()=>alert ("Customer List generation successfull !!")
-  })
+    content: () => componentRef.current,
+    DocumentTitle: "Customer List",
+    onafterprint: () => alert("Customer List generation successful !!"),
+  });
 
-  //Function to filter bookings
-  const filteredlist = customer.filter(
+  const filteredList = customer.filter(
     (customer) =>
+      customer.cnic.toLowerCase().includes(searchTerm.toLowerCase()) ||
       customer.cmail.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      customer.cname.toLowerCase().includes(searchTerm.toLowerCase()) ||
       customer.cvtype.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -53,6 +62,7 @@ export default function RegisterRead() {
       <h2 className="ms-20 my-15 mt-20 text-6xl font-extrabold text-white">
         Registered Customer List
       </h2>
+
       <div className="absolute top-2 right-8">
         {/* Search bar */}
         <div className="relative mt-48">
@@ -73,104 +83,133 @@ export default function RegisterRead() {
               />
             </svg>
           </div>
+
           <div className="absolute right-8 mt-12">
-            <button onClick={handlePrint} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Generate Report</button> 
-           
-      </div>
+            <button
+              onClick={handlePrint}
+              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+            >
+              Generate Report <FaPrint />
+            </button>
+          </div>
           <input
             type="text"
-            placeholder="Search "
+            placeholder="Search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-10 pr-4 py-2 w-64 bg-gray-100 rounded-full focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 border border-transparent"
           />
         </div>
       </div>
-      <div class="flex justify-center items-center h-screen">
-        <table
-          class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-0 mx-10 mt-48"
-          ref={componentRef}
-        >
+
+      <div ref={componentRef} className=" mt-20 max-h-[25rem]">
+        {/* Header for PDF */}
+        <div className="print:block hidden">
+          <div>
+            <img
+              src={imgSrc}
+              alt="Logo"
+              className="h-20 w-43 ml-10 mt-3 mr-20 align-top align-left"
+            />
+          </div>
+          <br />
+          <div className="font-bold top-10 mx-10 justify-end">
+            <p className="mr-4">Ryome Motor Cares</p>
+            <p className="mr-4">NO:Colombo07</p>
+            <p className="mr-4">Tel:0752941767</p>
+            <p className="mr-4">Fax:0270110123</p>
+          </div>
+        </div>
+
+        <table className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-0 mx-10 mt-48">
           <thead>
-            <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
+            <tr>
+              {/* Header with company name, current date, and time */}
+              <th
+                colSpan="8"
+                className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 py-4 text-white text-center"
+              ></th>
+            </tr>
+
+            <tr className="bg-gradient-to-r  mt-5">
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider"
               >
                 Name
               </th>
 
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
               >
                 Telephone
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
               >
                 Email
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
               >
                 NIC Number
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
               >
                 Vehicle type
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
               >
                 Vehicle Number
               </th>
             </tr>
           </thead>
           <tbody>
-            {filteredlist.map((customer) => (
+            {filteredList.map((customer) => (
               <tr
                 key={customer.id}
-                class="bg-white border-b border-gray-200 hover:bg-gray-50"
+                className="bg-white border-b border-gray-200 hover:bg-gray-50"
               >
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {customer.cname}{" "}
                 </td>
 
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {customer.cphone}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {customer.cmail}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {customer.cnic}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {customer.cvtype}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {customer.cvnum}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <div class="flex items-center justify-start gap-2">
-                    {/* Edit booking button */}
+                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <div className="flex items-center justify-start gap-2">
+                    {/* Edit customer button */}
                     <Link
-                      to={`/Updatecustomer/${customer.cusid}`}
+                      to={`/Updatecustomer/${customer._id}`}
                       type="button"
-                      class="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                      className="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                     >
                       Edit
                     </Link>
-                    {/* Delete booking button  */}
+                    {/* Delete customer button  */}
                     <button
                       onClick={() => onDeleteClick(customer._id)}
-                      class="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                      className="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                     >
                       Delete
                     </button>
@@ -180,7 +219,26 @@ export default function RegisterRead() {
             ))}
           </tbody>
         </table>
-        
+        <br />
+        <br />
+        {/* Footer for PDF */}
+        <div className="print:block hidden form-footer relative mt-[10rem] ">
+          <br />
+          <br />
+
+          <div className="absolute bottom-0 w-full flex justify-between px-10">
+            <div className="font-bold text-left">
+              ...........................
+              <br />
+              date
+            </div>
+            <div className="font-bold text-right">
+              ...........................
+              <br />
+              Signature
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

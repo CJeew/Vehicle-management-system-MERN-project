@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import "./Home.css";
 import "./Register.js";
@@ -14,6 +15,7 @@ function Register() {
   const [cvtype, setcvtype] = useState("");
   const [cpass, setcpass] = useState("");
   const [cpass2, setcpass2] = useState("");
+  const navigate = useNavigate();
 
   function sendRegister(e) {
     e.preventDefault();
@@ -86,7 +88,7 @@ function Register() {
       .post("http://localhost:8090/customer/Register", newCustomer)
       .then(() => {
         alert("Profile Added");
-        window.location.reload();
+        navigate("/Chome"); // Redirect to Chome page
       })
       .catch((err) => {
         alert(err.response.data.message);
@@ -131,8 +133,8 @@ function Register() {
             <input
               required
               onKeyPress={(e) => {
-                // Allow only letters and backspace/delete key
-                const validCharacters = /^[a-z\b]+$/i; // 'i' flag makes the regex case-insensitive
+                // Allow only letters, space, and backspace/delete key
+                const validCharacters = /^[a-zA-Z\s\b]+$/; // Adding \s for space, 'i' flag for case-insensitive
                 if (!validCharacters.test(e.key)) {
                   e.preventDefault();
                 }
@@ -147,10 +149,14 @@ function Register() {
 
             <input
               required
-              onChange={(e) => setcmail(e.target.value)}
-              type="email"
+              onChange={(e) => {
+                const { value } = e.target;
+                const filteredValue = value.replace(/[^a-zA-Z0-9@.]/g, ""); // Allow only letters, numbers, and '@'
+                setcmail(filteredValue);
+              }}
+              type="text"
               name="email"
-              class="mt-1 block w-1/2 rounded-md border border-black bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+              className="mt-1 block w-1/2 rounded-md border border-black bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
               placeholder="Email *"
               value={cmail}
             />
@@ -163,16 +169,6 @@ function Register() {
                 const validCharacters = /^[0-9\b]+$/;
                 if (!validCharacters.test(e.key)) {
                   e.preventDefault();
-                }
-              }}
-              onChange={(e) => {
-                // Check if the entered phone number has reached 10 digits
-                if (e.target.value.length > 10) {
-                  e.target.setCustomValidity(
-                    "Please enter exactly 10 numbers for the phone number."
-                  );
-                } else {
-                  e.target.setCustomValidity("");
                 }
               }}
               type="phone"
@@ -191,45 +187,43 @@ function Register() {
               placeholder="Vehicle Number *"
               value={cvnum}
             />
-            
           </div>
 
-          <div style={{ display: 'flex', gap: '1rem' }}>
-    <input
-        required
-        onKeyPress={(e) => {
-            // Allow only numbers and the letter 'V' or 'v', backspace, and delete key
-            const validCharacters = /^[0-9Vv\b]+$/i; // 'i' flag makes the regex case-insensitive
-            if (!validCharacters.test(e.key)) {
-                e.preventDefault();
-            }
-        }}
-        type="text"
-        name="NIC"
-        className="mt-1 block w-1/2 rounded-md border border-black bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
-        placeholder="NIC *"
-        value={cnic}
-        onChange={(e) => setcnic(e.target.value)}
-    />
+          <div style={{ display: "flex", gap: "1rem" }}>
+            <input
+              required
+              onKeyPress={(e) => {
+                // Allow only numbers and the letter 'V' or 'v', backspace, and delete key
+                const validCharacters = /^[0-9Vv\b]+$/i; // 'i' flag makes the regex case-insensitive
+                if (!validCharacters.test(e.key)) {
+                  e.preventDefault();
+                }
+              }}
+              type="text"
+              name="NIC"
+              className="mt-1 block w-1/2 rounded-md border border-black bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+              placeholder="NIC *"
+              value={cnic}
+              onChange={(e) => setcnic(e.target.value)}
+            />
 
-    <select
-        required
-        onChange={(e) => setcvtype(e.target.value)}
-        name="select"
-        id="select"
-        className="mt-1 block w-1/2 rounded-md border border-black bg-white px-3 py-4 font-semibold text-gray-500 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
-        value={cvtype}
-    >
-        <option value="">Select Vehicle Type</option>
-        <option value="Car">Car</option>
-        <option value="Van">Van</option>
-        <option value="Cab">Cab</option>
-        <option value="Jeep">Jeep</option>
-        <option value="Motorbike">Motor Bike</option>
-        <option value="Minilorry">Mini Lorry</option>
-    </select>
-</div>
-
+            <select
+              required
+              onChange={(e) => setcvtype(e.target.value)}
+              name="select"
+              id="select"
+              className="mt-1 block w-1/2 rounded-md border border-black bg-white px-3 py-4 font-semibold text-gray-500 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+              value={cvtype}
+            >
+              <option value="">Select Vehicle Type</option>
+              <option value="Car">Car</option>
+              <option value="Van">Van</option>
+              <option value="Cab">Cab</option>
+              <option value="Jeep">Jeep</option>
+              <option value="Motorbike">Motor Bike</option>
+              <option value="Minilorry">Mini Lorry</option>
+            </select>
+          </div>
         </div>
         <div class="mt-6">
           <label
