@@ -28,6 +28,18 @@ export default function IssuedItems() {
     window.location.reload();
   }
 
+
+  // const onDeleteClick = async (itemId) => {
+  //   const confirmDelete = window.confirm('Are you sure you want to delete this item?');
+  //   if (confirmDelete) {
+  //     await axios.delete(`http://localhost:8090/issueditems/delete/${itemId}`);
+  //     alert('Item Deleted Successfully');
+  //     // Reload the page or update state as needed
+  //     window.location.reload();
+  //   }
+  // }
+  
+
   const ComponentsRef= useRef();
   const handlePrint = useReactToPrint({
     content:()=>ComponentsRef.current,
@@ -89,7 +101,7 @@ export default function IssuedItems() {
       </div>
       <div className="absolute top-16 right-8">
         <button onClick={handlePrint} className="bg-yellow-500 hover:bg-yellow-600 mr-80 mt-20 text-white font-bold py-2 px-4 rounded">
-        <FaPrint/>
+        <FaPrint className='w-5 h-5' />
         </button>
       </div>
       <div ref={ComponentsRef}   class=" mt-20 max-h-[25 rem] ">
@@ -111,7 +123,7 @@ export default function IssuedItems() {
 <br/>
 
      
-      <table  class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mt-20 top-10 mx-10">
+      <table  class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mt-20 top-10 mx-10 w-100">
           <thead>
             <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
               <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">No</th>

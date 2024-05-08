@@ -31,6 +31,20 @@ export default function ManageOrders() {
     window.location.reload();
   };
 
+
+  // const onDeleteClick = async (itemId) => {
+  //   const confirmDelete = window.confirm('Are you sure you want to delete this item?');
+  //   if (confirmDelete) {
+  //     await axios.delete(`http://localhost:8090/issueditems/delete/${itemId}`);
+  //     alert('Item Deleted Successfully');
+  //     // Reload the page or update state as needed
+  //     window.location.reload();
+  //   }
+  // }
+  
+  
+
+
   const sendOrderEmail = async (itemId) => {
     try {
       const order = items.find((item) => item._id === itemId);
@@ -38,7 +52,7 @@ export default function ManageOrders() {
         console.error("Order not found");
         return;
       }
-
+  
       // Construct email body with order details
       let emailBody = `Order Details for Order ID: ${itemId}\n`;
       emailBody += `Item Code: ${order.itemcode}\n`;
@@ -46,7 +60,7 @@ export default function ManageOrders() {
       emailBody += `Supplier: ${order.suppliername}\n`;
       emailBody += `Need Quantity: ${order.needquantity}\n`;
       emailBody += `Order Code: ${order.ordercode}\n`;
-
+  
       // Send email
       await axios.post("http://localhost:8090/email/send-email/", {
         to: "noormohommaduakeel@gmail.com", // Replace with recipient's email address
@@ -54,15 +68,15 @@ export default function ManageOrders() {
         body: emailBody,
       });
 
-      alert("Order details sent via email for Order ID: " + itemId);
+      alert('Order details sent via email for Order ID: ' + itemId);
 
       // Update buttonClicked state and store in local storage
-      setButtonClicked((prevState) => ({
+      setButtonClicked(prevState => ({
         ...prevState,
         [itemId]: true,
       }));
 
-      localStorage.setItem("buttonClicked", JSON.stringify(buttonClicked));
+      localStorage.setItem('buttonClicked', JSON.stringify(buttonClicked));
     } catch (error) {
       console.error("Error sending email:", error);
       alert("Failed to send order details via email.");
@@ -71,9 +85,7 @@ export default function ManageOrders() {
 
   useEffect(() => {
     // Retrieve stored information about sent orders
-    const storedButtonClicked = JSON.parse(
-      localStorage.getItem("buttonClicked")
-    );
+    const storedButtonClicked = JSON.parse(localStorage.getItem('buttonClicked'));
     if (storedButtonClicked) {
       setButtonClicked(storedButtonClicked);
     }
@@ -146,10 +158,7 @@ export default function ManageOrders() {
       </div>
 
       <div className="absolute top-16 right-8">
-        <button
-          onClick={handlePrint}
-          className="bg-yellow-500 hover:bg-yellow-600 mr-44 mt-24 text-white font-bold py-2 px-4 rounded"
-        >
+        <button onClick={handlePrint} className="bg-yellow-500 hover:bg-yellow-600 mr-44 mt-24 text-white font-bold py-2 px-4 rounded">
           <FaPrint />
         </button>
       </div>
@@ -173,118 +182,52 @@ export default function ManageOrders() {
           <p class="mr-4">Fax:0270110123</p>
         </div>
 
-        <div class="text-center print:block hidden  text-2xl font-bold">
-          Inventory Items details
-        </div>
-        <br />
-        <table class="bg-gradient-to-r align-middle from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mt-5 top-10 mx-10">
-          <thead>
-            <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
-              <th
-                scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
-              >
-                No
-              </th>
-              <th
-                scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
-              >
-                Item Code
-              </th>
-              <th
-                scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
-              >
-                Item Name
-              </th>
-              <th
-                scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
-              >
-                Supplier
-              </th>
-              <th
-                scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
-              >
-                Need Quantity
-              </th>
-              <th
-                scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
-              >
-                Order Code
-              </th>
-              <th
-                scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider print:hidden"
-              >
-                Action
-              </th>
-              <th
-                scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider print:hidden"
-              >
-                Send Order
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredItems.map((item, index) => (
-              <tr
-                key={index}
-                className="bg-white border-b border-gray-200 hover:bg-gray-50"
-              >
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {index + 1}
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {item.itemcode}
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {item.itemname}
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {item.suppliername}
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {item.needquantity}
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {item.ordercode}
-                </td>
+<div class="text-center print:block hidden  text-2xl font-bold">
+  Inventory Items details
+</div>
+<br/>
+      <table class="bg-gradient-to-r align-middle from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mt-5 top-10 mx-10">
+        <thead>
+          <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">No</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Item Code</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Item Name</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Supplier</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Need Quantity</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">Order Code</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider print:hidden">Action</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider print:hidden">Send Order</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredItems.map((item, index) => (
+            <tr key={index} className="bg-white border-b border-gray-200 hover:bg-gray-50">
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{index + 1}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.itemcode}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.itemname}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.suppliername}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.needquantity}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.ordercode}</td>
 
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 print:hidden">
-                  <div className="flex items-center justify-end gap-2">
-                    <Link
-                      to={`/manageorderupdate/${item._id}`}
-                      className="text-blue-500 mr-2"
-                    >
-                      <FaEdit className="inline-block text-xl align-middle" />
-                    </Link>
-                    <button onClick={() => onDeleteClick(item._id)}>
-                      <FaTrash className="text-red-500 inline-block text-xl align-middle" />
-                    </button>
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 print:hidden">
-                  <button
-                    onClick={() => sendOrderEmail(item._id)}
-                    disabled={buttonClicked[item._id]} // Disable button if order already sent
-                    className={`bg-${
-                      buttonClicked[item._id] ? "red" : "blue"
-                    }-500 hover:bg-${
-                      buttonClicked[item._id] ? "red" : "blue"
-                    }-700 text-white font-bold py-2 px-4 rounded`}
-                  >
-                    {buttonClicked[item._id] ? "Complete" : "Send Order"}
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 print:hidden">
+                <div className="flex items-center justify-end gap-2">
+                  <Link to={`/manageorderupdate/${item._id}`} className="text-blue-500 mr-2"><FaEdit className="inline-block text-xl align-middle" /></Link>
+                  <button onClick={() => onDeleteClick(item._id)}><FaTrash className="text-red-500 inline-block text-xl align-middle" /></button>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 print:hidden">
+                <button
+                  onClick={() => sendOrderEmail(item._id)}
+                  disabled={buttonClicked[item._id]} // Disable button if order already sent
+                  className={`bg-${buttonClicked[item._id] ? 'red' : 'blue'}-500 hover:bg-${buttonClicked[item._id] ? 'red' : 'blue'}-700 text-white font-bold py-2 px-4 rounded`}
+                >
+                  {buttonClicked[item._id] ? "Complete" : "Send Order"}
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
         <br />
         <br />

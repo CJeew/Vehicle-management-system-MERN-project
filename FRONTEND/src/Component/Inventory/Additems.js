@@ -47,12 +47,12 @@ export default function Additems() {
 
 
     // Item Name validation
-    // if (!itemname.trim()) {
-    //   errors.itemname = "Item Name is required";
-    // }
-    //  else if (!/^[a-zA-Z\s]+$/.test(itemname)) {
-    // errors.itemname = "Item name can only contain letters ";
-    //  }
+    if (!itemname.trim()) {
+      errors.itemname = "Item Name is required";
+    }
+     else if (!/^[a-zA-Z\s]+$/.test(itemname)) {
+    errors.itemname = "Item name can only contain letters ";
+     }
 
 
      
@@ -70,13 +70,15 @@ export default function Additems() {
 
 
  
-        // Price validation
-        if (!price.trim()) {
-          errors.price = "Price is required";
-        } else if (!/^\d+(\.\d{1,2})?$/.test(price)) {
-          errors.price = "Invalid price format. Use numbers with up to two decimal places";
-        }
+       // Price validation
+if (!price.trim()) {
+  errors.price = "Price is required";
+} else if (!/^\d+(\.\d{1,2})?$/.test(price)) {
+  errors.price = "Invalid price format. Use numbers with up to two decimal places";
+}
+
         // (/^\d+(\.\d{1,2})?$/.test(price))
+        // (!/^\d+(\.\d{1,2})?$/.test(price))
 
 
 
@@ -160,7 +162,7 @@ return (
             id="itemcode"
             value={itemcode}
             onChange={(e) => setItemcode(e.target.value)}
-            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 
           />
           </div>
@@ -177,13 +179,15 @@ return (
             value={itemname}
             onChange={handleItemnameChange} 
            
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 
 
           />
           </div>
+
+          {errors.itemname && <span className="text-red-500">{errors.itemname}</span>}
           </div>
-           {errors.itemname && <span className="text-red-500">{errors.itemname}</span>}
+        
 
         
         <div className="sm:col-span-3" >
@@ -195,7 +199,7 @@ return (
             id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
           </div>
            {errors.catogory && <span className="text-red-500">{errors.catogory}</span>}
@@ -209,7 +213,7 @@ return (
             id="price"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             
           />
             {errors.price && <span className="text-red-500">{errors.price}</span>}
@@ -225,7 +229,7 @@ return (
             id="suppliername"
             value={suppliername}
             onChange={(e) => setSuppliername(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
           {errors.suppliername && <span className="text-red-500">{errors.suppliername}</span>}
         </div>
@@ -237,7 +241,7 @@ return (
             id="reorderlevel"
             value={reorderlevel}
             onChange={(e) => setReorderLevel(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             pattern="[0-9]"
           />
           {errors.reorderlevel && <span className="text-red-500">{errors.reorderlevel}</span>}
@@ -250,7 +254,7 @@ return (
             id="stocklimit"
             value={stocklimit}
             onChange={(e) => setStocklimit(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             
           />
            {errors.stocklimit && <span className="text-red-500">{errors.stocklimit}</span>}
@@ -264,7 +268,7 @@ return (
             id="remark"
             value={remark}
             onChange={(e) => setRemark(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
         </div>

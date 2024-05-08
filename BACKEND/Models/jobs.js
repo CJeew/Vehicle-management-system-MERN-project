@@ -75,8 +75,8 @@ const jobSchema = new Schema({
         type : String
     },
     serviceStatus: {
-        type: Map,
-        of: Boolean, // This allows storing key-value pairs
+        type: [String],
+         
       },
 })
 
