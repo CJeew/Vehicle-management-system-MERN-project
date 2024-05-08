@@ -337,7 +337,7 @@ function CreateJob() {
                           onKeyDown={(e) => {
                             const key = e.key;
                             const isBackspace = key === 'Backspace';
-                            const isLetter = /^[a-zA-Z]$/.test(key);
+                            const isLetter = /^[a-zA-Z ]$/.test(key);
 
                             // Allow backspace and letters
                             const isValid = isBackspace || isLetter;
@@ -350,7 +350,7 @@ function CreateJob() {
                             const cname = e.target.value;
 
                             // Ensure the value contains only letters
-                            if (/^[a-zA-Z]*$/.test(cname)) {
+                            if (/^[a-zA-Z ]*$/.test(cname)) {
                               setname(cname); 
                             }
                           }}

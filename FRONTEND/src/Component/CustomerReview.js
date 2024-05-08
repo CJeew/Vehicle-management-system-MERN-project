@@ -35,13 +35,10 @@ export default function ReviewRead() {
 
     // If user confirms deletion
     if (shouldDelete) {
-      await axios.delete(`http://localhost:8090/customer/delete/${revid}`);
-      alert("Profile Deleted Successfully");
+      await axios.delete(`http://localhost:8090/reviewAdd/delete/${revid}`);
+      alert("Review Deleted Successfully");
       window.location.reload(); // Refresh page after successful deletion
     }
-    await axios.delete(`http://localhost:8090/reviewAdd/delete/${revid}`);
-    alert("Review Deleted Successfully");
-    window.location.reload(); // Refresh page after successful deletion
   };
 
   // Function to filter reviews based on rating
@@ -121,6 +118,7 @@ export default function ReviewRead() {
               <p className="mr-4">NO:Colombo07</p>
               <p className="mr-4">Tel:0752941767</p>
               <p className="mr-4">Fax:0270110123</p>
+              <p className="mr-4 text-center text-3xl"> Customer's Review List</p>
             </div>
           </div>
           <table className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mx-10 absolute bottom-20 left-25">

@@ -32,7 +32,31 @@ export default function Update(){
         Additional_note,
         Main_supplies
       };
-  
+      
+  //Email validation
+  const isValidEmail = /\S+@\S+\.|S+/.test(Email);
+
+  if(!isValidEmail) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  //contact validation
+  const isvalidcontact = /^[\d]{10}$/.test(contact);
+
+  if(!isvalidcontact){
+    alert("please enter a valid contact number");
+    return;
+  }
+
+  //contact 2 validation
+  const isvalidcontact_2 = /^[\d]{10}$/.test(contact_2);
+
+  if(!isvalidcontact_2){
+    alert("please enter a valid 2nd contact number");
+    return;
+  }
+
       axios
         .put(`http://localhost:8090/supplier/update/${id}`, editSupplier)
         .then(() => {
@@ -81,12 +105,23 @@ export default function Update(){
                 <div className="space-y-2 flex justify-between grid grid-cols-2 gap-4 ">
                 <div className="mt-5">
                     <label className="mr-9">Supplier Name    :</label>
-                    <input className="rounded-md w-72 h-10 opacity-80" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                    <input type="text" onKeyDown={(e) => {
+                        const key = e.key;
+                        const isBackspace = key === "Backspace";
+                        const isValidInput = /^[a-zA-Z]*$/.test(key) || isBackspace; // Allow Backspace or alphanumeric characters
+                        if (!isValidInput) {
+                          e.preventDefault(); // Prevent the input of the special character
+                        }
+                      }}
+                      onChange={(e) => setName(e.target.value)} 
+                      className="rounded-md w-60 h-10 opacity-80 text-base mt-2" 
+                      required
+                    />
                 </div>
 
                 <div>
                     <label className="mr-10">Contact  :</label>
-                    <input className="rounded-md w-72 h-10 opacity-80" type="text" value={contact} onChange={(e) => setContact(e.target.value)} />
+                    <input className="rounded-md w-72 h-10 opacity-80" type="text" value={contact} onChange={(e) => setContact(e.target.value)} required />
                 </div>
                 </div>   
                  

@@ -88,7 +88,7 @@ function Register() {
       .post("http://localhost:8090/customer/Register", newCustomer)
       .then(() => {
         alert("Profile Added");
-        navigate("/home"); // Redirect to Chome page
+        navigate("/Chome"); // Redirect to Chome page
       })
       .catch((err) => {
         alert(err.response.data.message);
@@ -151,7 +151,7 @@ function Register() {
               required
               onChange={(e) => {
                 const { value } = e.target;
-                const filteredValue = value.replace(/[^a-zA-Z0-9@]/g, ""); // Allow only letters, numbers, and '@'
+                const filteredValue = value.replace(/[^a-zA-Z0-9@.]/g, ""); // Allow only letters, numbers, and '@'
                 setcmail(filteredValue);
               }}
               type="text"
@@ -173,7 +173,8 @@ function Register() {
               }}
               type="phone"
               name="Phone"
-              class="mt-1 block w-1/2 rounded-md border border-black bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+              class="mt-1 block w-1/2 rounded-md border border-black bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm "
+              maxLength={10}
               placeholder="Phone *"
               value={cphone}
               onChange={(e) => setcphone(e.target.value)}

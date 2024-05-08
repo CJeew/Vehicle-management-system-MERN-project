@@ -179,6 +179,21 @@ const generatePDFReport = () => {
       doc.setFont('Helvetica', 'normal');
       doc.text(`${jobDetails.details}`, 60, 220)
 
+      const signature = [
+        "Signature : ",
+        "          ",
+        ".............................",
+      ];
+
+      const date = [
+        "Date : ",
+        "          ",
+        ".............................",
+      ];
+
+      doc.text(signature, addressXCoordinate, 250);
+      doc.text(date,150, 250);
+
       // Save the PDF with a meaningful name
       doc.save(`Job_Report_${jobDetails.jobNumber}.pdf`);
 };

@@ -10,6 +10,8 @@ function Review() {
   const [cmail, setCmail] = useState("");
   const [rating, setrating] = useState("");
   const [message, setmessage] = useState("");
+  const [showHi, setShowHi] = useState(false); // State for showing animated text
+
   const navigate = useNavigate();
 
   function sendreview(e) {
@@ -52,6 +54,10 @@ function Review() {
         alert(err);
       });
   }
+  // Function to toggle showing "hi" text
+  const toggleHi = () => {
+    setShowHi(!showHi);
+  };
   // Validation function to avoid special characters
   function validateInputs() {
     const specialChars = /[!#$%^&*()_+\-=\[\]{};':"\\|,<>\/?]/;
@@ -77,6 +83,20 @@ function Review() {
           <h2 className="ms-20 my-10 mt-20 text-5xl font-extrabold text-white">
             Feedback Form
           </h2>
+          {/* Animated text box */}
+          <div className="absolute top-40 right-72 text=4xl">
+            <div
+              className={` text-2xl bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 text-white py-2 px-4 rounded-md animate-bounce`}
+              onClick={toggleHi}
+            >
+              <h4 >
+                <b>
+                  Thank you for your review !!{" "}
+                </b>{" "}
+              </h4>
+              
+            </div>
+          </div>
           <form className=".w-auto bg-gray-100 p-6 ms-60 my-10 p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50">
             {/* <h2 className="text-white text-2xl font-bold mb-4">Feedback Form</h2> */}
             <div className="mb-4 text-black">
@@ -90,7 +110,7 @@ function Review() {
                 required
                 onChange={(e) => {
                   const { value } = e.target;
-                  const filteredValue = value.replace(/[^a-zA-Z0-9@]/g, ""); // Allow only letters, numbers, and '@'
+                  const filteredValue = value.replace(/[^a-zA-Z0-9@.]/g, ""); // Allow only letters, numbers, and '@'
                   setCmail(filteredValue);
                 }}
                 type="text"

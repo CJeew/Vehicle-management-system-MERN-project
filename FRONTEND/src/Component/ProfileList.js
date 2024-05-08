@@ -27,23 +27,21 @@ export default function ProfileList() {
 
   // Function to handle deletion of a customer
   const onDeleteClick = async (cusid) => {
+    // Show confirmation dialog
+    const shouldDelete = window.confirm(
+      "Are you sure you want to delete this profile?"
+    );
+
+    // If user confirms deletion
+    if (shouldDelete) {
+      await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
+      alert("Profile Deleted Successfully");
+      window.location.reload(); // Refresh page after successful deletion
+    }
     const enteredPassword = prompt(
       "Please enter the password to confirm deletion:"
     );
     if (enteredPassword === "abc123" || enteredPassword === "xyz123") {
-      // Show confirmation dialog
-      const shouldDelete = window.confirm(
-        "Are you sure you want to delete this profile?"
-      );
-
-      // If user confirms deletion
-      if (shouldDelete) {
-        await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
-        alert("Profile Deleted Successfully");
-        window.location.reload(); // Refresh page after successful deletion
-      }
-      await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
-      alert("Profile Deleted Successfully");
       window.location.reload(); // Refresh page after successful deletion
     } else {
       alert("Incorrect password, deletion cancelled.");
@@ -166,7 +164,7 @@ export default function ProfileList() {
         {/* Animated text box */}
         <div className="absolute top-55 right-32">
           <div
-            className={`bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white py-2 px-4 rounded-md animate-bounce`}
+            className={`bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 text-white py-2 px-4 rounded-md animate-bounce`}
             onClick={toggleHi}
           >
             <h4>

@@ -30,19 +30,17 @@ export default function RegisterRead() {
 
   // Function to handle deletion of a customer
   const onDeleteClick = async (cusid) => {
-    await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
-    alert("Profile Deleted Successfully");
-    window.location.reload(); // Refresh page after successful deletion
+    // Show confirmation dialog
+    const shouldDelete = window.confirm(
+      "Are you sure you want to delete this profile?"
+    );
 
-     // Show confirmation dialog
-  const shouldDelete = window.confirm("Are you sure you want to delete this profile?");
-  
-  // If user confirms deletion
-  if (shouldDelete) {
-    await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
-    alert("Profile Deleted Successfully");
-    window.location.reload(); // Refresh page after successful deletion
-  }
+    // If user confirms deletion
+    if (shouldDelete) {
+      await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
+      alert("Profile Deleted Successfully");
+      window.location.reload(); // Refresh page after successful deletion
+    }
   };
 
   // Function to generate reports
@@ -120,6 +118,7 @@ export default function RegisterRead() {
             <p className="mr-4">NO:Colombo07</p>
             <p className="mr-4">Tel:0752941767</p>
             <p className="mr-4">Fax:0270110123</p>
+            <p className="mr-4 text-center text-3xl"> Registered Customer List</p>
           </div>
         </div>
 
