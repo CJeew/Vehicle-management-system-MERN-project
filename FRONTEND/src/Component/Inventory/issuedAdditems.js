@@ -9,12 +9,79 @@ export default function   IssuedItemsAdditems() {
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [issuedcode, setIssuedcode] = useState("");
+  const [errors, setErrors] = useState({});
+
 
 
   const navigate = useNavigate()
 
-  function sendData(e) {
-    e.preventDefault();
+  function handleItemnameChange(event) {
+    // Allow only letters and spaces
+    if (!/^[A-Za-z\s]*$/.test(event.target.value)) {
+        setItemname(event.target.value.replace(/[^A-Za-z\s]/gi, ''));
+    } else {
+        setItemname(event.target.value);
+    }
+}
+
+
+function validateForm() {
+  const errors = {};
+
+
+   // Item Code validation
+   if (!itemcode.trim()) {
+    errors.itemcode = "Item Code is required";
+  } else if(!/^[F0-9]+$/i.test(itemcode)){
+    errors.itemcode = "Item Code can only F,f letters and numbers";
+  }
+
+
+      // Item Name validation
+      if (!itemname.trim()) {
+        errors.itemname = "Item Name is required";
+      }
+       else if (!/^[a-zA-Z\s]+$/.test(itemname)) {
+      errors.itemname = "Item name can only contain letters ";
+       }
+
+
+       // Price validation
+       if (!price.trim()) {
+        errors.price = "Price is required";
+      } else if (!/^\d+(\.\d{1,2})?$/.test(price)) {
+        errors.price = "Invalid price format. Use numbers with up to two decimal places";
+      }
+
+
+      // Stock Limit validation
+      if (!quantity.trim()) {
+        errors.quantity = "quantity is required";
+      } else if (!/^\d+$/.test(quantity)) {
+        errors.quantity = "Quantity must be a positive integer";
+      }
+
+
+
+         // Issued Code validation
+   if (!issuedcode.trim()) {
+    errors.issuedcode = "Issued Code is required";
+  } else if(!/^[I0-9]+$/i.test(issuedcode)){
+    errors.issuedcode = "Issued Code can only I,i letters and numbers";
+  }
+    
+  return errors;
+}
+
+
+function sendData(e) {
+  e.preventDefault();
+  const errors = validateForm();
+  if (Object.keys(errors).length > 0) {
+    setErrors(errors);
+    return;
+  }
+
 
     const newissuedAdditems = {
       itemcode,
@@ -37,7 +104,7 @@ export default function   IssuedItemsAdditems() {
   }
 
   return (
-    <form onSubmit={sendData} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-6 mt-auto mx-auto w-2/3">
+    <form onSubmit={sendData} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-6 mt-auto mx-auto w-2/5">
      
       <center><h1 className="text-center font-bold text-black" >Issued Add Item</h1></center>
 
@@ -51,9 +118,10 @@ export default function   IssuedItemsAdditems() {
             id="itemcode"
             value={itemcode}
             onChange={(e) => setItemcode(e.target.value)}
-            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
             </div>
+            {errors.itemcode && <span className="text-red-500">{errors.itemcode}</span>}
         </div>
         <div className="sm:col-span-3">
           <label htmlFor="itemname" className="block text-sm font-medium leading-6 text-gray-900">Item Name</label>
@@ -63,10 +131,11 @@ export default function   IssuedItemsAdditems() {
             name="itemname"
             id="itemname"
             value={itemname}
-            onChange={(e) => setItemname(e.target.value)}
-            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            onChange={handleItemnameChange} 
+            className="shadow appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
+        {errors.itemname && <span className="text-red-500">{errors.itemname}</span>}
         </div>
         <div className="sm:col-span-3">
           <label htmlFor="price" className="block text-sm font-medium leading-6 text-gray-900">Price</label>
@@ -77,9 +146,10 @@ export default function   IssuedItemsAdditems() {
             id="category"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
           </div>
+          {errors.price && <span className="text-red-500">{errors.price}</span>}
         </div>
         <div className="sm:col-span-3" >
           <label htmlFor="quantity" className="block text-sm font-medium leading-6 text-gray-900">Quantity</label>
@@ -90,9 +160,10 @@ export default function   IssuedItemsAdditems() {
             id="description"
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
-            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
           </div>
+          {errors.quantity && <span className="text-red-500">{errors.quantity}</span>}
         </div>
         <div className="sm:col-span-3">
           <label htmlFor="issuedcode" className="block text-sm font-medium leading-6 text-gray-900">Issued Code</label>
@@ -103,9 +174,10 @@ export default function   IssuedItemsAdditems() {
             id="issuedcode"
             value={issuedcode}
             onChange={(e) => setIssuedcode(e.target.value)}
-            className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
            </div>
+           {errors.issuedcode && <span className="text-red-500">{errors.issuedcode}</span>}
         </div>
       
      

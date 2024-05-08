@@ -95,31 +95,33 @@ const Dashboard = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4 text-white">Dashboard Overview</h1>
+      <h6 className="text-5xl font-bold mb-4 text-white">Dashboard Overview</h6>
+
+      <br/>
       {dashboardData ? (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-gray-800 bg-opacity-75 p-4 rounded-md text-white">
-            <h2 className="text-lg font-bold mb-20">Total Items</h2>
+          <div className="bg-gray-700 bg-opacity-75 p-4 rounded-md text-white">
+            <h2 className="text-lg font-extrabold mb-20">Total Items</h2>
             <p className="text-xl">{dashboardData.totalParts}</p>
           </div>
-          <div className="bg-gray-800 bg-opacity-75 p-4 rounded-md text-white">
-            <h2 className="text-lg font-bold mb-20">Total Issued Items</h2>
+          <div className="bg-gray-700 bg-opacity-75 p-4 rounded-md text-white">
+            <h2 className="text-lg font-extrabold mb-20">Total Issued Items</h2>
             <p className="text-xl">{dashboardData.totalIssuedItems}</p>
           </div>
-          <div className="bg-gray-800 bg-opacity-75 p-4 rounded-md text-white">
-            <h2 className="text-lg font-bold mb-20">Total Orders</h2>
+          <div className="bg-gray-700 bg-opacity-80 p-4 rounded-md text-white">
+            <h2 className="text-lg font-extrabold mb-20">Total Orders</h2>
             <p className="text-xl">{dashboardData.totalOrders}</p>
           </div>
-          <div className="bg-red-800 bg-opacity-75 p-4 rounded-md text-white">
-            <h2 className="text-lg font-bold mb-20">Total Value of Inventory</h2>
+          <div className="bg-gray-700 bg-opacity-75 p-4 rounded-md text-white">
+            <h2 className="text-lg font-extrabold mb-20">Total Value of Inventory</h2>
             <p className="text-xl">{totalValue}</p>
           </div>
-          <div className="bg-red-800 bg-opacity-75 p-4 rounded-md text-white">
-            <h2 className="text-lg font-bold mb-20">Total Issued Value</h2>
+          <div className="bg-gray-700 bg-opacity-75 p-4 rounded-md text-white">
+            <h2 className="text-lg font-extrabold mb-20">Total Issued Value</h2>
             <p className="text-xl">{issuedTotalValue}</p>
           </div>
-          <div className="bg-red-800 bg-opacity-75 p-4 rounded-md text-white">
-          <h2 className="text-xl font-bold mb-20">Total Order Value</h2>
+          <div className="bg-gray-700 bg-opacity-75 p-4 rounded-md text-white">
+          <h2 className="text-xl font-extrabold mb-20">Total Order Value Count</h2>
 
             <p className="text-xl">{orderTotalValue}</p>
           </div>

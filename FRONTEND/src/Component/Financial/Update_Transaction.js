@@ -17,6 +17,7 @@ export default function UpdateTransaction() {
   const [item, setItem] = useState(initialItemState);
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState({});
+  const [date, setDate] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -85,6 +86,17 @@ export default function UpdateTransaction() {
     setItem({ ...item, [name]: value });
   };
 
+  function handleDateChange(e) {
+    const selectedDate = new Date(e.target.value);
+    const currentDate = new Date();
+
+    if (selectedDate > currentDate) {
+      alert("Please select a date on or before today.");
+    } else {
+      setDate(e.target.value);
+    }
+  }
+
   const updateItems = async (e) => {
     e.preventDefault();
 
@@ -98,6 +110,7 @@ export default function UpdateTransaction() {
       }
     }
   };
+  const today = new Date().toISOString().split('T')[0];
 
   if (loading) return <div>Loading...</div>;
   return (
@@ -107,6 +120,13 @@ export default function UpdateTransaction() {
       <div className="flex flex-col">
           <label htmlFor="transactionCode" className="text-m font-medium leading-6 text-gray-900 mb-1">transactionCode</label>
           <input
+        //   onKeyPress={(e) => {
+        //   // Allow only numbers and the letter 't' or 'T', backspace, and delete key
+        //   const validCharacters = /^[0-9Tt\b]+$/i; // 'i' flag makes the regex case-insensitive
+        //   if (!validCharacters.test(e.key)) {
+        //   e.preventDefault();
+        //   }
+        // }}
             type="text"
             name="transactionCode"
             id="transactionCode"
@@ -123,7 +143,8 @@ export default function UpdateTransaction() {
             name="date"
             id="date"
             value={item.date}
-            onChange={inputChangeHandler}
+            onChange={handleDateChange}
+            max={today}
             className={`block rounded-md border ${errors.date ? 'border-red-500' : 'border-gray-300'} shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3`}
           />
           {errors.date && <p className="text-red-500 text-sm mt-1">{errors.date}</p>}

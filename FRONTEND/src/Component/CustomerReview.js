@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useReactToPrint } from "react-to-print";
+import imgSrc from "./logo.png";
+import { FaPrint } from "react-icons/fa6";
 
 export default function ReviewRead() {
   const [reviewAdd, setlist] = useState([]);
@@ -26,9 +28,17 @@ export default function ReviewRead() {
 
   // Function to handle deletion of a review
   const onDeleteClick = async (revid) => {
-    await axios.delete(`http://localhost:8090/reviewAdd/delete/${revid}`);
-    alert("Review Deleted Successfully");
-    window.location.reload(); // Refresh page after successful deletion
+    // Show confirmation dialog
+    const shouldDelete = window.confirm(
+      "Are you sure you want to delete this profile?"
+    );
+
+    // If user confirms deletion
+    if (shouldDelete) {
+      await axios.delete(`http://localhost:8090/reviewAdd/delete/${revid}`);
+      alert("Review Deleted Successfully");
+      window.location.reload(); // Refresh page after successful deletion
+    }
   };
 
   // Function to filter reviews based on rating
@@ -73,7 +83,7 @@ export default function ReviewRead() {
               onClick={handlePrint}
               className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
             >
-              Generate Report
+              Generate Report <FaPrint />
             </button>
           </div>
           <input
@@ -85,64 +95,101 @@ export default function ReviewRead() {
           />
         </div>
       </div>
+      <div className="print:block hidden">
+        <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">
+          Review List
+        </h2>
+      </div>
 
       <div className="flex justify-center items-center h-screen">
-        <table
-          className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mx-10 absolute bottom-20 left-25"
-          ref={componentRef}
-        >
-          <thead>
-            <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-15">
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
-              >
-                E-Mail
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
-              >
-                Rating
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
-              >
-                Message
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredReview.map((reviewAdd) => (
-              <tr
-                key={reviewAdd.id}
-                className="bg-white border-b border-gray-200 hover:bg-gray-50"
-              >
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {reviewAdd.cmail}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {reviewAdd.rating}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {reviewAdd.message}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  <div>
-                    {/* Delete review button */}
-                    <button
-                      onClick={() => onDeleteClick(reviewAdd._id)}
-                      className="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </td>
+        <div ref={componentRef}>
+          {/* Header for PDF */}
+          <div className="print:block hidden">
+            <div>
+              <img
+                src={imgSrc}
+                alt="Logo"
+                className="h-20 w-43 ml-10 mt-3 mr-20 align-top align-left"
+              />
+            </div>
+            <br />
+            <div className="font-bold top-10 mx-10 justify-end">
+              <p className="mr-4">Ryome Motor Cares</p>
+              <p className="mr-4">NO:Colombo07</p>
+              <p className="mr-4">Tel:0752941767</p>
+              <p className="mr-4">Fax:0270110123</p>
+              <p className="mr-4 text-center text-3xl"> Customer's Review List</p>
+            </div>
+          </div>
+          <table className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mx-10 absolute bottom-20 left-25">
+            <thead>
+              <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-15">
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                >
+                  E-Mail
+                </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                >
+                  Rating
+                </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                >
+                  Message
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filteredReview.map((reviewAdd) => (
+                <tr
+                  key={reviewAdd.id}
+                  className="bg-white border-b border-gray-200 hover:bg-gray-50"
+                >
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {reviewAdd.cmail}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {reviewAdd.rating}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {reviewAdd.message}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <div>
+                      {/* Delete review button */}
+                      <button
+                        onClick={() => onDeleteClick(reviewAdd._id)}
+                        className="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {/* Footer for PDF */}
+          <div className="print:block hidden">
+            <div className="absolute bottom-0 w-full flex justify-between px-10">
+              <div className="font-bold text-left">
+                ...........................
+                <br />
+                date
+              </div>
+              <div className="font-bold text-right">
+                ...........................
+                <br />
+                Signature
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

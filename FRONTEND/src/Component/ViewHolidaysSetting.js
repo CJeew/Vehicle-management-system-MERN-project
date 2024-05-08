@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import imgSrc3 from "../Images/calendars.png";
 
 export default function ViewHolidaysSetting() {
     const [holidays, setSet] = useState([]);
@@ -31,10 +32,12 @@ export default function ViewHolidaysSetting() {
 
     return(
         <div>
-            <h2 className="ms-20 my-10 mt-20 text-5xl font-extrabold text-white">Holidays</h2>
-            <div class="flex">      
-
-        <table  class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10">
+            <div className="relative">
+                <h1 className="ms-20 my-10 mt-20 text-5xl font-extrabold text-white">Holidays</h1>
+                <img src={imgSrc3} className="absolute top-4 right-10 mx-96 object-center rounded-2xl bg-white opacity-50  transition duration-300 ease-in-out transform hover:scale-105" style={{ width: "400px", height: "400px" }}/>
+            </div>     
+                <div class="flex">
+                <table  class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-20">
                 <thead>
                     <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
                             <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Date</th>

@@ -22,6 +22,7 @@ const TrackJobs = () => {
         // Set initial service types and their checked status
         setServiceTypes(serviceType);
         setCheckedServices(serviceStatus || {}); // Initialize with existing status or empty object
+        console.log(serviceStatus);
 
       } catch (error) {
         console.error("Error fetching service data:", error);
@@ -43,7 +44,7 @@ const TrackJobs = () => {
   const handleSave = async () => {
     console.log("Attempting to save service status");
     try {
-      await axios.post(`http://localhost:8090/job/trackjobs/${jobNumber}`, {
+      await axios.put(`http://localhost:8090/job/updatejobstatus/${jobNumber}`, {
         serviceStatus: checkedServices, // Check if correct data is sent
       });
       console.log("Service status saved successfully!");
@@ -141,14 +142,14 @@ const TrackJobs = () => {
 
         {/* Save Button and View Jobs Link */}
         <div className="flex justify-end"> 
-          <button
+          {/* <button
             className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                       hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
                       ease-in-out transform hover:scale-105"
             onClick={handleSave}
           >
             Save
-          </button>
+          </button> */}
 
           <a href="/viewjobs">
             <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
