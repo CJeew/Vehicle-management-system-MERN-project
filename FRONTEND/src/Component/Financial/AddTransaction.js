@@ -104,7 +104,7 @@ const today = new Date().toISOString().split('T')[0];
           <input
          onKeyPress={(e) => {
            // Allow only numbers and the letter 't' or 'T', backspace, and delete key
-           const validCharacters = /^[0-9Tt\b]+$/i; // 'i' flag makes the regex case-insensitive
+           const validCharacters = /^[0-9Tt\s]+$/i; // 'i' flag makes the regex case-insensitive
            if (!validCharacters.test(e.key)) {
              e.preventDefault();
            }
