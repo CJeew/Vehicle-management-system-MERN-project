@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useReactToPrint } from 'react-to-print';
+import imgSrc from "./logo.png";
+import { FaPrint } from "react-icons/fa6";
+
+
 
 export default function ServiceHistory() {
     const [bookings, setBookings] = useState([]);
@@ -70,37 +74,73 @@ export default function ServiceHistory() {
                     <input type="text" placeholder="Search " value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="pl-10 pr-4 py-2 w-64 bg-gray-100 rounded-full focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 border border-transparent"/>
                 </div>
             </div>
-            <table className=".w-auto bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10 ml-20" ref={componentRef}>
-                <thead>
-                    <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Name</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Telephone</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Email</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Vehicle Number</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Vehicle Type</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Date</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Time</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Services</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredBookings.map((booking) => (
-                        <tr key={booking.id} className="bg-white border-b border-gray-200 hover:bg-gray-50">
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.fname} {booking.lname}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.phoneNum}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.eMail}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.vNum}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.vType}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-red-500">{formatDate(booking.dDate)}</td>
-                            {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-red-500">{booking.dDate}</td> */}
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.tTime}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.serviceBox}</td>
+            <h2 className="ms-20 my-10 mt-20 text-5xl font-extrabold text-white print:block hidden">Service History</h2>
+
+            <div ref={componentRef}>
+                {/* Header for PDF */}
+          <div className="print:block hidden">
+          <div>
+            <img
+              src={imgSrc}
+              alt="Logo"
+              className="h-20 w-43 ml-10 mt-3 mr-20 align-top align-left"
+            />
+          </div>
+          <br />
+          <div className="font-bold top-10 mx-10 justify-end">
+            <p className="mr-4">Ryome Motor Cares</p>
+            <p className="mr-4">NO:Colombo07</p>
+            <p className="mr-4">Tel:0752941767</p>
+            <p className="mr-4">Fax:0270110123</p>
+          </div>
+        </div>
+                <table className=".w-auto bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10 ml-20">
+                    <thead>
+                        <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Name</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Telephone</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Email</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Vehicle Number</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Vehicle Type</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Date</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Time</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Services</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {filteredBookings.map((booking) => (
+                            <tr key={booking.id} className="bg-white border-b border-gray-200 hover:bg-gray-50">
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.fname} {booking.lname}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.phoneNum}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.eMail}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.vNum}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.vType}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-red-500">{formatDate(booking.dDate)}</td>
+                                {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-red-500">{booking.dDate}</td> */}
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.tTime}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.serviceBox}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                {/* Footer for PDF */}
+                <div className="print:block hidden">
+                    <div className="absolute bottom-0 w-full flex justify-between px-10">
+                        <div className="font-bold text-left">
+                            ...........................
+                            <br />
+                            date
+                        </div>
+                        <div className="font-bold text-right">
+                            ...........................
+                            <br />
+                            Signature
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div className="absolute right-8 mt-5">
-                <button onClick={handlePrint} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Generate Report</button>
+                <button onClick={handlePrint} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Generate Report <FaPrint /></button>
                 <div className="mt-1 opacity-0">.</div>
             </div>
         </div>

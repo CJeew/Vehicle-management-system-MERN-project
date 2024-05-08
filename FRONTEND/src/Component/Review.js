@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import "./Home.css";
 import "./Review.js";
@@ -10,8 +10,7 @@ function Review() {
   const [cmail, setCmail] = useState("");
   const [rating, setrating] = useState("");
   const [message, setmessage] = useState("");
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   function sendreview(e) {
     e.preventDefault();
@@ -47,7 +46,7 @@ function Review() {
       .post("http://localhost:8090/reviewAdd/Review", newReview)
       .then(() => {
         alert("Review Added");
-        navigate("/Chome"); 
+        navigate("/Chome");
       })
       .catch((err) => {
         alert(err);
@@ -89,12 +88,17 @@ function Review() {
               </label>
               <input
                 required
-                onChange={(e) => setCmail(e.target.value)}
-                type="email"
-                id="email"
-                placeholder="_@gmail.com"
-                className="text-black w-full py-2 px-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              ></input>
+                onChange={(e) => {
+                  const { value } = e.target;
+                  const filteredValue = value.replace(/[^a-zA-Z0-9@]/g, ""); // Allow only letters, numbers, and '@'
+                  setCmail(filteredValue);
+                }}
+                type="text"
+                name="email"
+                className="text-black text-black w-full py-2 px-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Email"
+                value={cmail}
+              />
             </div>
 
             <div classNames="mb-4">
@@ -188,6 +192,13 @@ function Review() {
               </label>
               <input
                 required
+                onKeyPress={(e) => {
+                  // Allow only letters, space, and backspace/delete key
+                  const validCharacters = /^[a-zA-Z\s\b]+$/; // Adding \s for space, 'i' flag for case-insensitive
+                  if (!validCharacters.test(e.key)) {
+                    e.preventDefault();
+                  }
+                }}
                 onChange={(e) => setmessage(e.target.value)}
                 id="message"
                 placeholder="Message"
