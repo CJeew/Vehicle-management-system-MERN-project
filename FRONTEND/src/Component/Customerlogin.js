@@ -30,13 +30,13 @@ export default function Customerlogin() {
         <div class="mt-5 mb-5 flex justify-center">
         <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                   hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
-                                  ease-in-out transform hover:scale-105 mt-5"><a href="/Chome">Customer Login</a></button>
+                                  ease-in-out transform hover:scale-105 mt-5"><a href="/Chome">As Customer </a></button>
         
         
           
         <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                                   hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
-                                  ease-in-out transform hover:scale-105 mt-5"><a href="/Cmanager">Manager Login</a></button>
+                                  ease-in-out transform hover:scale-105 mt-5"><a href="/Cmanager">As Manager </a></button>
           </div>
           </div>
           <div class="mt-5 mb-5 flex justify-center">
