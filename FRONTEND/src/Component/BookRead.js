@@ -3,6 +3,7 @@ import axios from "axios";
 import { jsPDF } from "jspdf";
 import { Link } from "react-router-dom";
 import html2canvas from "html2canvas";
+import imgSrc from "./logo.png";
 
 export default function BookRead() {
     const [bookings, setBooking] = useState([]);
@@ -36,9 +37,8 @@ export default function BookRead() {
             window.location.reload(); // Refresh page after successful deletion
         }
     };
-    
 
-    //Function to generate reports
+    // Function to generate reports
     const handlePrint = () => {
         const input = document.getElementById('printable-area');
 
@@ -51,8 +51,16 @@ export default function BookRead() {
             let heightLeft = imgHeight;
             let position = 0;
 
-            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            // Add header
+            pdf.addImage(imgSrc, 'PNG', 10, 10, 50, 20);<br/> // Logo
+            
+
+            pdf.addImage(imgData, 'PNG', 0, 60, imgWidth, imgHeight);<br/>
             heightLeft -= pageHeight;
+            pdf.text('Ryome Motor Cares', 50, 20); // Company name
+            pdf.text('NO:Colombo07', 50, 30); // Address
+            pdf.text('Tel:0752941767', 50, 40); // Telephone
+            pdf.text('Fax:0270110123', 50, 50); // Fax
 
             while (heightLeft >= 0) {
                 position = heightLeft - imgHeight;
@@ -60,6 +68,13 @@ export default function BookRead() {
                 pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
                 heightLeft -= pageHeight;
             }
+
+            // Add footer
+            const date = new Date();
+            const formattedDate = formatDate(date);
+            const footer = `Sign: ______________                                        Date: ______________ `;
+            
+            pdf.text(footer, 10, pdf.internal.pageSize.height - 10);
 
             pdf.save('booking_list.pdf');
         });
@@ -90,51 +105,60 @@ export default function BookRead() {
                 </div>
             </div>
             <div id="printable-area">
+                {/* Header for PDF */}
+                <div className="print:block hidden">
+                    <img src={imgSrc} alt="Logo" className="h-20 w-43 ml-10 mt-3 mr-20 align-top align-left" />
+                    <br />
+                    <div className="font-bold top-10 mx-10 justify-end">
+                        <p className="mr-4">Ryome Motor Cares</p>
+                        <p className="mr-4">NO:Colombo07</p>
+                        <p className="mr-4">Tel:0752941767</p>
+                        <p className="mr-4">Fax:0270110123</p>
+                    </div>
+                </div>
                 <table className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10 mt-20" ref={componentRef}>
                 <thead>
-            <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Name</th>
-                    {/*<th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Address</th>*/}
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Telephone</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Email</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Vehicle Number</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Vehicle Type</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Date</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Time</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Services</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Function</th>
-                    
-                </tr>
-            </thead>
-                    <tbody>
-                        {bookings.map((booking) => (
-                            <tr key={booking.id} className="bg-white border-b border-gray-200 hover:bg-gray-50">
-                                <td className="hidden">{booking.id}</td> {/* Hide the first column */}
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.fname} {booking.lname}</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.phoneNum}</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.eMail}</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.vNum}</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.vType}</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(booking.dDate)}</td>
-                                {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.dDate}</td> */}
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.tTime}</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.serviceBox}</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <div className="flex items-center justify-start gap-2">
-                                        {/*Edit booking button */}
-                                        <Link to={`/updateBooking/${booking._id}`}><button className="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                            Edit
-                                        </button></Link>
-                                        {/* Delete booking button  */}
-                                        <button onClick={() => onDeleteClick(booking._id)} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                            Delete
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                    <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Name</th>
+                        {/*<th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Address</th>*/}
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Telephone</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Email</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Vehicle Number</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Vehicle Type</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Date</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Time</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Services</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">Function</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {bookings.map((booking) => (
+                        <tr key={booking.id} className="bg-white border-b border-gray-200 hover:bg-gray-50">
+                            <td className="hidden">{booking.id}</td> {/* Hide the first column */}
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.fname} {booking.lname}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.phoneNum}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.eMail}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.vNum}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.vType}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(booking.dDate)}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.tTime}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{booking.serviceBox}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <div className="flex items-center justify-start gap-2">
+                                    {/* Edit booking button */}
+                                    <Link to={`/updateBooking/${booking._id}`}><button className="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                        Edit
+                                    </button></Link>
+                                    {/* Delete booking button  */}
+                                    <button onClick={() => onDeleteClick(booking._id)} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                        Delete
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
             </div>
             <div className="absolute right-8 mt-5">
                 <button onClick={handlePrint} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Generate Report</button>
