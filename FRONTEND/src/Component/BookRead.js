@@ -90,6 +90,7 @@ export default function BookRead() {
                         <p className="mr-4">Pannipitiya,</p>
                         <p className="mr-4">Kottawa</p>
                         <p className="mr-4">0773216654 / 0112780599</p>
+                        <h1 className="text-center text-3xl">Booking List</h1><br/>
                         <hr/>
                     <br/>
                 </div>
