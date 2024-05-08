@@ -83,15 +83,17 @@ export default function ServiceHistory() {
             <img
               src={imgSrc}
               alt="Logo"
-              className="h-20 w-43 ml-10 mt-3 mr-20 align-top align-left"
+              className="h-20 w-43 ml-20 mt-10 align-top align-left"
             />
           </div>
           <br />
-          <div className="font-bold top-10 mx-10 justify-end">
-            <p className="mr-4">Ryome Motor Cares</p>
-            <p className="mr-4">NO:Colombo07</p>
-            <p className="mr-4">Tel:0752941767</p>
-            <p className="mr-4">Fax:0270110123</p>
+          <div className="font-bold top-24 mx-10 ml-20 justify-end">
+            <p className="mr-4">Ryome Auto Cares</p>
+            <p className="mr-4">386/1, Borella Road,</p>
+            <p className="mr-4">Pannipitiya,</p>
+            <p className="mr-4">Kottawa</p>
+            <p className="mr-4">0773216654 / 0112780599</p>
+            <br/>
           </div>
         </div>
                 <table className=".w-auto bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10 ml-20">
@@ -125,22 +127,18 @@ export default function ServiceHistory() {
                 </table>
                 {/* Footer for PDF */}
                 <div className="print:block hidden">
-                    <div className="absolute bottom-0 w-full flex justify-between px-10">
-                        <div className="font-bold text-left">
-                            ...........................
-                            <br />
-                            date
+                    <div className="absolute bottom-0 w-full  flex px-10 mb-10"><br/><br/>
+                        <div className="font-bold text-left space-x-64">
+                            ...........................<br />Date
                         </div>
-                        <div className="font-bold text-right">
-                            ...........................
-                            <br />
-                            Signature
+                        <div className="font-bold ml-96">
+                            ...........................<br />Signature
                         </div>
                     </div>
                 </div>
             </div>
             <div className="absolute right-8 mt-5">
-                <button onClick={handlePrint} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Generate Report <FaPrint /></button>
+                <button onClick={handlePrint} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-5 rounded "><FaPrint className="mx-16" />Generate Reports</button>
                 <div className="mt-1 opacity-0">.</div>
             </div>
         </div>
