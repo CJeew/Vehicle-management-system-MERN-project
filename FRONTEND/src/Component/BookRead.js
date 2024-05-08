@@ -29,10 +29,14 @@ export default function BookRead() {
 
     // Function to handle deletion of a booking
     const onDeleteClick = async (bookId) => {
-        await axios.delete(`http://localhost:8090/booking/delete/${bookId}`);
-        alert('Booking Deleted Successfully');
-        window.location.reload(); // Refresh page after successful deletion
+        const confirmed = window.confirm('Are you sure you want to delete this booking?');
+        if (confirmed) {
+            await axios.delete(`http://localhost:8090/booking/delete/${bookId}`);
+            alert('Booking Deleted Successfully');
+            window.location.reload(); // Refresh page after successful deletion
+        }
     };
+    
 
     //Function to generate reports
     const handlePrint = () => {

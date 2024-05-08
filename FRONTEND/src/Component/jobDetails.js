@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { jsPDF } from "jspdf";
+import imgSrc2 from "./logo.png";
+
 
 
 const JobDetails = () => {
@@ -65,6 +67,7 @@ const generatePDFReport = () => {
       // Set font to bold for headings and smaller font size
       doc.setFont('Times New Roman', 'bold'); 
       doc.setFontSize(14); 
+      doc.addImage(imgSrc2, "PNG", 160, 10, 30, 10);
   
       // Add job details with bold headings
       doc.text(`Job Number:`, 20, 40);
