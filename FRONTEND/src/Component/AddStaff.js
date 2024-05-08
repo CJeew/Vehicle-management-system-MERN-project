@@ -11,6 +11,7 @@ export default function AddStaff() {
   const [email, setEmail] = useState("");
   const [mobileno, setMobileno] = useState("");
   const [joindate, setJoindate] = useState("");
+  const [mobileNoError, setMobileNoError] = useState("");
   //const [nicError, setNicError] = useState("");
   //const [nameError, setNameError] = useState("");
   //const [designationError, setDesignationError] = useState("");
@@ -102,6 +103,70 @@ export default function AddStaff() {
     }
   }
 
+// Email format error message
+function handleEmailChange(e) {
+  const value = e.target.value;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(value)) {
+    // Prevent further input by freezing the input field
+    e.target.value = e.target.value.replace(/[^A-Za-z0-9@.]/g, '');
+  } else {
+    setEmail(value);
+  }
+}
+
+//Mobile no validation
+function handleMobileNoChange(e) {
+  const value = e.target.value;
+  const mobilePattern = /^[0-9]{10}$/;
+
+  if (value.length === 10 && !mobilePattern.test(value)) {
+    setMobileNoError("Please enter a valid 10-digit phone number.");
+  } else if (value.length > 10) {
+    e.target.value = e.target.value.slice(0, 10);
+  } else if (value.length < 10) {
+    setMobileNoError("Please enter a 10-digit phone number.");
+  } else {
+    setMobileno(value);
+    setMobileNoError("");
+  }
+}
+
+// Address format error message
+function handleAddressChange(e) {
+  const value = e.target.value;
+  const addressPattern = /^[A-Za-z0-9\s]+$/;
+
+  if (!addressPattern.test(value)) {
+    // Prevent further input by freezing the input field
+    e.target.value = e.target.value.replace(/[^A-Za-z0-9\s]/g, '');
+  } else {
+    setAddress(value);
+  }
+}
+
+
+
+  // // Validate phone number
+  // if (!/^[\d]{10}$/.test(mobileno)) {
+  //   //checking 10 digits
+  //   alert("Please enter 10 digit valid phone number 07XXXXXXXX.");
+  //   return;
+  // }
+
+  // // Validate email
+  // if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  //   alert("Please enter valid email address.");
+  //   return;
+  // }
+
+  // const validateEmail = (email) => {
+    
+  //   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //   return regex.test(email);
+  // };
+
   // // Mobileno format error message
   // function handleMobilenoChange(e) {
   //   const value = e.target.value;
@@ -165,11 +230,7 @@ export default function AddStaff() {
                 id="email"
                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-                onChange={(e) => {
-
-                  setEmail(e.target.value);
-                  //setEmailError("");
-                }}
+                onChange={handleEmailChange}
                 required />
               {/* {emailError && <p className="text-red-500">{emailError}</p>} */}
             </div>
@@ -185,10 +246,7 @@ export default function AddStaff() {
                 name="address"
                 id="address"
                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                onChange={(e) => {
-
-                  setAddress(e.target.value);
-                }}
+                onChange={handleAddressChange}
                 required />
             </div>
           </div>
@@ -220,11 +278,10 @@ export default function AddStaff() {
                 id="mobileno"
                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 pattern="[0-9]{10}"
-                maxLength={10} // Limit input to 10 characters
-                onChange={(e) => {
-                  setMobileno(e.target.value);
-                }}
+                //maxLength={10} // Limit input to 10 characters
+                onChange={handleMobileNoChange}
                 required />
+                {mobileNoError && <p className="text-red-500">{mobileNoError}</p>}
             </div>
           </div>
 

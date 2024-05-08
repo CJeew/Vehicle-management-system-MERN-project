@@ -14,11 +14,15 @@ export default function OrderEditItems() {
     
    
   };
+  const [errors, setErrors] = useState({});
 
   const { id } = useParams();
   const [item, setItem] = useState(initialItemState);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,8 +47,68 @@ export default function OrderEditItems() {
     setItem({ ...item, [name]: value });
   };
 
-  const updateItems = async (e) => {
-    e.preventDefault();
+//   function validateInput(event) {
+//   const inputValue = event.target.value;
+
+//   if (!inputValue.trim()) {
+//     document.getElementById('error-message').textContent = "Item Name is required";
+//   } else if (!/^[a-zA-Z\s]+$/.test(inputValue)) {
+//     document.getElementById('error-message').textContent = "Item name can only contain letters";
+//     event.target.value = inputValue.replace(/[^a-zA-Z\s]/g, ''); // Remove any non-letter characters from input
+//   } else {
+//     document.getElementById('error-message').textContent = ""; // Clear error message if input is valid
+//   }
+// }
+
+  
+ 
+
+  const validateForm = () => {
+    const errors = {};
+    const { itemcode, itemname, suppliername, needquantity, ordercode  } = item;
+
+
+     // Item Code validation
+     if (!itemcode.trim()) {
+      errors.itemcode = "Item Code is required";
+    } else if(!/^[F0-9]+$/i.test(itemcode)){
+      errors.itemcode = "Item Code can only F letter and numbers";
+    }
+
+
+   // Item Name validation
+   if (!itemname.trim()) {
+    errors.itemname = "Item Name is required";
+  } else if (!/^[a-zA-Z\s]+$/.test(itemname)) {
+    errors.itemname = "Item name can only contain letters ";
+  }
+
+
+
+   // Order Code validation
+   if (!ordercode.trim()) {
+    errors.ordercode = "Order Code is required";
+  } else if(!/^[O0-9]+$/i.test(ordercode)){
+    errors.ordercode = "Order Code can only O,o letters and numbers";
+  }
+
+
+
+    setErrors(errors);
+    return Object.keys(errors).length === 0; // Return true if no errors
+  };
+
+
+
+ 
+
+    const updateItems = async (e) => {
+      e.preventDefault();
+  
+      const isValid = validateForm();
+      if (!isValid) {
+        return;
+      }
 
     try {
       await axios.put(`http://localhost:8090/manageorders/update/${id}`, item);
@@ -58,7 +122,7 @@ export default function OrderEditItems() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <form onSubmit={updateItems} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-6 mt-auto mx-auto w-2/3">
+    <form onSubmit={updateItems} className="container bg-gray-200 bg-opacity-70 rounded-lg px-8 py-6 mt-auto mx-auto w-2/5">
     <center><h1 className="text-center font-bold text-black">Order Update Item</h1></center>
     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
     <div className="sm:col-span-3">
@@ -72,7 +136,8 @@ export default function OrderEditItems() {
             onChange={inputChangeHandler}
             className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-        </div></div>
+        </div>
+        {errors.itemcode && <span className="text-red-500">{errors.itemcode}</span>}</div>
         <div className="sm:col-span-3">
           <label htmlFor="itemname" className="block text-sm font-medium leading-6 text-gray-900">Item Name</label>
           <div className="mt-2">
@@ -84,7 +149,8 @@ export default function OrderEditItems() {
             onChange={inputChangeHandler}
             className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-        </div>  </div>
+        </div> {errors.itemname && <span className="text-red-500">{errors.itemname}</span>}
+         </div>
         <div className="sm:col-span-3">
           <label htmlFor="suppliername" className="block text-sm font-medium leading-6 text-gray-900">Supplier Name</label>
           <div className="mt-2">
@@ -121,8 +187,9 @@ export default function OrderEditItems() {
             onChange={inputChangeHandler}
             className="shadow appearance-none border rounded w-full  py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           /></div>
+          {errors.ordercode && <span className="text-red-500">{errors.ordercode}</span>}
         </div>
-       
+        
      
       </div>
       <div className="mt-6 flex items-center justify-end gap-x-6">
