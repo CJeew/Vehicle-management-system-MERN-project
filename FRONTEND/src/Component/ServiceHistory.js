@@ -46,6 +46,12 @@ export default function ServiceHistory() {
         });
     };
 
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+        DocumentTittle: "Booking List",
+        onafterprint: () => alert("Booking List generation successful !!")
+    });
+
     const filteredBookings = bookings.filter((booking) =>
         booking.fname.toLowerCase().includes(searchTerm.toLowerCase()) ||
         booking.lname.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -53,11 +59,7 @@ export default function ServiceHistory() {
         booking.vType.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-        DocumentTittle: "Booking List",
-        onafterprint: () => alert("Booking List generation successful !!")
-    });
+    
 
     return (
         <div>
@@ -78,24 +80,21 @@ export default function ServiceHistory() {
 
             <div ref={componentRef}>
                 {/* Header for PDF */}
-          <div className="print:block hidden">
-          <div>
-            <img
-              src={imgSrc}
-              alt="Logo"
-              className="h-20 w-43 ml-20 mt-10 align-top align-left"
-            />
-          </div>
-          <br />
-          <div className="font-bold top-24 mx-10 ml-20 justify-end">
-            <p className="mr-4">Ryome Auto Cares</p>
-            <p className="mr-4">386/1, Borella Road,</p>
-            <p className="mr-4">Pannipitiya,</p>
-            <p className="mr-4">Kottawa</p>
-            <p className="mr-4">0773216654 / 0112780599</p>
-            <br/>
-          </div>
-        </div>
+                <div className="print:block hidden">
+                <div>
+                    <img src={imgSrc} alt="Logo" className="h-20 w-43 ml-20 mt-10 align-top align-left"/>
+                </div>
+                <br />
+                <div className="font-bold top-24 mx-10 ml-20 justify-end">
+                        <p className="mr-4">Ryome Auto Cares</p>
+                        <p className="mr-4">386/1, Borella Road,</p>
+                        <p className="mr-4">Pannipitiya,</p>
+                        <p className="mr-4">Kottawa</p>
+                        <p className="mr-4">0773216654 / 0112780599</p><br/>
+                        <hr/>
+                    <br/>
+                </div>
+            </div>
                 <table className=".w-auto bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-10 mx-10 ml-20">
                     <thead>
                         <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
