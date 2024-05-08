@@ -157,6 +157,14 @@ return (
           <label htmlFor="itemcode" className="block text-sm font-medium leading-6 text-gray-900" for="itemcode">Item Code</label>
           <div className="mt-2">
           <input
+
+              // onKeyPress={(e) => {
+        //   // Allow only numbers and the letter 'F' or 'f', backspace, and delete key
+        //   const validCharacters = /^[0-9Ff\b]+$/i; // 'i' flag makes the regex case-insensitive
+        //   if (!validCharacters.test(e.key)) {
+        //     e.preventDefault();
+        //   }
+        // }}
             type="text"
             name="itemcode"
             id="itemcode"
