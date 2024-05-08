@@ -99,12 +99,20 @@ function handleDateChange(e) {
       <div className="flex flex-col">
           <label htmlFor="transactionCode" className="text-m font-medium leading-6 text-gray-900 mb-1">Transaction Code</label>
           <input
+        // onKeyPress={(e) => {
+        //   // Allow only numbers and the letter 't' or 'T', backspace, and delete key
+        //   const validCharacters = /^[0-9Tt\b]+$/i; // 'i' flag makes the regex case-insensitive
+        //   if (!validCharacters.test(e.key)) {
+        //     e.preventDefault();
+        //   }
+        // }}
             type="text"
             placeholder="TXXXX"
             name="transactionCode"
             id="transactionCode"
             value={transactionCode}
             onChange={(e) => setTCode(e.target.value)}
+            maxLength={5}
             className={`block rounded-md border ${errors.transactionCode ? 'border-red-500' : 'border-gray-300'} shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm py-2 px-3`}
           />
           {errors.transactionCode && (
