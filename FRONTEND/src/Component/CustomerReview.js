@@ -4,7 +4,6 @@ import { useReactToPrint } from "react-to-print";
 import imgSrc from "./logo.png";
 import { FaPrint } from "react-icons/fa6";
 
-
 export default function ReviewRead() {
   const [reviewAdd, setlist] = useState([]);
   const componentRef = useRef();
@@ -29,9 +28,17 @@ export default function ReviewRead() {
 
   // Function to handle deletion of a review
   const onDeleteClick = async (revid) => {
-    await axios.delete(`http://localhost:8090/reviewAdd/delete/${revid}`);
-    alert("Review Deleted Successfully");
-    window.location.reload(); // Refresh page after successful deletion
+    // Show confirmation dialog
+    const shouldDelete = window.confirm(
+      "Are you sure you want to delete this profile?"
+    );
+
+    // If user confirms deletion
+    if (shouldDelete) {
+      await axios.delete(`http://localhost:8090/reviewAdd/delete/${revid}`);
+      alert("Review Deleted Successfully");
+      window.location.reload(); // Refresh page after successful deletion
+    }
   };
 
   // Function to filter reviews based on rating
@@ -76,7 +83,7 @@ export default function ReviewRead() {
               onClick={handlePrint}
               className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
             >
-              Generate Report  <FaPrint />
+              Generate Report <FaPrint />
             </button>
           </div>
           <input
@@ -89,33 +96,31 @@ export default function ReviewRead() {
         </div>
       </div>
       <div className="print:block hidden">
-            <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">
-              Review List
-            </h2>
-          </div>
+        <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">
+          Review List
+        </h2>
+      </div>
 
       <div className="flex justify-center items-center h-screen">
         <div ref={componentRef}>
           {/* Header for PDF */}
           <div className="print:block hidden">
-          <div>
-            <img
-              src={imgSrc}
-              alt="Logo"
-              className="h-20 w-43 ml-10 mt-3 mr-20 align-top align-left"
-            />
+            <div>
+              <img
+                src={imgSrc}
+                alt="Logo"
+                className="h-20 w-43 ml-10 mt-3 mr-20 align-top align-left"
+              />
+            </div>
+            <br />
+            <div className="font-bold top-10 mx-10 justify-end">
+              <p className="mr-4">Ryome Motor Cares</p>
+              <p className="mr-4">NO:Colombo07</p>
+              <p className="mr-4">Tel:0752941767</p>
+              <p className="mr-4">Fax:0270110123</p>
+            </div>
           </div>
-          <br />
-          <div className="font-bold top-10 mx-10 justify-end">
-            <p className="mr-4">Ryome Motor Cares</p>
-            <p className="mr-4">NO:Colombo07</p>
-            <p className="mr-4">Tel:0752941767</p>
-            <p className="mr-4">Fax:0270110123</p>
-          </div>
-        </div>
-          <table
-            className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mx-10 absolute bottom-20 left-25"
-          >
+          <table className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mx-10 absolute bottom-20 left-25">
             <thead>
               <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-15">
                 <th
