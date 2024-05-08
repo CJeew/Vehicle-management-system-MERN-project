@@ -7,6 +7,8 @@ import Delete from "./Component/Delete";
 // import Display from "./Components/Display";
 import Display from "./Component/Display";
 import Update from "./Component/Update";
+// import purchase from "./Component/purchase";
+import Purchase from "./Component/purchase";
 
 //Jobs
 import Create_Job from "./Component/job";
@@ -139,6 +141,7 @@ function App() {
           <Route path="/display" element={<Display />} />
           <Route path="/delete" element={<Delete />} />
           <Route path="/update/:id" element={<Update />} />
+          <Route path="/purchase/:email" element={<Purchase />} />
 
           <Route path="/createjob" element={<Create_Job />} />
           <Route path="/viewjobs" element={<ViewJobs />} />
