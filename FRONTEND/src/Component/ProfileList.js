@@ -31,6 +31,17 @@ export default function ProfileList() {
       "Please enter the password to confirm deletion:"
     );
     if (enteredPassword === "abc123" || enteredPassword === "xyz123") {
+      // Show confirmation dialog
+      const shouldDelete = window.confirm(
+        "Are you sure you want to delete this profile?"
+      );
+
+      // If user confirms deletion
+      if (shouldDelete) {
+        await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
+        alert("Profile Deleted Successfully");
+        window.location.reload(); // Refresh page after successful deletion
+      }
       await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
       alert("Profile Deleted Successfully");
       window.location.reload(); // Refresh page after successful deletion
@@ -99,7 +110,6 @@ export default function ProfileList() {
           />
         </div>
       </div>
-      
 
       <div className="flex  items-center h-screen">
         <table
@@ -154,15 +164,25 @@ export default function ProfileList() {
           </tbody>
         </table>
         {/* Animated text box */}
-      <div className="absolute top-55 right-32">
-        <div
-          className={`bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white py-2 px-4 rounded-md animate-bounce`}
-          onClick={toggleHi}
-        >
-         <h4><b>Please provide your National Identity Card (NIC) number in the search box </b> </h4>
-        <h4><b>and enter the password to proceed with editting your profile or deleting your account !</b> </h4>
+        <div className="absolute top-55 right-32">
+          <div
+            className={`bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white py-2 px-4 rounded-md animate-bounce`}
+            onClick={toggleHi}
+          >
+            <h4>
+              <b>
+                Please provide your National Identity Card (NIC) number in the
+                search box{" "}
+              </b>{" "}
+            </h4>
+            <h4>
+              <b>
+                and enter the password to proceed with editting your profile or
+                deleting your account !
+              </b>{" "}
+            </h4>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );

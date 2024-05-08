@@ -25,10 +25,13 @@ export default function ViewHolidaysSetting() {
 
     // Function to handle deletion of a hour
     const onDeleteClick = async (holidayId) => {
-        await axios.delete(`http://localhost:8090/holidaySetting/deleteHoliday/${holidayId}`);
-        alert('Holiday Deleted Successfully');
-        window.location.reload(); // Refresh page after successful deletion
-  };
+        const confirmed = window.confirm('Are you sure you want to delete this holiday setting?');
+        if (confirmed) {
+            await axios.delete(`http://localhost:8090/holidaySetting/deleteHoliday/${holidayId}`);
+            alert('Holiday setting Deleted Successfully');
+            window.location.reload(); // Refresh page after successful deletion
+        }
+    };
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);

@@ -4,13 +4,12 @@ import "./Cmanager.js";
 import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import imgSrc from "./logo.png";
+import { FaPrint } from "react-icons/fa6";
 
 export default function RegisterRead() {
   const [customer, setlist] = useState([]);
   const componentRef = useRef();
   const [searchTerm, setSearchTerm] = useState("");
-  const currentDate = new Date().toLocaleDateString();
-  const currentTime = new Date().toLocaleTimeString();
 
   useEffect(() => {
     function getlist() {
@@ -34,6 +33,16 @@ export default function RegisterRead() {
     await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
     alert("Profile Deleted Successfully");
     window.location.reload(); // Refresh page after successful deletion
+
+     // Show confirmation dialog
+  const shouldDelete = window.confirm("Are you sure you want to delete this profile?");
+  
+  // If user confirms deletion
+  if (shouldDelete) {
+    await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
+    alert("Profile Deleted Successfully");
+    window.location.reload(); // Refresh page after successful deletion
+  }
   };
 
   // Function to generate reports
@@ -42,12 +51,13 @@ export default function RegisterRead() {
     DocumentTitle: "Customer List",
     onafterprint: () => alert("Customer List generation successful !!"),
   });
-  const filteredList = customer.filter((customer) =>
-    customer.cnic.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    customer.cmail.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    customer.cvtype.toLowerCase().includes(searchTerm.toLowerCase())
+
+  const filteredList = customer.filter(
+    (customer) =>
+      customer.cnic.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      customer.cmail.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      customer.cvtype.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  
 
   return (
     <div>
@@ -81,7 +91,7 @@ export default function RegisterRead() {
               onClick={handlePrint}
               className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
             >
-              Generate Report
+              Generate Report <FaPrint />
             </button>
           </div>
           <input
@@ -93,63 +103,71 @@ export default function RegisterRead() {
           />
         </div>
       </div>
-      <div class="flex justify-center items-center h-screen">
-        <table
-          class="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-0 mx-10 mt-48"
-          ref={componentRef}
-        >
+
+      <div ref={componentRef} className=" mt-20 max-h-[25rem]">
+        {/* Header for PDF */}
+        <div className="print:block hidden">
+          <div>
+            <img
+              src={imgSrc}
+              alt="Logo"
+              className="h-20 w-43 ml-10 mt-3 mr-20 align-top align-left"
+            />
+          </div>
+          <br />
+          <div className="font-bold top-10 mx-10 justify-end">
+            <p className="mr-4">Ryome Motor Cares</p>
+            <p className="mr-4">NO:Colombo07</p>
+            <p className="mr-4">Tel:0752941767</p>
+            <p className="mr-4">Fax:0270110123</p>
+          </div>
+        </div>
+
+        <table className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky top-0 mx-10 mt-48">
           <thead>
             <tr>
               {/* Header with company name, current date, and time */}
               <th
                 colSpan="8"
                 className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 py-4 text-white text-center"
-              >
-                <div className="flex justify-between items-center px-8">
-                <a><img src= {imgSrc} alt="Logo" className="h-16 w-43 ml-0 mt-0 mr-0" />
-                <h4>Kottawa,Colombo,Sri Lanka</h4></a>
-                  <div className="text-white">
-                    <p>Date: {currentDate}</p>
-                    <p>Time: {currentTime}</p>
-                  </div>
-                </div>
-              </th>
+              ></th>
             </tr>
+
             <tr className="bg-gradient-to-r  mt-5">
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider"
               >
                 Name
               </th>
 
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
               >
                 Telephone
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
               >
                 Email
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
               >
                 NIC Number
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
               >
                 Vehicle type
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider"
               >
                 Vehicle Number
               </th>
@@ -159,41 +177,41 @@ export default function RegisterRead() {
             {filteredList.map((customer) => (
               <tr
                 key={customer.id}
-                class="bg-white border-b border-gray-200 hover:bg-gray-50"
+                className="bg-white border-b border-gray-200 hover:bg-gray-50"
               >
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {customer.cname}{" "}
                 </td>
 
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {customer.cphone}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {customer.cmail}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {customer.cnic}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {customer.cvtype}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {customer.cvnum}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <div class="flex items-center justify-start gap-2">
+                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <div className="flex items-center justify-start gap-2">
                     {/* Edit customer button */}
                     <Link
                       to={`/Updatecustomer/${customer._id}`}
                       type="button"
-                      class="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                      className="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                     >
                       Edit
                     </Link>
                     {/* Delete customer button  */}
                     <button
                       onClick={() => onDeleteClick(customer._id)}
-                      class="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                      className="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                     >
                       Delete
                     </button>
@@ -203,6 +221,26 @@ export default function RegisterRead() {
             ))}
           </tbody>
         </table>
+        <br />
+        <br />
+        {/* Footer for PDF */}
+        <div className="print:block hidden form-footer relative mt-[10rem] ">
+          <br />
+          <br />
+
+          <div className="absolute bottom-0 w-full flex justify-between px-10">
+            <div className="font-bold text-left">
+              ...........................
+              <br />
+              date
+            </div>
+            <div className="font-bold text-right">
+              ...........................
+              <br />
+              Signature
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

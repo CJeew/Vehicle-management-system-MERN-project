@@ -22,6 +22,7 @@ const TrackJobs = () => {
         // Set initial service types and their checked status
         setServiceTypes(serviceType);
         setCheckedServices(serviceStatus || {}); // Initialize with existing status or empty object
+        console.log(serviceStatus);
 
       } catch (error) {
         console.error("Error fetching service data:", error);
@@ -43,7 +44,7 @@ const TrackJobs = () => {
   const handleSave = async () => {
     console.log("Attempting to save service status");
     try {
-      await axios.post(`http://localhost:8090/job/trackjobs/${jobNumber}`, {
+      await axios.put(`http://localhost:8090/job/updatejobstatus/${jobNumber}`, {
         serviceStatus: checkedServices, // Check if correct data is sent
       });
       console.log("Service status saved successfully!");
