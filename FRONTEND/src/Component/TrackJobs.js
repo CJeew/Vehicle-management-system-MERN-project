@@ -142,14 +142,14 @@ const TrackJobs = () => {
 
         {/* Save Button and View Jobs Link */}
         <div className="flex justify-end"> 
-          <button
+          {/* <button
             className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
                       hover:to-amber-700 text-white font-bold py-3 px-5 rounded-lg mr-2 opacity-90 transition duration-300
                       ease-in-out transform hover:scale-105"
             onClick={handleSave}
           >
             Save
-          </button>
+          </button> */}
 
           <a href="/viewjobs">
             <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 

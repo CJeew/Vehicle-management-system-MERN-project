@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Add_Supplier.css";
-
 import axios from "axios";
 
 function Add_Supplier() {
@@ -28,6 +27,7 @@ function Add_Supplier() {
       address,
     };
     
+    
 //Email validation
     const isValidEmail = /\S+@\S+\.|S+/.test(Email);
 
@@ -35,22 +35,20 @@ function Add_Supplier() {
       alert("Please enter a valid email address.");
       return;
     }
+
+// contact validation
+    if (!/^[\d]{10}$/.test(contact) ||  /[a-zA-Z]/.test(contact) ) { // Checking 10 digits
+      alert("Please enter a 10-digit valid phone number (07XXXXXXXX).");
+      return;
+  }
   
-//contact validation
-    const isvalidcontact = /^[\d]{10}$/.test(contact);
 
-    if(!isvalidcontact){
-      alert("please enter a valid contact number");
-      return;
-    }
     
-//contact 2 validation
-    const isvalidcontact_2 = /^[\d]{10}$/.test(contact_2);
-
-    if(!isvalidcontact_2){
-      alert("please enter a valid 2nd contact number");
-      return;
-    }
+// contact validation
+if (!/^[\d]{10}$/.test(contact_2) ||  /[a-zA-Z]/.test(contact_2) ) { // Checking 10 digits
+  alert("Please enter a 10-digit valid phone number (07XXXXXXXX).");
+  return;
+}
 
 
     axios
@@ -62,9 +60,6 @@ function Add_Supplier() {
         alert(err);
       });
   }
-
- 
-
 
   return (
     <div>
@@ -87,32 +82,90 @@ function Add_Supplier() {
           <div className="space-y-2 flex justify-between grid grid-cols-2 gap-4 ">
           <div className="mt-5">
                      <label className="mr-9">Supplier Name    :</label>
-                    <input className="rounded-md w-72 h-10 opacity-80" type="text" onChange={(e) => setName(e.target.value)} required />
+                     <input type="text" onKeyDown={(e) => {
+                        const key = e.key;
+                        const isBackspace = key === "Backspace";
+                        const isValidInput = /^[a-zA-Z]*$/.test(key) || isBackspace; // Allow Backspace or alphanumeric characters
+                        if (!isValidInput) {
+                          e.preventDefault(); // Prevent the input of the special character
+                        }
+                      }}
+                      onChange={(e) => setName(e.target.value)} 
+                      className="rounded-md w-60 h-10 opacity-80 text-base mt-2" 
+                      required
+                    />
                  </div>
 
             <div>
               <label className="mr-10">Contact :</label>
-              <input
-                className="rounded-md w-72 h-10 opacity-80"
-                type="text"
-                onChange={(e) => setContact(e.target.value)} required
-              />
+                           <input type="text"
+                            placeholder=" ex : 0711234567"
+                            value={contact}
+                            onKeyDown={(e) => {
+                              const key = e.key;
+                              const isBackspace = key === 'Backspace';
+                              const isDigit = /^[0-9]$/.test(key);
+
+                              // Allow backspace and digits (0-9)
+                              const isValid = isBackspace || isDigit;
+
+                              if (!isValid) {
+                                e.preventDefault(); // Prevent invalid keystrokes
+                              }
+                            }}
+                            onChange={(e) => {
+                              const contact = e.target.value;
+
+                              // Ensure the value contains only digits
+                              if (/^[0-9]*$/.test(contact)) { // Allow only numbers
+                                setContact(contact); 
+                              }
+                            }}
+                            minLength={10}
+                            maxLength={10}
+                            className="rounded-md w-60 h-10 opacity-80 text-base mt-2"
+                            required
+                          />
             </div>
           </div>
 
           <div className="space-y-2 flex justify-between grid grid-cols-2 gap-4 ">
             <div className="mt-5">
               <label className="mr-20">Contact 2 :</label>
-              <input
-                className="rounded-md w-72 h-10 opacity-80"
-                type="text"
-                onChange={(e) => setContact_2(e.target.value)}
-              />
+              
+              <input type="text"
+                            
+                            value={contact_2}
+                            onKeyDown={(e) => {
+                              const key = e.key;
+                              const isBackspace = key === 'Backspace';
+                              const isDigit = /^[0-9]$/.test(key);
+
+                              // Allow backspace and digits (0-9)
+                              const isValid = isBackspace || isDigit;
+
+                              if (!isValid) {
+                                e.preventDefault(); // Prevent invalid keystrokes
+                              }
+                            }}
+                            onChange={(e) => {
+                              const contact_2 = e.target.value;
+
+                              // Ensure the value contains only digits
+                              if (/^[0-9]*$/.test(contact_2)) { // Allow only numbers
+                                setContact_2(contact_2); 
+                              }
+                            }}
+                            minLength={10}
+                            maxLength={10}
+                            className="rounded-md w-60 h-10 opacity-80 text-base mt-2"
+                            required
+                          />
             </div>
 
             <div>
                     <label className="mr-11">E-mail :</label>
-                    <input type="email" onChange={(e) => setEmail(e.target.value)} className="rounded-md w-60 h-10 opacity-80 ml-3"/> 
+                    <input type="email" onChange={(e) => setEmail(e.target.value)} className="rounded-md w-60 h-10 opacity-80 ml-3" /> 
                    </div>
           </div>
 

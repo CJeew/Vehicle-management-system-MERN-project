@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import React, { useState, useEffect, useRef } from "react";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import imgSrc from "./images/logo.png";
 import { FaPrint } from "react-icons/fa6";
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 
 export default function ManageOrders() {
@@ -13,7 +13,8 @@ export default function ManageOrders() {
 
   useEffect(() => {
     function getItems() {
-      axios.get("http://localhost:8090/manageorders/")
+      axios
+        .get("http://localhost:8090/manageorders/")
         .then((res) => {
           setItems(res.data);
         })
@@ -26,7 +27,7 @@ export default function ManageOrders() {
 
   const onDeleteClick = async (itemId) => {
     await axios.delete(`http://localhost:8090/manageorders/delete/${itemId}`);
-    alert('Item Deleted Successfully');
+    alert("Item Deleted Successfully");
     window.location.reload();
   };
 
@@ -46,7 +47,7 @@ export default function ManageOrders() {
 
   const sendOrderEmail = async (itemId) => {
     try {
-      const order = items.find(item => item._id === itemId);
+      const order = items.find((item) => item._id === itemId);
       if (!order) {
         console.error("Order not found");
         return;
@@ -64,47 +65,57 @@ export default function ManageOrders() {
       await axios.post("http://localhost:8090/email/send-email/", {
         to: "noormohommaduakeel@gmail.com", // Replace with recipient's email address
         subject: "Order Details",
-        body: emailBody
+        body: emailBody,
       });
-  
+
       alert('Order details sent via email for Order ID: ' + itemId);
-  
-      // Update buttonClicked state
+
+      // Update buttonClicked state and store in local storage
       setButtonClicked(prevState => ({
         ...prevState,
-        [itemId]: true
+        [itemId]: true,
       }));
-  
-      // Update local storage after setting buttonClicked
-      localStorage.setItem('buttonClicked', JSON.stringify({
-        ...buttonClicked,
-        [itemId]: true
-      }));
+
+      localStorage.setItem('buttonClicked', JSON.stringify(buttonClicked));
     } catch (error) {
       console.error("Error sending email:", error);
-      alert('Failed to send order details via email.');
+      alert("Failed to send order details via email.");
     }
   };
-  
+
+  useEffect(() => {
+    // Retrieve stored information about sent orders
+    const storedButtonClicked = JSON.parse(localStorage.getItem('buttonClicked'));
+    if (storedButtonClicked) {
+      setButtonClicked(storedButtonClicked);
+    }
+  }, []);
+
   // Function to filter items based on search term
-  const filteredItems = items.filter((item) =>
-    item.itemcode.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.itemname.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.suppliername.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.ordercode.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredItems = items.filter(
+    (item) =>
+      item.itemcode.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.itemname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.suppliername.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.ordercode.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const ComponentsRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => ComponentsRef.current,
     DocumentTittle: "order report",
-    onafterprint: () => alert("user report successfully ")
+    onafterprint: () => alert("user report successfully "),
   });
 
   return (
-    <div className="h-screen w-screen bg-gray flex justify-center items-center flex-wrap relative" style={{backgroundImage: 'url("inventory_menu.jpeg")'}}>
+    <div
+      className="h-screen w-screen bg-gray flex justify-center items-center flex-wrap relative"
+      style={{ backgroundImage: 'url("inventory_menu.jpeg")' }}
+    >
       <div className="absolute top-2 left-8">
-        <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">Managed Orders</h2>
+        <h2 className="ms-20 my-10 mt-20 text-6xl font-extrabold text-white">
+          Managed Orders
+        </h2>
       </div>
 
       <div className="absolute top-2 right-8">
@@ -138,37 +149,44 @@ export default function ManageOrders() {
       </div>
 
       <div className="absolute top-2 left-8">
-        <a href="/Addorder" className="inline-block bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded">
+        <a
+          href="/Addorder"
+          className="inline-block bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded"
+        >
           +Add Orders
         </a>
       </div>
 
       <div className="absolute top-16 right-8">
-        <button onClick={handlePrint} className="bg-yellow-500 hover:bg-yellow-600 mr-48 mt-24 text-white font-bold py-2 px-4 rounded">
-          <FaPrint className='w-5 h-5'  />
+        <button onClick={handlePrint} className="bg-yellow-500 hover:bg-yellow-600 mr-44 mt-24 text-white font-bold py-2 px-4 rounded">
+          <FaPrint />
         </button>
       </div>
 
-      <div ref={ComponentsRef}   class=" mt-20 max-h-[25 rem] ">
+      <div ref={ComponentsRef} class=" mt-20 max-h-[25 rem] ">
         {/* Your print content */}
-    
-      <div >
-  <img src={imgSrc} alt="Logo" className="print:block hidden h-20 w-43 ml-10 mt-3 mr-20 align-top align-left" />
-</div>
-<br/>
 
-<div class="print:block hidden   font-bold top-10 mx-10 justify-end">
-  <p class="mr-4">Ryome Motor Cares</p>
-  <p class="mr-4">NO:Colombo07</p>
-  <p class="mr-4">Tel:0752941767</p>
-  <p class="mr-4">Fax:0270110123</p>
-</div>
+        <div>
+          <img
+            src={imgSrc}
+            alt="Logo"
+            className="print:block hidden h-20 w-43 ml-10 mt-3 mr-20 align-top align-left"
+          />
+        </div>
+        <br />
+
+        <div class="print:block hidden   font-bold top-10 mx-10 justify-end">
+          <p class="mr-4">Ryome Motor Cares</p>
+          <p class="mr-4">NO:Colombo07</p>
+          <p class="mr-4">Tel:0752941767</p>
+          <p class="mr-4">Fax:0270110123</p>
+        </div>
 
 <div class="text-center print:block hidden  text-2xl font-bold">
   Inventory Items details
 </div>
 <br/>
-      <table class="bg-gradient-to-r align-middle from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mt-20 top-10 mx-10">
+      <table class="bg-gradient-to-r align-middle from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mt-5 top-10 mx-10">
         <thead>
           <tr className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 mt-5">
             <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white  tracking-wider">No</th>
@@ -198,39 +216,40 @@ export default function ManageOrders() {
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 print:hidden">
-          <button
-  onClick={() => sendOrderEmail(item._id)}
-  disabled={buttonClicked[item._id]} // Disable button if order already sent
-  className={`bg-${buttonClicked[item._id] ? 'red' : 'blue'}-500 hover:bg-${buttonClicked[item._id] ? 'red' : 'blue'}-700 text-white font-bold py-2 px-4 rounded`}
->
-  {buttonClicked[item._id] ? "Complete" : "Send Order"}
-</button>
-
-
-
-
+                <button
+                  onClick={() => sendOrderEmail(item._id)}
+                  disabled={buttonClicked[item._id]} // Disable button if order already sent
+                  className={`bg-${buttonClicked[item._id] ? 'red' : 'blue'}-500 hover:bg-${buttonClicked[item._id] ? 'red' : 'blue'}-700 text-white font-bold py-2 px-4 rounded`}
+                >
+                  {buttonClicked[item._id] ? "Complete" : "Send Order"}
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <br/>
-        <br/>
-        
+        <br />
+        <br />
+
         <div class="form-footer relative mt-[10rem] ">
-          <br/>
-          <br/>
+          <br />
+          <br />
 
-  
-  <div class="absolute bottom-0 w-full flex justify-between px-10">
-  
-    <div class="font-bold text-left">...........................<br/>date</div>
-    <div class="font-bold text-right">...........................<br/>Singnature</div>
-  </div>
-</div>
-
-    </div>
+          <div class="absolute bottom-0 w-full flex justify-between px-10">
+            <div class="font-bold text-left">
+              ...........................
+              <br />
+              date
+            </div>
+            <div class="font-bold text-right">
+              ...........................
+              <br />
+              Singnature
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import "./Home.css";
 import "./Review.js";
@@ -10,8 +10,9 @@ function Review() {
   const [cmail, setCmail] = useState("");
   const [rating, setrating] = useState("");
   const [message, setmessage] = useState("");
-  const navigate = useNavigate()
+  const [showHi, setShowHi] = useState(false); // State for showing animated text
 
+  const navigate = useNavigate();
 
   function sendreview(e) {
     e.preventDefault();
@@ -47,12 +48,16 @@ function Review() {
       .post("http://localhost:8090/reviewAdd/Review", newReview)
       .then(() => {
         alert("Review Added");
-        navigate("/Chome"); 
+        navigate("/Chome");
       })
       .catch((err) => {
         alert(err);
       });
   }
+  // Function to toggle showing "hi" text
+  const toggleHi = () => {
+    setShowHi(!showHi);
+  };
   // Validation function to avoid special characters
   function validateInputs() {
     const specialChars = /[!#$%^&*()_+\-=\[\]{};':"\\|,<>\/?]/;
@@ -78,6 +83,20 @@ function Review() {
           <h2 className="ms-20 my-10 mt-20 text-5xl font-extrabold text-white">
             Feedback Form
           </h2>
+          {/* Animated text box */}
+          <div className="absolute top-40 right-72 text=4xl">
+            <div
+              className={` text-2xl bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 text-white py-2 px-4 rounded-md animate-bounce`}
+              onClick={toggleHi}
+            >
+              <h4 >
+                <b>
+                  Thank you for your review !!{" "}
+                </b>{" "}
+              </h4>
+              
+            </div>
+          </div>
           <form className=".w-auto bg-gray-100 p-6 ms-60 my-10 p-4 m-60 border-gray-300 rounded-lg min-h-min bg-opacity-50">
             {/* <h2 className="text-white text-2xl font-bold mb-4">Feedback Form</h2> */}
             <div className="mb-4 text-black">
@@ -89,12 +108,17 @@ function Review() {
               </label>
               <input
                 required
-                onChange={(e) => setCmail(e.target.value)}
-                type="email"
-                id="email"
-                placeholder="_@gmail.com"
-                className="text-black w-full py-2 px-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              ></input>
+                onChange={(e) => {
+                  const { value } = e.target;
+                  const filteredValue = value.replace(/[^a-zA-Z0-9@.]/g, ""); // Allow only letters, numbers, and '@'
+                  setCmail(filteredValue);
+                }}
+                type="text"
+                name="email"
+                className="text-black text-black w-full py-2 px-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Email"
+                value={cmail}
+              />
             </div>
 
             <div classNames="mb-4">
@@ -188,6 +212,13 @@ function Review() {
               </label>
               <input
                 required
+                onKeyPress={(e) => {
+                  // Allow only letters, space, and backspace/delete key
+                  const validCharacters = /^[a-zA-Z\s\b]+$/; // Adding \s for space, 'i' flag for case-insensitive
+                  if (!validCharacters.test(e.key)) {
+                    e.preventDefault();
+                  }
+                }}
                 onChange={(e) => setmessage(e.target.value)}
                 id="message"
                 placeholder="Message"

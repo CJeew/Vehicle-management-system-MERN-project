@@ -3,22 +3,29 @@ import "./Home.css";
 //import "./BookingPage.js"
 import "./Chome.css";
 import "./Chome.js";
+import imgSrc from "./login.png";
 
 export default function Customerlogin() {
   return (
      <div className="flex justify-center items-center w-full">
       <form className="bg-gray-100 mt-20 py-10 p-14 my-10 m-60 border-gray-300 rounded-lg bg-opacity-50">
+      <div className="flex justify-center items-center w-full">
+      <img  
+  src={imgSrc}
+  alt="Logo"
+  style={{
+    width: "200px",
+    height: "200px",
+    justifySelf: "center", // Center horizontally
+    alignSelf: "center", // Center vertically
+  }}
+/></div>
       <div>
-        <div class="text-black mt-3 text-center text-4xl font-bold">Customer Login</div>
+        <div class="text-black mt-3 text-center text-4xl font-bold">User Login</div>
       
-        <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 mt-10">
-          <input type="text" placeholder="Email or Username" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"/>
-        </div>
+        
     
-        <div
-          class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 mt-10">
-          <input type="password" placeholder="Password" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"/>
-        </div>
+       
         < div>
         <div class="mt-5 mb-5 flex justify-center">
         <button className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 hover:from-amber-900 hover:via-amber-800 
