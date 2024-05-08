@@ -135,7 +135,8 @@ router.route("/updatejobs/:id").put(async (req,res) => {
     contactNumber,
     email,    
     serviceType,
-    details} = req.body;
+    details,
+    serviceStatus} = req.body;
 
   const updateJob = {
     jobnumber,
@@ -154,6 +155,7 @@ router.route("/updatejobs/:id").put(async (req,res) => {
     email,
     serviceType,
     details,
+    serviceStatus,
   }
 
  const update = await jobModel
@@ -165,6 +167,54 @@ router.route("/updatejobs/:id").put(async (req,res) => {
     console.log(err);
     res.status(500).send({ status : "Job cannot be updated" });
   });
+});
+
+
+//update job status
+
+router.put("/updatejobstatus/:jobId", async (req, res) => {
+  const jobId = req.params.jobId; // Custom job ID
+  const { serviceStatus } = req.body;
+
+  if (!serviceStatus) {
+    return res.status(400).send({ status: "Service status is required" });
+  }
+
+  let formattedServiceStatus;
+
+  // Check if serviceStatus is an array of strings
+  if (Array.isArray(serviceStatus)) {
+    formattedServiceStatus = serviceStatus;
+  } else if (typeof serviceStatus === "string") {
+    // If it's a single string, put it into an array
+    formattedServiceStatus = [serviceStatus];
+  } else if (typeof serviceStatus === "object") {
+    // If it's an object, convert it to an array of strings
+    formattedServiceStatus = Object.keys(serviceStatus);
+  } else {
+    // If it's not a valid format, return an error
+    return res.status(400).send({ status: "Invalid service status format" });
+  }
+
+  try {
+    const updatedJob = await jobModel.findOneAndUpdate(
+      { jobNumber: jobId }, // Query by custom job ID
+      { $set: { serviceStatus: formattedServiceStatus } },
+      { new: true }
+    );
+
+    if (!updatedJob) {
+      return res.status(404).send({ status: "Job not found" });
+    }
+
+    res.status(200).send({
+      status: "Service status updated successfully",
+      job: updatedJob,
+    });
+  } catch (err) {
+    console.error("Error updating service status:", err);
+    res.status(500).send({ status: "Service status could not be updated" });
+  }
 });
 
 
@@ -206,6 +256,10 @@ router.get("/trackjobs/:jobNumber", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+
+
+
+
 
 
 
