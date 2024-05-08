@@ -118,6 +118,7 @@ export default function RegisterRead() {
             <p className="mr-4">NO:Colombo07</p>
             <p className="mr-4">Tel:0752941767</p>
             <p className="mr-4">Fax:0270110123</p>
+            <p className="mr-4 text-center text-3xl"> Registered Customer List</p>
           </div>
         </div>
 

@@ -164,7 +164,7 @@ export default function ProfileList() {
         {/* Animated text box */}
         <div className="absolute top-55 right-32">
           <div
-            className={`bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white py-2 px-4 rounded-md animate-bounce`}
+            className={`bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 text-white py-2 px-4 rounded-md animate-bounce`}
             onClick={toggleHi}
           >
             <h4>

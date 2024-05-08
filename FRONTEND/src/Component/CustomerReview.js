@@ -118,6 +118,7 @@ export default function ReviewRead() {
               <p className="mr-4">NO:Colombo07</p>
               <p className="mr-4">Tel:0752941767</p>
               <p className="mr-4">Fax:0270110123</p>
+              <p className="mr-4 text-center text-3xl"> Customer's Review List</p>
             </div>
           </div>
           <table className="bg-gradient-to-r from-yellow-700 via-yellow-800 to-yellow-900 text-white sticky mx-10 absolute bottom-20 left-25">
