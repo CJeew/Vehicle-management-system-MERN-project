@@ -49,6 +49,8 @@ export default function AddPayroll(){
       }
     }
 
+  
+
     // NIC format error message
 function handleNicChange(e) {
   const value = e.target.value;
@@ -89,6 +91,7 @@ function handleNicChange(e) {
                 <input
                   type="text"
                   name="nic"
+                  placeholder="199525698V or 199552569889"
                   id="nic"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   pattern="[0-9]{9}[vV]{1}|[0-9]{12}"
@@ -104,6 +107,7 @@ function handleNicChange(e) {
               <div className="mt-2">
                 <input
                   type="text"
+                  placeholder="Tim Jacks"
                   name="name"
                   id="name"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -123,6 +127,7 @@ function handleNicChange(e) {
                   id="date"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   onChange={handleDateChange}
+                  
                   required/>
               </div>
             </div>
@@ -156,6 +161,7 @@ function handleNicChange(e) {
               <div className="mt-2">
                 <input
                   type="number"
+                  placeholder="252525 / Enter only number"
                   name="otpayment"
                   id="otpayment"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -174,6 +180,7 @@ function handleNicChange(e) {
               <div className="mt-2">
                 <input
                   type="number"
+                  placeholder="252525 / Enter only number"
                   name="bonus"
                   id="bonus"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -192,6 +199,7 @@ function handleNicChange(e) {
               <div className="mt-2">
                 <input
                   type="number"
+                  placeholder="252525 / Enter only number"
                   name="penaltyamt"
                   id="penaltyamt"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -210,6 +218,7 @@ function handleNicChange(e) {
               <div className="mt-2">
                 <input
                   type="number"
+                  placeholder="252525 / Enter only number"
                   name="salary"
                   id="salary"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
