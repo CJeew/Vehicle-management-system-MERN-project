@@ -55,7 +55,7 @@ function Add_recodes() {
       setErrorMessage("Invalid input. Please use only letters and spaces.");
     }
   };
-
+  const today = new Date().toISOString().split('T')[0];
   return (
     <div className="w-full flex justify-center items-center">
       <div className="w-full max-w-2xl mt-24 bg-white p-8 rounded-lg shadow-md bg-gray-200 bg-opacity-70">
@@ -91,6 +91,7 @@ function Add_recodes() {
             className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
             value={date}
             onChange={(e) => setDate(e.target.value)}
+            max={today}
             required
           />
           <label className="block mb-2 text-sm font-bold text-gray-700">
