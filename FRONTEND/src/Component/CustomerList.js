@@ -38,6 +38,7 @@ export default function RegisterRead() {
     // If user confirms deletion
     if (shouldDelete) {
       await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
+
       alert("Profile Deleted Successfully");
       window.location.reload(); // Refresh page after successful deletion
     }
@@ -116,9 +117,12 @@ export default function RegisterRead() {
           <div className="font-bold top-10 mx-10 justify-end">
             <p className="mr-4">Ryome Motor Cares</p>
             <p className="mr-4">NO:Colombo07</p>
-            <p className="mr-4">Tel:0752941767</p>
+            <p className="mr-4">Tel:0755551767</p>
             <p className="mr-4">Fax:0270110123</p>
-            <p className="mr-4 text-center text-3xl"> Registered Customer List</p>
+            <p className="mr-4 text-center text-3xl">
+              {" "}
+              Registered Customer List
+            </p>
           </div>
         </div>
 
@@ -203,14 +207,15 @@ export default function RegisterRead() {
                     <Link
                       to={`/Updatecustomer/${customer._id}`}
                       type="button"
-                      className="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                      className="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded print:hidden"
                     >
                       Edit
                     </Link>
+
                     {/* Delete customer button  */}
                     <button
                       onClick={() => onDeleteClick(customer._id)}
-                      className="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                      className="bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded print:hidden"
                     >
                       Delete
                     </button>
