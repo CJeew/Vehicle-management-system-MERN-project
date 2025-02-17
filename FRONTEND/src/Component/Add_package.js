@@ -37,6 +37,7 @@ function AddPackage() {
   }
 
   // Validation function to allow only letters and spaces
+  // for Name and Description fields
   const validateInput = (value) => {
     const regex = /^[a-zA-Z\s]*$/;
     return regex.test(value);
