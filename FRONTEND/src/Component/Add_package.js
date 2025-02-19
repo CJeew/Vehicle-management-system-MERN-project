@@ -32,7 +32,7 @@ function AddPackage() {
         // Redirect based on category
       })
       .catch((err) => {
-        alert(err.message); //error message
+        alert(err.message); //error message display
       });
   }
 
