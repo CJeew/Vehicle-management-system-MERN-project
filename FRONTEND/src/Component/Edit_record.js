@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Home.css";
 import { useParams } from "react-router-dom";
+import API_URL from "../apiConfig";
 
 function Edit_record() {
   const { id } = useParams();
@@ -22,7 +23,7 @@ function Edit_record() {
     };
 
     axios
-      .put(`http://localhost:8090/svc-records/updaterec/${id}`, editRecord)
+      .put(`${API_URL}/svc-records/updaterec/${id}`, editRecord)
       .then(() => {
         alert("Record updated");
         window.location.href = "/recview";
@@ -34,7 +35,7 @@ function Edit_record() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8090/svc-records/get/${id}`)
+      .get(`${API_URL}/svc-records/get/${id}`)
       .then((res) => {
         const { service, customer, date, category } = res.data;
         setService(service);

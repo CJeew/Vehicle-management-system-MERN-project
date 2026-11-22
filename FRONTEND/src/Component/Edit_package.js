@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import API_URL from "../apiConfig";
 
 function Edit_package() {
   const { id } = useParams();
@@ -16,7 +17,7 @@ function Edit_package() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8090/svc-packages/get/${id}`)
+      .get(`${API_URL}/svc-packages/get/${id}`)
       .then((res) => {
         setName(res.data.name);
         setDescription(res.data.description);
@@ -63,7 +64,7 @@ function Edit_package() {
     };
 
     axios
-      .put(`http://localhost:8090/svc-packages/update/${id}`, editPackage)
+      .put(`${API_URL}/svc-packages/update/${id}`, editPackage)
       .then(() => {
         alert("Package updated");
         window.location.href = "/viewpkg";

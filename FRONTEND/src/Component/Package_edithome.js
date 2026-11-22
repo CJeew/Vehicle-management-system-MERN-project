@@ -3,13 +3,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import "primeicons/primeicons.css";
+import API_URL from "../apiConfig";
 
 export default function Package_edithome() {
   const [packages, setPackages] = useState([]);
   useEffect(() => {
     function getPackages() {
       axios
-        .get("http://localhost:8090/svc-packages/")
+        .get(`${API_URL}/svc-packages/`)
         .then((res) => {
           console.log("Response from server:", res.data);
           setPackages(res.data);
@@ -26,7 +27,7 @@ export default function Package_edithome() {
       return;
     }
     axios
-      .delete(`http://localhost:8090/svc-packages/delete/${id}`)
+      .delete(`${API_URL}/svc-packages/delete/${id}`)
       .then((res) => {
         console.log("Response from server:", res.data);
         setPackages(packages.filter((pkg) => pkg._id !== id));

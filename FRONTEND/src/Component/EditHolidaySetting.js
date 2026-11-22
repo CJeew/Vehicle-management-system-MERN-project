@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {useReactToPrint} from 'react-to-print';
 import { Link } from "react-router-dom";
+import API_URL from "../apiConfig";
 
 export default function ViewHolidaysSetting() {
     const [holidays, setSet] = useState([]);
@@ -9,7 +10,7 @@ export default function ViewHolidaysSetting() {
 
     useEffect(() => {
         function getSet() {
-            axios.get("http://localhost:8090/holidaySetting")
+            axios.get(`${API_URL}/holidaySetting`)
                 .then((res) => {
                     console.log("Response from server:", res.data); 
                     setSet(res.data);
@@ -27,7 +28,7 @@ export default function ViewHolidaysSetting() {
     const onDeleteClick = async (holidayId) => {
         const confirmed = window.confirm('Are you sure you want to delete this holiday setting?');
         if (confirmed) {
-            await axios.delete(`http://localhost:8090/holidaySetting/deleteHoliday/${holidayId}`);
+            await axios.delete(`${API_URL}/holidaySetting/deleteHoliday/${holidayId}`);
             alert('Holiday setting Deleted Successfully');
             window.location.reload(); // Refresh page after successful deletion
         }

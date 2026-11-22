@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
+import API_URL from "../../apiConfig";
 
 export default function EditItems() {
   const initialItemState = {
@@ -25,7 +26,7 @@ export default function EditItems() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8090/manageparts/get/${id}`);
+        const response = await axios.get(`${API_URL}/manageparts/get/${id}`);
         const data = response.data.manageparts || initialItemState;
         setItem(data);
         setLoading(false);
@@ -125,7 +126,7 @@ export default function EditItems() {
     }
 
     try {
-      await axios.put(`http://localhost:8090/manageparts/update/${id}`, item);
+      await axios.put(`${API_URL}/manageparts/update/${id}`, item);
       alert("Item Updated");
       navigate("/manageitems");
     } catch (error) {

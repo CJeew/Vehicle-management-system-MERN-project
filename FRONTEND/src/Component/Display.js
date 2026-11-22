@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { jsPDF } from "jspdf";
 import imgSrc1 from "./logo.png";
+import API_URL from "../apiConfig";
 
 export default function Display() {
     const [searchsupplier, setSearchsupplier] = useState('');
@@ -14,7 +15,7 @@ export default function Display() {
     }, []);
 
     const getSuppliers = () => {
-        axios.get("http://localhost:8090/supplier/")
+        axios.get(`${API_URL}/supplier/`)
             .then((res) => {
                 console.log("Response from server:", res.data);
                 setSuppliers(res.data);
@@ -35,7 +36,7 @@ export default function Display() {
     const deletesupplier = async (userId) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this supplier?");
         if (confirmDelete) {
-            await axios.delete(`http://localhost:8090/supplier/delete/${userId}`);
+            await axios.delete(`${API_URL}/supplier/delete/${userId}`);
             alert('Supplier Deleted Successfully');
             window.location.reload(); // Refresh page after successful deletion
         }

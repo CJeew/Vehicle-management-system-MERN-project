@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import imgSrc3 from "../Images/calendars.png";
+import API_URL from "../apiConfig";
 
 export default function ViewHolidaysSetting() {
     const [holidays, setSet] = useState([]);
 
     useEffect(() => {
         function getSet() {
-            axios.get("http://localhost:8090/holidaySetting")
+            axios.get(`${API_URL}/holidaySetting`)
                 .then((res) => {
                     console.log("Response from server:", res.data); 
                     setSet(res.data);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link , useNavigate} from 'react-router-dom'
+import API_URL from "../../apiConfig";
 
 
 export default function Additems() {
@@ -136,7 +137,7 @@ if (!price.trim()) {
       isactive,
     };
 
-    axios.post("http://localhost:8090/manageparts/add", newAdditems)
+    axios.post(`${API_URL}/manageparts/add`, newAdditems)
       .then(() => {
         alert("Item Added");
         navigate("/ManageItems");

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import API_URL from "../apiConfig";
 
 
 export default function AddAttendance(){
@@ -14,7 +15,7 @@ export default function AddAttendance(){
 
     // Fetch staff details from the server on component mount
   useEffect(() => {
-    axios.get(`http://localhost:8090/employeeattendance/get/${id}`).then((res) => {
+    axios.get(`${API_URL}/employeeattendance/get/${id}`).then((res) => {
       setNic(res.data.attendance.nic);
       setName(res.data.attendance.name);
       setDate(res.data.attendance.date);
@@ -37,7 +38,7 @@ export default function AddAttendance(){
 
     // Send updated staff details to the server
     axios
-      .put(`http://localhost:8090/employeeattendance/editattendance/${id}`, updatedAttendance)
+      .put(`${API_URL}/employeeattendance/editattendance/${id}`, updatedAttendance)
       .then(() => {
         alert("Attendance Updated");
         window.location.href = "/EmployeeAttendance";

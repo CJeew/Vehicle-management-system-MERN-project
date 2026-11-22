@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import API_URL from "../apiConfig";
 
 export default function LeaveRequest() {
   const [leaverequest, setLeave] = useState([]); // State for storing leave request details
@@ -8,7 +9,7 @@ export default function LeaveRequest() {
   // Fetch leave details from the server on component mount
   useEffect(() => {
     function getLeave() {
-      axios.get("http://localhost:8090/leaverequest/").then((res) => {
+      axios.get(`${API_URL}/leaverequest/`).then((res) => {
         console.log(res);
         setLeave(res.data);
       }).catch((err) => {
@@ -22,7 +23,7 @@ export default function LeaveRequest() {
   const onDeleteClick = async (userId) => {
     const confirmed = window.confirm("Are you sure you want to delete this leave request?");
     if (confirmed) {
-    await axios.delete(`http://localhost:8090/leaverequest/delete/${userId}`);
+    await axios.delete(`${API_URL}/leaverequest/delete/${userId}`);
     alert('Leave Request Deleted Successfully');
     window.location.reload(); // Refresh page after successful deletion
     }

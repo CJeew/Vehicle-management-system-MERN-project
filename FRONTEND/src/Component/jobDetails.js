@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { jsPDF } from "jspdf";
 import imgSrc2 from "./logo.png";
+import API_URL from "../apiConfig";
 
 
 
@@ -17,7 +18,7 @@ const JobDetails = () => {
   useEffect(() => {
     const fetchJobDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:8090/job/details/${decodedJobNumber}`); 
+        const response = await axios.get(`${API_URL}/job/details/${decodedJobNumber}`); 
         setJobDetails(response.data);
       } catch (error) {
         console.error("Error fetching job details:", error);
@@ -37,7 +38,7 @@ const deleteJob = async (jobId) => {
 
   if(confirm){
     try{
-      await axios.delete(`http://localhost:8090/job/delete/${jobId}`);
+      await axios.delete(`${API_URL}/job/delete/${jobId}`);
       alert('Job Deleted Successfully');
       navigate('/viewjobs');  
 

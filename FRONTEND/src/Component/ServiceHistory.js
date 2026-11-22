@@ -3,6 +3,7 @@ import axios from "axios";
 import { useReactToPrint } from 'react-to-print';
 import imgSrc from "./logo.png";
 import { FaPrint } from "react-icons/fa6";
+import API_URL from "../apiConfig";
 
 
 
@@ -16,7 +17,7 @@ export default function ServiceHistory() {
     }, []);
 
     const getBookings = () => {
-        axios.get("http://localhost:8090/booking/")
+        axios.get(`${API_URL}/booking/`)
             .then((res) => {
                 const filteredBookings = filterPastBookings(res.data);
                 // Sort bookings by date in descending order

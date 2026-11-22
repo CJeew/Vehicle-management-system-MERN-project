@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import API_URL from "../apiConfig";
 
 
 export default function EditStaff() {
@@ -17,7 +18,7 @@ export default function EditStaff() {
 
  // Fetch staff details from the server on component mount
   useEffect(() => {
-    axios.get(`http://localhost:8090/staffdetails/get/${id}`).then((res) => {
+    axios.get(`${API_URL}/staffdetails/get/${id}`).then((res) => {
       setNic(res.data.staff.nic);
       setName(res.data.staff.name);
       setDesignation(res.data.staff.designation);
@@ -46,7 +47,7 @@ export default function EditStaff() {
 
     // Send updated staff details to the server
     axios
-      .put(`http://localhost:8090/staffdetails/editstaff/${id}`, updatedStaff)
+      .put(`${API_URL}/staffdetails/editstaff/${id}`, updatedStaff)
       .then(() => {
         alert("Staff Updated");
         window.location.href = "/StaffDetails";
@@ -278,7 +279,7 @@ return (
 
 // // Fetch staff details from the server on component mount
 // useEffect(() => {
-//   axios.get(`http://localhost:8090/staffdetails/get/${id}`).then((res) => {
+//   axios.get(`${API_URL}/staffdetails/get/${id}`).then((res) => {
 //     setNic(res.data.staff.nic);
 //     setName(res.data.staff.name);
 //     setDesignation(res.data.staff.designation);
@@ -307,7 +308,7 @@ return (
 
 //   // Send updated staff details to the server
 //   axios
-//     .put(`http://localhost:8090/staffdetails/editstaff/${id}`, updatedStaff)
+//     .put(`${API_URL}/staffdetails/editstaff/${id}`, updatedStaff)
 //     .then(() => {
 //       alert("Staff Updated");
 //       window.location.href = "/StaffDetails";

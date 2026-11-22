@@ -6,6 +6,7 @@ import {useReactToPrint} from "react-to-print"
 import { GrDocumentPdf } from "react-icons/gr";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import API_URL from "../../apiConfig";
 
 export default function TransactionView() {
   const [items, setItems] = useState([]); 
@@ -17,7 +18,7 @@ export default function TransactionView() {
   
   useEffect(() => {
     function getItems() {
-      axios.get("http://localhost:8090/finance/").then((res) => {
+      axios.get(`${API_URL}/finance/`).then((res) => {
         console.log(res);
         setItems(res.data);
       }).catch((err) => {
@@ -62,7 +63,7 @@ export default function TransactionView() {
   }, [items]);
 
   const onDeleteClick = async (itemId) => {
-    await axios.delete(`http://localhost:8090/finance/delete/${itemId}`);
+    await axios.delete(`${API_URL}/finance/delete/${itemId}`);
     alert('Transaction Deleted Successfully');
     window.location.reload();
   }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import API_URL from "../apiConfig";
 
 export default function ViewHourSetting() {
     const [businessHours, setSetting] = useState([]);
@@ -8,7 +9,7 @@ export default function ViewHourSetting() {
 
     useEffect(() => {
         function getSetting() {
-            axios.get("http://localhost:8090/hourSetting")
+            axios.get(`${API_URL}/hourSetting`)
                 .then((res) => {
                     console.log("Response from server:", res.data); 
                     setSetting(res.data);
@@ -26,7 +27,7 @@ export default function ViewHourSetting() {
     const onDeleteClick = async (settingId) => {
         const confirmed = window.confirm('Are you sure you want to delete this business hour setting?');
         if (confirmed) {
-            await axios.delete(`http://localhost:8090/hourSetting/deleteSetting/${settingId}`);
+            await axios.delete(`${API_URL}/hourSetting/deleteSetting/${settingId}`);
             alert('Business Hours Deleted Successfully');
             window.location.reload(); // Refresh page after successful deletion
         }

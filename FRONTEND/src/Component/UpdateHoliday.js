@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import API_URL from "../apiConfig";
 
 export default function UpdateHoliday(){
     const[busyDate, setBusyDate] = useState("");
@@ -17,7 +18,7 @@ export default function UpdateHoliday(){
             event
         };
 
-        axios.put(`http://localhost:8090/holidaySetting/updateHoliday/${id}`, updatedHoliday)
+        axios.put(`${API_URL}/holidaySetting/updateHoliday/${id}`, updatedHoliday)
         .then(()=>{
             alert("Holiday Updated Successfully");
             window.location.href = "/editHolidaySetting";
@@ -28,7 +29,7 @@ export default function UpdateHoliday(){
     }
 
     useEffect(()=>{
-        axios.get(`http://localhost:8090/holidaySetting/get/${id}`)
+        axios.get(`${API_URL}/holidaySetting/get/${id}`)
         .then((response)=>{
             console.log(response);
             setBusyDate(response.data.holiday.busyDate);

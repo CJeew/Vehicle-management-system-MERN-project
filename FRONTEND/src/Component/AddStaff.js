@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import API_URL from "../apiConfig";
 
 
 export default function AddStaff() {
@@ -38,7 +39,7 @@ export default function AddStaff() {
       joindate
     }
 
-    axios.post("http://localhost:8090/staffdetails/addstaff", newStaff).then(() => {
+    axios.post(`${API_URL}/staffdetails/addstaff`, newStaff).then(() => {
 
       alert("Staff Added")
       window.location.reload();

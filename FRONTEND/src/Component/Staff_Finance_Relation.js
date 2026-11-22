@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
 import { useReactToPrint } from 'react-to-print';
+import API_URL from "../apiConfig";
 
 export default function Staff_Finance_Relation() {
   const [employeepayroll, setPayroll] = useState([]); // State for storing payroll details
@@ -11,7 +12,7 @@ export default function Staff_Finance_Relation() {
   // Fetch payroll details from the server on component mount
   useEffect(() => {
     function getPayroll() {
-      axios.get("http://localhost:8090/employeepayroll/").then((res) => {
+      axios.get(`${API_URL}/employeepayroll/`).then((res) => {
         console.log(res);
         setPayroll(res.data);
       }).catch((err) => {

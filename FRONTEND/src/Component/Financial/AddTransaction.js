@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from 'react-router-dom';
+import API_URL from "../../apiConfig";
 
 
 export default function AddTransaction() {
@@ -63,7 +64,7 @@ export default function AddTransaction() {
     if(Object.keys(newErrors).length > 0){
       setErrors(newErrors);
     }else{
-    axios.post("http://localhost:8090/finance/add", newAdditems)
+    axios.post(`${API_URL}/finance/add`, newAdditems)
       .then(() => {
         alert("Transaction Added");
         navigate("/Finance");

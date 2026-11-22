@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
+import API_URL from "../apiConfig";
 
 
 export default function AddAttendance(){
@@ -21,7 +22,7 @@ export default function AddAttendance(){
           attendance
       }
 
-      axios.post("http://localhost:8090/employeeattendance/addattendance",newAttendance).then(()=>{
+      axios.post(`${API_URL}/employeeattendance/addattendance`,newAttendance).then(()=>{
 
             alert("Attendance Added")
             window.location.reload();

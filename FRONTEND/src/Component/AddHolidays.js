@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./BookingPage.css";
 import axios from "axios";
+import API_URL from "../apiConfig";
 function AddHolidays(){
     const[busyDate, setBusyDate] = useState("");
     const[event, setEvent] = useState("");   
@@ -15,7 +16,7 @@ function AddHolidays(){
         };
 
         
-        axios.post("http://localhost:8090/holidaySetting/addHolidays", newSet)
+        axios.post(`${API_URL}/holidaySetting/addHolidays`, newSet)
         .then(()=>{
             alert("Holidays Setting Added");
             window.location.reload();

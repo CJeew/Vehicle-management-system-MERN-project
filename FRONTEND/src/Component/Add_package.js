@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Home.css";
 import axios from "axios";
+import API_URL from "../apiConfig";
 
 function AddPackage() {
   const [name, setName] = useState("");
@@ -26,7 +27,7 @@ function AddPackage() {
     };
 
     axios
-      .post("http://localhost:8090/svc-packages/add", newPackage)
+      .post(`${API_URL}/svc-packages/add`, newPackage)
       .then(() => {
         alert("Package Added");
         // Redirect based on category

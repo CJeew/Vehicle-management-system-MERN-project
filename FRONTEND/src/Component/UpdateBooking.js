@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import API_URL from "../apiConfig";
 
 export default function UpdateBooking() {
     const [fname, setFname] = useState("");
@@ -32,7 +33,7 @@ export default function UpdateBooking() {
             serviceBox
         };
 
-        axios.put(`http://localhost:8090/booking/updateBooking/${id}`, updatedBooking)
+        axios.put(`${API_URL}/booking/updateBooking/${id}`, updatedBooking)
             .then(() => {
                 alert("Booking Updated Successfully");
                 window.location.href = "/bookRead";
@@ -48,7 +49,7 @@ export default function UpdateBooking() {
     };
 
     useEffect(() => {
-        axios.get(`http://localhost:8090/booking/get/${id}`)
+        axios.get(`${API_URL}/booking/get/${id}`)
             .then((response) => {
                 console.log(response); // Log response to see what's being returned
                     setFname(response.data.book.fname);

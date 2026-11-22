@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import "./Review.js";
 import "./Chome.js";
+import API_URL from "../apiConfig";
 
 function Review() {
   const [cmail, setCmail] = useState("");
@@ -45,7 +46,7 @@ function Review() {
     };
 
     axios
-      .post("http://localhost:8090/reviewAdd/Review", newReview)
+      .post(`${API_URL}/reviewAdd/Review`, newReview)
       .then(() => {
         alert("Review Added");
         navigate("/Chome");

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import API_URL from "../apiConfig";
 
 
 
@@ -13,7 +14,7 @@ export default function ViewJobs() {
 
   useEffect(() => {
       function getJobs() {
-          axios.get("http://localhost:8090/job/viewjobs")
+          axios.get(`${API_URL}/job/viewjobs`)
               .then((res) => {
                   console.log("Response from server:", res.data); 
                   const reversedJobs = res.data.reverse();
@@ -51,7 +52,7 @@ const filteredJobs = allJobs.filter((job) => {
 
     if(confirm){
       try{
-        await axios.delete(`http://localhost:8090/job/delete/${jobId}`);
+        await axios.delete(`${API_URL}/job/delete/${jobId}`);
         alert('Job Deleted Successfully');
         navigate('/viewjobs');
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import API_URL from "../apiConfig";
 
 export default function UpdateCustomersSecond({ source }) {
   const [cname, setcname] = useState("");
@@ -28,7 +29,7 @@ export default function UpdateCustomersSecond({ source }) {
     };
 
     axios
-      .put(`http://localhost:8090/customer/update2/${id}`, UpdateCustomersSecond)
+      .put(`${API_URL}/customer/update2/${id}`, UpdateCustomersSecond)
       .then(() => {
         alert("Details updated");
         if (source === "ProfileList") {
@@ -45,7 +46,7 @@ export default function UpdateCustomersSecond({ source }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8090/customer/get/${id}`)
+      .get(`${API_URL}/customer/get/${id}`)
       .then((res) => {
         setcname(res.data.list.cname);
         setcnic(res.data.list.cnic);

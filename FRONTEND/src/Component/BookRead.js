@@ -5,6 +5,7 @@ import imgSrc from "./logo.png";
 import { useReactToPrint } from 'react-to-print';
 import imgSrc1 from "./logo.png";
 import { FaPrint } from "react-icons/fa6";
+import API_URL from "../apiConfig";
 
 export default function BookRead() {
     const [bookings, setBooking] = useState([]);
@@ -13,7 +14,7 @@ export default function BookRead() {
 
     useEffect(() => {
         function getBooking() {
-            axios.get("http://localhost:8090/booking/")
+            axios.get(`${API_URL}/booking/`)
                 .then((res) => {
                     console.log("Response from server:", res.data);
                     setBooking(res.data);
@@ -33,7 +34,7 @@ export default function BookRead() {
     const onDeleteClick = async (bookId) => {
         const confirmed = window.confirm('Are you sure you want to delete this booking?');
         if (confirmed) {
-            await axios.delete(`http://localhost:8090/booking/delete/${bookId}`);
+            await axios.delete(`${API_URL}/booking/delete/${bookId}`);
             alert('Booking Deleted Successfully');
             window.location.reload(); // Refresh page after successful deletion
         }

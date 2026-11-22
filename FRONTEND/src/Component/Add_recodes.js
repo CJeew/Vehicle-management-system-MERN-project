@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Home.css";
+import API_URL from "../apiConfig";
 
 function Add_recodes() {
   const [service, setService] = useState("");
@@ -29,7 +30,7 @@ function Add_recodes() {
     };
 
     axios
-      .post("http://localhost:8090/svc-records/addr", newRecorde)
+      .post(`${API_URL}/svc-records/addr`, newRecorde)
       .then(() => {
         alert("Recode Added");
         window.location.href = "/recview";

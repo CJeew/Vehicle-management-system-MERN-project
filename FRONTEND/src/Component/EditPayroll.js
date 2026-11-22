@@ -1,6 +1,7 @@
 import React, {useEffect,useState} from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import API_URL from "../apiConfig";
 
 
 export default function EditPayroll(){
@@ -18,7 +19,7 @@ export default function EditPayroll(){
 
     // Fetch payroll details from the server on component mount
   useEffect(() => {
-    axios.get(`http://localhost:8090/employeepayroll/get/${id}`).then((res) => {
+    axios.get(`${API_URL}/employeepayroll/get/${id}`).then((res) => {
       setNic(res.data.payroll.nic);
       setName(res.data.payroll.name);
       setDate(res.data.payroll.date);
@@ -49,7 +50,7 @@ export default function EditPayroll(){
 
     // Send updated payroll details to the server
     axios
-      .put(`http://localhost:8090/employeepayroll/editpayroll/${id}`, updatedPayroll)
+      .put(`${API_URL}/employeepayroll/editpayroll/${id}`, updatedPayroll)
       .then(() => {
         alert("Payroll Updated");
         window.location.href = "/EmployeePayroll";

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Add_Supplier.css";
 import axios from "axios";
+import API_URL from "../apiConfig";
 
 function Add_Supplier() {
   const [name, setName] = useState("");
@@ -52,7 +53,7 @@ if (!/^[\d]{10}$/.test(contact_2) ||  /[a-zA-Z]/.test(contact_2) ) { // Checking
 
 
     axios
-      .post("http://localhost:8090/supplier/add", newSupplier)
+      .post(`${API_URL}/supplier/add`, newSupplier)
       .then(() => {
         alert("Supplier Added");
       })

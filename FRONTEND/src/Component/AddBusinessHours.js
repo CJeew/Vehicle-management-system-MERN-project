@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./BookingPage.css";
 import axios from "axios";
+import API_URL from "../apiConfig";
 function AddBusinessHours(){
     const[day, setDay] = useState("");
     const[timeFrom, setTimeFrom] = useState("");
@@ -17,7 +18,7 @@ function AddBusinessHours(){
         };
 
         
-        axios.post("http://localhost:8090/hourSetting/addHourSetting", newSetting)
+        axios.post(`${API_URL}/hourSetting/addHourSetting`, newSetting)
         .then(()=>{
             alert("Hours Setting Added");
             window.location.reload();

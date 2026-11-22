@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import API_URL from "../apiConfig";
 
 export default function EmployeeAttendance() {
   const [employeeattendance, setAttendance] = useState([]); // State for storing attendance details
@@ -9,7 +10,7 @@ export default function EmployeeAttendance() {
   // Fetch attendance details from the server on component mount
   useEffect(() => {
     function getAttendance() {
-      axios.get("http://localhost:8090/employeeattendance/").then((res) => {
+      axios.get(`${API_URL}/employeeattendance/`).then((res) => {
         console.log(res);
         setAttendance(res.data);
       }).catch((err) => {
@@ -23,7 +24,7 @@ export default function EmployeeAttendance() {
   const onDeleteClick = async (userId) => {
     const confirmed = window.confirm("Are you sure you want to delete this attendance entry?");
     if (confirmed) {
-    await axios.delete(`http://localhost:8090/employeeattendance/delete/${userId}`);
+    await axios.delete(`${API_URL}/employeeattendance/delete/${userId}`);
     alert('Attendance Deleted Successfully');
     window.location.reload(); // Refresh page after successful deletion
     }

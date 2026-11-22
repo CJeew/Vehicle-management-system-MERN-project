@@ -5,6 +5,7 @@ import { FaPrint } from "react-icons/fa6";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
+import API_URL from "../../apiConfig";
 
 export default function ManageOrders() {
   const [items, setItems] = useState([]);
@@ -14,7 +15,7 @@ export default function ManageOrders() {
   useEffect(() => {
     function getItems() {
       axios
-        .get("http://localhost:8090/manageorders/")
+        .get(`${API_URL}/manageorders/`)
         .then((res) => {
           setItems(res.data);
         })
@@ -26,7 +27,7 @@ export default function ManageOrders() {
   }, []);
 
   const onDeleteClick = async (itemId) => {
-    await axios.delete(`http://localhost:8090/manageorders/delete/${itemId}`);
+    await axios.delete(`${API_URL}/manageorders/delete/${itemId}`);
     alert("Item Deleted Successfully");
     window.location.reload();
   };
@@ -35,7 +36,7 @@ export default function ManageOrders() {
   // const onDeleteClick = async (itemId) => {
   //   const confirmDelete = window.confirm('Are you sure you want to delete this item?');
   //   if (confirmDelete) {
-  //     await axios.delete(`http://localhost:8090/issueditems/delete/${itemId}`);
+  //     await axios.delete(`${API_URL}/issueditems/delete/${itemId}`);
   //     alert('Item Deleted Successfully');
   //     // Reload the page or update state as needed
   //     window.location.reload();
@@ -62,7 +63,7 @@ export default function ManageOrders() {
       emailBody += `Order Code: ${order.ordercode}\n`;
   
       // Send email
-      await axios.post("http://localhost:8090/email/send-email/", {
+      await axios.post(`${API_URL}/email/send-email/`, {
         to: "noormohommaduakeel@gmail.com", // Replace with recipient's email address
         subject: "Order Details",
         body: emailBody,

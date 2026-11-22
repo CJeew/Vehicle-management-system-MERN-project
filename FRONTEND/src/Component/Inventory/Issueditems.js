@@ -5,6 +5,7 @@ import { FaPrint } from "react-icons/fa6";
 import { Link , useNavigate} from 'react-router-dom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import {useReactToPrint} from "react-to-print"
+import API_URL from "../../apiConfig";
 
 export default function IssuedItems() {
   const [items, setItems] = useState([]);
@@ -12,7 +13,7 @@ export default function IssuedItems() {
 
   useEffect(() => {
     function getItems() {
-      axios.get("http://localhost:8090/issueditems/").then((res) => {
+      axios.get(`${API_URL}/issueditems/`).then((res) => {
         console.log(res);
         setItems(res.data);
       }).catch((err) => {
@@ -23,7 +24,7 @@ export default function IssuedItems() {
   }, [])
 
   const onDeleteClick = async (itemId) => {
-    await axios.delete(`http://localhost:8090/issueditems/delete/${itemId}`);
+    await axios.delete(`${API_URL}/issueditems/delete/${itemId}`);
     alert('Item Deleted Successfully');
     window.location.reload();
   }
@@ -32,7 +33,7 @@ export default function IssuedItems() {
   // const onDeleteClick = async (itemId) => {
   //   const confirmDelete = window.confirm('Are you sure you want to delete this item?');
   //   if (confirmDelete) {
-  //     await axios.delete(`http://localhost:8090/issueditems/delete/${itemId}`);
+  //     await axios.delete(`${API_URL}/issueditems/delete/${itemId}`);
   //     alert('Item Deleted Successfully');
   //     // Reload the page or update state as needed
   //     window.location.reload();

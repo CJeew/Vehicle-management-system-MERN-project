@@ -7,6 +7,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 // import { BsFillArchiveFill } from 'react-icons/bs';
 // import Alert from './Alert';
 import {useReactToPrint} from "react-to-print"
+import API_URL from "../../apiConfig";
 
 export default function ManageItems() {
   const [items, setItems] = useState([]); 
@@ -22,7 +23,7 @@ export default function ManageItems() {
     // Function to fetch items and reorder level alerts
     const getItemsAndAlerts = async () => {
       try {
-        const response = await axios.get("http://localhost:8090/manageparts/");
+        const response = await axios.get(`${API_URL}/manageparts/`);
         setItems(response.data);
 
 
@@ -45,7 +46,7 @@ export default function ManageItems() {
   }, []);
 
   const onDeleteClick = async (itemId) => {
-    await axios.delete(`http://localhost:8090/manageparts/delete/${itemId}`);
+    await axios.delete(`${API_URL}/manageparts/delete/${itemId}`);
     alert('Item Deleted Successfully');
     window.location.reload();
   }
@@ -54,7 +55,7 @@ export default function ManageItems() {
   // const onDeleteClick = async (itemId) => {
   //   const confirmDelete = window.confirm('Are you sure you want to delete this item?');
   //   if (confirmDelete) {
-  //     await axios.delete(`http://localhost:8090/issueditems/delete/${itemId}`);
+  //     await axios.delete(`${API_URL}/issueditems/delete/${itemId}`);
   //     alert('Item Deleted Successfully');
   //     // Reload the page or update state as needed
   //     window.location.reload();

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import imgSrc from "./logo.png";
 import { FaPrint } from "react-icons/fa6";
+import API_URL from "../apiConfig";
 
 export default function RegisterRead() {
   const [customer, setlist] = useState([]);
@@ -14,7 +15,7 @@ export default function RegisterRead() {
   useEffect(() => {
     function getlist() {
       axios
-        .get("http://localhost:8090/customer/")
+        .get(`${API_URL}/customer/`)
         .then((res) => {
           console.log("Response from server:", res.data);
           setlist(res.data);
@@ -37,7 +38,7 @@ export default function RegisterRead() {
 
     // If user confirms deletion
     if (shouldDelete) {
-      await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
+      await axios.delete(`${API_URL}/customer/delete/${cusid}`);
 
       alert("Profile Deleted Successfully");
       window.location.reload(); // Refresh page after successful deletion

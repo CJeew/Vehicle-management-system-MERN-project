@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import API_URL from "../apiConfig";
 
 // Register the chart components
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -16,7 +17,7 @@ const TrackJobs = () => {
   useEffect(() => {
     const fetchServiceData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8090/job/trackjobs/${jobNumber}`);
+        const response = await axios.get(`${API_URL}/job/trackjobs/${jobNumber}`);
         const { serviceType, serviceStatus } = response.data;
 
         // Set initial service types and their checked status
@@ -44,7 +45,7 @@ const TrackJobs = () => {
   const handleSave = async () => {
     console.log("Attempting to save service status");
     try {
-      await axios.put(`http://localhost:8090/job/updatejobstatus/${jobNumber}`, {
+      await axios.put(`${API_URL}/job/updatejobstatus/${jobNumber}`, {
         serviceStatus: checkedServices, // Check if correct data is sent
       });
       console.log("Service status saved successfully!");

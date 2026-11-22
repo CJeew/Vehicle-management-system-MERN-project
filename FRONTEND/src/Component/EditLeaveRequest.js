@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import API_URL from "../apiConfig";
 
 
 export default function EditLeaveRequest(){
@@ -16,7 +17,7 @@ export default function EditLeaveRequest(){
 
     // Fetch leave details from the server on component mount
   useEffect(() => {
-    axios.get(`http://localhost:8090/leaverequest/get/${id}`).then((res) => {
+    axios.get(`${API_URL}/leaverequest/get/${id}`).then((res) => {
       setNic(res.data.leave.nic);
       setName(res.data.leave.name);
       setDate(res.data.leave.date);
@@ -43,7 +44,7 @@ export default function EditLeaveRequest(){
 
     // Send updated staff details to the server
     axios
-      .put(`http://localhost:8090/leaverequest/editleaverequest/${id}`, updatedLeave)
+      .put(`${API_URL}/leaverequest/editleaverequest/${id}`, updatedLeave)
       .then(() => {
         alert("Leave request Updated");
         window.location.href = "/LeaveRequest";

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
+import API_URL from "../../apiConfig";
 
 export default function UpdateTransaction() {
   const initialItemState = {
@@ -23,7 +24,7 @@ export default function UpdateTransaction() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8090/finance/get/${id}`);
+        const response = await axios.get(`${API_URL}/finance/get/${id}`);
         console.log('API Response:', response.data);
         const data = response.data.Finance || initialItemState;
         console.log('Fetched Transaction:', data);
@@ -102,7 +103,7 @@ export default function UpdateTransaction() {
 
     if (validate()) {
       try {
-        await axios.put(`http://localhost:8090/finance/update/${id}`, item);
+        await axios.put(`${API_URL}/finance/update/${id}`, item);
         alert("Transaction Updated");
         navigate('/Finance');
       } catch (error) {

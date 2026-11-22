@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import API_URL from "../apiConfig";
 
 export default function EmployeeAnnouncement() {
   const [employeeannouncement, setAnnouncement] = useState([]); // State for storing announcement details
@@ -9,7 +10,7 @@ export default function EmployeeAnnouncement() {
   // Fetch announcement details from the server on component mount
   useEffect(() => {
     function getAnnouncement() {
-      axios.get("http://localhost:8090/employeeannouncement/").then((res) => {
+      axios.get(`${API_URL}/employeeannouncement/`).then((res) => {
         console.log(res);
         setAnnouncement(res.data);
       }).catch((err) => {
@@ -23,7 +24,7 @@ export default function EmployeeAnnouncement() {
   const onDeleteClick = async (userId) => {
     const confirmed = window.confirm("Are you sure you want to delete this announcement entry?");
     if (confirmed) {
-    await axios.delete(`http://localhost:8090/employeeannouncement/delete/${userId}`);
+    await axios.delete(`${API_URL}/employeeannouncement/delete/${userId}`);
     alert('Announcement Deleted Successfully');
     window.location.reload(); // Refresh page after successful deletion
     }

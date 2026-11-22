@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
+import API_URL from "../apiConfig";
 
 export default function AddAnnouncement(){
 
@@ -18,7 +19,7 @@ export default function AddAnnouncement(){
         announcement
       }
 
-      axios.post("http://localhost:8090/employeeannouncement/addannouncement",newAnnouncement).then(()=>{
+      axios.post(`${API_URL}/employeeannouncement/addannouncement`,newAnnouncement).then(()=>{
 
       alert("Announcement Added")
       window.location.reload();

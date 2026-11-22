@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
+import API_URL from "../apiConfig";
 
 export default function AddPayroll(){
 
@@ -28,7 +29,7 @@ export default function AddPayroll(){
             salary
         }
 
-        axios.post("http://localhost:8090/employeepayroll/addpayroll",newPayroll).then(()=>{
+        axios.post(`${API_URL}/employeepayroll/addpayroll`,newPayroll).then(()=>{
 
             alert("Payroll Added")
             window.location.reload();

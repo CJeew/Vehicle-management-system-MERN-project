@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import API_URL from "../apiConfig";
 
 export default function ViewHourSetting() {
     const [businessHours, setSetting] = useState([]);
@@ -7,7 +8,7 @@ export default function ViewHourSetting() {
 
     useEffect(() => {
         function getSetting() {
-            axios.get("http://localhost:8090/hourSetting")
+            axios.get(`${API_URL}/hourSetting`)
                 .then((res) => {
                     console.log("Response from server:", res.data); 
                     setSetting(res.data);

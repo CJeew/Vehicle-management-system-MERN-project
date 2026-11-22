@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
 import { useReactToPrint } from 'react-to-print';
+import API_URL from "../apiConfig";
 
 export default function StaffDetails() {
 
@@ -11,7 +12,7 @@ export default function StaffDetails() {
   // Fetch staff details from the server on component mount
   useEffect(() => {
     function getStaff() {
-      axios.get("http://localhost:8090/staffdetails/").then((res) => {
+      axios.get(`${API_URL}/staffdetails/`).then((res) => {
         console.log(res);
         setStaff(res.data);
       }).catch((err) => {
@@ -25,7 +26,7 @@ export default function StaffDetails() {
   const onDeleteClick = async (userId) => {
     const confirmed = window.confirm("Are you sure you want to delete this staff entry?");
     if (confirmed) {
-      await axios.delete(`http://localhost:8090/staffdetails/delete/${userId}`);
+      await axios.delete(`${API_URL}/staffdetails/delete/${userId}`);
       alert('User Deleted Successfully');
       window.location.reload(); // Refresh page after successful deletion
     }

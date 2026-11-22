@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef  } from 'react';
 import axios from "axios";
 import { useReactToPrint } from 'react-to-print';
+import API_URL from "../apiConfig";
 
 export default function EmployeePayroll() {
   const [employeepayroll, setPayroll] = useState([]); // State for storing payroll details
@@ -11,7 +12,7 @@ export default function EmployeePayroll() {
   // Fetch payroll details from the server on component mount
   useEffect(() => {
     function getPayroll() {
-      axios.get("http://localhost:8090/employeepayroll/").then((res) => {
+      axios.get(`${API_URL}/employeepayroll/`).then((res) => {
         console.log(res);
         setPayroll(res.data);
       }).catch((err) => {
@@ -25,7 +26,7 @@ export default function EmployeePayroll() {
   const onDeleteClick = async (userId) => {
     const confirmed = window.confirm("Are you sure you want to delete this payroll entry?");
     if (confirmed) {
-    await axios.delete(`http://localhost:8090/employeepayroll/delete/${userId}`);
+    await axios.delete(`${API_URL}/employeepayroll/delete/${userId}`);
     alert('Payroll Deleted Successfully');
     window.location.reload(); // Refresh page after successful deletion
     }

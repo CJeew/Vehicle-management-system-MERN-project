@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import API_URL from "../apiConfig";
 
 export default function ViewPackage() {
   const [packages, setPackages] = useState([]);
@@ -9,7 +10,7 @@ export default function ViewPackage() {
   useEffect(() => {
     function getPackages() {
       axios
-        .get("http://localhost:8090/svc-packages/")
+        .get(`${API_URL}/svc-packages/`)
         .then((res) => {
           console.log("Response from server:", res.data);
           setPackages(res.data);

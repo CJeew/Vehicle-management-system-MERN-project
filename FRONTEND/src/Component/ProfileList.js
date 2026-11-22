@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Chome.js";
+import API_URL from "../apiConfig";
 
 export default function ProfileList() {
   const [customer, setlist] = useState([]);
@@ -12,7 +13,7 @@ export default function ProfileList() {
   useEffect(() => {
     function getprofile() {
       axios
-        .get("http://localhost:8090/customer/")
+        .get(`${API_URL}/customer/`)
         .then((res) => {
           setlist(res.data);
         })
@@ -34,7 +35,7 @@ export default function ProfileList() {
 
     // If user confirms deletion
     if (shouldDelete) {
-      await axios.delete(`http://localhost:8090/customer/delete/${cusid}`);
+      await axios.delete(`${API_URL}/customer/delete/${cusid}`);
       alert("Profile Deleted Successfully");
       window.location.reload(); // Refresh page after successful deletion
     }

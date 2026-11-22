@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import moment from 'moment';
 import {useReactToPrint} from 'react-to-print';
+import API_URL from "../apiConfig";
 
 export default function ServiceRecordView() {
   const [records, setRecords] = useState([]);
@@ -13,7 +14,7 @@ export default function ServiceRecordView() {
   useEffect(() => {
     function getService() {
       axios
-        .get("http://localhost:8090/svc-records/")
+        .get(`${API_URL}/svc-records/`)
         .then((res) => {
           console.log("Response from server:", res.data);
           setRecords(res.data);

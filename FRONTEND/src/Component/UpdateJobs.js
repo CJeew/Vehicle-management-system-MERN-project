@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import API_URL from "../apiConfig";
 
 
 export default function UpdateJob() {
@@ -49,7 +50,7 @@ export default function UpdateJob() {
       };
  
 
-      axios.put(`http://localhost:8090/job/updatejobs/${id}`, updatedJob)
+      axios.put(`${API_URL}/job/updatejobs/${id}`, updatedJob)
       .then(() => {
         alert("Job updated successfully");
         window.location.href = "/viewjobs";
@@ -61,7 +62,7 @@ export default function UpdateJob() {
 
 
     useEffect( () => {
-      axios.get(`http://localhost:8090/job/get/${id}`)
+      axios.get(`${API_URL}/job/get/${id}`)
       .then((response) => {
 
        setJobNumber(response.data.job.jobNumber);

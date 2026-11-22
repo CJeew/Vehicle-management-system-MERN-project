@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link , useNavigate} from 'react-router-dom'
+import API_URL from "../../apiConfig";
 
 
 export default function Addorderitems() {
@@ -92,7 +93,7 @@ function handlesuppliernameChange(event) {
     
     };
 
-    axios.post("http://localhost:8090/manageorders/add", newAddorderitems)
+    axios.post(`${API_URL}/manageorders/add`, newAddorderitems)
       .then(() => {
         alert("Item Order Added");
         navigate("/managedorders");

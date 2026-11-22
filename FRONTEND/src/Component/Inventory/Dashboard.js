@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_URL from "../../apiConfig";
 
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState(null);
@@ -9,7 +10,7 @@ const Dashboard = () => {
   const [issuedTotalValue, setIssuedTotalValue] = useState(null);
   
   useEffect(() => {
-    axios.get('http://localhost:8090/dashboard/overview/')
+    axios.get(`${API_URL}/dashboard/overview/`)
       .then(response => {
         setDashboardData(response.data);
       })
@@ -17,7 +18,7 @@ const Dashboard = () => {
         console.error('Error fetching dashboard data:', error);
       });
 
-    axios.get('http://localhost:8090/dashboard/totalvalue')
+    axios.get(`${API_URL}/dashboard/totalvalue`)
       .then(response => {
         setTotalValue(response.data.totalValue);
       })
@@ -25,7 +26,7 @@ const Dashboard = () => {
         console.error('Error fetching total value:', error);
       });
 
-    axios.get('http://localhost:8090/dashboard/ordertotalvalue')
+    axios.get(`${API_URL}/dashboard/ordertotalvalue`)
       .then(response => {
         setOrderTotalValue(response.data.OrdertotalValue);
       })
@@ -35,7 +36,7 @@ const Dashboard = () => {
 
     const getItemsAndAlerts = async () => {
       try {
-        const response = await axios.get("http://localhost:8090/manageparts/");
+        const response = await axios.get(`${API_URL}/manageparts/`);
         setItems(response.data);
   
         const total = response.data.reduce((acc, curr) => {
@@ -52,7 +53,7 @@ const Dashboard = () => {
 
     const getItems = async () => {
       try {
-        const response = await axios.get("http://localhost:8090/manageorders/");
+        const response = await axios.get(`${API_URL}/manageorders/`);
         setItems(response.data);
   
         const total = response.data.reduce((acc, curr) => {
@@ -75,7 +76,7 @@ const Dashboard = () => {
 
     const getIssuedItems = async () => {
       try {
-        const response = await axios.get("http://localhost:8090/issueditems/");
+        const response = await axios.get(`${API_URL}/issueditems/`);
         setItems(response.data);
 
         const total = response.data.reduce((acc, curr) => {

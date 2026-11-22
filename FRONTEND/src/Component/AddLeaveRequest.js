@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import AuthenticationPopup from './AuthenticationPopup';
+import API_URL from "../apiConfig";
 
 export default function AddLeaveRequest() {
   const [nic, setNic] = useState('');
@@ -21,7 +22,7 @@ export default function AddLeaveRequest() {
       reason,
     };
 
-    axios.post('http://localhost:8090/leaverequest/addleaverequest', newLeaveRequest)
+    axios.post(`${API_URL}/leaverequest/addleaverequest`, newLeaveRequest)
       .then(() => {
         alert('Leave Request Added');
         window.location.reload();

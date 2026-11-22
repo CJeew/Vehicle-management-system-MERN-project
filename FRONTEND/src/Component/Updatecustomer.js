@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link, useNavigate } from 'react-router-dom';
+import API_URL from "../apiConfig";
 
 export default function Updatecustomers({ source }) {
   const [cname, setcname] = useState("");
@@ -30,7 +31,7 @@ export default function Updatecustomers({ source }) {
     };
 
     axios
-      .put(`http://localhost:8090/customer/update/${id}`, Updatedcustomer)
+      .put(`${API_URL}/customer/update/${id}`, Updatedcustomer)
       .then(() => {
         alert("Details updated");
         if (source === "ProfileList") {
@@ -47,7 +48,7 @@ export default function Updatecustomers({ source }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8090/customer/get/${id}`)
+      .get(`${API_URL}/customer/get/${id}`)
       .then((res) => {
         setcname(res.data.list.cname);
         setcnic(res.data.list.cnic);

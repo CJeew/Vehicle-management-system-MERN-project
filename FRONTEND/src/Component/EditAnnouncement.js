@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import API_URL from "../apiConfig";
 
 export default function EditAnnouncement(){
 
@@ -12,7 +13,7 @@ export default function EditAnnouncement(){
 
     // Fetch announcement details from the server on component mount
   useEffect(() => {
-    axios.get(`http://localhost:8090/employeeannouncement/get/${id}`).then((res) => {
+    axios.get(`${API_URL}/employeeannouncement/get/${id}`).then((res) => {
         setDate(res.data.announcement.date);
         setTitle(res.data.announcement.title);
         setAnnouncement(res.data.announcement.announcement);
@@ -34,7 +35,7 @@ export default function EditAnnouncement(){
 
     // Send updated announcement details to the server
     axios
-      .put(`http://localhost:8090/employeeannouncement/editannouncement/${id}`, updatedAnnouncement)
+      .put(`${API_URL}/employeeannouncement/editannouncement/${id}`, updatedAnnouncement)
       .then(() => {
         alert("Announcement Updated");
         window.location.href = "/EmployeeAnnouncement";

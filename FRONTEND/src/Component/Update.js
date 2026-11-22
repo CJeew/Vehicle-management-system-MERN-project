@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import API_URL from "../apiConfig";
 
 // import "./Res.css";
 export default function Update(){
@@ -58,7 +59,7 @@ export default function Update(){
   }
 
       axios
-        .put(`http://localhost:8090/supplier/update/${id}`, editSupplier)
+        .put(`${API_URL}/supplier/update/${id}`, editSupplier)
         .then(() => {
           alert("Supplier updated");
           window.location.href = "/display";
@@ -69,7 +70,7 @@ export default function Update(){
     }
 
     useEffect(() => {
-      axios.get(`http://localhost:8090/supplier/get/${id}`)
+      axios.get(`${API_URL}/supplier/get/${id}`)
         .then((res) => {
         
           setName(res.data.supplier.name);

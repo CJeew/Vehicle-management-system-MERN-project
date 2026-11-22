@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import "./Register.js";
 import "./Chome.js";
+import API_URL from "../apiConfig";
 
 function Register() {
   const [cname, setcname] = useState("");
@@ -85,7 +86,7 @@ function Register() {
     };
 
     axios
-      .post("http://localhost:8090/customer/Register", newCustomer)
+      .post(`${API_URL}/customer/Register`, newCustomer)
       .then(() => {
         alert("Profile Added");
         navigate("/Chome"); // Redirect to Chome page

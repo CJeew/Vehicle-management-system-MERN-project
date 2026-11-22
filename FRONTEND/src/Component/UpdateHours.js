@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import API_URL from "../apiConfig";
 
 export default function UpdateHours(){
     const[day, setDay] = useState("");
@@ -19,7 +20,7 @@ export default function UpdateHours(){
             timeTo
         };
 
-        axios.put(`http://localhost:8090/hourSetting/updateSetting/${id}`, updatedHour)
+        axios.put(`${API_URL}/hourSetting/updateSetting/${id}`, updatedHour)
         .then(()=>{
             alert("Business Hour Updated Successfully");
             window.location.href = "/editHourSetting";
@@ -30,7 +31,7 @@ export default function UpdateHours(){
     }
 
     useEffect(()=>{
-        axios.get(`http://localhost:8090/hourSetting/get/${id}`)
+        axios.get(`${API_URL}/hourSetting/get/${id}`)
         .then((response)=>{
             console.log(response);
             setDay(response.data.hour.day);

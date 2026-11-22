@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
+import API_URL from "../apiConfig";
 
 function CreateJob() {
     const [jobNumber, setjobNumber] = useState("");
@@ -60,7 +61,7 @@ function CreateJob() {
 
 
 // Function to create a new job
-        axios.post("http://localhost:8090/job/addJob", newJob)
+        axios.post(`${API_URL}/job/addJob`, newJob)
             .then(() => {
                 alert("Job Added");
                 window.location.reload(); 

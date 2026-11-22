@@ -3,6 +3,7 @@ import axios from "axios";
 import { useReactToPrint } from "react-to-print";
 import imgSrc from "./logo.png";
 import { FaPrint } from "react-icons/fa6";
+import API_URL from "../apiConfig";
 
 export default function ReviewRead() {
   const [reviewAdd, setlist] = useState([]);
@@ -12,7 +13,7 @@ export default function ReviewRead() {
   useEffect(() => {
     function getlist() {
       axios
-        .get("http://localhost:8090/reviewAdd/")
+        .get(`${API_URL}/reviewAdd/`)
         .then((res) => {
           console.log("Response from server:", res.data);
           setlist(res.data);
@@ -35,7 +36,7 @@ export default function ReviewRead() {
 
     // If user confirms deletion
     if (shouldDelete) {
-      await axios.delete(`http://localhost:8090/reviewAdd/delete/${revid}`);
+      await axios.delete(`${API_URL}/reviewAdd/delete/${revid}`);
       alert("Review Deleted Successfully");
       window.location.reload(); // Refresh page after successful deletion
     }

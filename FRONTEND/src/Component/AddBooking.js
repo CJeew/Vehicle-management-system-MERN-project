@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./BookingPage.css";
 import axios from "axios";
+import API_URL from "../apiConfig";
 
 function AddBooking() {
     const [fname, setFname] = useState("");
@@ -51,7 +52,7 @@ function AddBooking() {
             return;
         }
 
-        axios.post("http://localhost:8090/booking/addBooking", newBooking)
+        axios.post(`${API_URL}/booking/addBooking`, newBooking)
             .then(() => {
                 alert("Booking Added");
                 window.location.href = "/bookCusLog";
