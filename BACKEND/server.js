@@ -99,6 +99,12 @@ app.use("/employeeannouncement",announcementRouter);
 
 
 // server port allocation & server start
-app.listen(PORT, () => {
-  console.log(`Server is up and running at port: ${PORT}`);
-});
+// Start the server when run directly (npm start / npm run dev).
+// When imported (e.g. by the Netlify Function), just export the app.
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server is up and running at port: ${PORT}`);
+  });
+}
+
+module.exports = app;
