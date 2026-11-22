@@ -15,11 +15,9 @@ app.use(bodyParser.json());
 
 // database link variable decleartion
 const URL = process.env.MONGODB_URL;
-mongoose.connect(URL, {
-  //   useCreateIndex: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  //   useFindAndModify: false
+mongoose.connect(URL).catch((err) => {
+  // Log instead of crashing, so the server/function keeps responding
+  console.error("MongoDB connection error:", err.message);
 });
 
 const connection = mongoose.connection;
